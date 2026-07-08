@@ -1,0 +1,310 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|c:\\users\\alyssa\\source\\repos\\nexustechuniversity\\nexustechuniversity\\curriculum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\curriculum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|c:\\users\\alyssa\\source\\repos\\nexustechuniversity\\nexustechuniversity\\evaluation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\evaluation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|c:\\users\\alyssa\\source\\repos\\nexustechuniversity\\nexustechuniversity\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|c:\\users\\alyssa\\source\\repos\\nexustechuniversity\\nexustechuniversity\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|c:\\users\\alyssa\\source\\repos\\nexustechuniversity\\nexustechuniversity\\addstudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\addstudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|c:\\users\\alyssa\\source\\repos\\nexustechuniversity\\nexustechuniversity\\assignments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\assignments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|c:\\users\\alyssa\\source\\repos\\nexustechuniversity\\nexustechuniversity\\reports.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\reports.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2EE1243-BE91-4C6F-80C8-29789BD12280}|NexusTechUniversity\\NexusTechUniversity.csproj|C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\nexustechuniversity\\reports.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C2EE1243-BE91-4C6F-80C8-29789BD12280}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\reports.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|c:\\users\\alyssa\\source\\repos\\nexustechuniversity\\nexustechuniversity\\data\\curriculum-seed.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\data\\curriculum-seed.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|c:\\users\\alyssa\\source\\repos\\nexustechuniversity\\nexustechuniversity\\addstudent.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\addstudent.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|c:\\users\\alyssa\\source\\repos\\nexustechuniversity\\nexustechuniversity\\addstudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\addstudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2EE1243-BE91-4C6F-80C8-29789BD12280}|NexusTechUniversity\\NexusTechUniversity.csproj|C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\nexustechuniversity\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C2EE1243-BE91-4C6F-80C8-29789BD12280}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2EE1243-BE91-4C6F-80C8-29789BD12280}|NexusTechUniversity\\NexusTechUniversity.csproj|C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\nexustechuniversity\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C2EE1243-BE91-4C6F-80C8-29789BD12280}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|c:\\users\\alyssa\\source\\repos\\nexustechuniversity\\nexustechuniversity\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|c:\\users\\alyssa\\source\\repos\\nexustechuniversity\\nexustechuniversity\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{276358D6-D600-00DA-0C8A-0827DE6D42E7}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2EE1243-BE91-4C6F-80C8-29789BD12280}|NexusTechUniversity\\NexusTechUniversity.csproj|C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\nexustechuniversity\\evaluation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C2EE1243-BE91-4C6F-80C8-29789BD12280}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\evaluation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2EE1243-BE91-4C6F-80C8-29789BD12280}|NexusTechUniversity\\NexusTechUniversity.csproj|C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\nexustechuniversity\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C2EE1243-BE91-4C6F-80C8-29789BD12280}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2EE1243-BE91-4C6F-80C8-29789BD12280}|NexusTechUniversity\\NexusTechUniversity.csproj|C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\nexustechuniversity\\curriculum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C2EE1243-BE91-4C6F-80C8-29789BD12280}|NexusTechUniversity\\NexusTechUniversity.csproj|solutionrelative:nexustechuniversity\\curriculum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Evaluation.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Evaluation.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\Evaluation.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Evaluation.cs [Design]",
+              "RelativeToolTip": "NexusTechUniversity\\Evaluation.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T12:53:56.778Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Curriculum.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Curriculum.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\Curriculum.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Curriculum.cs [Design]",
+              "RelativeToolTip": "NexusTechUniversity\\Curriculum.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T10:50:51.082Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Assignments.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Assignments.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\Assignments.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Assignments.cs [Design]",
+              "RelativeToolTip": "NexusTechUniversity\\Assignments.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T10:50:40.598Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AdminDashboard.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\AdminDashboard.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\AdminDashboard.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\AdminDashboard.cs [Design]",
+              "RelativeToolTip": "NexusTechUniversity\\AdminDashboard.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T13:31:57.742Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AddStudent.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\AddStudent.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\AddStudent.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\AddStudent.cs [Design]*",
+              "RelativeToolTip": "NexusTechUniversity\\AddStudent.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T11:23:34.028Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Form1.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\Form1.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Form1.cs [Design]",
+              "RelativeToolTip": "NexusTechUniversity\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T13:33:44.426Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Reports.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Reports.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\Reports.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Reports.cs [Design]",
+              "RelativeToolTip": "NexusTechUniversity\\Reports.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T14:00:46.745Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Reports.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Reports.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\Reports.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Reports.cs [Design]",
+              "RelativeToolTip": "NexusTechUniversity\\Reports.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T05:51:57.518Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "curriculum-seed.json",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Data\\curriculum-seed.json",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\Data\\curriculum-seed.json",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Data\\curriculum-seed.json",
+              "RelativeToolTip": "NexusTechUniversity\\Data\\curriculum-seed.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-08T13:35:37.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AddStudent.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\AddStudent.Designer.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\AddStudent.Designer.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\AddStudent.Designer.cs*",
+              "RelativeToolTip": "NexusTechUniversity\\AddStudent.Designer.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T13:46:12.683Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AddStudent.cs",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\AddStudent.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\AddStudent.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\AddStudent.cs*",
+              "RelativeToolTip": "NexusTechUniversity\\AddStudent.cs*",
+              "ViewState": "AgIAABEAAAAAAAAAAIA2wBwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T13:57:27.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Form1.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\Form1.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Form1.cs [Design]",
+              "RelativeToolTip": "NexusTechUniversity\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T04:52:21.246Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AdminDashboard.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\AdminDashboard.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\AdminDashboard.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\AdminDashboard.cs [Design]",
+              "RelativeToolTip": "NexusTechUniversity\\AdminDashboard.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T05:47:10.55Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Student.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Student.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\Student.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Student.cs [Design]",
+              "RelativeToolTip": "NexusTechUniversity\\Student.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T10:50:52.98Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Student.cs",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Student.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\Student.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Student.cs",
+              "RelativeToolTip": "NexusTechUniversity\\Student.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAwwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T13:10:41.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Evaluation.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Evaluation.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\Evaluation.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Evaluation.cs [Design]",
+              "RelativeToolTip": "NexusTechUniversity\\Evaluation.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T05:51:46.446Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Curriculum.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Curriculum.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\Curriculum.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Curriculum.cs [Design]",
+              "RelativeToolTip": "NexusTechUniversity\\Curriculum.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T05:50:09.467Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Student.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Student.cs",
+              "RelativeDocumentMoniker": "NexusTechUniversity\\Student.cs",
+              "ToolTip": "C:\\Users\\Alyssa\\source\\repos\\NexusTechUniversity\\NexusTechUniversity\\Student.cs [Design]",
+              "RelativeToolTip": "NexusTechUniversity\\Student.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T05:38:08.776Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

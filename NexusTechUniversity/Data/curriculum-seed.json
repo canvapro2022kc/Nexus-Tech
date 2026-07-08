@@ -1,0 +1,81 @@
+{
+  "curriculum": {
+    "id": "bsit-2015",
+    "name": "BS Information Technology",
+    "reference": "CMO No. 25, Series of 2015",
+    "academicYear": "2025-2026",
+    "totalUnits": 175,
+    "hasTracks": false,
+    "tracks": [],
+    "isActive": true
+  },
+  "courses": [
+    { "courseCode": "CC 100", "title": "Introduction to Computing", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "first", "category": "TC-C" },
+    { "courseCode": "CC 101", "title": "Computer Programming", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "first", "category": "TC-C" },
+    { "courseCode": "MATH 101", "title": "Differential Calculus", "description": "", "units": 4, "lec": 4, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "first", "category": "TC-A" },
+    { "courseCode": "GEd 101", "title": "Understanding the Self", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "first", "category": "NTC-A" },
+    { "courseCode": "GEd 102", "title": "Mathematics in the Modern World", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "first", "category": "NTC-A" },
+    { "courseCode": "GEd 105", "title": "Readings in Philippine History", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "first", "category": "NTC-A" },
+    { "courseCode": "PATHFit 1", "title": "Movement Competency Training", "description": "", "units": 2, "lec": 2, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "first", "category": "NTC-C" },
+    { "courseCode": "NSTP 111", "title": "National Service Training Program 1", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "first", "category": "NTC-D" },
+
+    { "courseCode": "CC 102", "title": "Advanced Computer Programming", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["CC 100", "CC 101"], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "second", "category": "TC-C" },
+    { "courseCode": "CC 103", "title": "Data Structures and Algorithms", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["CC 100", "CC 101"], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "second", "category": "TC-C" },
+    { "courseCode": "CpE 405", "title": "Discrete Mathematics", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": ["MATH 101"], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "second", "category": "TC-A" },
+    { "courseCode": "MATH 102", "title": "Integral Calculus", "description": "", "units": 4, "lec": 4, "lab": 0, "prerequisites": ["MATH 101"], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "second", "category": "TC-A" },
+    { "courseCode": "GEd 108", "title": "Art Appreciation", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "second", "category": "NTC-A" },
+    { "courseCode": "GEd 109", "title": "Science, Technology and Society", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "second", "category": "NTC-A" },
+    { "courseCode": "PATHFit 2", "title": "Exercise-Based Fitness Activities", "description": "", "units": 2, "lec": 2, "lab": 0, "prerequisites": ["PATHFit 1"], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "second", "category": "NTC-C" },
+    { "courseCode": "NSTP 121", "title": "National Service Training Program 2", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": ["NSTP 111"], "corequisites": [], "standing": null, "yearLevel": 1, "semester": "second", "category": "NTC-D" },
+
+    { "courseCode": "CC 104", "title": "Information Management", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["CC 103"], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "first", "category": "TC-C" },
+    { "courseCode": "OOP 101", "title": "Object-Oriented Programming", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["CC 102", "CC 103"], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "first", "category": "TC-D" },
+    { "courseCode": "PT 101", "title": "Platform Technologies", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["CC 101"], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "first", "category": "TC-D" },
+    { "courseCode": "NET 101", "title": "Fundamentals of Computer Networking", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["CC 100"], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "first", "category": "TC-D" },
+    { "courseCode": "PHYS 111", "title": "General Physics 1", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["MATH 101"], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "first", "category": "TC-B" },
+    { "courseCode": "AI 101", "title": "Linear Algebra for AI", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "first", "category": "TC-A" },
+    { "courseCode": "GEd 107", "title": "Ethics", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "first", "category": "NTC-A" },
+    { "courseCode": "PATHFit 3", "title": "Choice of Dance, Sports, Martial Arts, Group Exercise, Outdoor, and Adventure Activities 1", "description": "", "units": 2, "lec": 2, "lab": 0, "prerequisites": ["PATHFit 1", "PATHFit 2"], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "first", "category": "NTC-C" },
+
+    { "courseCode": "DB 101", "title": "Database Management System", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["CC 104"], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "second", "category": "TC-D" },
+    { "courseCode": "NET 102", "title": "Advanced Computer Networking", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["CC 102", "NET 101"], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "second", "category": "TC-D" },
+    { "courseCode": "SAM 101", "title": "System Administration and Maintenance", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["CC 104", "NET 101"], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "second", "category": "TC-D" },
+    { "courseCode": "PHYS 112", "title": "General Physics 2", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["PHYS 111"], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "second", "category": "TC-B" },
+    { "courseCode": "AI 102", "title": "Probability and Statistics for AI", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": ["MATH 102"], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "second", "category": "TC-A" },
+    { "courseCode": "GEd 104", "title": "The Contemporary World", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "second", "category": "NTC-A" },
+    { "courseCode": "GEd 106", "title": "Purposive Communication", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "second", "category": "NTC-A" },
+    { "courseCode": "PATHFit 4", "title": "Choice of Dance, Sports, Martial Arts, Group Exercise, Outdoor, and Adventure Activities 2", "description": "", "units": 2, "lec": 2, "lab": 0, "prerequisites": ["PATHFit 1", "PATHFit 2"], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "second", "category": "NTC-C" },
+
+    { "courseCode": "CSAI 100", "title": "Artificial Intelligence", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": ["AI 101", "AI 102", "CpE 405"], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "midterm", "category": "TC-E" },
+    { "courseCode": "QM 101", "title": "Quantitative Methods", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": ["AI 102", "CpE 405"], "corequisites": [], "standing": null, "yearLevel": 2, "semester": "midterm", "category": "TC-A" },
+
+    { "courseCode": "DB 102", "title": "Advanced Database Management System", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["DB 101"], "corequisites": [], "standing": null, "yearLevel": 3, "semester": "first", "category": "TC-D" },
+    { "courseCode": "IAS 101", "title": "Information Assurance and Security", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["NET 101", "CC 101"], "corequisites": [], "standing": null, "yearLevel": 3, "semester": "first", "category": "TC-D" },
+    { "courseCode": "SIA 101", "title": "System Integration and Architecture", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["SAM 101"], "corequisites": [], "standing": null, "yearLevel": 3, "semester": "first", "category": "TC-D" },
+    { "courseCode": "SAD 101", "title": "Systems Analysis and Design", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["DB 101", "OOP 101"], "corequisites": [], "standing": null, "yearLevel": 3, "semester": "first", "category": "TC-D" },
+    { "courseCode": "HCI 101", "title": "Human-Computer Interaction", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": ["CC 102"], "corequisites": [], "standing": null, "yearLevel": 3, "semester": "first", "category": "TC-D" },
+    { "courseCode": "AI 103", "title": "Machine Learning and Neural Networks", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["CSAI 100", "CC 102"], "corequisites": [], "standing": null, "yearLevel": 3, "semester": "first", "category": "TC-D" },
+    { "courseCode": "GEd 110", "title": "Advanced Technical Writing", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 3, "semester": "first", "category": "NTC-A" },
+
+    { "courseCode": "CP 101", "title": "Capstone Project 1", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": "3rd year", "yearLevel": 3, "semester": "second", "category": "TC-D" },
+    { "courseCode": "IAS 102", "title": "Advanced Information Assurance and Security", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["IAS 101"], "corequisites": [], "standing": null, "yearLevel": 3, "semester": "second", "category": "TC-D" },
+    { "courseCode": "SIA 102", "title": "Advanced System Integration and Architecture", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["SIA 101"], "corequisites": [], "standing": null, "yearLevel": 3, "semester": "second", "category": "TC-D" },
+    { "courseCode": "IPT 101", "title": "Integrative Programming and Technologies", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["SAD 101"], "corequisites": [], "standing": null, "yearLevel": 3, "semester": "second", "category": "TC-D" },
+    { "courseCode": "WS 101", "title": "Web Systems and Technologies", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["CC 104", "OOP 101"], "corequisites": [], "standing": null, "yearLevel": 3, "semester": "second", "category": "TC-D" },
+    { "courseCode": "ELEC 101", "title": "Professional Elective 1", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": [], "corequisites": [], "standing": "3rd year", "yearLevel": 3, "semester": "second", "category": "TC-E" },
+    { "courseCode": "GEd 111", "title": "Advanced Oral Communication", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 3, "semester": "second", "category": "NTC-A" },
+
+    { "courseCode": "ITPM 101", "title": "IT Project Management", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["SAD 101"], "corequisites": [], "standing": null, "yearLevel": 3, "semester": "midterm", "category": "TC-D" },
+    { "courseCode": "SQA 101", "title": "System Quality Assurance", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["SAD 101"], "corequisites": [], "standing": null, "yearLevel": 3, "semester": "midterm", "category": "TC-D" },
+
+    { "courseCode": "CP 102", "title": "Capstone Project 2", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": ["CP 101"], "corequisites": [], "standing": null, "yearLevel": 4, "semester": "first", "category": "TC-C" },
+    { "courseCode": "CC 105", "title": "Application Development and Emerging Technologies", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": ["OOP 101"], "corequisites": [], "standing": null, "yearLevel": 4, "semester": "first", "category": "TC-C" },
+    { "courseCode": "SIP 101", "title": "Social Issues and Professional Practice", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": ["CC 100"], "corequisites": [], "standing": null, "yearLevel": 4, "semester": "first", "category": "TC-D" },
+    { "courseCode": "ELEC 102", "title": "Professional Elective 2", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": [], "corequisites": [], "standing": "4th year", "yearLevel": 4, "semester": "first", "category": "TC-E" },
+    { "courseCode": "ELEC 103", "title": "Professional Elective 3", "description": "", "units": 3, "lec": 2, "lab": 3, "prerequisites": [], "corequisites": [], "standing": "4th year", "yearLevel": 4, "semester": "first", "category": "TC-E" },
+    { "courseCode": "ENGG 105", "title": "Technopreneurship", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 4, "semester": "first", "category": "TC-D" },
+    { "courseCode": "GEd 103", "title": "The Life and Works of Rizal", "description": "", "units": 3, "lec": 3, "lab": 0, "prerequisites": [], "corequisites": [], "standing": null, "yearLevel": 4, "semester": "first", "category": "NTC-B" },
+
+    { "courseCode": "ITP 100", "title": "IT Internship", "description": "", "units": 6, "lec": 0, "lab": 500, "prerequisites": [], "corequisites": [], "standing": "4th year", "yearLevel": 4, "semester": "second", "category": "TC-D" }
+  ]
+}
