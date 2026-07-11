@@ -16,7 +16,7 @@ namespace NexusTechUniversity
             InitializeComponent();
             this.userRole = role;
 
-            if(userRole == "student")
+            if (userRole == "student")
             {
                 ApplyViewOnlyMode();
             }
@@ -51,6 +51,11 @@ namespace NexusTechUniversity
         }
 
         private void AdminDashboard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
