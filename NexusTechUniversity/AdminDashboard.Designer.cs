@@ -58,7 +58,7 @@
             btnLogout.FlatAppearance.BorderSize = 0;
             btnLogout.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogout.ForeColor = Color.Navy;
-            btnLogout.Location = new Point(877, 23);
+            btnLogout.Location = new Point(886, 23);
             btnLogout.Margin = new Padding(3, 2, 3, 2);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(85, 32);
