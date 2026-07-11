@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             label2 = new Label();
-            textBox2 = new TextBox();
+            txtboxPassword = new TextBox();
             panel1 = new Panel();
             btnLogin = new Button();
             label4 = new Label();
             label3 = new Label();
-            textBox1 = new TextBox();
+            txtboxUsername = new TextBox();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
@@ -52,12 +52,14 @@
             label2.TabIndex = 0;
             label2.Text = "Password:";
             // 
-            // textBox2
+            // txtboxPassword
             // 
-            textBox2.Location = new Point(63, 356);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(272, 27);
-            textBox2.TabIndex = 2;
+            txtboxPassword.Location = new Point(63, 356);
+            txtboxPassword.Name = "txtboxPassword";
+            txtboxPassword.Size = new Size(272, 27);
+            txtboxPassword.TabIndex = 2;
+            txtboxPassword.UseSystemPasswordChar = true;
+            txtboxPassword.TextChanged += txtboxPassword_TextChanged;
             // 
             // panel1
             // 
@@ -65,10 +67,10 @@
             panel1.Controls.Add(btnLogin);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txtboxUsername);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(textBox2);
+            panel1.Controls.Add(txtboxPassword);
             panel1.Controls.Add(label2);
             panel1.Location = new Point(363, 28);
             panel1.Name = "panel1";
@@ -109,12 +111,13 @@
             label3.TabIndex = 6;
             label3.Text = "NexusTech";
             // 
-            // textBox1
+            // txtboxUsername
             // 
-            textBox1.Location = new Point(63, 288);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(272, 27);
-            textBox1.TabIndex = 5;
+            txtboxUsername.Location = new Point(63, 288);
+            txtboxUsername.Name = "txtboxUsername";
+            txtboxUsername.Size = new Size(272, 27);
+            txtboxUsername.TabIndex = 5;
+            txtboxUsername.TextChanged += txtboxUsername_TextChanged;
             // 
             // label1
             // 
@@ -152,10 +155,10 @@
 
         #endregion
         private Label label2;
-        private TextBox textBox2;
+        private TextBox txtboxPassword;
         private Panel panel1;
         private PictureBox pictureBox1;
-        private TextBox textBox1;
+        private TextBox txtboxUsername;
         private Label label1;
         private Label label4;
         private Label label3;
