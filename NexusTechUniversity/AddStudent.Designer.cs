@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddStudent));
             panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            label7 = new Label();
+            label9 = new Label();
             btnLoad = new Button();
             comboBox3 = new ComboBox();
             comboBox1 = new ComboBox();
@@ -45,21 +48,22 @@
             label1 = new Label();
             textBox1 = new TextBox();
             panel2 = new Panel();
-            label8 = new Label();
-            dgvCoursesTaken = new DataGridView();
             btnAddStudent = new Button();
-            pictureBox1 = new PictureBox();
-            label7 = new Label();
-            label9 = new Label();
+            dgvCoursesTaken = new DataGridView();
+            label8 = new Label();
+            comboBox4 = new ComboBox();
+            label10 = new Label();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvNewStudent).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCoursesTaken).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(comboBox4);
+            panel1.Controls.Add(label10);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label9);
@@ -77,180 +81,19 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(textBox1);
-            panel1.Location = new Point(22, 12);
+            panel1.Location = new Point(19, 9);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(612, 595);
+            panel1.Size = new Size(536, 446);
             panel1.TabIndex = 0;
-            // 
-            // btnLoad
-            // 
-            btnLoad.Location = new Point(488, 187);
-            btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(94, 29);
-            btnLoad.TabIndex = 22;
-            btnLoad.Text = "Load";
-            btnLoad.UseVisualStyleBackColor = true;
-            btnLoad.Click += btnLoad_Click;
-            // 
-            // comboBox3
-            // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(225, 140);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(152, 28);
-            comboBox3.TabIndex = 21;
-            comboBox3.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(409, 140);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(152, 28);
-            comboBox1.TabIndex = 20;
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(36, 140);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(152, 28);
-            comboBox2.TabIndex = 19;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(409, 117);
-            label4.Name = "label4";
-            label4.Size = new Size(110, 20);
-            label4.TabIndex = 15;
-            label4.Text = "Academic Year:";
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(340, 86);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(221, 27);
-            textBox3.TabIndex = 14;
-            // 
-            // dgvNewStudent
-            // 
-            dgvNewStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNewStudent.Location = new Point(17, 227);
-            dgvNewStudent.Name = "dgvNewStudent";
-            dgvNewStudent.RowHeadersWidth = 51;
-            dgvNewStudent.Size = new Size(565, 322);
-            dgvNewStudent.TabIndex = 12;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(225, 117);
-            label6.Name = "label6";
-            label6.Size = new Size(73, 20);
-            label6.TabIndex = 11;
-            label6.Text = "Semester:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(36, 117);
-            label5.Name = "label5";
-            label5.Size = new Size(78, 20);
-            label5.TabIndex = 9;
-            label5.Text = "Year Level:";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(276, 86);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(48, 27);
-            textBox2.TabIndex = 4;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(276, 63);
-            label3.Name = "label3";
-            label3.Size = new Size(32, 20);
-            label3.TabIndex = 3;
-            label3.Text = "M.I:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(340, 63);
-            label2.Name = "label2";
-            label2.Size = new Size(82, 20);
-            label2.TabIndex = 2;
-            label2.Text = "Last Name:";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(36, 63);
-            label1.Name = "label1";
-            label1.Size = new Size(83, 20);
-            label1.TabIndex = 1;
-            label1.Text = "First Name:";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(36, 86);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(221, 27);
-            textBox1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(btnAddStudent);
-            panel2.Controls.Add(dgvCoursesTaken);
-            panel2.Controls.Add(label8);
-            panel2.Location = new Point(653, 12);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(468, 595);
-            panel2.TabIndex = 1;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Tw Cen MT", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.Navy;
-            label8.Location = new Point(3, 2);
-            label8.Name = "label8";
-            label8.Size = new Size(183, 33);
-            label8.TabIndex = 11;
-            label8.Text = "Courses Taken";
-            // 
-            // dgvCoursesTaken
-            // 
-            dgvCoursesTaken.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCoursesTaken.Location = new Point(13, 53);
-            dgvCoursesTaken.Name = "dgvCoursesTaken";
-            dgvCoursesTaken.RowHeadersWidth = 51;
-            dgvCoursesTaken.Size = new Size(441, 496);
-            dgvCoursesTaken.TabIndex = 12;
-            // 
-            // btnAddStudent
-            // 
-            btnAddStudent.BackColor = Color.Navy;
-            btnAddStudent.FlatAppearance.BorderSize = 0;
-            btnAddStudent.FlatStyle = FlatStyle.Flat;
-            btnAddStudent.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAddStudent.ForeColor = Color.White;
-            btnAddStudent.Location = new Point(327, 560);
-            btnAddStudent.Name = "btnAddStudent";
-            btnAddStudent.Size = new Size(127, 31);
-            btnAddStudent.TabIndex = 13;
-            btnAddStudent.Text = "Evaluate";
-            btnAddStudent.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(28, 5);
+            pictureBox1.Location = new Point(24, 4);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(47, 45);
+            pictureBox1.Size = new Size(41, 34);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 25;
             pictureBox1.TabStop = false;
@@ -260,9 +103,9 @@
             label7.AutoSize = true;
             label7.Font = new Font("Tw Cen MT Condensed Extra Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Navy;
-            label7.Location = new Point(85, 30);
+            label7.Location = new Point(74, 22);
             label7.Name = "label7";
-            label7.Size = new Size(74, 21);
+            label7.Size = new Size(60, 18);
             label7.TabIndex = 24;
             label7.Text = "University";
             // 
@@ -271,28 +114,221 @@
             label9.AutoSize = true;
             label9.Font = new Font("Tw Cen MT Condensed Extra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.Navy;
-            label9.Location = new Point(85, 9);
+            label9.Location = new Point(74, 7);
             label9.Name = "label9";
-            label9.Size = new Size(90, 23);
+            label9.Size = new Size(73, 20);
             label9.TabIndex = 23;
             label9.Text = "NexusTech";
             // 
+            // btnLoad
+            // 
+            btnLoad.Location = new Point(426, 170);
+            btnLoad.Margin = new Padding(3, 2, 3, 2);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new Size(82, 22);
+            btnLoad.TabIndex = 22;
+            btnLoad.Text = "Load";
+            btnLoad.UseVisualStyleBackColor = true;
+            btnLoad.Click += btnLoad_Click;
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(197, 105);
+            comboBox3.Margin = new Padding(3, 2, 3, 2);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(134, 23);
+            comboBox3.TabIndex = 21;
+            comboBox3.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(358, 105);
+            comboBox1.Margin = new Padding(3, 2, 3, 2);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(134, 23);
+            comboBox1.TabIndex = 20;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(32, 105);
+            comboBox2.Margin = new Padding(3, 2, 3, 2);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(134, 23);
+            comboBox2.TabIndex = 19;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(358, 88);
+            label4.Name = "label4";
+            label4.Size = new Size(88, 15);
+            label4.TabIndex = 15;
+            label4.Text = "Academic Year:";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(298, 64);
+            textBox3.Margin = new Padding(3, 2, 3, 2);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(194, 23);
+            textBox3.TabIndex = 14;
+            // 
+            // dgvNewStudent
+            // 
+            dgvNewStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvNewStudent.Location = new Point(15, 195);
+            dgvNewStudent.Margin = new Padding(3, 2, 3, 2);
+            dgvNewStudent.Name = "dgvNewStudent";
+            dgvNewStudent.RowHeadersWidth = 51;
+            dgvNewStudent.Size = new Size(494, 242);
+            dgvNewStudent.TabIndex = 12;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(197, 88);
+            label6.Name = "label6";
+            label6.Size = new Size(58, 15);
+            label6.TabIndex = 11;
+            label6.Text = "Semester:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(32, 88);
+            label5.Name = "label5";
+            label5.Size = new Size(62, 15);
+            label5.TabIndex = 9;
+            label5.Text = "Year Level:";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(242, 64);
+            textBox2.Margin = new Padding(3, 2, 3, 2);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(42, 23);
+            textBox2.TabIndex = 4;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(242, 47);
+            label3.Name = "label3";
+            label3.Size = new Size(27, 15);
+            label3.TabIndex = 3;
+            label3.Text = "M.I:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(298, 47);
+            label2.Name = "label2";
+            label2.Size = new Size(66, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Last Name:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(32, 47);
+            label1.Name = "label1";
+            label1.Size = new Size(67, 15);
+            label1.TabIndex = 1;
+            label1.Text = "First Name:";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(32, 64);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(194, 23);
+            textBox1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(btnAddStudent);
+            panel2.Controls.Add(dgvCoursesTaken);
+            panel2.Controls.Add(label8);
+            panel2.Location = new Point(571, 9);
+            panel2.Margin = new Padding(3, 2, 3, 2);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(410, 446);
+            panel2.TabIndex = 1;
+            // 
+            // btnAddStudent
+            // 
+            btnAddStudent.BackColor = Color.Navy;
+            btnAddStudent.FlatAppearance.BorderSize = 0;
+            btnAddStudent.FlatStyle = FlatStyle.Flat;
+            btnAddStudent.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAddStudent.ForeColor = Color.White;
+            btnAddStudent.Location = new Point(151, 421);
+            btnAddStudent.Margin = new Padding(3, 2, 3, 2);
+            btnAddStudent.Name = "btnAddStudent";
+            btnAddStudent.Size = new Size(111, 23);
+            btnAddStudent.TabIndex = 13;
+            btnAddStudent.Text = "Evaluate";
+            btnAddStudent.UseVisualStyleBackColor = false;
+            // 
+            // dgvCoursesTaken
+            // 
+            dgvCoursesTaken.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCoursesTaken.Location = new Point(11, 40);
+            dgvCoursesTaken.Margin = new Padding(3, 2, 3, 2);
+            dgvCoursesTaken.Name = "dgvCoursesTaken";
+            dgvCoursesTaken.RowHeadersWidth = 51;
+            dgvCoursesTaken.Size = new Size(386, 372);
+            dgvCoursesTaken.TabIndex = 12;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Tw Cen MT", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.Navy;
+            label8.Location = new Point(3, 2);
+            label8.Name = "label8";
+            label8.Size = new Size(148, 25);
+            label8.TabIndex = 11;
+            label8.Text = "Courses Taken";
+            // 
+            // comboBox4
+            // 
+            comboBox4.FormattingEnabled = true;
+            comboBox4.Location = new Point(32, 149);
+            comboBox4.Margin = new Padding(3, 2, 3, 2);
+            comboBox4.Name = "comboBox4";
+            comboBox4.Size = new Size(134, 23);
+            comboBox4.TabIndex = 27;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(32, 132);
+            label10.Name = "label10";
+            label10.Size = new Size(79, 15);
+            label10.TabIndex = 26;
+            label10.Text = "Student Type:";
+            // 
             // AddStudent
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1133, 619);
+            ClientSize = new Size(991, 464);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "AddStudent";
             Text = "AddStudent";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvNewStudent).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCoursesTaken).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -320,5 +356,7 @@
         private PictureBox pictureBox1;
         private Label label7;
         private Label label9;
+        private ComboBox comboBox4;
+        private Label label10;
     }
 }
