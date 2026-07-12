@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddStudent));
             panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            label7 = new Label();
+            label9 = new Label();
             btnLoad = new Button();
             comboBox3 = new ComboBox();
             comboBox1 = new ComboBox();
@@ -45,17 +48,14 @@
             label1 = new Label();
             textBox1 = new TextBox();
             panel2 = new Panel();
-            label8 = new Label();
-            dgvCoursesTaken = new DataGridView();
             btnAddStudent = new Button();
-            pictureBox1 = new PictureBox();
-            label7 = new Label();
-            label9 = new Label();
+            dgvCoursesTaken = new DataGridView();
+            label8 = new Label();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvNewStudent).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCoursesTaken).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -81,6 +81,38 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(612, 595);
             panel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(28, 5);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(47, 45);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 25;
+            pictureBox1.TabStop = false;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Tw Cen MT Condensed Extra Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.Navy;
+            label7.Location = new Point(85, 30);
+            label7.Name = "label7";
+            label7.Size = new Size(74, 21);
+            label7.TabIndex = 24;
+            label7.Text = "University";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Tw Cen MT Condensed Extra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.Navy;
+            label9.Location = new Point(85, 9);
+            label9.Name = "label9";
+            label9.Size = new Size(90, 23);
+            label9.TabIndex = 23;
+            label9.Text = "NexusTech";
             // 
             // btnLoad
             // 
@@ -211,26 +243,6 @@
             panel2.Size = new Size(468, 595);
             panel2.TabIndex = 1;
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Tw Cen MT", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.Navy;
-            label8.Location = new Point(3, 2);
-            label8.Name = "label8";
-            label8.Size = new Size(183, 33);
-            label8.TabIndex = 11;
-            label8.Text = "Courses Taken";
-            // 
-            // dgvCoursesTaken
-            // 
-            dgvCoursesTaken.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCoursesTaken.Location = new Point(13, 53);
-            dgvCoursesTaken.Name = "dgvCoursesTaken";
-            dgvCoursesTaken.RowHeadersWidth = 51;
-            dgvCoursesTaken.Size = new Size(441, 496);
-            dgvCoursesTaken.TabIndex = 12;
-            // 
             // btnAddStudent
             // 
             btnAddStudent.BackColor = Color.Navy;
@@ -245,37 +257,25 @@
             btnAddStudent.Text = "Evaluate";
             btnAddStudent.UseVisualStyleBackColor = false;
             // 
-            // pictureBox1
+            // dgvCoursesTaken
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(28, 5);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(47, 45);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 25;
-            pictureBox1.TabStop = false;
+            dgvCoursesTaken.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCoursesTaken.Location = new Point(13, 53);
+            dgvCoursesTaken.Name = "dgvCoursesTaken";
+            dgvCoursesTaken.RowHeadersWidth = 51;
+            dgvCoursesTaken.Size = new Size(441, 496);
+            dgvCoursesTaken.TabIndex = 12;
             // 
-            // label7
+            // label8
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Tw Cen MT Condensed Extra Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.Navy;
-            label7.Location = new Point(85, 30);
-            label7.Name = "label7";
-            label7.Size = new Size(74, 21);
-            label7.TabIndex = 24;
-            label7.Text = "University";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Tw Cen MT Condensed Extra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.Navy;
-            label9.Location = new Point(85, 9);
-            label9.Name = "label9";
-            label9.Size = new Size(90, 23);
-            label9.TabIndex = 23;
-            label9.Text = "NexusTech";
+            label8.AutoSize = true;
+            label8.Font = new Font("Tw Cen MT", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.Navy;
+            label8.Location = new Point(3, 2);
+            label8.Name = "label8";
+            label8.Size = new Size(183, 33);
+            label8.TabIndex = 11;
+            label8.Text = "Courses Taken";
             // 
             // AddStudent
             // 
@@ -288,11 +288,11 @@
             Text = "AddStudent";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvNewStudent).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCoursesTaken).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
