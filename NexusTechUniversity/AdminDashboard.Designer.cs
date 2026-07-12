@@ -33,23 +33,20 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label1 = new Label();
-            panel1 = new Panel();
-            button1 = new Button();
-            pictureBox2 = new PictureBox();
-            panel2 = new Panel();
-            pictureBox3 = new PictureBox();
-            button2 = new Button();
-            panel3 = new Panel();
-            pictureBox4 = new PictureBox();
-            button3 = new Button();
             label3 = new Label();
             label4 = new Label();
+            button1 = new Button();
+            pictureBox2 = new PictureBox();
+            label5 = new Label();
+            label6 = new Label();
+            pictureBox3 = new PictureBox();
+            button2 = new Button();
+            label7 = new Label();
+            pictureBox4 = new PictureBox();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
@@ -100,114 +97,6 @@
             label1.TabIndex = 1;
             label1.Text = "NexusTech";
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.Navy;
-            panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(pictureBox2);
-            panel1.Controls.Add(button1);
-            panel1.Location = new Point(214, 194);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(178, 167);
-            panel1.TabIndex = 5;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.Navy;
-            button1.DialogResult = DialogResult.Continue;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(10, 93);
-            button1.Name = "button1";
-            button1.Size = new Size(158, 36);
-            button1.TabIndex = 0;
-            button1.Text = "Add New Student";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(65, 57);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(43, 34);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 1;
-            pictureBox2.TabStop = false;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.Navy;
-            panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(pictureBox3);
-            panel2.Controls.Add(button2);
-            panel2.Location = new Point(601, 194);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(178, 167);
-            panel2.TabIndex = 6;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(65, 57);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(43, 34);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 1;
-            pictureBox3.TabStop = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.Navy;
-            button2.DialogResult = DialogResult.Continue;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(10, 93);
-            button2.Name = "button2";
-            button2.Size = new Size(158, 36);
-            button2.TabIndex = 0;
-            button2.Text = "Curriculum";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.FromArgb(248, 180, 0);
-            panel3.BorderStyle = BorderStyle.FixedSingle;
-            panel3.Controls.Add(pictureBox4);
-            panel3.Controls.Add(button3);
-            panel3.Location = new Point(406, 194);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(178, 167);
-            panel3.TabIndex = 7;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(65, 57);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(43, 34);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 1;
-            pictureBox4.TabStop = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.FromArgb(248, 180, 0);
-            button3.DialogResult = DialogResult.Continue;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(10, 93);
-            button3.Name = "button3";
-            button3.Size = new Size(158, 36);
-            button3.TabIndex = 0;
-            button3.Text = "Students";
-            button3.UseVisualStyleBackColor = false;
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -230,16 +119,136 @@
             label4.TabIndex = 9;
             label4.Text = "@2026 NexusTech University";
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Navy;
+            button1.DialogResult = DialogResult.Continue;
+            button1.FlatAppearance.BorderColor = Color.Black;
+            button1.FlatAppearance.BorderSize = 2;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(194, 194);
+            button1.Name = "button1";
+            button1.Size = new Size(178, 167);
+            button1.TabIndex = 0;
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Navy;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(259, 252);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(43, 34);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 1;
+            pictureBox2.TabStop = false;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Navy;
+            label5.Font = new Font("Tw Cen MT Condensed Extra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(227, 289);
+            label5.Name = "label5";
+            label5.Size = new Size(114, 20);
+            label5.TabIndex = 10;
+            label5.Text = "Add New Student";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.Navy;
+            label6.Font = new Font("Tw Cen MT Condensed Extra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(674, 289);
+            label6.Name = "label6";
+            label6.Size = new Size(73, 20);
+            label6.TabIndex = 13;
+            label6.Text = "Curriculum";
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = Color.Navy;
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(690, 252);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(43, 34);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 12;
+            pictureBox3.TabStop = false;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Navy;
+            button2.DialogResult = DialogResult.Continue;
+            button2.FlatAppearance.BorderColor = Color.Black;
+            button2.FlatAppearance.BorderSize = 2;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(619, 194);
+            button2.Name = "button2";
+            button2.Size = new Size(178, 167);
+            button2.TabIndex = 11;
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.FromArgb(248, 180, 0);
+            label7.Font = new Font("Tw Cen MT Condensed Extra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.Navy;
+            label7.Location = new Point(463, 289);
+            label7.Name = "label7";
+            label7.Size = new Size(73, 20);
+            label7.TabIndex = 16;
+            label7.Text = "Curriculum";
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.BackColor = Color.FromArgb(248, 180, 0);
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(479, 252);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(43, 34);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 15;
+            pictureBox4.TabStop = false;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.FromArgb(248, 180, 0);
+            button3.DialogResult = DialogResult.Continue;
+            button3.FlatAppearance.BorderColor = Color.Black;
+            button3.FlatAppearance.BorderSize = 2;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(408, 194);
+            button3.Name = "button3";
+            button3.Size = new Size(178, 167);
+            button3.TabIndex = 14;
+            button3.UseVisualStyleBackColor = false;
+            // 
             // AdminDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(991, 464);
+            Controls.Add(label7);
+            Controls.Add(pictureBox4);
+            Controls.Add(button3);
+            Controls.Add(label6);
+            Controls.Add(pictureBox3);
+            Controls.Add(button2);
+            Controls.Add(label5);
+            Controls.Add(pictureBox2);
             Controls.Add(label4);
+            Controls.Add(button1);
             Controls.Add(label3);
-            Controls.Add(panel3);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
             Controls.Add(btnLogout);
             Controls.Add(pictureBox1);
             Controls.Add(label2);
@@ -249,11 +258,8 @@
             Text = "AdminDashboard";
             Load += AdminDashboard_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -264,16 +270,16 @@
         private Label label1;
         private PictureBox pictureBox1;
         private Button btnLogout;
-        private Panel panel1;
-        private Button button1;
-        private PictureBox pictureBox2;
-        private Panel panel2;
-        private PictureBox pictureBox3;
-        private Button button2;
-        private Panel panel3;
-        private PictureBox pictureBox4;
-        private Button button3;
         private Label label3;
         private Label label4;
+        private Button button1;
+        private PictureBox pictureBox2;
+        private Label label5;
+        private Label label6;
+        private PictureBox pictureBox3;
+        private Button button2;
+        private Label label7;
+        private PictureBox pictureBox4;
+        private Button button3;
     }
 }

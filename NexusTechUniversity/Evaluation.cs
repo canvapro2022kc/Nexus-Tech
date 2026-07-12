@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace NexusTechUniversity
 {
-    public partial class AddStudent : Form
+    public partial class Evaluation : Form
     {
-        public AddStudent()
+        public Evaluation()
         {
             InitializeComponent();
         }

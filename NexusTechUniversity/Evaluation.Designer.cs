@@ -1,6 +1,6 @@
 ﻿namespace NexusTechUniversity
 {
-    partial class AddStudent
+    partial class Evaluation
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddStudent));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Evaluation));
             panel1 = new Panel();
+            comboBox4 = new ComboBox();
+            label10 = new Label();
             pictureBox1 = new PictureBox();
             label7 = new Label();
             label9 = new Label();
-            btnLoad = new Button();
             comboBox3 = new ComboBox();
             comboBox1 = new ComboBox();
             comboBox2 = new ComboBox();
@@ -51,8 +52,6 @@
             btnAddStudent = new Button();
             dgvCoursesTaken = new DataGridView();
             label8 = new Label();
-            comboBox4 = new ComboBox();
-            label10 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvNewStudent).BeginInit();
@@ -67,7 +66,6 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label9);
-            panel1.Controls.Add(btnLoad);
             panel1.Controls.Add(comboBox3);
             panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(comboBox2);
@@ -87,10 +85,28 @@
             panel1.Size = new Size(536, 446);
             panel1.TabIndex = 0;
             // 
+            // comboBox4
+            // 
+            comboBox4.FormattingEnabled = true;
+            comboBox4.Location = new Point(32, 149);
+            comboBox4.Margin = new Padding(3, 2, 3, 2);
+            comboBox4.Name = "comboBox4";
+            comboBox4.Size = new Size(134, 23);
+            comboBox4.TabIndex = 27;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(32, 132);
+            label10.Name = "label10";
+            label10.Size = new Size(79, 15);
+            label10.TabIndex = 26;
+            label10.Text = "Student Type:";
+            // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(24, 4);
+            pictureBox1.Location = new Point(56, 8);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(41, 34);
@@ -103,7 +119,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Tw Cen MT Condensed Extra Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Navy;
-            label7.Location = new Point(74, 22);
+            label7.Location = new Point(106, 26);
             label7.Name = "label7";
             label7.Size = new Size(60, 18);
             label7.TabIndex = 24;
@@ -114,22 +130,11 @@
             label9.AutoSize = true;
             label9.Font = new Font("Tw Cen MT Condensed Extra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.Navy;
-            label9.Location = new Point(74, 7);
+            label9.Location = new Point(106, 11);
             label9.Name = "label9";
             label9.Size = new Size(73, 20);
             label9.TabIndex = 23;
             label9.Text = "NexusTech";
-            // 
-            // btnLoad
-            // 
-            btnLoad.Location = new Point(426, 170);
-            btnLoad.Margin = new Padding(3, 2, 3, 2);
-            btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(82, 22);
-            btnLoad.TabIndex = 22;
-            btnLoad.Text = "Load";
-            btnLoad.UseVisualStyleBackColor = true;
-            btnLoad.Click += btnLoad_Click;
             // 
             // comboBox3
             // 
@@ -179,7 +184,7 @@
             // dgvNewStudent
             // 
             dgvNewStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNewStudent.Location = new Point(15, 195);
+            dgvNewStudent.Location = new Point(24, 187);
             dgvNewStudent.Margin = new Padding(3, 2, 3, 2);
             dgvNewStudent.Name = "dgvNewStudent";
             dgvNewStudent.RowHeadersWidth = 51;
@@ -294,25 +299,7 @@
             label8.TabIndex = 11;
             label8.Text = "Courses Taken";
             // 
-            // comboBox4
-            // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(32, 149);
-            comboBox4.Margin = new Padding(3, 2, 3, 2);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(134, 23);
-            comboBox4.TabIndex = 27;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(32, 132);
-            label10.Name = "label10";
-            label10.Size = new Size(79, 15);
-            label10.TabIndex = 26;
-            label10.Text = "Student Type:";
-            // 
-            // AddStudent
+            // Evaluation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -320,7 +307,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
-            Name = "AddStudent";
+            Name = "Evaluation";
             Text = "AddStudent";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -348,7 +335,6 @@
         private ComboBox comboBox2;
         private Label label4;
         private TextBox textBox3;
-        private Button btnLoad;
         private Panel panel2;
         private Label label8;
         private DataGridView dgvCoursesTaken;
