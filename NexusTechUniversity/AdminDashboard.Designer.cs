@@ -201,11 +201,11 @@
             label7.BackColor = Color.FromArgb(248, 180, 0);
             label7.Font = new Font("Tw Cen MT Condensed Extra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Navy;
-            label7.Location = new Point(463, 289);
+            label7.Location = new Point(469, 289);
             label7.Name = "label7";
-            label7.Size = new Size(73, 20);
+            label7.Size = new Size(60, 20);
             label7.TabIndex = 16;
-            label7.Text = "Curriculum";
+            label7.Text = "Students";
             // 
             // pictureBox4
             // 
