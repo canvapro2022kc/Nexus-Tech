@@ -38,15 +38,16 @@
             label2 = new Label();
             label1 = new Label();
             dgvOldStudent = new DataGridView();
+            btnAddStudent = new Button();
+            label3 = new Label();
+            textBox1 = new TextBox();
+            label4 = new Label();
             srCode = new DataGridViewTextBoxColumn();
             firstName = new DataGridViewTextBoxColumn();
             middleInitial = new DataGridViewTextBoxColumn();
             lastName = new DataGridViewTextBoxColumn();
             btnEnroll = new DataGridViewButtonColumn();
-            btnAddStudent = new Button();
-            label3 = new Label();
-            textBox1 = new TextBox();
-            label4 = new Label();
+            btnEdit = new DataGridViewButtonColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvOldStudent).BeginInit();
@@ -163,7 +164,7 @@
             // dgvOldStudent
             // 
             dgvOldStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvOldStudent.Columns.AddRange(new DataGridViewColumn[] { srCode, firstName, middleInitial, lastName, btnEnroll });
+            dgvOldStudent.Columns.AddRange(new DataGridViewColumn[] { srCode, firstName, middleInitial, lastName, btnEnroll, btnEdit });
             dgvOldStudent.Location = new Point(246, 128);
             dgvOldStudent.Margin = new Padding(3, 2, 3, 2);
             dgvOldStudent.Name = "dgvOldStudent";
@@ -172,6 +173,52 @@
             dgvOldStudent.Size = new Size(713, 298);
             dgvOldStudent.TabIndex = 2;
             dgvOldStudent.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // btnAddStudent
+            // 
+            btnAddStudent.BackColor = Color.Navy;
+            btnAddStudent.FlatAppearance.BorderSize = 0;
+            btnAddStudent.FlatStyle = FlatStyle.Flat;
+            btnAddStudent.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAddStudent.ForeColor = Color.White;
+            btnAddStudent.Location = new Point(848, 86);
+            btnAddStudent.Margin = new Padding(3, 2, 3, 2);
+            btnAddStudent.Name = "btnAddStudent";
+            btnAddStudent.Size = new Size(111, 23);
+            btnAddStudent.TabIndex = 3;
+            btnAddStudent.Text = "+  Add Student";
+            btnAddStudent.UseVisualStyleBackColor = false;
+            btnAddStudent.Click += btnAddStudent_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Tw Cen MT", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.Navy;
+            label3.Location = new Point(246, 37);
+            label3.Name = "label3";
+            label3.Size = new Size(90, 25);
+            label3.TabIndex = 10;
+            label3.Text = "Students";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(336, 96);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(220, 23);
+            textBox1.TabIndex = 11;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.Navy;
+            label4.Location = new Point(247, 100);
+            label4.Name = "label4";
+            label4.Size = new Size(88, 16);
+            label4.TabIndex = 12;
+            label4.Text = "Search Name:";
             // 
             // srCode
             // 
@@ -203,56 +250,17 @@
             // 
             // btnEnroll
             // 
-            btnEnroll.HeaderText = "Enroll";
+            btnEnroll.HeaderText = "Evaluate";
             btnEnroll.MinimumWidth = 6;
             btnEnroll.Name = "btnEnroll";
             btnEnroll.Width = 125;
             // 
-            // btnAddStudent
+            // btnEdit
             // 
-            btnAddStudent.BackColor = Color.Navy;
-            btnAddStudent.FlatAppearance.BorderSize = 0;
-            btnAddStudent.FlatStyle = FlatStyle.Flat;
-            btnAddStudent.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAddStudent.ForeColor = Color.White;
-            btnAddStudent.Location = new Point(848, 86);
-            btnAddStudent.Margin = new Padding(3, 2, 3, 2);
-            btnAddStudent.Name = "btnAddStudent";
-            btnAddStudent.Size = new Size(111, 23);
-            btnAddStudent.TabIndex = 3;
-            btnAddStudent.Text = "+  Add Student";
-            btnAddStudent.UseVisualStyleBackColor = false;
-            btnAddStudent.Click += btnAddStudent_Click;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Tw Cen MT", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.Navy;
-            label3.Location = new Point(246, 37);
-            label3.Name = "label3";
-            label3.Size = new Size(90, 25);
-            label3.TabIndex = 10;
-            label3.Text = "Students";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(353, 96);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(220, 23);
-            textBox1.TabIndex = 11;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.Navy;
-            label4.Location = new Point(247, 100);
-            label4.Name = "label4";
-            label4.Size = new Size(101, 16);
-            label4.TabIndex = 12;
-            label4.Text = "Search SR-Code:";
+            btnEdit.HeaderText = "Edit";
+            btnEdit.Name = "btnEdit";
+            btnEdit.Resizable = DataGridViewTriState.True;
+            btnEdit.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // Student
             // 
@@ -296,5 +304,6 @@
         private DataGridViewTextBoxColumn middleInitial;
         private DataGridViewTextBoxColumn lastName;
         private DataGridViewButtonColumn btnEnroll;
+        private DataGridViewButtonColumn btnEdit;
     }
 }
