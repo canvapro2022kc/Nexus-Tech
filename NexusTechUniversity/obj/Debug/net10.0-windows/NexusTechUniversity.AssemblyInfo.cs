@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NexusTechUniversity")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa439cfc71f273443458f73604da29c23ac5285f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b08093d58fee816affe24745a4c27cb5867bc47a")]
 [assembly: System.Reflection.AssemblyProductAttribute("NexusTechUniversity")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NexusTechUniversity")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

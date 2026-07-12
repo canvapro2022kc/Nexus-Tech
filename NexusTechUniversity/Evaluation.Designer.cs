@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Evaluation));
             panel1 = new Panel();
-            comboBox4 = new ComboBox();
-            label10 = new Label();
             pictureBox1 = new PictureBox();
             label7 = new Label();
             label9 = new Label();
@@ -61,8 +59,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(comboBox4);
-            panel1.Controls.Add(label10);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label9);
@@ -84,24 +80,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(536, 446);
             panel1.TabIndex = 0;
-            // 
-            // comboBox4
-            // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(32, 149);
-            comboBox4.Margin = new Padding(3, 2, 3, 2);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(134, 23);
-            comboBox4.TabIndex = 27;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(32, 132);
-            label10.Name = "label10";
-            label10.Size = new Size(79, 15);
-            label10.TabIndex = 26;
-            label10.Text = "Student Type:";
             // 
             // pictureBox1
             // 
@@ -139,7 +117,7 @@
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(197, 105);
+            comboBox3.Location = new Point(201, 125);
             comboBox3.Margin = new Padding(3, 2, 3, 2);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(134, 23);
@@ -149,7 +127,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(358, 105);
+            comboBox1.Location = new Point(362, 125);
             comboBox1.Margin = new Padding(3, 2, 3, 2);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(134, 23);
@@ -158,7 +136,7 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(32, 105);
+            comboBox2.Location = new Point(36, 125);
             comboBox2.Margin = new Padding(3, 2, 3, 2);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(134, 23);
@@ -167,7 +145,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(358, 88);
+            label4.Location = new Point(362, 108);
             label4.Name = "label4";
             label4.Size = new Size(88, 15);
             label4.TabIndex = 15;
@@ -175,7 +153,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(298, 64);
+            textBox3.Location = new Point(302, 84);
             textBox3.Margin = new Padding(3, 2, 3, 2);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(194, 23);
@@ -184,7 +162,7 @@
             // dgvNewStudent
             // 
             dgvNewStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNewStudent.Location = new Point(24, 187);
+            dgvNewStudent.Location = new Point(23, 170);
             dgvNewStudent.Margin = new Padding(3, 2, 3, 2);
             dgvNewStudent.Name = "dgvNewStudent";
             dgvNewStudent.RowHeadersWidth = 51;
@@ -194,7 +172,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(197, 88);
+            label6.Location = new Point(201, 108);
             label6.Name = "label6";
             label6.Size = new Size(58, 15);
             label6.TabIndex = 11;
@@ -203,7 +181,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(32, 88);
+            label5.Location = new Point(36, 108);
             label5.Name = "label5";
             label5.Size = new Size(62, 15);
             label5.TabIndex = 9;
@@ -211,7 +189,7 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(242, 64);
+            textBox2.Location = new Point(246, 84);
             textBox2.Margin = new Padding(3, 2, 3, 2);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(42, 23);
@@ -220,7 +198,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(242, 47);
+            label3.Location = new Point(246, 67);
             label3.Name = "label3";
             label3.Size = new Size(27, 15);
             label3.TabIndex = 3;
@@ -229,7 +207,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(298, 47);
+            label2.Location = new Point(302, 67);
             label2.Name = "label2";
             label2.Size = new Size(66, 15);
             label2.TabIndex = 2;
@@ -238,7 +216,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(32, 47);
+            label1.Location = new Point(36, 67);
             label1.Name = "label1";
             label1.Size = new Size(67, 15);
             label1.TabIndex = 1;
@@ -246,7 +224,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(32, 64);
+            textBox1.Location = new Point(36, 84);
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(194, 23);
@@ -309,6 +287,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "Evaluation";
             Text = "AddStudent";
+            Load += this.Evaluation_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -342,7 +321,5 @@
         private PictureBox pictureBox1;
         private Label label7;
         private Label label9;
-        private ComboBox comboBox4;
-        private Label label10;
     }
 }
