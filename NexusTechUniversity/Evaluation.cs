@@ -28,5 +28,10 @@ namespace NexusTechUniversity
         private void btnLoad_Click(object sender, EventArgs e)
         {
         }
+
+        private void Evaluation_Load(object sender, EventArgs e)
+        {
+            // Designer expects this handler. No initialization required currently.
+        }
     }
 }

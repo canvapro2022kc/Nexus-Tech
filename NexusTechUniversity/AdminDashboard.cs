@@ -10,6 +10,11 @@ namespace NexusTechUniversity
 {
     public partial class AdminDashboard : Form
     {
+        // Parameterless constructor needed for the WinForms designer.
+        public AdminDashboard() : this("admin")
+        {
+        }
+
         private string userRole;
         public AdminDashboard(string role)
         {
@@ -24,18 +29,7 @@ namespace NexusTechUniversity
 
         private void ApplyViewOnlyMode()
         {
-            // Example: Disable your buttons so students can't change anything
-            // Use Controls.Find to avoid referencing designer fields that may not exist
-            var save = this.Controls.Find("btnSave", true);
-            if (save.Length > 0) save[0].Enabled = false;
-
-            var del = this.Controls.Find("btnDelete", true);
-            if (del.Length > 0) del[0].Enabled = false;
-
-            var upd = this.Controls.Find("btnUpdate", true);
-            if (upd.Length > 0) upd[0].Enabled = false;
-
-            // Optional: Change window title to reflect status
+            // Set view-only title for students. No edit controls on this form.
             this.Text = "Nexus Tech University - Student Dashboard (View Only)";
         }
         private void button6_Click(object sender, EventArgs e)
@@ -58,6 +52,20 @@ namespace NexusTechUniversity
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAddStudent_Click(object sender, EventArgs e)
+        {
+            Add_Student student = new Add_Student();
+            student.Show();
+            this.Hide();
+        }
+
+        private void btnCurriculum_Click(object sender, EventArgs e)
+        {
+            Curriculum subjects = new Curriculum();
+            subjects.Show();
+            this.Hide();
         }
     }
 }

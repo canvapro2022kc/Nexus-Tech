@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Google.Cloud.Firestore;
 using BCrypt.Net;
@@ -12,7 +13,13 @@ namespace NexusTechUniversity
         {
             InitializeComponent();
 
-            db = FirestoreDb.Create("enrollmentit331");
+            // Avoid running Firestore initialization at design time because the
+            // WinForms designer instantiates this form and cannot load runtime
+            // dependencies. Initialize only when not in designer.
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            {
+                db = FirestoreDb.Create("enrollmentit331");
+            }
         }
 
 
@@ -70,6 +77,11 @@ namespace NexusTechUniversity
         }
 
         private void txtboxUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

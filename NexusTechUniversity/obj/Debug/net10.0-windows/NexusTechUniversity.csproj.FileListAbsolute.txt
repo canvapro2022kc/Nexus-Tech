@@ -31,7 +31,6 @@ C:\Users\Sandra Montas\source\repos\NexusTech_Enrollment\NexusTechUniversity\bin
 C:\Users\Sandra Montas\source\repos\NexusTech_Enrollment\NexusTechUniversity\bin\Debug\net10.0-windows\NexusTechUniversity.runtimeconfig.json
 C:\Users\Sandra Montas\source\repos\NexusTech_Enrollment\NexusTechUniversity\bin\Debug\net10.0-windows\NexusTechUniversity.dll
 C:\Users\Sandra Montas\source\repos\NexusTech_Enrollment\NexusTechUniversity\bin\Debug\net10.0-windows\NexusTechUniversity.pdb
-C:\Users\Sandra Montas\source\repos\NexusTech_Enrollment\NexusTechUniversity\obj\Debug\net10.0-windows\NexusTechUniversity.AddStudent.resources
 C:\Users\Sandra Montas\source\repos\NexusTech_Enrollment\NexusTechUniversity\obj\Debug\net10.0-windows\NexusTechUniversity.AdminDashboard.resources
 C:\Users\Sandra Montas\source\repos\NexusTech_Enrollment\NexusTechUniversity\obj\Debug\net10.0-windows\NexusTechUniversity.Curriculum.resources
 C:\Users\Sandra Montas\source\repos\NexusTech_Enrollment\NexusTechUniversity\obj\Debug\net10.0-windows\NexusTechUniversity.Evaluate.resources
@@ -74,3 +73,5 @@ C:\Users\Sandra Montas\source\repos\NexusTech_Enrollment\NexusTechUniversity\bin
 C:\Users\Sandra Montas\source\repos\NexusTech_Enrollment\NexusTechUniversity\bin\Debug\net10.0-windows\Newtonsoft.Json.dll
 C:\Users\Sandra Montas\source\repos\NexusTech_Enrollment\NexusTechUniversity\bin\Debug\net10.0-windows\System.Management.dll
 C:\Users\Sandra Montas\source\repos\NexusTech_Enrollment\NexusTechUniversity\bin\Debug\net10.0-windows\runtimes\win\lib\net7.0\System.Management.dll
+C:\Users\Sandra Montas\source\repos\NexusTech_Enrollment\NexusTechUniversity\obj\Debug\net10.0-windows\NexusTechUniversity.Add_Student.resources
+C:\Users\Sandra Montas\source\repos\NexusTech_Enrollment\NexusTechUniversity\obj\Debug\net10.0-windows\NexusTechUniversity.Evaluation.resources
