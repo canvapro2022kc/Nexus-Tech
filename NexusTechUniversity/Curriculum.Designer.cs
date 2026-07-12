@@ -263,7 +263,7 @@
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(752, 317);
+            dataGridView1.Size = new Size(752, 222);
             dataGridView1.TabIndex = 0;
             // 
             // Curriculum
