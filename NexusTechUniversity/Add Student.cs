@@ -189,6 +189,9 @@ namespace NexusTechUniversity
         {
             try
             {
+                if (db == null)
+                    return;
+
                 CollectionReference collectionRef = db.Collection("students");
                 QuerySnapshot snapshot = await collectionRef.GetSnapshotAsync();
 
@@ -261,6 +264,38 @@ namespace NexusTechUniversity
                 string typeVal = row.Cells["Student Type"].Value?.ToString() ?? "";
                 comboBox4.SelectedIndex = comboBox4.FindStringExact(typeVal);
             }
+        }
+
+        // Additional designer-referenced handler: some designers wire CellClick instead of CellContentClick.
+        private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvStudents.Rows[e.RowIndex];
+
+                txtboxCode.Text = row.Cells["SR-Code"].Value?.ToString() ?? "";
+                txtboxFName.Text = row.Cells["First Name"].Value?.ToString() ?? "";
+                txtboxLName.Text = row.Cells["Last Name"].Value?.ToString() ?? "";
+                txtboxMI.Text = row.Cells["Middle Initial"].Value?.ToString() ?? "";
+
+                string yearVal = row.Cells["Year Level"].Value?.ToString() ?? "";
+                comboBox1.SelectedIndex = comboBox1.FindStringExact(yearVal);
+
+                string semVal = row.Cells["Semester"].Value?.ToString() ?? "";
+                comboBox2.SelectedIndex = comboBox2.FindStringExact(semVal);
+
+                string acadYearVal = row.Cells["Academic Year"].Value?.ToString() ?? "";
+                comboBox3.SelectedIndex = comboBox3.FindStringExact(acadYearVal);
+
+                string typeVal = row.Cells["Student Type"].Value?.ToString() ?? "";
+                comboBox4.SelectedIndex = comboBox4.FindStringExact(typeVal);
+            }
+        }
+
+        // Bridge method for designer Load subscription variants that expect non-nullable signatures.
+        private void Add_Student_Load_1(object sender, EventArgs e)
+        {
+            Add_Student_Load(sender, e);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
