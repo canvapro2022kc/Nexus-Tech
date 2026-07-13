@@ -57,7 +57,7 @@ namespace NexusTechUniversity
             comboBox1.Items.AddRange(new string[] { "First Year", "Second Year", "Third Year", "Fourth Year" });
 
             comboBox2.Items.Clear();
-            comboBox2.Items.AddRange(new string[] { "First Semester", "Second Semester" });
+            comboBox2.Items.AddRange(new string[] { "First Semester", "Second Semester", "Midterm" });
         }
 
         // Optimized server-side unique SR-Code generation (Only reads 1 document)
@@ -232,8 +232,6 @@ namespace NexusTechUniversity
                 // Optional: Hide columns from the admin view if you don't want a crowded grid,
                 // while keeping the data accessible for the click event.
                 if (dgvStudents.Columns.Contains("Middle Initial")) dgvStudents.Columns["Middle Initial"].Visible = false;
-                if (dgvStudents.Columns.Contains("Semester")) dgvStudents.Columns["Semester"].Visible = false;
-                if (dgvStudents.Columns.Contains("Academic Year")) dgvStudents.Columns["Academic Year"].Visible = false;
             }
             catch (Exception ex)
             {

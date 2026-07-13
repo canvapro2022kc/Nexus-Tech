@@ -30,7 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Curriculum));
             panel2 = new Panel();
-            comboBoxSem = new ComboBox();
+            label14 = new Label();
+            textBox1 = new TextBox();
             comboBoxLevel = new ComboBox();
             label13 = new Label();
             label12 = new Label();
@@ -62,8 +63,7 @@
             label8 = new Label();
             comboBoxCurriculum = new ComboBox();
             dgvCurriculum = new DataGridView();
-            textBox1 = new TextBox();
-            label14 = new Label();
+            comboBoxSem = new ComboBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCurriculum).BeginInit();
@@ -112,18 +112,25 @@
             panel2.TabIndex = 3;
             panel2.Paint += panel2_Paint;
             // 
-            // comboBoxSem
+            // label14
             // 
-            comboBoxSem.BackColor = Color.White;
-            comboBoxSem.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            comboBoxSem.ForeColor = SystemColors.Window;
-            comboBoxSem.FormattingEnabled = true;
-            comboBoxSem.Items.AddRange(new object[] { "First Semester", "Second Semester", "Midterm" });
-            comboBoxSem.Location = new Point(34, 394);
-            comboBoxSem.Name = "comboBoxSem";
-            comboBoxSem.Size = new Size(162, 25);
-            comboBoxSem.TabIndex = 77;
-            comboBoxSem.SelectedIndexChanged += comboBoxSem_SelectedIndexChanged;
+            label14.AutoSize = true;
+            label14.BackColor = SystemColors.Control;
+            label14.Font = new Font("Tw Cen MT", 9F);
+            label14.Location = new Point(34, 309);
+            label14.Name = "label14";
+            label14.Size = new Size(102, 17);
+            label14.TabIndex = 79;
+            label14.Text = "Academic Year:";
+            label14.Click += label14_Click;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(34, 329);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(125, 27);
+            textBox1.TabIndex = 78;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // comboBoxLevel
             // 
@@ -358,6 +365,7 @@
             txtboxTitle.Name = "txtboxTitle";
             txtboxTitle.Size = new Size(147, 24);
             txtboxTitle.TabIndex = 22;
+            txtboxTitle.TextChanged += txtboxTitle_TextChanged;
             // 
             // label1
             // 
@@ -479,25 +487,18 @@
             dgvCurriculum.CellClick += dgvCurriculum_CellClick;
             dgvCurriculum.CellFormatting += dgvCurriculum_CellFormatting;
             // 
-            // textBox1
+            // comboBoxSem
             // 
-            textBox1.Location = new Point(34, 329);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 78;
-            textBox1.TextChanged += textBox1_TextChanged; 
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.BackColor = SystemColors.Control;
-            label14.Font = new Font("Tw Cen MT", 9F);
-            label14.Location = new Point(34, 309);
-            label14.Name = "label14";
-            label14.Size = new Size(102, 17);
-            label14.TabIndex = 79;
-            label14.Text = "Academic Year:";
-            label14.Click += this.label14_Click;
+            comboBoxSem.BackColor = Color.White;
+            comboBoxSem.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            comboBoxSem.ForeColor = SystemColors.Window;
+            comboBoxSem.FormattingEnabled = true;
+            comboBoxSem.Items.AddRange(new object[] { "First Semester", "Second Semester", "Midterm" });
+            comboBoxSem.Location = new Point(34, 394);
+            comboBoxSem.Name = "comboBoxSem";
+            comboBoxSem.Size = new Size(162, 25);
+            comboBoxSem.TabIndex = 77;
+            comboBoxSem.SelectedIndexChanged += comboBoxSem_SelectedIndexChanged;
             // 
             // Curriculum
             // 
@@ -546,9 +547,9 @@
         private Label label12;
         private Label label11;
         private Label label10;
-        private ComboBox comboBoxSem;
         private ComboBox comboBoxLevel;
         private Label label14;
         private TextBox textBox1;
+        private ComboBox comboBoxSem;
     }
 }

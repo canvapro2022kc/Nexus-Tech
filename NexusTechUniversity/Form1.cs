@@ -43,23 +43,18 @@ namespace NexusTechUniversity
                     return;
                 }
 
-                string storedPassword = snapshot.GetValue<string>("password").Trim();
-                string role = snapshot.GetValue<string>("role");
+                string storedPassword = snapshot.GetValue<string>("password")?.Trim() ?? string.Empty;
+                string role = snapshot.GetValue<string>("role") ?? string.Empty;
 
-                    // Direct comparison without BCrypt hashing
-                    if (enteredPassword == storedPassword)
-                    {
-                        if (role.Equals("student", StringComparison.OrdinalIgnoreCase))
-                        {
-                            StudentDashboard studentDashboard = new StudentDashboard(role);
-                            studentDashboard.Show();
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Login successful! Welcome, {role}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (enteredPassword != storedPassword)
+                {
+                    MessageBox.Show("Invalid password. Please try again.",
+                        "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                        AdminDashboard adminDashboard = new AdminDashboard(role);
-                        adminDashboard.Show();
+                MessageBox.Show($"Login successful! Welcome, {role}.",
+                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (role.Equals("student", StringComparison.OrdinalIgnoreCase))
                 {
