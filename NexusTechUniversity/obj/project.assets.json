@@ -914,23 +914,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sandra Montas\\.nuget\\packages\\": {},
+    "C:\\Users\\Daniella\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sandra Montas\\source\\repos\\NexusTech_Enrollment\\NexusTechUniversity\\NexusTechUniversity.csproj",
+      "projectUniqueName": "C:\\Users\\Daniella\\source\\repos\\Nexus-Tech\\NexusTechUniversity\\NexusTechUniversity.csproj",
       "projectName": "NexusTechUniversity",
-      "projectPath": "C:\\Users\\Sandra Montas\\source\\repos\\NexusTech_Enrollment\\NexusTechUniversity\\NexusTechUniversity.csproj",
-      "packagesPath": "C:\\Users\\Sandra Montas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sandra Montas\\source\\repos\\NexusTech_Enrollment\\NexusTechUniversity\\obj\\",
+      "projectPath": "C:\\Users\\Daniella\\source\\repos\\Nexus-Tech\\NexusTechUniversity\\NexusTechUniversity.csproj",
+      "packagesPath": "C:\\Users\\Daniella\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Daniella\\source\\repos\\Nexus-Tech\\NexusTechUniversity\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Sandra Montas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Daniella\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -939,7 +939,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
