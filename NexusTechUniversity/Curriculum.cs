@@ -547,5 +547,20 @@ namespace NexusTechUniversity
                 }
             }
         }
+
+        private void comboBoxSem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+            // Intentionally left blank. Implement if label click behavior is required.
+        }
     }
 }

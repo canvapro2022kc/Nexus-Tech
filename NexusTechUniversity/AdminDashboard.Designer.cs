@@ -55,7 +55,7 @@
             btnLogout.FlatAppearance.BorderSize = 0;
             btnLogout.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogout.ForeColor = Color.Navy;
-            btnLogout.Location = new Point(1013, 31);
+            btnLogout.Location = new Point(1003, 29);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(97, 43);
             btnLogout.TabIndex = 1;
@@ -65,9 +65,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(430, 96);
+            pictureBox1.Location = new Point(437, 82);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(99, 123);
+            pictureBox1.Size = new Size(99, 108);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -77,7 +77,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Tw Cen MT Condensed Extra Bold", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Navy;
-            label2.Location = new Point(539, 157);
+            label2.Location = new Point(549, 133);
             label2.Name = "label2";
             label2.Size = new Size(147, 40);
             label2.TabIndex = 2;
@@ -89,7 +89,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Tw Cen MT Condensed Extra Bold", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Navy;
-            label1.Location = new Point(536, 111);
+            label1.Location = new Point(549, 96);
             label1.Name = "label1";
             label1.Size = new Size(180, 48);
             label1.TabIndex = 1;
@@ -100,22 +100,21 @@
             label3.AutoSize = true;
             label3.Font = new Font("Tw Cen MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.AppWorkspace;
-            label3.Location = new Point(437, 507);
+            label3.Location = new Point(437, 513);
             label3.Name = "label3";
-            label3.Size = new Size(294, 20);
+            label3.Size = new Size(0, 20);
             label3.TabIndex = 8;
-            label3.Text = "--- System Administrator Control Panel ---";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Tw Cen MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(470, 580);
+            label4.Location = new Point(466, 573);
             label4.Name = "label4";
-            label4.Size = new Size(209, 20);
+            label4.Size = new Size(210, 20);
             label4.TabIndex = 9;
-            label4.Text = "@2026 NexusTech University";
+            label4.Text = "© 2026 NexusTech University";
             // 
             // btnAddStudent
             // 
@@ -126,10 +125,10 @@
             btnAddStudent.FlatStyle = FlatStyle.Flat;
             btnAddStudent.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAddStudent.ForeColor = Color.White;
-            btnAddStudent.Location = new Point(222, 259);
+            btnAddStudent.Location = new Point(222, 283);
             btnAddStudent.Margin = new Padding(3, 4, 3, 4);
             btnAddStudent.Name = "btnAddStudent";
-            btnAddStudent.Size = new Size(203, 223);
+            btnAddStudent.Size = new Size(203, 185);
             btnAddStudent.TabIndex = 0;
             btnAddStudent.UseVisualStyleBackColor = false;
             btnAddStudent.Click += btnAddStudent_Click;
@@ -138,7 +137,7 @@
             // 
             pictureBox2.BackColor = Color.Navy;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(296, 336);
+            pictureBox2.Location = new Point(301, 332);
             pictureBox2.Margin = new Padding(3, 4, 3, 4);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(49, 45);
@@ -152,7 +151,7 @@
             label5.BackColor = Color.Navy;
             label5.Font = new Font("Tw Cen MT Condensed Extra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(259, 385);
+            label5.Location = new Point(256, 390);
             label5.Name = "label5";
             label5.Size = new Size(138, 23);
             label5.TabIndex = 10;
@@ -164,7 +163,7 @@
             label6.BackColor = Color.Navy;
             label6.Font = new Font("Tw Cen MT Condensed Extra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(770, 385);
+            label6.Location = new Point(765, 390);
             label6.Name = "label6";
             label6.Size = new Size(91, 23);
             label6.TabIndex = 13;
@@ -174,7 +173,7 @@
             // 
             pictureBox3.BackColor = Color.Navy;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(789, 336);
+            pictureBox3.Location = new Point(784, 332);
             pictureBox3.Margin = new Padding(3, 4, 3, 4);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(49, 45);
@@ -191,10 +190,10 @@
             btnCurriculum.FlatStyle = FlatStyle.Flat;
             btnCurriculum.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCurriculum.ForeColor = Color.White;
-            btnCurriculum.Location = new Point(707, 259);
+            btnCurriculum.Location = new Point(707, 283);
             btnCurriculum.Margin = new Padding(3, 4, 3, 4);
             btnCurriculum.Name = "btnCurriculum";
-            btnCurriculum.Size = new Size(203, 223);
+            btnCurriculum.Size = new Size(203, 185);
             btnCurriculum.TabIndex = 11;
             btnCurriculum.UseVisualStyleBackColor = false;
             btnCurriculum.Click += btnCurriculum_Click;
@@ -205,7 +204,7 @@
             label7.BackColor = Color.FromArgb(248, 180, 0);
             label7.Font = new Font("Tw Cen MT Condensed Extra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Navy;
-            label7.Location = new Point(536, 385);
+            label7.Location = new Point(532, 390);
             label7.Name = "label7";
             label7.Size = new Size(73, 23);
             label7.TabIndex = 16;
@@ -215,7 +214,7 @@
             // 
             pictureBox4.BackColor = Color.FromArgb(248, 180, 0);
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(547, 336);
+            pictureBox4.Location = new Point(542, 332);
             pictureBox4.Margin = new Padding(3, 4, 3, 4);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(49, 45);
@@ -232,10 +231,10 @@
             btnStudents.FlatStyle = FlatStyle.Flat;
             btnStudents.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnStudents.ForeColor = Color.White;
-            btnStudents.Location = new Point(466, 259);
+            btnStudents.Location = new Point(466, 283);
             btnStudents.Margin = new Padding(3, 4, 3, 4);
             btnStudents.Name = "btnStudents";
-            btnStudents.Size = new Size(203, 223);
+            btnStudents.Size = new Size(203, 185);
             btnStudents.TabIndex = 14;
             btnStudents.UseVisualStyleBackColor = false;
             // 

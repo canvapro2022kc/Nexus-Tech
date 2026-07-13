@@ -62,6 +62,8 @@
             label8 = new Label();
             comboBoxCurriculum = new ComboBox();
             dgvCurriculum = new DataGridView();
+            textBox1 = new TextBox();
+            label14 = new Label();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCurriculum).BeginInit();
@@ -69,6 +71,8 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(label14);
+            panel2.Controls.Add(textBox1);
             panel2.Controls.Add(comboBoxSem);
             panel2.Controls.Add(comboBoxLevel);
             panel2.Controls.Add(label13);
@@ -110,177 +114,178 @@
             // 
             // comboBoxSem
             // 
-            comboBoxSem.BackColor = Color.Navy;
+            comboBoxSem.BackColor = Color.White;
             comboBoxSem.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             comboBoxSem.ForeColor = SystemColors.Window;
             comboBoxSem.FormattingEnabled = true;
             comboBoxSem.Items.AddRange(new object[] { "First Semester", "Second Semester", "Midterm" });
-            comboBoxSem.Location = new Point(156, 317);
+            comboBoxSem.Location = new Point(34, 394);
             comboBoxSem.Name = "comboBoxSem";
-            comboBoxSem.Size = new Size(122, 25);
+            comboBoxSem.Size = new Size(162, 25);
             comboBoxSem.TabIndex = 77;
+            comboBoxSem.SelectedIndexChanged += comboBoxSem_SelectedIndexChanged;
             // 
             // comboBoxLevel
             // 
-            comboBoxLevel.BackColor = Color.Navy;
+            comboBoxLevel.BackColor = Color.White;
             comboBoxLevel.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             comboBoxLevel.ForeColor = SystemColors.Window;
             comboBoxLevel.FormattingEnabled = true;
             comboBoxLevel.Items.AddRange(new object[] { "First Year", "Second Year", "Third Year", "Fourth Year", "Fifth Year" });
-            comboBoxLevel.Location = new Point(16, 317);
+            comboBoxLevel.Location = new Point(173, 329);
             comboBoxLevel.Name = "comboBoxLevel";
-            comboBoxLevel.Size = new Size(122, 25);
+            comboBoxLevel.Size = new Size(152, 25);
             comboBoxLevel.TabIndex = 76;
             // 
             // label13
             // 
             label13.AutoSize = true;
             label13.BackColor = SystemColors.Control;
-            label13.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(156, 299);
+            label13.Font = new Font("Tw Cen MT", 9F);
+            label13.Location = new Point(34, 374);
             label13.Name = "label13";
-            label13.Size = new Size(54, 15);
+            label13.Size = new Size(67, 17);
             label13.TabIndex = 75;
-            label13.Text = "Semester";
+            label13.Text = "Semester:";
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.BackColor = SystemColors.Control;
-            label12.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(16, 299);
+            label12.Font = new Font("Tw Cen MT", 9F);
+            label12.Location = new Point(175, 309);
             label12.Name = "label12";
-            label12.Size = new Size(63, 15);
+            label12.Size = new Size(76, 17);
             label12.TabIndex = 74;
-            label12.Text = "Year Level";
+            label12.Text = "Year Level:";
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.BackColor = SystemColors.Control;
-            label11.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(156, 240);
+            label11.Font = new Font("Tw Cen MT", 9F);
+            label11.Location = new Point(173, 249);
             label11.Name = "label11";
-            label11.Size = new Size(35, 15);
+            label11.Size = new Size(44, 17);
             label11.TabIndex = 73;
-            label11.Text = "Track";
+            label11.Text = "Track:";
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.BackColor = SystemColors.Control;
-            label10.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(15, 240);
+            label10.Font = new Font("Tw Cen MT", 9F);
+            label10.Location = new Point(35, 249);
             label10.Name = "label10";
-            label10.Size = new Size(94, 15);
+            label10.Size = new Size(108, 17);
             label10.TabIndex = 72;
-            label10.Text = "Curriculum Type";
+            label10.Text = "Curriculum Type:";
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.BackColor = SystemColors.Control;
-            label9.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(126, 185);
+            label9.Font = new Font("Tw Cen MT", 9F);
+            label9.Location = new Point(220, 189);
             label9.Name = "label9";
-            label9.Size = new Size(77, 15);
+            label9.Size = new Size(91, 17);
             label9.TabIndex = 71;
-            label9.Text = "Pre-Requisite";
+            label9.Text = "Pre-Requisite:";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.BackColor = SystemColors.Control;
-            label7.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(73, 185);
+            label7.Font = new Font("Tw Cen MT", 9F);
+            label7.Location = new Point(121, 189);
             label7.Name = "label7";
-            label7.Size = new Size(27, 15);
+            label7.Size = new Size(79, 17);
             label7.TabIndex = 70;
-            label7.Text = "Lab";
+            label7.Text = "Laboratory:";
             label7.Click += label7_Click;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.BackColor = SystemColors.Control;
-            label6.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(15, 184);
+            label6.Font = new Font("Tw Cen MT", 9F);
+            label6.Location = new Point(35, 189);
             label6.Name = "label6";
-            label6.Size = new Size(24, 15);
+            label6.Size = new Size(55, 17);
             label6.TabIndex = 69;
-            label6.Text = "Lec";
+            label6.Text = "Lecture:";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.BackColor = SystemColors.Control;
-            label5.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(288, 131);
+            label5.Font = new Font("Tw Cen MT", 9F);
+            label5.Location = new Point(306, 128);
             label5.Name = "label5";
-            label5.Size = new Size(34, 15);
+            label5.Size = new Size(39, 17);
             label5.TabIndex = 68;
-            label5.Text = "Units";
+            label5.Text = "Units:";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.BackColor = SystemColors.Control;
-            label4.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(126, 130);
+            label4.Font = new Font("Tw Cen MT", 9F);
+            label4.Location = new Point(147, 128);
             label4.Name = "label4";
-            label4.Size = new Size(69, 15);
+            label4.Size = new Size(82, 17);
             label4.TabIndex = 67;
-            label4.Text = "Course Title";
+            label4.Text = "Course Title:";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.BackColor = SystemColors.Control;
-            label3.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(15, 130);
+            label3.Font = new Font("Tw Cen MT", 9F);
+            label3.Location = new Point(35, 128);
             label3.Name = "label3";
-            label3.Size = new Size(76, 15);
+            label3.Size = new Size(90, 17);
             label3.TabIndex = 66;
-            label3.Text = "Course Code";
+            label3.Text = "Course Code:";
             // 
             // txtboxTrack
             // 
-            txtboxTrack.BackColor = Color.Navy;
+            txtboxTrack.BackColor = Color.White;
             txtboxTrack.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtboxTrack.ForeColor = SystemColors.Window;
-            txtboxTrack.Location = new Point(153, 257);
+            txtboxTrack.Location = new Point(173, 269);
             txtboxTrack.Name = "txtboxTrack";
-            txtboxTrack.Size = new Size(147, 24);
+            txtboxTrack.Size = new Size(191, 24);
             txtboxTrack.TabIndex = 63;
             // 
             // txtboxType
             // 
-            txtboxType.BackColor = Color.Navy;
+            txtboxType.BackColor = Color.White;
             txtboxType.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtboxType.ForeColor = SystemColors.Window;
-            txtboxType.Location = new Point(15, 257);
+            txtboxType.Location = new Point(35, 269);
             txtboxType.Name = "txtboxType";
             txtboxType.Size = new Size(123, 24);
             txtboxType.TabIndex = 62;
             // 
             // txtboxPreReq
             // 
-            txtboxPreReq.BackColor = Color.Navy;
+            txtboxPreReq.BackColor = Color.White;
             txtboxPreReq.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtboxPreReq.ForeColor = SystemColors.Window;
-            txtboxPreReq.Location = new Point(126, 200);
+            txtboxPreReq.Location = new Point(220, 209);
             txtboxPreReq.Name = "txtboxPreReq";
-            txtboxPreReq.Size = new Size(147, 24);
+            txtboxPreReq.Size = new Size(144, 24);
             txtboxPreReq.TabIndex = 61;
             // 
             // txtboxLab
             // 
-            txtboxLab.BackColor = Color.Navy;
+            txtboxLab.BackColor = Color.White;
             txtboxLab.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtboxLab.ForeColor = SystemColors.Window;
-            txtboxLab.Location = new Point(72, 200);
+            txtboxLab.Location = new Point(121, 209);
             txtboxLab.Name = "txtboxLab";
-            txtboxLab.Size = new Size(40, 24);
+            txtboxLab.Size = new Size(89, 24);
             txtboxLab.TabIndex = 60;
             // 
             // button4
@@ -304,12 +309,12 @@
             // 
             // txtboxLec
             // 
-            txtboxLec.BackColor = Color.Navy;
+            txtboxLec.BackColor = Color.White;
             txtboxLec.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtboxLec.ForeColor = SystemColors.Window;
-            txtboxLec.Location = new Point(15, 200);
+            txtboxLec.Location = new Point(35, 209);
             txtboxLec.Name = "txtboxLec";
-            txtboxLec.Size = new Size(40, 24);
+            txtboxLec.Size = new Size(76, 24);
             txtboxLec.TabIndex = 24;
             // 
             // pictureBox1
@@ -325,10 +330,10 @@
             // 
             // txtboxUnits
             // 
-            txtboxUnits.BackColor = Color.Navy;
+            txtboxUnits.BackColor = Color.White;
             txtboxUnits.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtboxUnits.ForeColor = SystemColors.Window;
-            txtboxUnits.Location = new Point(287, 146);
+            txtboxUnits.Location = new Point(306, 148);
             txtboxUnits.Name = "txtboxUnits";
             txtboxUnits.Size = new Size(58, 24);
             txtboxUnits.TabIndex = 23;
@@ -346,10 +351,10 @@
             // 
             // txtboxTitle
             // 
-            txtboxTitle.BackColor = Color.Navy;
+            txtboxTitle.BackColor = Color.White;
             txtboxTitle.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtboxTitle.ForeColor = SystemColors.Window;
-            txtboxTitle.Location = new Point(126, 146);
+            txtboxTitle.Location = new Point(145, 148);
             txtboxTitle.Name = "txtboxTitle";
             txtboxTitle.Size = new Size(147, 24);
             txtboxTitle.TabIndex = 22;
@@ -367,10 +372,10 @@
             // 
             // txtboxCode
             // 
-            txtboxCode.BackColor = Color.Navy;
+            txtboxCode.BackColor = Color.White;
             txtboxCode.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtboxCode.ForeColor = SystemColors.Window;
-            txtboxCode.Location = new Point(15, 146);
+            txtboxCode.Location = new Point(34, 148);
             txtboxCode.Name = "txtboxCode";
             txtboxCode.Size = new Size(97, 24);
             txtboxCode.TabIndex = 21;
@@ -379,7 +384,7 @@
             // 
             comboBoxTrack.FormattingEnabled = true;
             comboBoxTrack.Items.AddRange(new object[] { "Business Analytics", "Networking Technology", "Service Management" });
-            comboBoxTrack.Location = new Point(784, 65);
+            comboBoxTrack.Location = new Point(790, 65);
             comboBoxTrack.Name = "comboBoxTrack";
             comboBoxTrack.Size = new Size(151, 28);
             comboBoxTrack.TabIndex = 20;
@@ -391,7 +396,7 @@
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(213, 552);
+            btnDelete.Location = new Point(1020, 548);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(82, 31);
             btnDelete.TabIndex = 18;
@@ -406,7 +411,7 @@
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(114, 552);
+            btnSave.Location = new Point(928, 548);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(82, 31);
             btnSave.TabIndex = 17;
@@ -421,7 +426,7 @@
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEdit.ForeColor = Color.White;
-            btnEdit.Location = new Point(15, 552);
+            btnEdit.Location = new Point(836, 548);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(82, 31);
             btnEdit.TabIndex = 16;
@@ -435,9 +440,9 @@
             btnAddCourse.FlatStyle = FlatStyle.Flat;
             btnAddCourse.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddCourse.ForeColor = Color.White;
-            btnAddCourse.Location = new Point(16, 372);
+            btnAddCourse.Location = new Point(278, 435);
             btnAddCourse.Name = "btnAddCourse";
-            btnAddCourse.Size = new Size(82, 31);
+            btnAddCourse.Size = new Size(86, 31);
             btnAddCourse.TabIndex = 15;
             btnAddCourse.Text = "Add";
             btnAddCourse.UseVisualStyleBackColor = false;
@@ -456,8 +461,8 @@
             // comboBoxCurriculum
             // 
             comboBoxCurriculum.FormattingEnabled = true;
-            comboBoxCurriculum.Items.AddRange(new object[] { "Old", "New" });
-            comboBoxCurriculum.Location = new Point(951, 65);
+            comboBoxCurriculum.Items.AddRange(new object[] { "AY 2020-2024", "AY 2025-Onwards" });
+            comboBoxCurriculum.Location = new Point(951, 66);
             comboBoxCurriculum.Name = "comboBoxCurriculum";
             comboBoxCurriculum.Size = new Size(151, 28);
             comboBoxCurriculum.TabIndex = 1;
@@ -469,10 +474,30 @@
             dgvCurriculum.Location = new Point(396, 106);
             dgvCurriculum.Name = "dgvCurriculum";
             dgvCurriculum.RowHeadersWidth = 51;
-            dgvCurriculum.Size = new Size(706, 477);
+            dgvCurriculum.Size = new Size(706, 424);
             dgvCurriculum.TabIndex = 0;
             dgvCurriculum.CellClick += dgvCurriculum_CellClick;
             dgvCurriculum.CellFormatting += dgvCurriculum_CellFormatting;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(34, 329);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(125, 27);
+            textBox1.TabIndex = 78;
+            textBox1.TextChanged += textBox1_TextChanged; 
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.BackColor = SystemColors.Control;
+            label14.Font = new Font("Tw Cen MT", 9F);
+            label14.Location = new Point(34, 309);
+            label14.Name = "label14";
+            label14.Size = new Size(102, 17);
+            label14.TabIndex = 79;
+            label14.Text = "Academic Year:";
+            label14.Click += this.label14_Click;
             // 
             // Curriculum
             // 
@@ -523,5 +548,7 @@
         private Label label10;
         private ComboBox comboBoxSem;
         private ComboBox comboBoxLevel;
+        private Label label14;
+        private TextBox textBox1;
     }
 }

@@ -47,10 +47,18 @@ namespace NexusTechUniversity
                     // Direct comparison without BCrypt hashing
                     if (enteredPassword == storedPassword)
                     {
-                        MessageBox.Show($"Login successful! Welcome, {role}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (role.Equals("student", StringComparison.OrdinalIgnoreCase))
+                        {
+                            StudentDashboard studentDashboard = new StudentDashboard(role);
+                            studentDashboard.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Login successful! Welcome, {role}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        AdminDashboard adminDashboard = new AdminDashboard(role);
-                        adminDashboard.Show();
+                            AdminDashboard adminDashboard = new AdminDashboard(role);
+                            adminDashboard.Show();
+                        }
 
                         this.Hide();
                     }

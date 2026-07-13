@@ -46,15 +46,14 @@
             comboBox3 = new ComboBox();
             comboBox4 = new ComboBox();
             label8 = new Label();
-            label10 = new Label();
-            txtboxCode = new TextBox();
             dgvStudents = new DataGridView();
             btnDelete = new Button();
             btnSave = new Button();
             btnEdit = new Button();
             btnAddStudent = new Button();
             button4 = new Button();
-            btnLoadStudents = new Button();
+            label10 = new Label();
+            txtboxCode = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
             SuspendLayout();
@@ -195,6 +194,7 @@
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(179, 28);
             comboBox2.TabIndex = 45;
+            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
             // comboBox3
             // 
@@ -209,7 +209,7 @@
             // comboBox4
             // 
             comboBox4.FormattingEnabled = true;
-            comboBox4.Items.AddRange(new object[] { "Freshman", "Transferee" });
+            comboBox4.Items.AddRange(new object[] { "Freshman", "Transferee", "Irregular\t" });
             comboBox4.Location = new Point(48, 191);
             comboBox4.Margin = new Padding(3, 4, 3, 4);
             comboBox4.Name = "comboBox4";
@@ -226,24 +226,6 @@
             label8.TabIndex = 47;
             label8.Text = "Student Type:";
             // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Tw Cen MT", 9.75F);
-            label10.Location = new Point(235, 164);
-            label10.Name = "label10";
-            label10.Size = new Size(74, 20);
-            label10.TabIndex = 49;
-            label10.Text = "SR-Code:";
-            // 
-            // txtboxCode
-            // 
-            txtboxCode.Location = new Point(235, 191);
-            txtboxCode.Margin = new Padding(3, 4, 3, 4);
-            txtboxCode.Name = "txtboxCode";
-            txtboxCode.Size = new Size(179, 27);
-            txtboxCode.TabIndex = 50;
-            // 
             // dgvStudents
             // 
             dgvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -254,6 +236,7 @@
             dgvStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvStudents.Size = new Size(1031, 307);
             dgvStudents.TabIndex = 51;
+            dgvStudents.CellClick += dataStudents_CellContentClick;
             dgvStudents.CellContentClick += dataStudents_CellContentClick;
             // 
             // btnDelete
@@ -335,37 +318,39 @@
             button4.TabIndex = 58;
             button4.UseVisualStyleBackColor = false;
             // 
-            // btnLoadStudents
+            // label10
             // 
-            btnLoadStudents.BackColor = Color.Navy;
-            btnLoadStudents.FlatAppearance.BorderSize = 0;
-            btnLoadStudents.FlatStyle = FlatStyle.Flat;
-            btnLoadStudents.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLoadStudents.ForeColor = Color.White;
-            btnLoadStudents.Location = new Point(49, 565);
-            btnLoadStudents.Name = "btnLoadStudents";
-            btnLoadStudents.Size = new Size(118, 31);
-            btnLoadStudents.TabIndex = 59;
-            btnLoadStudents.Text = "Load Students";
-            btnLoadStudents.UseVisualStyleBackColor = false;
-            btnLoadStudents.Click += btnLoadStudents_Click;
+            label10.AutoSize = true;
+            label10.Font = new Font("Tw Cen MT", 9.75F);
+            label10.Location = new Point(252, 168);
+            label10.Name = "label10";
+            label10.Size = new Size(74, 20);
+            label10.TabIndex = 40;
+            label10.Text = "SR-Code:";
+            // 
+            // txtboxCode
+            // 
+            txtboxCode.Location = new Point(252, 192);
+            txtboxCode.Margin = new Padding(3, 4, 3, 4);
+            txtboxCode.Name = "txtboxCode";
+            txtboxCode.Size = new Size(179, 27);
+            txtboxCode.TabIndex = 37;
             // 
             // Add_Student
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1133, 619);
-            Controls.Add(btnLoadStudents);
             Controls.Add(button4);
             Controls.Add(btnDelete);
             Controls.Add(btnSave);
             Controls.Add(btnEdit);
             Controls.Add(btnAddStudent);
             Controls.Add(dgvStudents);
-            Controls.Add(txtboxCode);
-            Controls.Add(label10);
             Controls.Add(comboBox4);
             Controls.Add(label8);
+            Controls.Add(label10);
+            Controls.Add(txtboxCode);
             Controls.Add(comboBox3);
             Controls.Add(comboBox2);
             Controls.Add(comboBox1);
@@ -384,6 +369,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "Add_Student";
             Text = "Add_Student";
+            Load += Add_Student_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).EndInit();
             ResumeLayout(false);
@@ -409,14 +395,13 @@
         private ComboBox comboBox3;
         private ComboBox comboBox4;
         private Label label8;
-        private Label label10;
-        private TextBox txtboxCode;
         private DataGridView dgvStudents;
         private Button btnDelete;
         private Button btnSave;
         private Button btnEdit;
         private Button btnAddStudent;
         private Button button4;
-        private Button btnLoadStudents;
+        private Label label10;
+        private TextBox txtboxCode;
     }
 }
