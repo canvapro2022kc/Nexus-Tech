@@ -53,8 +53,7 @@
             btnSave = new Button();
             btnEdit = new Button();
             btnAddStudent = new Button();
-            button4 = new Button();
-            btnLoadStudents = new Button();
+            btnBack = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
             SuspendLayout();
@@ -316,47 +315,32 @@
             btnAddStudent.UseVisualStyleBackColor = false;
             btnAddStudent.Click += btnAddStudent_Click;
             // 
-            // button4
+            // btnBack
             // 
-            button4.BackColor = Color.Transparent;
-            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
-            button4.BackgroundImageLayout = ImageLayout.Stretch;
-            button4.DialogResult = DialogResult.Continue;
-            button4.FlatAppearance.BorderColor = Color.Black;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.ForeColor = Color.White;
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(18, 28);
-            button4.Margin = new Padding(3, 4, 3, 4);
-            button4.Name = "button4";
-            button4.Size = new Size(21, 29);
-            button4.TabIndex = 58;
-            button4.UseVisualStyleBackColor = false;
-            // 
-            // btnLoadStudents
-            // 
-            btnLoadStudents.BackColor = Color.Navy;
-            btnLoadStudents.FlatAppearance.BorderSize = 0;
-            btnLoadStudents.FlatStyle = FlatStyle.Flat;
-            btnLoadStudents.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLoadStudents.ForeColor = Color.White;
-            btnLoadStudents.Location = new Point(49, 565);
-            btnLoadStudents.Name = "btnLoadStudents";
-            btnLoadStudents.Size = new Size(118, 31);
-            btnLoadStudents.TabIndex = 59;
-            btnLoadStudents.Text = "Load Students";
-            btnLoadStudents.UseVisualStyleBackColor = false;
-            btnLoadStudents.Click += btnLoadStudents_Click;
+            btnBack.BackColor = Color.Transparent;
+            btnBack.BackgroundImage = (Image)resources.GetObject("btnBack.BackgroundImage");
+            btnBack.BackgroundImageLayout = ImageLayout.Stretch;
+            btnBack.DialogResult = DialogResult.Continue;
+            btnBack.FlatAppearance.BorderColor = Color.Black;
+            btnBack.FlatAppearance.BorderSize = 0;
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBack.ForeColor = Color.White;
+            btnBack.Image = (Image)resources.GetObject("btnBack.Image");
+            btnBack.Location = new Point(18, 28);
+            btnBack.Margin = new Padding(3, 4, 3, 4);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(21, 29);
+            btnBack.TabIndex = 58;
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // Add_Student
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1133, 619);
-            Controls.Add(btnLoadStudents);
-            Controls.Add(button4);
+            Controls.Add(btnBack);
             Controls.Add(btnDelete);
             Controls.Add(btnSave);
             Controls.Add(btnEdit);
@@ -384,6 +368,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "Add_Student";
             Text = "Add_Student";
+            Load += Add_Student_Load_1;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).EndInit();
             ResumeLayout(false);
@@ -416,7 +401,6 @@
         private Button btnSave;
         private Button btnEdit;
         private Button btnAddStudent;
-        private Button button4;
-        private Button btnLoadStudents;
+        private Button btnBack;
     }
 }

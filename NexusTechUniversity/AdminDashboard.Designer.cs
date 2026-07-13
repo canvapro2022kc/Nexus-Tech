@@ -238,6 +238,7 @@
             btnStudents.Size = new Size(203, 223);
             btnStudents.TabIndex = 14;
             btnStudents.UseVisualStyleBackColor = false;
+            btnStudents.Click += btnStudents_Click_1;
             // 
             // AdminDashboard
             // 

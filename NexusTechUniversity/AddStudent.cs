@@ -13,6 +13,12 @@ namespace NexusTechUniversity
     public partial class Add_Student : Form
     {
         private FirestoreDb db;
+
+        public Add_Student(string studentId)
+        {
+            InitializeComponent();
+        }
+
         public Add_Student()
         {
             InitializeComponent();
@@ -249,6 +255,18 @@ namespace NexusTechUniversity
         {
             await RefreshStudentsGrid();
             MessageBox.Show("Successfully loaded all students from the database.");
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Student student = new Student();
+            student.Show();
+            this.Hide();
+        }
+
+        private void Add_Student_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

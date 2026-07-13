@@ -67,5 +67,12 @@ namespace NexusTechUniversity
             subjects.Show();
             this.Hide();
         }
+
+        private void btnStudents_Click_1(object sender, EventArgs e)
+        {
+            Student student = new Student();
+            student.Show();
+            this.Hide();
+        }
     }
 }
