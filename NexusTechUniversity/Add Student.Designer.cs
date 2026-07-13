@@ -317,6 +317,7 @@
             button4.Size = new Size(21, 29);
             button4.TabIndex = 58;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // label10
             // 

@@ -541,5 +541,14 @@ namespace NexusTechUniversity
         {
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AdminDashboard adminForm = new AdminDashboard();
+
+            adminForm.Show();
+
+            this.Hide();
+        }
     }
 }

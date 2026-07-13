@@ -32,6 +32,7 @@
             panel2 = new Panel();
             label14 = new Label();
             textBox1 = new TextBox();
+            comboBoxSem = new ComboBox();
             comboBoxLevel = new ComboBox();
             label13 = new Label();
             label12 = new Label();
@@ -63,7 +64,6 @@
             label8 = new Label();
             comboBoxCurriculum = new ComboBox();
             dgvCurriculum = new DataGridView();
-            comboBoxSem = new ComboBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCurriculum).BeginInit();
@@ -131,6 +131,19 @@
             textBox1.Size = new Size(125, 27);
             textBox1.TabIndex = 78;
             textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // comboBoxSem
+            // 
+            comboBoxSem.BackColor = Color.White;
+            comboBoxSem.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            comboBoxSem.ForeColor = SystemColors.Window;
+            comboBoxSem.FormattingEnabled = true;
+            comboBoxSem.Items.AddRange(new object[] { "First Semester", "Second Semester", "Midterm" });
+            comboBoxSem.Location = new Point(34, 394);
+            comboBoxSem.Name = "comboBoxSem";
+            comboBoxSem.Size = new Size(162, 25);
+            comboBoxSem.TabIndex = 77;
+            comboBoxSem.SelectedIndexChanged += comboBoxSem_SelectedIndexChanged;
             // 
             // comboBoxLevel
             // 
@@ -313,6 +326,7 @@
             button4.Size = new Size(21, 29);
             button4.TabIndex = 59;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // txtboxLec
             // 
@@ -486,19 +500,6 @@
             dgvCurriculum.TabIndex = 0;
             dgvCurriculum.CellClick += dgvCurriculum_CellClick;
             dgvCurriculum.CellFormatting += dgvCurriculum_CellFormatting;
-            // 
-            // comboBoxSem
-            // 
-            comboBoxSem.BackColor = Color.White;
-            comboBoxSem.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            comboBoxSem.ForeColor = SystemColors.Window;
-            comboBoxSem.FormattingEnabled = true;
-            comboBoxSem.Items.AddRange(new object[] { "First Semester", "Second Semester", "Midterm" });
-            comboBoxSem.Location = new Point(34, 394);
-            comboBoxSem.Name = "comboBoxSem";
-            comboBoxSem.Size = new Size(162, 25);
-            comboBoxSem.TabIndex = 77;
-            comboBoxSem.SelectedIndexChanged += comboBoxSem_SelectedIndexChanged;
             // 
             // Curriculum
             // 

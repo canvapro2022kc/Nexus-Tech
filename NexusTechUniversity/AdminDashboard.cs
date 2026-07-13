@@ -67,5 +67,12 @@ namespace NexusTechUniversity
             subjects.Show();
             this.Hide();
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Form1 logout = new Form1();
+            logout.Show();
+            this.Hide();
+        }
     }
 }

@@ -61,6 +61,7 @@
             btnLogout.TabIndex = 1;
             btnLogout.Text = "LOG OUT";
             btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // pictureBox1
             // 
