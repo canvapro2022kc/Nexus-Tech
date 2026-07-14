@@ -19,8 +19,8 @@ namespace NexusTechUniversity
             InitializeComponent();
 
             comboBoxCurriculum.Items.Clear();
-            comboBoxCurriculum.Items.Add("New");
-            comboBoxCurriculum.Items.Add("Old");
+            comboBoxCurriculum.Items.Add("AY 2025-Onwards");
+            comboBoxCurriculum.Items.Add("AY 2020-2024");
             comboBoxCurriculum.SelectedIndex = 0;
 
             if (comboBoxTrack != null)
@@ -79,17 +79,17 @@ namespace NexusTechUniversity
                     Dictionary<string, object> data = document.ToDictionary();
 
                     // Read explicit properties matching your Firestore fields
-                    string docCurriculum = data.ContainsKey("curriculum_type") ? data["curriculum_type"]?.ToString() : "";
+                    string docCurriculum = data.ContainsKey("curriculum_id") ? data["curriculum_id"]?.ToString() : "";
                     string courseTrack = data.ContainsKey("track") ? data["track"]?.ToString() : "None";
 
-                    // 1. Core Filter: Filter strictly by selected curriculum type (New or Old)
+                    // 1. Core Filter: Filter strictly by selected curriculum type
                     if (!docCurriculum.Equals(selectedCurriculum, StringComparison.OrdinalIgnoreCase))
                     {
                         continue;
                     }
 
-                    // 2. Track Filter: If "Old" curriculum is selected, filter by tracks
-                    if (selectedCurriculum.Equals("Old", StringComparison.OrdinalIgnoreCase))
+                    // 2. Track Filter: If "AY 2020-2024" curriculum is selected, filter by tracks
+                    if (selectedCurriculum.Equals("AY 2020-2024", StringComparison.OrdinalIgnoreCase))
                     {
                         // If track is not "None", it must strictly match the selected combo box track
                         if (!courseTrack.Equals("None", StringComparison.OrdinalIgnoreCase) &&
@@ -99,7 +99,7 @@ namespace NexusTechUniversity
                         }
                     }
 
-                    // Extract values matching screenshot keys
+                    // Extract values matching database keys
                     string courseCode = data.ContainsKey("course_code") ? data["course_code"]?.ToString() : document.Id;
                     string courseName = data.ContainsKey("course_title") ? data["course_title"]?.ToString() : "";
                     string preReq = data.ContainsKey("pre-requisite") ? data["pre-requisite"]?.ToString() : "-";
@@ -231,13 +231,15 @@ namespace NexusTechUniversity
         private async void comboBoxCurriculum_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selected = comboBoxCurriculum.SelectedItem?.ToString() ?? "";
-            if (selected == "Old")
+            if (selected == "AY 2020-2024")
             {
                 comboBoxTrack.Visible = true;
+                txtboxTrack.ReadOnly = false;
             }
             else
             {
                 comboBoxTrack.Visible = false;
+                txtboxTrack.ReadOnly = true;
             }
 
             await LoadCurriculumGrid();
@@ -283,17 +285,17 @@ namespace NexusTechUniversity
         }
 
         private async Task AddCourseToFirestore(
-    string courseCode,
-    string courseTitle,
-    string units,
-    string lec,
-    string lab,
-    string preReq,
-    string curriculumType,
-    string track,
-    string yearLevel,
-    string semester,
-    string coReq = "")
+            string courseCode,
+            string courseTitle,
+            string units,
+            string lec,
+            string lab,
+            string preReq,
+            string curriculumId,
+            string track,
+            string yearLevel,
+            string semester,
+            string coReq = "")
         {
             try
             {
@@ -304,41 +306,33 @@ namespace NexusTechUniversity
                     db = FirestoreDb.Create("enrollmentit331");
                 }
 
-                // Validate required fields
                 if (string.IsNullOrWhiteSpace(courseCode) || string.IsNullOrWhiteSpace(courseTitle))
                 {
                     MessageBox.Show("Course Code and Course Title are required.");
                     return;
                 }
 
-                // Build the precise custom document ID matching your import format (e.g., "BAT 402-Business Analytics-Old")
-                string customDocId = $"{courseCode.Trim()}-{track.Trim()}-{curriculumType.Trim()}";
+                string customDocId = $"{courseCode.Trim()}-{track.Trim()}-{curriculumId.Trim()}";
 
-                // Create the document data payload matching your precise Firestore fields
                 Dictionary<string, object> courseData = new Dictionary<string, object>
-        {
-            { "course_code", courseCode.Trim() },
-            { "course_title", courseTitle.Trim() },
-            { "units", int.TryParse(units, out int u) ? u : 0 },
-            { "lec", int.TryParse(lec, out int le) ? le : 0 },
-            { "lab", int.TryParse(lab, out int la) ? la : 0 },
-            { "pre-requisite", string.IsNullOrWhiteSpace(preReq) ? "" : preReq.Trim() },
-            { "co-requisite", string.IsNullOrWhiteSpace(coReq) ? "" : coReq.Trim() },
-            { "curriculum_type", curriculumType },
-            { "track", track },
-            { "year_level", yearLevel },
-            { "semester", semester }
-        };
+                {
+                    { "course_code", courseCode.Trim() },
+                    { "course_title", courseTitle.Trim() },
+                    { "units", int.TryParse(units, out int u) ? u : 0 },
+                    { "lec", int.TryParse(lec, out int le) ? le : 0 },
+                    { "lab", int.TryParse(lab, out int la) ? la : 0 },
+                    { "pre-requisite", string.IsNullOrWhiteSpace(preReq) ? "" : preReq.Trim() },
+                    { "co-requisite", string.IsNullOrWhiteSpace(coReq) ? "" : coReq.Trim() },
+                    { "curriculum_id", curriculumId },
+                    { "track", track },
+                    { "year_level", yearLevel },
+                    { "semester", semester }
+                };
 
-                // Reference the specific document ID inside the 'courses' collection
                 DocumentReference docRef = db.Collection("courses").Document(customDocId);
-
-                // Save the document to Firestore (creates or overwrites)
                 await docRef.SetAsync(courseData);
 
                 MessageBox.Show($"Successfully added {courseCode} to the curriculum!");
-
-                // Refresh the grid layout to reflect the new addition immediately
                 await LoadCurriculumGrid();
             }
             catch (Exception ex)
@@ -349,7 +343,6 @@ namespace NexusTechUniversity
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            // Replace these control names with the exact names of your TextBoxes/ComboBoxes
             string code = txtboxCode.Text.Trim();
             string title = txtboxTitle.Text.Trim();
             string units = txtboxUnits.Text.Trim();
@@ -358,22 +351,17 @@ namespace NexusTechUniversity
             string preReq = txtboxPreReq.Text.Trim();
 
             string rawCurriculum = txtboxType.Text.Trim();
-            string curriculum = "New";
+            string curriculum = "AY 2025-Onwards";
 
-            if (rawCurriculum.Equals("old", StringComparison.OrdinalIgnoreCase))
+            if (rawCurriculum.Equals("AY 2020-2024", StringComparison.OrdinalIgnoreCase))
             {
-                curriculum = "Old";
-            }
-            else if (rawCurriculum.Equals("new", StringComparison.OrdinalIgnoreCase))
-            {
-                curriculum = "New";
+                curriculum = "AY 2020-2024";
             }
 
-            // Force the string to match the exact casing Firestore expects
             string rawTrack = txtboxTrack.Text.Trim();
             string track = "None";
 
-            if (curriculum == "Old")
+            if (curriculum == "AY 2020-2024")
             {
                 if (rawTrack.Equals("Network Technology", StringComparison.OrdinalIgnoreCase) || rawTrack.Equals("NT", StringComparison.OrdinalIgnoreCase))
                 {
@@ -389,7 +377,7 @@ namespace NexusTechUniversity
                 }
                 else
                 {
-                    track = rawTrack; // Fallback to whatever was typed if it doesn't match the abbreviations
+                    track = rawTrack;
                 }
             }
 
@@ -399,21 +387,17 @@ namespace NexusTechUniversity
             string originalCode = txtboxCode.Tag?.ToString();
             if (!string.IsNullOrEmpty(originalCode) && !originalCode.Equals(code, StringComparison.OrdinalIgnoreCase))
             {
-                // The admin changed the course code identifier name. 
-                // We must remove the old obsolete document record first to avoid leaving a ghost duplicate behind.
                 string oldDocId = $"{originalCode}-{track}-{curriculum}";
                 try
                 {
                     DocumentReference oldDocRef = db.Collection("courses").Document(oldDocId);
                     await oldDocRef.DeleteAsync();
                 }
-                catch { /* fail silently if it wasn't deployed yet */ }
+                catch { }
             }
 
-            // Call the Firestore helper
             await AddCourseToFirestore(code, title, units, lec, lab, preReq, curriculum, track, year, sem);
 
-            // Optional: Clear form text fields here after successful save
             txtboxCode.Clear();
             txtboxTitle.Clear();
             txtboxUnits.Clear();
@@ -429,16 +413,13 @@ namespace NexusTechUniversity
 
         private void dgvCurriculum_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Make sure the admin clicked a valid data row (not the header row or empty space)
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvCurriculum.Rows[e.RowIndex];
 
-                // Skip category header separators and total rows
                 var isHeaderVal = row.Cells["IsHeader"].Value;
                 if (isHeaderVal != null && (bool)isHeaderVal) return;
 
-                // 1. Populate text fields
                 txtboxCode.Text = row.Cells["Code"].Value?.ToString() ?? "";
                 txtboxTitle.Text = row.Cells["Course Title"].Value?.ToString() ?? "";
                 txtboxUnits.Text = row.Cells["Units"].Value?.ToString() ?? "0";
@@ -446,19 +427,14 @@ namespace NexusTechUniversity
                 txtboxLab.Text = row.Cells["Lab"].Value?.ToString() ?? "0";
                 txtboxPreReq.Text = row.Cells["Prerequisite"].Value?.ToString() ?? "-";
 
-                // Keep track of the original code/values in a hidden field or tag 
-                // to check if the Document ID keys change during editing.
                 txtboxCode.Tag = row.Cells["Code"].Value?.ToString();
 
-                // 2. Map curriculum type to your management text box
-                string currentCurriculum = comboBoxCurriculum.SelectedItem?.ToString() ?? "New";
+                string currentCurriculum = comboBoxCurriculum.SelectedItem?.ToString() ?? "AY 2025-Onwards";
                 txtboxType.Text = currentCurriculum;
 
-                // 3. Map track value to your track text box
-                string currentTrack = currentCurriculum == "New" ? "None" : (comboBoxTrack.SelectedItem?.ToString() ?? "None");
+                string currentTrack = currentCurriculum == "AY 2025-Onwards" ? "None" : (comboBoxTrack.SelectedItem?.ToString() ?? "None");
                 txtboxTrack.Text = currentTrack;
 
-                // 4. Set input ComboBox values by looking up matching text strings
                 string yearVal = row.Cells["YearLevelDisplay"].Value?.ToString() ?? "First Year";
                 comboBoxLevel.SelectedIndex = comboBoxLevel.FindStringExact(yearVal);
 
@@ -469,7 +445,6 @@ namespace NexusTechUniversity
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
-            // Get the course code currently loaded in the edit box
             string code = txtboxCode.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(code))
@@ -478,7 +453,6 @@ namespace NexusTechUniversity
                 return;
             }
 
-            // Double-check with the admin so they don't accidentally wipe data
             DialogResult result = MessageBox.Show(
                 $"Are you sure you want to permanently delete {code} from the database?",
                 "Confirm Deletion",
@@ -490,13 +464,17 @@ namespace NexusTechUniversity
             {
                 try
                 {
-                    // Gather the rest of the keys to build the exact Document ID
                     string rawCurriculum = txtboxType.Text.Trim();
-                    string curriculum = rawCurriculum.Equals("old", StringComparison.OrdinalIgnoreCase) ? "Old" : "New";
+                    string curriculum = "AY 2025-Onwards";
+
+                    if (rawCurriculum.Equals("AY 2020-2024", StringComparison.OrdinalIgnoreCase))
+                    {
+                        curriculum = "AY 2020-2024";
+                    }
 
                     string rawTrack = txtboxTrack.Text.Trim();
                     string track = "None";
-                    if (curriculum == "Old")
+                    if (curriculum == "AY 2020-2024")
                     {
                         if (rawTrack.Equals("Network Technology", StringComparison.OrdinalIgnoreCase) || rawTrack.Equals("NT", StringComparison.OrdinalIgnoreCase))
                             track = "Network Technology";
@@ -508,7 +486,6 @@ namespace NexusTechUniversity
                             track = rawTrack;
                     }
 
-                    // Build the exact document ID string matching your Firestore format
                     string docId = $"{code}-{track}-{curriculum}";
 
                     if (db == null)
@@ -518,13 +495,11 @@ namespace NexusTechUniversity
                         db = FirestoreDb.Create("enrollmentit331");
                     }
 
-                    // Reference the document path and trigger deletion
                     DocumentReference docRef = db.Collection("courses").Document(docId);
                     await docRef.DeleteAsync();
 
                     MessageBox.Show($"Successfully removed {code} from the curriculum.");
 
-                    // Clear all fields so the deleted data doesn't hang around on screen
                     txtboxCode.Clear();
                     txtboxCode.Tag = null;
                     txtboxTitle.Clear();
@@ -538,7 +513,6 @@ namespace NexusTechUniversity
                     comboBoxLevel.SelectedIndex = -1;
                     comboBoxSem.SelectedIndex = -1;
 
-                    // Refresh the grid immediately to show it's gone
                     await LoadCurriculumGrid();
                 }
                 catch (Exception ex)
@@ -546,6 +520,35 @@ namespace NexusTechUniversity
                     MessageBox.Show("Failed to delete course: " + ex.Message);
                 }
             }
+        }
+
+        private void comboBoxSem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtboxTitle_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AdminDashboard adminForm = new AdminDashboard();
+
+            adminForm.Show();
+
+            this.Hide();
         }
     }
 }

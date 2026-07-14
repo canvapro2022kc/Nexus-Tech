@@ -68,10 +68,10 @@ namespace NexusTechUniversity
             this.Hide();
         }
 
-        private void btnStudents_Click_1(object sender, EventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e)
         {
-            Student student = new Student();
-            student.Show();
+            Form1 logout = new Form1();
+            logout.Show();
             this.Hide();
         }
     }

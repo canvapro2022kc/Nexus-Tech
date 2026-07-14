@@ -1,0 +1,1 @@
+Please open the repository file at NexusTechUniversity\Add Student.Designer.cs to review event subscriptions.

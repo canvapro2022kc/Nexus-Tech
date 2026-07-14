@@ -48,5 +48,10 @@ namespace NexusTechUniversity
         private void dgvStudents_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
