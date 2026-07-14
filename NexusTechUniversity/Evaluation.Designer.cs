@@ -38,6 +38,7 @@
             label10 = new Label();
             dgvCourses = new DataGridView();
             panel2 = new Panel();
+            btnAssign = new Button();
             dgvCoursesToTake = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
@@ -54,6 +55,7 @@
             button4 = new Button();
             label2 = new Label();
             panel1 = new Panel();
+            btnEvaluateAssign = new Button();
             label4 = new Label();
             label3 = new Label();
             label17 = new Label();
@@ -63,15 +65,6 @@
             label13 = new Label();
             label8 = new Label();
             dgCoursesTaken = new DataGridView();
-            txtAcademicYear = new TextBox();
-            txtSemester = new TextBox();
-            txtYearLevel = new TextBox();
-            txtLname = new TextBox();
-            txtMI = new TextBox();
-            txtFname = new TextBox();
-            txtSRCode = new TextBox();
-            btnEvaluate = new Button();
-            btnAssign = new Button();
             taken = new DataGridViewCheckBoxColumn();
             courseCode = new DataGridViewTextBoxColumn();
             courseTitle = new DataGridViewTextBoxColumn();
@@ -79,6 +72,13 @@
             yearLevel = new DataGridViewTextBoxColumn();
             semester = new DataGridViewTextBoxColumn();
             academicYear = new DataGridViewTextBoxColumn();
+            txtAcademicYear = new TextBox();
+            txtSemester = new TextBox();
+            txtYearLevel = new TextBox();
+            txtLname = new TextBox();
+            txtMI = new TextBox();
+            txtFname = new TextBox();
+            txtSRCode = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvCourses).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCoursesToTake).BeginInit();
@@ -162,6 +162,20 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(786, 699);
             panel2.TabIndex = 1;
+            // 
+            // btnAssign
+            // 
+            btnAssign.BackColor = Color.Navy;
+            btnAssign.FlatAppearance.BorderSize = 0;
+            btnAssign.FlatStyle = FlatStyle.Flat;
+            btnAssign.Font = new Font("Tw Cen MT", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAssign.ForeColor = Color.White;
+            btnAssign.Location = new Point(413, 636);
+            btnAssign.Name = "btnAssign";
+            btnAssign.Size = new Size(291, 39);
+            btnAssign.TabIndex = 74;
+            btnAssign.Text = "Assign to Student";
+            btnAssign.UseVisualStyleBackColor = false;
             // 
             // dgvCoursesToTake
             // 
@@ -312,7 +326,7 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnEvaluate);
+            panel1.Controls.Add(btnEvaluateAssign);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label17);
@@ -340,6 +354,20 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(812, 699);
             panel1.TabIndex = 0;
+            // 
+            // btnEvaluateAssign
+            // 
+            btnEvaluateAssign.BackColor = Color.Navy;
+            btnEvaluateAssign.FlatAppearance.BorderSize = 0;
+            btnEvaluateAssign.FlatStyle = FlatStyle.Flat;
+            btnEvaluateAssign.Font = new Font("Tw Cen MT", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEvaluateAssign.ForeColor = Color.White;
+            btnEvaluateAssign.Location = new Point(651, 636);
+            btnEvaluateAssign.Name = "btnEvaluateAssign";
+            btnEvaluateAssign.Size = new Size(130, 39);
+            btnEvaluateAssign.TabIndex = 74;
+            btnEvaluateAssign.Text = "Evaluate";
+            btnEvaluateAssign.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
@@ -428,6 +456,57 @@
             dgCoursesTaken.TabIndex = 70;
             dgCoursesTaken.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // taken
+            // 
+            taken.HeaderText = "Taken";
+            taken.MinimumWidth = 6;
+            taken.Name = "taken";
+            taken.Resizable = DataGridViewTriState.True;
+            taken.SortMode = DataGridViewColumnSortMode.Automatic;
+            taken.Width = 50;
+            // 
+            // courseCode
+            // 
+            courseCode.HeaderText = "Course Code";
+            courseCode.MinimumWidth = 6;
+            courseCode.Name = "courseCode";
+            courseCode.Width = 125;
+            // 
+            // courseTitle
+            // 
+            courseTitle.HeaderText = "Course Title";
+            courseTitle.MinimumWidth = 6;
+            courseTitle.Name = "courseTitle";
+            courseTitle.Width = 170;
+            // 
+            // units
+            // 
+            units.HeaderText = "Units";
+            units.MinimumWidth = 6;
+            units.Name = "units";
+            units.Width = 50;
+            // 
+            // yearLevel
+            // 
+            yearLevel.HeaderText = "Year Level";
+            yearLevel.MinimumWidth = 6;
+            yearLevel.Name = "yearLevel";
+            yearLevel.Width = 125;
+            // 
+            // semester
+            // 
+            semester.HeaderText = "Semester";
+            semester.MinimumWidth = 6;
+            semester.Name = "semester";
+            semester.Width = 125;
+            // 
+            // academicYear
+            // 
+            academicYear.HeaderText = "Academic Year";
+            academicYear.MinimumWidth = 6;
+            academicYear.Name = "academicYear";
+            academicYear.Width = 130;
+            // 
             // txtAcademicYear
             // 
             txtAcademicYear.Location = new Point(33, 178);
@@ -478,84 +557,6 @@
             txtSRCode.Size = new Size(136, 27);
             txtSRCode.TabIndex = 63;
             // 
-            // btnEvaluate
-            // 
-            btnEvaluate.BackColor = Color.Navy;
-            btnEvaluate.FlatAppearance.BorderSize = 0;
-            btnEvaluate.FlatStyle = FlatStyle.Flat;
-            btnEvaluate.Font = new Font("Tw Cen MT", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEvaluate.ForeColor = Color.White;
-            btnEvaluate.Location = new Point(651, 636);
-            btnEvaluate.Name = "btnEvaluate";
-            btnEvaluate.Size = new Size(130, 39);
-            btnEvaluate.TabIndex = 74;
-            btnEvaluate.Text = "Evaluate";
-            btnEvaluate.UseVisualStyleBackColor = false;
-            // 
-            // btnAssign
-            // 
-            btnAssign.BackColor = Color.Navy;
-            btnAssign.FlatAppearance.BorderSize = 0;
-            btnAssign.FlatStyle = FlatStyle.Flat;
-            btnAssign.Font = new Font("Tw Cen MT", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAssign.ForeColor = Color.White;
-            btnAssign.Location = new Point(413, 636);
-            btnAssign.Name = "btnAssign";
-            btnAssign.Size = new Size(291, 39);
-            btnAssign.TabIndex = 74;
-            btnAssign.Text = "Assign to Student";
-            btnAssign.UseVisualStyleBackColor = false;
-            // 
-            // taken
-            // 
-            taken.HeaderText = "Taken";
-            taken.MinimumWidth = 6;
-            taken.Name = "taken";
-            taken.Resizable = DataGridViewTriState.True;
-            taken.SortMode = DataGridViewColumnSortMode.Automatic;
-            taken.Width = 50;
-            // 
-            // courseCode
-            // 
-            courseCode.HeaderText = "Course Code";
-            courseCode.MinimumWidth = 6;
-            courseCode.Name = "courseCode";
-            // 
-            // courseTitle
-            // 
-            courseTitle.HeaderText = "Course Title";
-            courseTitle.MinimumWidth = 6;
-            courseTitle.Name = "courseTitle";
-            courseTitle.Width = 170;
-            // 
-            // units
-            // 
-            units.HeaderText = "Units";
-            units.MinimumWidth = 6;
-            units.Name = "units";
-            units.Width = 50;
-            // 
-            // yearLevel
-            // 
-            yearLevel.HeaderText = "Year Level";
-            yearLevel.MinimumWidth = 6;
-            yearLevel.Name = "yearLevel";
-            yearLevel.Width = 125;
-            // 
-            // semester
-            // 
-            semester.HeaderText = "Semester";
-            semester.MinimumWidth = 6;
-            semester.Name = "semester";
-            semester.Width = 125;
-            // 
-            // academicYear
-            // 
-            academicYear.HeaderText = "Academic Year";
-            academicYear.MinimumWidth = 6;
-            academicYear.Name = "academicYear";
-            academicYear.Width = 130;
-            // 
             // Evaluation
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -603,7 +604,7 @@
         private Label label12;
         private DataGridView dgvProgramOfStudy;
         private DataGridView dgvStudents;
-        private Button btnEvaluate;
+        private Button btnEvaluateAssign;
         private Label label9;
         private Label label7;
         private PictureBox pictureBox1;
