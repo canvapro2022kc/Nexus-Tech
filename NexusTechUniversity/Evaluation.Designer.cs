@@ -40,12 +40,12 @@
             panel2 = new Panel();
             btnAssign = new Button();
             dgvCoursesToTake = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            ccode = new DataGridViewTextBoxColumn();
+            ctitle = new DataGridViewTextBoxColumn();
+            cunits = new DataGridViewTextBoxColumn();
+            cyearlevel = new DataGridViewTextBoxColumn();
+            csemester = new DataGridViewTextBoxColumn();
+            cacademicyear = new DataGridViewTextBoxColumn();
             label1 = new Label();
             btnExport = new Button();
             label9 = new Label();
@@ -176,11 +176,12 @@
             btnAssign.TabIndex = 74;
             btnAssign.Text = "Assign to Student";
             btnAssign.UseVisualStyleBackColor = false;
+            btnAssign.Click += btnAssign_Click;
             // 
             // dgvCoursesToTake
             // 
             dgvCoursesToTake.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCoursesToTake.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6 });
+            dgvCoursesToTake.Columns.AddRange(new DataGridViewColumn[] { ccode, ctitle, cunits, cyearlevel, csemester, cacademicyear });
             dgvCoursesToTake.Location = new Point(17, 70);
             dgvCoursesToTake.Name = "dgvCoursesToTake";
             dgvCoursesToTake.RowHeadersVisible = false;
@@ -188,47 +189,47 @@
             dgvCoursesToTake.Size = new Size(754, 557);
             dgvCoursesToTake.TabIndex = 73;
             // 
-            // dataGridViewTextBoxColumn1
+            // ccode
             // 
-            dataGridViewTextBoxColumn1.HeaderText = "Course Code";
-            dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.Width = 125;
+            ccode.HeaderText = "Course Code";
+            ccode.MinimumWidth = 6;
+            ccode.Name = "ccode";
+            ccode.Width = 125;
             // 
-            // dataGridViewTextBoxColumn2
+            // ctitle
             // 
-            dataGridViewTextBoxColumn2.HeaderText = "Course Title";
-            dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.Width = 125;
+            ctitle.HeaderText = "Course Title";
+            ctitle.MinimumWidth = 6;
+            ctitle.Name = "ctitle";
+            ctitle.Width = 125;
             // 
-            // dataGridViewTextBoxColumn3
+            // cunits
             // 
-            dataGridViewTextBoxColumn3.HeaderText = "Units";
-            dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.Width = 125;
+            cunits.HeaderText = "Units";
+            cunits.MinimumWidth = 6;
+            cunits.Name = "cunits";
+            cunits.Width = 125;
             // 
-            // dataGridViewTextBoxColumn4
+            // cyearlevel
             // 
-            dataGridViewTextBoxColumn4.HeaderText = "Year Level";
-            dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.Width = 125;
+            cyearlevel.HeaderText = "Year Level";
+            cyearlevel.MinimumWidth = 6;
+            cyearlevel.Name = "cyearlevel";
+            cyearlevel.Width = 125;
             // 
-            // dataGridViewTextBoxColumn5
+            // csemester
             // 
-            dataGridViewTextBoxColumn5.HeaderText = "Semester";
-            dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.Width = 125;
+            csemester.HeaderText = "Semester";
+            csemester.MinimumWidth = 6;
+            csemester.Name = "csemester";
+            csemester.Width = 125;
             // 
-            // dataGridViewTextBoxColumn6
+            // cacademicyear
             // 
-            dataGridViewTextBoxColumn6.HeaderText = "Academic Year";
-            dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.Width = 125;
+            cacademicyear.HeaderText = "Academic Year";
+            cacademicyear.MinimumWidth = 6;
+            cacademicyear.Name = "cacademicyear";
+            cacademicyear.Width = 125;
             // 
             // label1
             // 
@@ -254,6 +255,7 @@
             btnExport.TabIndex = 58;
             btnExport.Text = "Export";
             btnExport.UseVisualStyleBackColor = false;
+            btnExport.Click += btnExport_Click;
             // 
             // label9
             // 
@@ -315,6 +317,7 @@
             button4.Size = new Size(21, 29);
             button4.TabIndex = 60;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // label2
             // 
@@ -622,12 +625,6 @@
         private TextBox txtSemester;
         private Label label8;
         private DataGridView dgvCoursesToTake;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private Label label1;
         private Label label17;
         private Label label16;
@@ -643,5 +640,11 @@
         private DataGridViewTextBoxColumn yearLevel;
         private DataGridViewTextBoxColumn semester;
         private DataGridViewTextBoxColumn academicYear;
+        private DataGridViewTextBoxColumn ccode;
+        private DataGridViewTextBoxColumn ctitle;
+        private DataGridViewTextBoxColumn cunits;
+        private DataGridViewTextBoxColumn cyearlevel;
+        private DataGridViewTextBoxColumn csemester;
+        private DataGridViewTextBoxColumn cacademicyear;
     }
 }
