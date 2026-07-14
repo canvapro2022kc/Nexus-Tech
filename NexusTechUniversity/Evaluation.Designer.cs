@@ -46,7 +46,7 @@
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             label1 = new Label();
-            button1 = new Button();
+            btnExport = new Button();
             label9 = new Label();
             label7 = new Label();
             pictureBox1 = new PictureBox();
@@ -62,13 +62,7 @@
             label14 = new Label();
             label13 = new Label();
             label8 = new Label();
-            dataGridView1 = new DataGridView();
-            courseCode = new DataGridViewTextBoxColumn();
-            courseTitle = new DataGridViewTextBoxColumn();
-            units = new DataGridViewTextBoxColumn();
-            yearLevel = new DataGridViewTextBoxColumn();
-            semester = new DataGridViewTextBoxColumn();
-            academicYear = new DataGridViewTextBoxColumn();
+            dgCoursesTaken = new DataGridView();
             academicYear_txt = new TextBox();
             semester_txt = new TextBox();
             yearlevel_txt = new TextBox();
@@ -76,13 +70,22 @@
             mi_txt = new TextBox();
             fname_txt = new TextBox();
             srcode_txt = new TextBox();
+            btnEvaluate = new Button();
+            btnAssign = new Button();
+            taken = new DataGridViewCheckBoxColumn();
+            courseCode = new DataGridViewTextBoxColumn();
+            courseTitle = new DataGridViewTextBoxColumn();
+            units = new DataGridViewTextBoxColumn();
+            yearLevel = new DataGridViewTextBoxColumn();
+            semester = new DataGridViewTextBoxColumn();
+            academicYear = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvCourses).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgCoursesTaken).BeginInit();
             SuspendLayout();
             // 
             // comboBox3
@@ -150,9 +153,10 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(btnAssign);
             panel2.Controls.Add(dataGridView2);
             panel2.Controls.Add(label1);
-            panel2.Controls.Add(button1);
+            panel2.Controls.Add(btnExport);
             panel2.Location = new Point(842, 11);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
@@ -223,19 +227,19 @@
             label1.TabIndex = 72;
             label1.Text = "Courses to Take";
             // 
-            // button1
+            // btnExport
             // 
-            button1.BackColor = Color.Navy;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Tw Cen MT", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(641, 636);
-            button1.Name = "button1";
-            button1.Size = new Size(130, 39);
-            button1.TabIndex = 58;
-            button1.Text = "Export";
-            button1.UseVisualStyleBackColor = false;
+            btnExport.BackColor = Color.Navy;
+            btnExport.FlatAppearance.BorderSize = 0;
+            btnExport.FlatStyle = FlatStyle.Flat;
+            btnExport.Font = new Font("Tw Cen MT", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnExport.ForeColor = Color.White;
+            btnExport.Location = new Point(103, 636);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(291, 39);
+            btnExport.TabIndex = 58;
+            btnExport.Text = "Export";
+            btnExport.UseVisualStyleBackColor = false;
             // 
             // label9
             // 
@@ -301,13 +305,14 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(69, 125);
+            label2.Location = new Point(196, 106);
             label2.Name = "label2";
             label2.Size = new Size(0, 20);
             label2.TabIndex = 62;
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnEvaluate);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label17);
@@ -316,7 +321,7 @@
             panel1.Controls.Add(label14);
             panel1.Controls.Add(label13);
             panel1.Controls.Add(label8);
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(dgCoursesTaken);
             panel1.Controls.Add(academicYear_txt);
             panel1.Controls.Add(semester_txt);
             panel1.Controls.Add(yearlevel_txt);
@@ -339,7 +344,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(485, 174);
+            label4.Location = new Point(29, 155);
             label4.Name = "label4";
             label4.Size = new Size(110, 20);
             label4.TabIndex = 78;
@@ -348,7 +353,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(271, 174);
+            label3.Location = new Point(371, 155);
             label3.Name = "label3";
             label3.Size = new Size(73, 20);
             label3.TabIndex = 77;
@@ -357,7 +362,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(53, 174);
+            label17.Location = new Point(226, 155);
             label17.Name = "label17";
             label17.Size = new Size(78, 20);
             label17.TabIndex = 76;
@@ -366,7 +371,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(345, 105);
+            label16.Location = new Point(472, 86);
             label16.Name = "label16";
             label16.Size = new Size(82, 20);
             label16.TabIndex = 75;
@@ -375,7 +380,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(261, 105);
+            label15.Location = new Point(388, 86);
             label15.Name = "label15";
             label15.Size = new Size(32, 20);
             label15.TabIndex = 74;
@@ -384,16 +389,17 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(53, 105);
+            label14.Location = new Point(180, 86);
             label14.Name = "label14";
             label14.Size = new Size(83, 20);
             label14.TabIndex = 73;
             label14.Text = "First Name:";
+            label14.Click += label14_Click;
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(553, 131);
+            label13.Location = new Point(32, 86);
             label13.Name = "label13";
             label13.Size = new Size(70, 20);
             label13.TabIndex = 72;
@@ -410,38 +416,124 @@
             label8.TabIndex = 71;
             label8.Text = "Courses Taken";
             // 
-            // dataGridView1
+            // dgCoursesTaken
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { courseCode, courseTitle, units, yearLevel, semester, academicYear });
-            dataGridView1.Location = new Point(28, 286);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(753, 389);
-            dataGridView1.TabIndex = 70;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dgCoursesTaken.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgCoursesTaken.Columns.AddRange(new DataGridViewColumn[] { taken, courseCode, courseTitle, units, yearLevel, semester, academicYear });
+            dgCoursesTaken.Location = new Point(28, 286);
+            dgCoursesTaken.Name = "dgCoursesTaken";
+            dgCoursesTaken.RowHeadersVisible = false;
+            dgCoursesTaken.RowHeadersWidth = 51;
+            dgCoursesTaken.Size = new Size(753, 341);
+            dgCoursesTaken.TabIndex = 70;
+            dgCoursesTaken.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // academicYear_txt
+            // 
+            academicYear_txt.Location = new Point(33, 178);
+            academicYear_txt.Name = "academicYear_txt";
+            academicYear_txt.Size = new Size(164, 27);
+            academicYear_txt.TabIndex = 69;
+            // 
+            // semester_txt
+            // 
+            semester_txt.Location = new Point(375, 178);
+            semester_txt.Name = "semester_txt";
+            semester_txt.Size = new Size(119, 27);
+            semester_txt.TabIndex = 68;
+            // 
+            // yearlevel_txt
+            // 
+            yearlevel_txt.Location = new Point(226, 178);
+            yearlevel_txt.Name = "yearlevel_txt";
+            yearlevel_txt.Size = new Size(119, 27);
+            yearlevel_txt.TabIndex = 67;
+            // 
+            // lname_txt
+            // 
+            lname_txt.Location = new Point(472, 109);
+            lname_txt.Name = "lname_txt";
+            lname_txt.Size = new Size(193, 27);
+            lname_txt.TabIndex = 66;
+            // 
+            // mi_txt
+            // 
+            mi_txt.Location = new Point(388, 109);
+            mi_txt.Name = "mi_txt";
+            mi_txt.Size = new Size(70, 27);
+            mi_txt.TabIndex = 65;
+            mi_txt.TextChanged += mi_txt_TextChanged;
+            // 
+            // fname_txt
+            // 
+            fname_txt.Location = new Point(180, 109);
+            fname_txt.Name = "fname_txt";
+            fname_txt.Size = new Size(193, 27);
+            fname_txt.TabIndex = 64;
+            // 
+            // srcode_txt
+            // 
+            srcode_txt.Location = new Point(32, 109);
+            srcode_txt.Name = "srcode_txt";
+            srcode_txt.Size = new Size(136, 27);
+            srcode_txt.TabIndex = 63;
+            // 
+            // btnEvaluate
+            // 
+            btnEvaluate.BackColor = Color.Navy;
+            btnEvaluate.FlatAppearance.BorderSize = 0;
+            btnEvaluate.FlatStyle = FlatStyle.Flat;
+            btnEvaluate.Font = new Font("Tw Cen MT", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEvaluate.ForeColor = Color.White;
+            btnEvaluate.Location = new Point(651, 636);
+            btnEvaluate.Name = "btnEvaluate";
+            btnEvaluate.Size = new Size(130, 39);
+            btnEvaluate.TabIndex = 74;
+            btnEvaluate.Text = "Evaluate";
+            btnEvaluate.UseVisualStyleBackColor = false;
+            // 
+            // btnAssign
+            // 
+            btnAssign.BackColor = Color.Navy;
+            btnAssign.FlatAppearance.BorderSize = 0;
+            btnAssign.FlatStyle = FlatStyle.Flat;
+            btnAssign.Font = new Font("Tw Cen MT", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAssign.ForeColor = Color.White;
+            btnAssign.Location = new Point(413, 636);
+            btnAssign.Name = "btnAssign";
+            btnAssign.Size = new Size(291, 39);
+            btnAssign.TabIndex = 74;
+            btnAssign.Text = "Assign to Student";
+            btnAssign.UseVisualStyleBackColor = false;
+            // 
+            // taken
+            // 
+            taken.HeaderText = "Taken";
+            taken.MinimumWidth = 6;
+            taken.Name = "taken";
+            taken.Resizable = DataGridViewTriState.True;
+            taken.SortMode = DataGridViewColumnSortMode.Automatic;
+            taken.Width = 50;
             // 
             // courseCode
             // 
             courseCode.HeaderText = "Course Code";
             courseCode.MinimumWidth = 6;
             courseCode.Name = "courseCode";
-            courseCode.Width = 125;
             // 
             // courseTitle
             // 
             courseTitle.HeaderText = "Course Title";
             courseTitle.MinimumWidth = 6;
             courseTitle.Name = "courseTitle";
-            courseTitle.Width = 125;
+            courseTitle.Width = 170;
             // 
             // units
             // 
             units.HeaderText = "Units";
             units.MinimumWidth = 6;
             units.Name = "units";
-            units.Width = 125;
+            units.Width = 50;
             // 
             // yearLevel
             // 
@@ -462,57 +554,7 @@
             academicYear.HeaderText = "Academic Year";
             academicYear.MinimumWidth = 6;
             academicYear.Name = "academicYear";
-            academicYear.Width = 125;
-            // 
-            // academicYear_txt
-            // 
-            academicYear_txt.Location = new Point(601, 171);
-            academicYear_txt.Name = "academicYear_txt";
-            academicYear_txt.Size = new Size(164, 27);
-            academicYear_txt.TabIndex = 69;
-            // 
-            // semester_txt
-            // 
-            semester_txt.Location = new Point(350, 171);
-            semester_txt.Name = "semester_txt";
-            semester_txt.Size = new Size(119, 27);
-            semester_txt.TabIndex = 68;
-            // 
-            // yearlevel_txt
-            // 
-            yearlevel_txt.Location = new Point(137, 171);
-            yearlevel_txt.Name = "yearlevel_txt";
-            yearlevel_txt.Size = new Size(119, 27);
-            yearlevel_txt.TabIndex = 67;
-            // 
-            // lname_txt
-            // 
-            lname_txt.Location = new Point(345, 128);
-            lname_txt.Name = "lname_txt";
-            lname_txt.Size = new Size(193, 27);
-            lname_txt.TabIndex = 66;
-            // 
-            // mi_txt
-            // 
-            mi_txt.Location = new Point(261, 128);
-            mi_txt.Name = "mi_txt";
-            mi_txt.Size = new Size(70, 27);
-            mi_txt.TabIndex = 65;
-            mi_txt.TextChanged += mi_txt_TextChanged;
-            // 
-            // fname_txt
-            // 
-            fname_txt.Location = new Point(53, 128);
-            fname_txt.Name = "fname_txt";
-            fname_txt.Size = new Size(193, 27);
-            fname_txt.TabIndex = 64;
-            // 
-            // srcode_txt
-            // 
-            srcode_txt.Location = new Point(629, 128);
-            srcode_txt.Name = "srcode_txt";
-            srcode_txt.Size = new Size(136, 27);
-            srcode_txt.TabIndex = 63;
+            academicYear.Width = 130;
             // 
             // Evaluation
             // 
@@ -532,7 +574,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgCoursesTaken).EndInit();
             ResumeLayout(false);
         }
 
@@ -547,7 +589,7 @@
         private Label label10;
         private DataGridView dgvCourses;
         private Panel panel2;
-        private Button button1;
+        private Button btnExport;
         private TextBox textBox3_2;
         private ComboBox comboBox1_2;
         private ComboBox comboBox3_2;
@@ -574,16 +616,10 @@
         private TextBox mi_txt;
         private TextBox lname_txt;
         private TextBox yearlevel_txt;
-        private DataGridView dataGridView1;
+        private DataGridView dgCoursesTaken;
         private TextBox academicYear_txt;
         private TextBox semester_txt;
         private Label label8;
-        private DataGridViewTextBoxColumn courseCode;
-        private DataGridViewTextBoxColumn courseTitle;
-        private DataGridViewTextBoxColumn units;
-        private DataGridViewTextBoxColumn yearLevel;
-        private DataGridViewTextBoxColumn semester;
-        private DataGridViewTextBoxColumn academicYear;
         private DataGridView dataGridView2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -597,5 +633,14 @@
         private Label label15;
         private Label label14;
         private Label label13;
+        private Button btnAssign;
+        private Button btnEvaluate;
+        private DataGridViewCheckBoxColumn taken;
+        private DataGridViewTextBoxColumn courseCode;
+        private DataGridViewTextBoxColumn courseTitle;
+        private DataGridViewTextBoxColumn units;
+        private DataGridViewTextBoxColumn yearLevel;
+        private DataGridViewTextBoxColumn semester;
+        private DataGridViewTextBoxColumn academicYear;
     }
 }
