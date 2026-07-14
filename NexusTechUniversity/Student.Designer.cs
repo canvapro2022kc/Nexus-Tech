@@ -46,6 +46,9 @@
             firstName = new DataGridViewTextBoxColumn();
             middleInitial = new DataGridViewTextBoxColumn();
             lastName = new DataGridViewTextBoxColumn();
+            yearLevel = new DataGridViewTextBoxColumn();
+            currentSemester = new DataGridViewTextBoxColumn();
+            academicYear = new DataGridViewTextBoxColumn();
             btnEvaluation = new DataGridViewButtonColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -201,12 +204,12 @@
             // dgvStudent
             // 
             dgvStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStudent.Columns.AddRange(new DataGridViewColumn[] { srCode, firstName, middleInitial, lastName, btnEvaluation });
+            dgvStudent.Columns.AddRange(new DataGridViewColumn[] { srCode, firstName, middleInitial, lastName, yearLevel, currentSemester, academicYear, btnEvaluation });
             dgvStudent.Location = new Point(282, 179);
             dgvStudent.Name = "dgvStudent";
             dgvStudent.RowHeadersVisible = false;
             dgvStudent.RowHeadersWidth = 51;
-            dgvStudent.Size = new Size(815, 397);
+            dgvStudent.Size = new Size(815, 413);
             dgvStudent.TabIndex = 13;
             dgvStudent.CellContentClick += dgvStudent_CellContentClick;
             // 
@@ -215,35 +218,55 @@
             srCode.HeaderText = "SR-Code";
             srCode.MinimumWidth = 6;
             srCode.Name = "srCode";
-            srCode.Width = 105;
+            srCode.Width = 80;
             // 
             // firstName
             // 
             firstName.HeaderText = "First Name";
             firstName.MinimumWidth = 6;
             firstName.Name = "firstName";
-            firstName.Width = 200;
+            firstName.Width = 125;
             // 
             // middleInitial
             // 
             middleInitial.HeaderText = "M.I.";
             middleInitial.MinimumWidth = 6;
             middleInitial.Name = "middleInitial";
-            middleInitial.Width = 200;
+            middleInitial.Width = 50;
             // 
             // lastName
             // 
             lastName.HeaderText = "Last Name";
             lastName.MinimumWidth = 6;
             lastName.Name = "lastName";
-            lastName.Width = 200;
+            lastName.Width = 125;
+            // 
+            // yearLevel
+            // 
+            yearLevel.HeaderText = "Year Level";
+            yearLevel.MinimumWidth = 6;
+            yearLevel.Name = "yearLevel";
+            yearLevel.Width = 125;
+            // 
+            // currentSemester
+            // 
+            currentSemester.HeaderText = "Semester";
+            currentSemester.MinimumWidth = 6;
+            currentSemester.Name = "currentSemester";
+            currentSemester.Width = 125;
+            // 
+            // academicYear
+            // 
+            academicYear.HeaderText = "Academic Year";
+            academicYear.MinimumWidth = 6;
+            academicYear.Name = "academicYear";
             // 
             // btnEvaluation
             // 
             btnEvaluation.HeaderText = "Evaluate";
             btnEvaluation.MinimumWidth = 6;
             btnEvaluation.Name = "btnEvaluation";
-            btnEvaluation.Width = 110;
+            btnEvaluation.Width = 80;
             // 
             // Student
             // 
@@ -286,6 +309,9 @@
         private DataGridViewTextBoxColumn firstName;
         private DataGridViewTextBoxColumn middleInitial;
         private DataGridViewTextBoxColumn lastName;
+        private DataGridViewTextBoxColumn yearLevel;
+        private DataGridViewTextBoxColumn currentSemester;
+        private DataGridViewTextBoxColumn academicYear;
         private DataGridViewButtonColumn btnEvaluation;
     }
 }

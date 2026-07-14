@@ -72,7 +72,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Tw Cen MT", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Navy;
-            label1.Location = new Point(30, 88);
+            label1.Location = new Point(30, 90);
             label1.Name = "label1";
             label1.Size = new Size(187, 31);
             label1.TabIndex = 63;
@@ -81,13 +81,14 @@
             // dgvStudents
             // 
             dgvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStudents.Location = new Point(30, 135);
+            dgvStudents.Location = new Point(30, 124);
             dgvStudents.Margin = new Padding(3, 4, 3, 4);
             dgvStudents.Name = "dgvStudents";
             dgvStudents.RowHeadersWidth = 51;
             dgvStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvStudents.Size = new Size(568, 78);
+            dgvStudents.Size = new Size(568, 77);
             dgvStudents.TabIndex = 62;
+            dgvStudents.CellContentClick += dgvStudents_CellContentClick_1;
             // 
             // btnBack
             // 

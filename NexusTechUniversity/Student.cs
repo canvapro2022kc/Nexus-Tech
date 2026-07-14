@@ -23,17 +23,13 @@ namespace NexusTechUniversity
         {
             // 1. Check if a valid row was clicked (ignores clicks on the column headers)
             // 2. Check if the clicked column is the "Evaluate" column (Index 4)
-            if (e.RowIndex >= 0 && e.ColumnIndex == 4)
+            if (e.RowIndex >= 0 && e.ColumnIndex == 7)
             {
-                // Retrieve the SR-Code from Column 0 of the clicked row
                 string srCode = dgvStudent.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-                // Create the new form and pass the SR-Code to its constructor
-                // Note: Change 'AddStudent' if your evaluation form has a different class name
                 Evaluation evaluation = new Evaluation(srCode);
                 evaluation.Show();
 
-                // Hide the current student list form
                 this.Hide();
             }
         }
@@ -75,7 +71,10 @@ namespace NexusTechUniversity
                             studentIdentifier,
                             data.ContainsKey("firstName") ? data["firstName"] : "",
                             data.ContainsKey("middleInitial") ? data["middleInitial"] : "",
-                            data.ContainsKey("lastName") ? data["lastName"] : ""
+                            data.ContainsKey("lastName") ? data["lastName"] : "",
+                            data.ContainsKey("yearLevel") ? data["yearLevel"] : "",
+                            data.ContainsKey("currentSemester") ? data["currentSemester"] : "",
+                            data.ContainsKey("currentAcademicYear") ? data["currentAcademicYear"] : ""
                         );
                     }
                 }
