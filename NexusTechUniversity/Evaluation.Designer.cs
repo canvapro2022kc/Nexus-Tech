@@ -635,7 +635,7 @@
         private Label label14;
         private Label label13;
         private Button btnAssign;
-        private Button btnEvaluate;
+        private Button Evaluate;
         private DataGridViewCheckBoxColumn taken;
         private DataGridViewTextBoxColumn courseCode;
         private DataGridViewTextBoxColumn courseTitle;
