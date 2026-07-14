@@ -48,13 +48,8 @@
             lastName = new DataGridViewTextBoxColumn();
             yearLevel = new DataGridViewTextBoxColumn();
             currentSemester = new DataGridViewTextBoxColumn();
-<<<<<<< HEAD
             academicYear = new DataGridViewTextBoxColumn();
             btnEvaluation = new DataGridViewButtonColumn();
-=======
-            btnEnroll = new DataGridViewButtonColumn();
-            btnEdit = new DataGridViewButtonColumn();
->>>>>>> 7bb48be (Add student code button to Student Form)
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudent).BeginInit();
@@ -169,11 +164,7 @@
             btnAddStudent.FlatStyle = FlatStyle.Flat;
             btnAddStudent.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddStudent.ForeColor = Color.White;
-<<<<<<< HEAD
             btnAddStudent.Location = new Point(970, 122);
-=======
-            btnAddStudent.Location = new Point(969, 115);
->>>>>>> 7bb48be (Add student code button to Student Form)
             btnAddStudent.Name = "btnAddStudent";
             btnAddStudent.Size = new Size(127, 31);
             btnAddStudent.TabIndex = 3;
@@ -213,21 +204,12 @@
             // dgvStudent
             // 
             dgvStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-<<<<<<< HEAD
             dgvStudent.Columns.AddRange(new DataGridViewColumn[] { srCode, firstName, middleInitial, lastName, yearLevel, currentSemester, academicYear, btnEvaluation });
             dgvStudent.Location = new Point(282, 179);
             dgvStudent.Name = "dgvStudent";
             dgvStudent.RowHeadersVisible = false;
             dgvStudent.RowHeadersWidth = 51;
             dgvStudent.Size = new Size(815, 413);
-=======
-            dgvStudent.Columns.AddRange(new DataGridViewColumn[] { srCode, firstName, middleInitial, lastName, yearLevel, currentSemester, btnEnroll, btnEdit });
-            dgvStudent.Location = new Point(281, 172);
-            dgvStudent.Name = "dgvStudent";
-            dgvStudent.RowHeadersVisible = false;
-            dgvStudent.RowHeadersWidth = 51;
-            dgvStudent.Size = new Size(815, 397);
->>>>>>> 7bb48be (Add student code button to Student Form)
             dgvStudent.TabIndex = 13;
             dgvStudent.CellContentClick += dgvStudent_CellContentClick;
             // 
@@ -236,19 +218,13 @@
             srCode.HeaderText = "SR-Code";
             srCode.MinimumWidth = 6;
             srCode.Name = "srCode";
-<<<<<<< HEAD
             srCode.Width = 80;
-=======
-            srCode.ReadOnly = true;
-            srCode.Width = 125;
->>>>>>> 7bb48be (Add student code button to Student Form)
             // 
             // firstName
             // 
             firstName.HeaderText = "First Name";
             firstName.MinimumWidth = 6;
             firstName.Name = "firstName";
-            firstName.ReadOnly = true;
             firstName.Width = 125;
             // 
             // middleInitial
@@ -256,56 +232,24 @@
             middleInitial.HeaderText = "M.I.";
             middleInitial.MinimumWidth = 6;
             middleInitial.Name = "middleInitial";
-<<<<<<< HEAD
             middleInitial.Width = 50;
-=======
-            middleInitial.ReadOnly = true;
-            middleInitial.Width = 125;
->>>>>>> 7bb48be (Add student code button to Student Form)
             // 
             // lastName
             // 
             lastName.HeaderText = "Last Name";
             lastName.MinimumWidth = 6;
             lastName.Name = "lastName";
-            lastName.ReadOnly = true;
             lastName.Width = 125;
             // 
             // yearLevel
-<<<<<<< HEAD
             // 
             yearLevel.HeaderText = "Year Level";
             yearLevel.MinimumWidth = 6;
             yearLevel.Name = "yearLevel";
             yearLevel.Width = 125;
-=======
-            // 
-            yearLevel.HeaderText = "Year Level";
-            yearLevel.MinimumWidth = 6;
-            yearLevel.Name = "yearLevel";
-            yearLevel.ReadOnly = true;
-            yearLevel.Width = 125;
             // 
             // currentSemester
             // 
-            currentSemester.HeaderText = "Semester";
-            currentSemester.MinimumWidth = 6;
-            currentSemester.Name = "currentSemester";
-            currentSemester.ReadOnly = true;
-            currentSemester.Width = 125;
-            // 
-            // btnEnroll
-            // 
-            btnEnroll.HeaderText = "Evaluate";
-            btnEnroll.MinimumWidth = 6;
-            btnEnroll.Name = "btnEnroll";
-            btnEnroll.Resizable = DataGridViewTriState.False;
-            btnEnroll.Width = 125;
->>>>>>> 7bb48be (Add student code button to Student Form)
-            // 
-            // currentSemester
-            // 
-<<<<<<< HEAD
             currentSemester.HeaderText = "Semester";
             currentSemester.MinimumWidth = 6;
             currentSemester.Name = "currentSemester";
@@ -323,14 +267,6 @@
             btnEvaluation.MinimumWidth = 6;
             btnEvaluation.Name = "btnEvaluation";
             btnEvaluation.Width = 80;
-=======
-            btnEdit.HeaderText = "Edit";
-            btnEdit.MinimumWidth = 6;
-            btnEdit.Name = "btnEdit";
-            btnEdit.Resizable = DataGridViewTriState.False;
-            btnEdit.SortMode = DataGridViewColumnSortMode.Automatic;
-            btnEdit.Width = 125;
->>>>>>> 7bb48be (Add student code button to Student Form)
             // 
             // Student
             // 
@@ -375,12 +311,7 @@
         private DataGridViewTextBoxColumn lastName;
         private DataGridViewTextBoxColumn yearLevel;
         private DataGridViewTextBoxColumn currentSemester;
-<<<<<<< HEAD
         private DataGridViewTextBoxColumn academicYear;
         private DataGridViewButtonColumn btnEvaluation;
-=======
-        private DataGridViewButtonColumn btnEnroll;
-        private DataGridViewButtonColumn btnEdit;
->>>>>>> 7bb48be (Add student code button to Student Form)
     }
 }

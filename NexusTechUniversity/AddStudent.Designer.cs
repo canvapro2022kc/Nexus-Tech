@@ -320,7 +320,6 @@
             // 
             // btnLoadStudents
             // 
-<<<<<<< HEAD:NexusTechUniversity/AddStudent.Designer.cs
             btnLoadStudents.BackColor = Color.Navy;
             btnLoadStudents.FlatAppearance.BorderSize = 0;
             btnLoadStudents.FlatStyle = FlatStyle.Flat;
@@ -333,24 +332,6 @@
             btnLoadStudents.Text = "Load Students";
             btnLoadStudents.UseVisualStyleBackColor = false;
             btnLoadStudents.Click += btnLoadStudents_Click;
-=======
-            label10.AutoSize = true;
-            label10.Font = new Font("Tw Cen MT", 9.75F);
-            label10.Location = new Point(252, 168);
-            label10.Name = "label10";
-            label10.Size = new Size(74, 20);
-            label10.TabIndex = 40;
-            label10.Text = "SR-Code:";
-            // 
-            // txtboxCode
-            // 
-            txtboxCode.Location = new Point(252, 192);
-            txtboxCode.Margin = new Padding(3, 4, 3, 4);
-            txtboxCode.Name = "txtboxCode";
-            txtboxCode.Size = new Size(179, 27);
-            txtboxCode.TabIndex = 37;
-            txtboxCode.TextChanged += txtboxCode_TextChanged;
->>>>>>> 7bb48be (Add student code button to Student Form):NexusTechUniversity/Add Student.Designer.cs
             // 
             // Add_Student
             // 

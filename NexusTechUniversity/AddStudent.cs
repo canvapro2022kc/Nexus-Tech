@@ -415,10 +415,5 @@ namespace NexusTechUniversity
 
             this.Hide();
         }
-
-        private void txtboxCode_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
