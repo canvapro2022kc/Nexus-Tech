@@ -18,6 +18,7 @@ namespace NexusTechUniversity
             this.Hide();
         }
 
+<<<<<<< HEAD
 
         private void dgvStudent_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -83,6 +84,18 @@ namespace NexusTechUniversity
             {
                 MessageBox.Show("Failed to load data: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+=======
+        private void dgvStudent_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex ==7)
+            {
+                string srCode = dgvStudent.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                Evaluation evaluation = new Evaluation();
+                evaluation.Show();
+                this.Hide();
+            }
+>>>>>>> 7bb48be (Add student code button to Student Form)
         }
     }
 }
