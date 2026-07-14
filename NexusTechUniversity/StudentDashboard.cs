@@ -269,5 +269,58 @@ namespace NexusTechUniversity
         {
 
         }
+
+        private async void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(studentId))
+            {
+                MessageBox.Show("Cannot change password. No logged-in student found.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Gagamit tayo ng simpleng Microsoft Visual Basic InputBox para makuha ang bagong password.
+            // (Tiyaking walang error ito. Kung hindi mo magamit ang Interaction.InputBox, 
+            // maaari mong palitan ito ng text box input mula sa iyong UI tulad ng txtboxNewPassword.Text)
+            string newPassword = Microsoft.VisualBasic.Interaction.InputBox(
+                "Enter your new password:",
+                "Change Password",
+                "");
+
+            // I-validate kung walang nilagay o kinansela ang pag-input
+            if (string.IsNullOrWhiteSpace(newPassword))
+            {
+                MessageBox.Show("Password change cancelled or invalid input.",
+                    "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            try
+            {
+                // 1. I-update ang password sa 'users' collection
+                DocumentReference userDocRef = Db.Collection("users").Document(studentId);
+                Dictionary<string, object> userUpdate = new Dictionary<string, object>
+                {
+                    { "password", newPassword }
+                };
+                await userDocRef.SetAsync(userUpdate, SetOptions.MergeAll);
+
+                // 2. I-update din ang password sa 'students' collection para laging tugma ang dalawa
+                DocumentReference studentDocRef = Db.Collection("students").Document(studentId);
+                Dictionary<string, object> studentUpdate = new Dictionary<string, object>
+                {
+                    { "password", newPassword }
+                };
+                await studentDocRef.SetAsync(studentUpdate, SetOptions.MergeAll);
+
+                MessageBox.Show("Your password has been successfully changed!",
+                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to change password in database:\n" + ex.Message,
+                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

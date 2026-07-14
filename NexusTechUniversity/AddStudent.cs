@@ -68,8 +68,8 @@ namespace NexusTechUniversity
 
             // This query only uses range filters, which does NOT require a composite index
             Query query = collectionRef
-                .WhereGreaterThanOrEqualTo(FieldPath.DocumentId, currentYearSuffix + "-0000")
-                .WhereLessThanOrEqualTo(FieldPath.DocumentId, currentYearSuffix + "-9999");
+                .WhereGreaterThanOrEqualTo(FieldPath.DocumentId, currentYearSuffix + "-00000")
+                .WhereLessThanOrEqualTo(FieldPath.DocumentId, currentYearSuffix + "-99999");
 
             QuerySnapshot snapshot = await query.GetSnapshotAsync();
             int nextNumber = 1;
@@ -86,7 +86,37 @@ namespace NexusTechUniversity
                 }
             }
 
-            return $"{currentYearSuffix}-{nextNumber:D4}"; // Returns "26-0006"
+            return $"{currentYearSuffix}-{nextNumber:D5}"; // Returns "26-0006"
+        }
+
+        private async Task GenerateStudentPassword(string srCode, string firstName, string lastName)
+        {
+            try
+            {
+                // 1. I-save ang password sa 'students' collection (yung ginawa natin kanina)
+                DocumentReference studentDocRef = db.Collection("students").Document(srCode);
+                Dictionary<string, object> passwordData = new Dictionary<string, object>
+                {
+                    { "password", srCode }
+            };
+                await studentDocRef.SetAsync(passwordData, SetOptions.MergeAll);
+
+                // 2. GUMAWA NG BAGONG DOCUMENT SA 'users' COLLECTION (Base sa iyong screenshot)
+                DocumentReference userDocRef = db.Collection("users").Document(srCode);
+                Dictionary<string, object> userData = new Dictionary<string, object>
+            {
+            { "firstName", firstName },
+            { "lastName", lastName },
+            { "password", srCode },         // Default password ay SR Code pa rin
+            { "role", "student" },          // Laging "student" para sa screen na ito
+            { "username", srCode }          // Ang username ay ang SR Code
+            };
+                await userDocRef.SetAsync(userData); // SetAsync nang walang Merge para malinis na magawa ang user record
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to create user login credentials: " + ex.Message);
+            }
         }
 
         private bool ValidateStudentInputs(out string errorMessage)
@@ -157,24 +187,27 @@ namespace NexusTechUniversity
                     : "null";
 
                 Dictionary<string, object> studentData = new Dictionary<string, object>
-                {
-                    { "studentID", generatedSRCode },
-                    { "firstName", txtboxFName.Text.Trim() },
-                    { "middleInitial", txtboxMI.Text.Trim() },
-                    { "lastName", txtboxLName.Text.Trim() },
-                    { "currentAcademicYear", comboBox3.SelectedItem?.ToString() ?? "" },
-                    { "currentSemester", comboBox2.SelectedItem?.ToString() ?? "" },
-                    { "status", "Enrolled" },
-                    { "email", $"{generatedSRCode}@nexus.edu.ph" },
-                    { "subStatus", comboBox4.SelectedItem.ToString() },
-                    { "irregularReason", irregularReason },
-                    { "yearLevel", comboBox1.SelectedItem.ToString() }
-                };
+        {
+            { "studentID", generatedSRCode },
+            { "firstName", txtboxFName.Text.Trim() },
+            { "middleInitial", txtboxMI.Text.Trim() },
+            { "lastName", txtboxLName.Text.Trim() },
+            { "currentAcademicYear", comboBox3.SelectedItem?.ToString() ?? "" },
+            { "currentSemester", comboBox2.SelectedItem?.ToString() ?? "" },
+            { "status", "Enrolled" },
+            { "email", $"{generatedSRCode}@nexus.edu.ph" },
+            { "subStatus", comboBox4.SelectedItem.ToString() },
+            { "yearLevel", comboBox1.SelectedItem.ToString() }
+        };
 
                 DocumentReference docRef = collectionRef.Document(generatedSRCode);
                 await docRef.SetAsync(studentData);
 
-                MessageBox.Show($"Student successfully added! Generated SR-Code: {generatedSRCode}");
+                string fName = txtboxFName.Text.Trim();
+                string lName = txtboxLName.Text.Trim();
+                await GenerateStudentPassword(generatedSRCode, fName, lName);
+
+                MessageBox.Show($"Student successfully added!\nGenerated SR-Code: {generatedSRCode}\nDefault Password: {generatedSRCode}");
 
                 ClearInputFields();
                 await RefreshStudentsGrid();
@@ -417,6 +450,11 @@ namespace NexusTechUniversity
         }
 
         private void Add_Student_Load_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtboxCode_TextChanged(object sender, EventArgs e)
         {
 
         }
