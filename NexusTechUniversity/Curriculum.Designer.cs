@@ -108,7 +108,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1133, 619);
+            panel2.Size = new Size(1140, 608);
             panel2.TabIndex = 3;
             panel2.Paint += panel2_Paint;
             // 
@@ -117,7 +117,7 @@
             label14.AutoSize = true;
             label14.BackColor = SystemColors.Control;
             label14.Font = new Font("Tw Cen MT", 9F);
-            label14.Location = new Point(34, 309);
+            label14.Location = new Point(34, 308);
             label14.Name = "label14";
             label14.Size = new Size(102, 17);
             label14.TabIndex = 79;
@@ -126,9 +126,9 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(34, 329);
+            textBox1.Location = new Point(35, 328);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
+            textBox1.Size = new Size(155, 27);
             textBox1.TabIndex = 78;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
@@ -139,7 +139,7 @@
             comboBoxSem.ForeColor = SystemColors.Window;
             comboBoxSem.FormattingEnabled = true;
             comboBoxSem.Items.AddRange(new object[] { "First Semester", "Second Semester", "Midterm" });
-            comboBoxSem.Location = new Point(34, 394);
+            comboBoxSem.Location = new Point(34, 387);
             comboBoxSem.Name = "comboBoxSem";
             comboBoxSem.Size = new Size(162, 25);
             comboBoxSem.TabIndex = 77;
@@ -152,9 +152,9 @@
             comboBoxLevel.ForeColor = SystemColors.Window;
             comboBoxLevel.FormattingEnabled = true;
             comboBoxLevel.Items.AddRange(new object[] { "First Year", "Second Year", "Third Year", "Fourth Year", "Fifth Year" });
-            comboBoxLevel.Location = new Point(173, 329);
+            comboBoxLevel.Location = new Point(202, 330);
             comboBoxLevel.Name = "comboBoxLevel";
-            comboBoxLevel.Size = new Size(152, 25);
+            comboBoxLevel.Size = new Size(162, 25);
             comboBoxLevel.TabIndex = 76;
             // 
             // label13
@@ -162,7 +162,7 @@
             label13.AutoSize = true;
             label13.BackColor = SystemColors.Control;
             label13.Font = new Font("Tw Cen MT", 9F);
-            label13.Location = new Point(34, 374);
+            label13.Location = new Point(34, 367);
             label13.Name = "label13";
             label13.Size = new Size(67, 17);
             label13.TabIndex = 75;
@@ -173,7 +173,7 @@
             label12.AutoSize = true;
             label12.BackColor = SystemColors.Control;
             label12.Font = new Font("Tw Cen MT", 9F);
-            label12.Location = new Point(175, 309);
+            label12.Location = new Point(202, 308);
             label12.Name = "label12";
             label12.Size = new Size(76, 17);
             label12.TabIndex = 74;
@@ -184,7 +184,7 @@
             label11.AutoSize = true;
             label11.BackColor = SystemColors.Control;
             label11.Font = new Font("Tw Cen MT", 9F);
-            label11.Location = new Point(173, 249);
+            label11.Location = new Point(173, 248);
             label11.Name = "label11";
             label11.Size = new Size(44, 17);
             label11.TabIndex = 73;
@@ -195,7 +195,7 @@
             label10.AutoSize = true;
             label10.BackColor = SystemColors.Control;
             label10.Font = new Font("Tw Cen MT", 9F);
-            label10.Location = new Point(35, 249);
+            label10.Location = new Point(35, 248);
             label10.Name = "label10";
             label10.Size = new Size(108, 17);
             label10.TabIndex = 72;
@@ -273,7 +273,7 @@
             txtboxTrack.BackColor = Color.White;
             txtboxTrack.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtboxTrack.ForeColor = SystemColors.Window;
-            txtboxTrack.Location = new Point(173, 269);
+            txtboxTrack.Location = new Point(173, 268);
             txtboxTrack.Name = "txtboxTrack";
             txtboxTrack.Size = new Size(191, 24);
             txtboxTrack.TabIndex = 63;
@@ -283,7 +283,7 @@
             txtboxType.BackColor = Color.White;
             txtboxType.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtboxType.ForeColor = SystemColors.Window;
-            txtboxType.Location = new Point(35, 269);
+            txtboxType.Location = new Point(35, 268);
             txtboxType.Name = "txtboxType";
             txtboxType.Size = new Size(123, 24);
             txtboxType.TabIndex = 62;
@@ -462,9 +462,9 @@
             btnAddCourse.FlatStyle = FlatStyle.Flat;
             btnAddCourse.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddCourse.ForeColor = Color.White;
-            btnAddCourse.Location = new Point(278, 435);
+            btnAddCourse.Location = new Point(220, 381);
             btnAddCourse.Name = "btnAddCourse";
-            btnAddCourse.Size = new Size(86, 31);
+            btnAddCourse.Size = new Size(144, 31);
             btnAddCourse.TabIndex = 15;
             btnAddCourse.Text = "Add";
             btnAddCourse.UseVisualStyleBackColor = false;
@@ -505,7 +505,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1133, 619);
+            ClientSize = new Size(1140, 608);
             Controls.Add(panel2);
             Name = "Curriculum";
             Text = "Curriculum";

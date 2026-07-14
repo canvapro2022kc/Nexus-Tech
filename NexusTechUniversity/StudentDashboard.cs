@@ -238,24 +238,34 @@ namespace NexusTechUniversity
                : s;
 
         // ---- Designer click handlers (intentionally empty; view-only form) ----
-        private void lblAcadyear_Click(object sender, EventArgs e) 
-        { 
-        
-        }
-        private void lblfName_Click(object sender, EventArgs e) 
-        { 
-        
-        }
-        private void lblDepartment_Click(object sender, EventArgs e) 
-        { 
-        
-        }
-        private void dgvCourses_CellContentClick(object sender, DataGridViewCellEventArgs e) 
+        private void lblAcadyear_Click(object sender, EventArgs e)
         {
-        
+
+        }
+        private void lblfName_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void lblDepartment_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void dgvCourses_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         private void lblStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }

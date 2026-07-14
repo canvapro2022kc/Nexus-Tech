@@ -415,5 +415,10 @@ namespace NexusTechUniversity
 
             this.Hide();
         }
+
+        private void Add_Student_Load_2(object sender, EventArgs e)
+        {
+
+        }
     }
 }

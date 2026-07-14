@@ -29,8 +29,6 @@ namespace NexusTechUniversity
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentDashboard));
-            panel1 = new Panel();
-            btnExportPOS = new Button();
             dgvCourses = new DataGridView();
             courseCode = new DataGridViewTextBoxColumn();
             courseName = new DataGridViewTextBoxColumn();
@@ -46,41 +44,13 @@ namespace NexusTechUniversity
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label1 = new Label();
-            panel1.SuspendLayout();
+            btnExportPOS = new Button();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvCourses).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(btnExportPOS);
-            panel1.Controls.Add(dgvCourses);
-            panel1.Controls.Add(panel2);
-            panel1.Controls.Add(btnLogout);
-            panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label1);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1133, 619);
-            panel1.TabIndex = 0;
-            // 
-            // btnExportPOS
-            // 
-            btnExportPOS.BackColor = Color.Navy;
-            btnExportPOS.FlatAppearance.BorderSize = 0;
-            btnExportPOS.FlatStyle = FlatStyle.Flat;
-            btnExportPOS.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnExportPOS.ForeColor = Color.White;
-            btnExportPOS.Location = new Point(951, 558);
-            btnExportPOS.Name = "btnExportPOS";
-            btnExportPOS.Size = new Size(127, 31);
-            btnExportPOS.TabIndex = 11;
-            btnExportPOS.Text = "Export POS";
-            btnExportPOS.UseVisualStyleBackColor = false;
-            btnExportPOS.Click += btnExportPOS_Click;
             // 
             // dgvCourses
             // 
@@ -212,6 +182,7 @@ namespace NexusTechUniversity
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // label2
             // 
@@ -235,27 +206,56 @@ namespace NexusTechUniversity
             label1.TabIndex = 5;
             label1.Text = "NexusTech";
             // 
+            // btnExportPOS
+            // 
+            btnExportPOS.BackColor = Color.Navy;
+            btnExportPOS.FlatAppearance.BorderSize = 0;
+            btnExportPOS.FlatStyle = FlatStyle.Flat;
+            btnExportPOS.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnExportPOS.ForeColor = Color.White;
+            btnExportPOS.Location = new Point(951, 558);
+            btnExportPOS.Name = "btnExportPOS";
+            btnExportPOS.Size = new Size(127, 31);
+            btnExportPOS.TabIndex = 11;
+            btnExportPOS.Text = "Export POS";
+            btnExportPOS.UseVisualStyleBackColor = false;
+            btnExportPOS.Click += btnExportPOS_Click;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(btnExportPOS);
+            panel1.Controls.Add(dgvCourses);
+            panel1.Controls.Add(panel2);
+            panel1.Controls.Add(btnLogout);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label1);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1140, 608);
+            panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
+            // 
             // StudentDashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1133, 619);
+            ClientSize = new Size(1140, 608);
             Controls.Add(panel1);
             Name = "StudentDashboard";
             Text = "StudentDashboard";
             Load += StudentDashboard_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCourses).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panel1;
         private PictureBox pictureBox1;
         private Label label2;
         private Label label1;
@@ -270,7 +270,8 @@ namespace NexusTechUniversity
         private DataGridViewTextBoxColumn courseDescription;
         private DataGridViewTextBoxColumn units;
         private DataGridViewTextBoxColumn remarks;
-        private Button btnExportPOS;
         private Label lblAcadYear;
+        private Button btnExportPOS;
+        private Panel panel1;
     }
 }

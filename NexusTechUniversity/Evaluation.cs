@@ -29,7 +29,7 @@ namespace NexusTechUniversity
 
         private async void Evaluation_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace NexusTechUniversity
 
         private async void btnEvaluate_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dgvStudents_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -50,6 +50,17 @@ namespace NexusTechUniversity
         }
 
         private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+        }
+
+        private void mi_txt_TextChanged(object sender, EventArgs e)
         {
 
         }

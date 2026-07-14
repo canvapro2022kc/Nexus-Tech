@@ -72,9 +72,9 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(txtboxPassword);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(363, 28);
+            panel1.Location = new Point(378, 39);
             panel1.Name = "panel1";
-            panel1.Size = new Size(397, 549);
+            panel1.Size = new Size(397, 519);
             panel1.TabIndex = 4;
             // 
             // pictureBox1
@@ -93,7 +93,7 @@
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(63, 421);
+            btnLogin.Location = new Point(62, 400);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(272, 44);
             btnLogin.TabIndex = 2;
@@ -143,7 +143,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1133, 619);
+            ClientSize = new Size(1140, 608);
             Controls.Add(panel1);
             Name = "Form1";
             Text = "Form1";

@@ -52,7 +52,6 @@
             btnEdit = new Button();
             btnAddStudent = new Button();
             button4 = new Button();
-            label10 = new Label();
             txtboxCode = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
@@ -94,7 +93,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Tw Cen MT", 9.75F);
-            label1.Location = new Point(48, 104);
+            label1.Location = new Point(51, 97);
             label1.Name = "label1";
             label1.Size = new Size(85, 20);
             label1.TabIndex = 32;
@@ -104,7 +103,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Tw Cen MT", 9.75F);
-            label2.Location = new Point(235, 104);
+            label2.Location = new Point(238, 97);
             label2.Name = "label2";
             label2.Size = new Size(34, 20);
             label2.TabIndex = 33;
@@ -114,7 +113,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Tw Cen MT", 9.75F);
-            label3.Location = new Point(312, 104);
+            label3.Location = new Point(315, 97);
             label3.Name = "label3";
             label3.Size = new Size(85, 20);
             label3.TabIndex = 34;
@@ -124,7 +123,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Tw Cen MT", 9.75F);
-            label4.Location = new Point(505, 104);
+            label4.Location = new Point(508, 97);
             label4.Name = "label4";
             label4.Size = new Size(86, 20);
             label4.TabIndex = 35;
@@ -134,7 +133,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Tw Cen MT", 9.75F);
-            label5.Location = new Point(703, 104);
+            label5.Location = new Point(706, 97);
             label5.Name = "label5";
             label5.Size = new Size(77, 20);
             label5.TabIndex = 36;
@@ -144,7 +143,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Tw Cen MT", 9.75F);
-            label6.Location = new Point(899, 104);
+            label6.Location = new Point(902, 97);
             label6.Name = "label6";
             label6.Size = new Size(116, 20);
             label6.TabIndex = 37;
@@ -152,7 +151,7 @@
             // 
             // txtboxFName
             // 
-            txtboxFName.Location = new Point(48, 129);
+            txtboxFName.Location = new Point(51, 122);
             txtboxFName.Margin = new Padding(3, 4, 3, 4);
             txtboxFName.Name = "txtboxFName";
             txtboxFName.Size = new Size(179, 27);
@@ -160,7 +159,7 @@
             // 
             // txtboxLName
             // 
-            txtboxLName.Location = new Point(312, 129);
+            txtboxLName.Location = new Point(315, 122);
             txtboxLName.Margin = new Padding(3, 4, 3, 4);
             txtboxLName.Name = "txtboxLName";
             txtboxLName.Size = new Size(179, 27);
@@ -168,7 +167,7 @@
             // 
             // txtboxMI
             // 
-            txtboxMI.Location = new Point(235, 129);
+            txtboxMI.Location = new Point(238, 122);
             txtboxMI.Margin = new Padding(3, 4, 3, 4);
             txtboxMI.Name = "txtboxMI";
             txtboxMI.Size = new Size(67, 27);
@@ -178,7 +177,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "First Year", "Second Year", "Third Year", "Fourth Year", "Fifth Year" });
-            comboBox1.Location = new Point(505, 129);
+            comboBox1.Location = new Point(508, 122);
             comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(179, 28);
@@ -189,7 +188,7 @@
             // 
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "First Semester", "Second Semester", "Midterm" });
-            comboBox2.Location = new Point(703, 129);
+            comboBox2.Location = new Point(706, 122);
             comboBox2.Margin = new Padding(3, 4, 3, 4);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(179, 28);
@@ -200,7 +199,7 @@
             // 
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] { "2021-2022", "2022-2023", "2023-2024", "2024-2025", "2025-2026", "2026-2027" });
-            comboBox3.Location = new Point(899, 128);
+            comboBox3.Location = new Point(902, 121);
             comboBox3.Margin = new Padding(3, 4, 3, 4);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(179, 28);
@@ -210,7 +209,7 @@
             // 
             comboBox4.FormattingEnabled = true;
             comboBox4.Items.AddRange(new object[] { "Freshman", "Transferee", "Irregular\t" });
-            comboBox4.Location = new Point(48, 191);
+            comboBox4.Location = new Point(51, 184);
             comboBox4.Margin = new Padding(3, 4, 3, 4);
             comboBox4.Name = "comboBox4";
             comboBox4.Size = new Size(179, 28);
@@ -220,7 +219,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Tw Cen MT", 9.75F);
-            label8.Location = new Point(48, 164);
+            label8.Location = new Point(51, 157);
             label8.Name = "label8";
             label8.Size = new Size(103, 20);
             label8.TabIndex = 47;
@@ -229,7 +228,7 @@
             // dgvStudents
             // 
             dgvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStudents.Location = new Point(48, 243);
+            dgvStudents.Location = new Point(51, 236);
             dgvStudents.Margin = new Padding(3, 4, 3, 4);
             dgvStudents.Name = "dgvStudents";
             dgvStudents.RowHeadersWidth = 51;
@@ -246,7 +245,7 @@
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(998, 565);
+            btnDelete.Location = new Point(1001, 558);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(82, 31);
             btnDelete.TabIndex = 55;
@@ -261,7 +260,7 @@
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(910, 565);
+            btnSave.Location = new Point(913, 558);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(82, 31);
             btnSave.TabIndex = 54;
@@ -276,7 +275,7 @@
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEdit.ForeColor = Color.White;
-            btnEdit.Location = new Point(822, 565);
+            btnEdit.Location = new Point(825, 558);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(82, 31);
             btnEdit.TabIndex = 53;
@@ -291,7 +290,7 @@
             btnAddStudent.FlatStyle = FlatStyle.Flat;
             btnAddStudent.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddStudent.ForeColor = Color.White;
-            btnAddStudent.Location = new Point(734, 565);
+            btnAddStudent.Location = new Point(737, 558);
             btnAddStudent.Name = "btnAddStudent";
             btnAddStudent.Size = new Size(82, 31);
             btnAddStudent.TabIndex = 52;
@@ -299,10 +298,9 @@
             btnAddStudent.UseVisualStyleBackColor = false;
             btnAddStudent.Click += btnAddStudent_Click;
             // 
-            // btnBack
+            // button4
             // 
             button4.BackColor = Color.Transparent;
-            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.BackgroundImageLayout = ImageLayout.Stretch;
             button4.DialogResult = DialogResult.Continue;
             button4.FlatAppearance.BorderColor = Color.Black;
@@ -310,7 +308,6 @@
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
-            button4.Image = (Image)resources.GetObject("button4.Image");
             button4.Location = new Point(18, 28);
             button4.Margin = new Padding(3, 4, 3, 4);
             button4.Name = "button4";
@@ -318,27 +315,19 @@
             button4.TabIndex = 58;
             button4.UseVisualStyleBackColor = false;
             // 
-            // btnLoadStudents
+            // txtboxCode
             // 
-            btnLoadStudents.BackColor = Color.Navy;
-            btnLoadStudents.FlatAppearance.BorderSize = 0;
-            btnLoadStudents.FlatStyle = FlatStyle.Flat;
-            btnLoadStudents.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLoadStudents.ForeColor = Color.White;
-            btnLoadStudents.Location = new Point(49, 565);
-            btnLoadStudents.Name = "btnLoadStudents";
-            btnLoadStudents.Size = new Size(118, 31);
-            btnLoadStudents.TabIndex = 59;
-            btnLoadStudents.Text = "Load Students";
-            btnLoadStudents.UseVisualStyleBackColor = false;
-            btnLoadStudents.Click += btnLoadStudents_Click;
+            txtboxCode.Location = new Point(250, 185);
+            txtboxCode.Name = "txtboxCode";
+            txtboxCode.Size = new Size(125, 27);
+            txtboxCode.TabIndex = 59;
             // 
             // Add_Student
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1133, 619);
-            Controls.Add(btnLoadStudents);
+            ClientSize = new Size(1140, 608);
+            Controls.Add(txtboxCode);
             Controls.Add(button4);
             Controls.Add(btnDelete);
             Controls.Add(btnSave);
@@ -347,8 +336,6 @@
             Controls.Add(dgvStudents);
             Controls.Add(comboBox4);
             Controls.Add(label8);
-            Controls.Add(label10);
-            Controls.Add(txtboxCode);
             Controls.Add(comboBox3);
             Controls.Add(comboBox2);
             Controls.Add(comboBox1);
@@ -367,6 +354,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "Add_Student";
             Text = "Add_Student";
+            Load += Add_Student_Load_2;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).EndInit();
             ResumeLayout(false);
@@ -391,7 +379,6 @@
         private ComboBox comboBox2;
         private ComboBox comboBox3;
         private ComboBox comboBox4;
-        private TextBox txtboxCode;
         private Label label8;
         private DataGridView dgvStudents;
         private Button btnDelete;
@@ -400,6 +387,6 @@
         private Button btnAddStudent;
         private Button button4;
         private Button btnLoadStudents;
-        private Label label10;
+        private TextBox txtboxCode;
     }
 }

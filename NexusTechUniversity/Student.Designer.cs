@@ -68,7 +68,7 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(247, 619);
+            panel1.Size = new Size(247, 608);
             panel1.TabIndex = 1;
             // 
             // btnLogout
@@ -164,7 +164,7 @@
             btnAddStudent.FlatStyle = FlatStyle.Flat;
             btnAddStudent.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddStudent.ForeColor = Color.White;
-            btnAddStudent.Location = new Point(970, 122);
+            btnAddStudent.Location = new Point(984, 106);
             btnAddStudent.Name = "btnAddStudent";
             btnAddStudent.Size = new Size(127, 31);
             btnAddStudent.TabIndex = 3;
@@ -177,7 +177,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Tw Cen MT", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Navy;
-            label3.Location = new Point(281, 49);
+            label3.Location = new Point(275, 49);
             label3.Name = "label3";
             label3.Size = new Size(112, 33);
             label3.TabIndex = 10;
@@ -185,7 +185,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(384, 128);
+            textBox1.Location = new Point(387, 108);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(251, 27);
             textBox1.TabIndex = 11;
@@ -195,7 +195,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Navy;
-            label4.Location = new Point(282, 133);
+            label4.Location = new Point(275, 111);
             label4.Name = "label4";
             label4.Size = new Size(106, 20);
             label4.TabIndex = 12;
@@ -205,11 +205,11 @@
             // 
             dgvStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStudent.Columns.AddRange(new DataGridViewColumn[] { srCode, firstName, middleInitial, lastName, yearLevel, currentSemester, academicYear, btnEvaluation });
-            dgvStudent.Location = new Point(282, 179);
+            dgvStudent.Location = new Point(275, 151);
             dgvStudent.Name = "dgvStudent";
             dgvStudent.RowHeadersVisible = false;
             dgvStudent.RowHeadersWidth = 51;
-            dgvStudent.Size = new Size(815, 413);
+            dgvStudent.Size = new Size(836, 413);
             dgvStudent.TabIndex = 13;
             dgvStudent.CellContentClick += dgvStudent_CellContentClick;
             // 
@@ -260,6 +260,7 @@
             academicYear.HeaderText = "Academic Year";
             academicYear.MinimumWidth = 6;
             academicYear.Name = "academicYear";
+            academicYear.Width = 125;
             // 
             // btnEvaluation
             // 
@@ -272,7 +273,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1133, 619);
+            ClientSize = new Size(1140, 608);
             Controls.Add(dgvStudent);
             Controls.Add(label4);
             Controls.Add(textBox1);
