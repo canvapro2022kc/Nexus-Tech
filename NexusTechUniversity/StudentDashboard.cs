@@ -150,24 +150,83 @@ namespace NexusTechUniversity
                 return value.ToString() ?? "";
             return "";
         }
+        private static string Cell(DataGridViewRow row, int index)
+            => row.Cells[index].Value?.ToString() ?? "";
 
-        // ==== Logout ====
-        private void btnLogout_Click(object sender, EventArgs e)
+        private static string Q(string s)
+            => s.Contains(",") || s.Contains("\"")
+               ? "\"" + s.Replace("\"", "\"\"") + "\""
+               : s;
+
+        // ---- Designer click handlers (intentionally empty; view-only form) ----
+        private void lblAcadyear_Click(object sender, EventArgs e) { }
+        private void lblfName_Click(object sender, EventArgs e) { }
+        private void lblDepartment_Click(object sender, EventArgs e) { }
+        private void dgvCourses_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void lblStatus_Click(object sender, EventArgs e) { }
+        private void panel1_Paint(object sender, PaintEventArgs e) { }
+        private void pictureBox1_Click(object sender, EventArgs e) { }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
-            DialogResult confirm = MessageBox.Show(
-                "Are you sure you want to log out?",
-                "Log Out", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (confirm == DialogResult.Yes)
+        }
+
+        private async void btn_ChangePass_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(studentId))
             {
-                var login = new Form1();
-                login.Show();
-                this.Close();
+                MessageBox.Show("Cannot change password. No logged-in student found.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string newPassword = Microsoft.VisualBasic.Interaction.InputBox(
+                "Enter your new password:",
+                "Change Password",
+                "");
+
+            if (string.IsNullOrWhiteSpace(newPassword))
+            {
+                MessageBox.Show("Password change cancelled or invalid input.",
+                    "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            try
+            {
+                // 1. I-update ang password sa 'users' collection
+                DocumentReference userDocRef = Db.Collection("users").Document(studentId);
+                Dictionary<string, object> userUpdate = new Dictionary<string, object>
+                {
+                    { "password", newPassword }
+                };
+                await userDocRef.SetAsync(userUpdate, SetOptions.MergeAll);
+
+                // 2. I-update din ang password sa 'students' collection para laging tugma ang dalawa
+                DocumentReference studentDocRef = Db.Collection("students").Document(studentId);
+                Dictionary<string, object> studentUpdate = new Dictionary<string, object>
+                {
+                    { "password", newPassword }
+                };
+                await studentDocRef.SetAsync(studentUpdate, SetOptions.MergeAll);
+
+                MessageBox.Show("Your password has been successfully changed!",
+                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to change password in database:\n" + ex.Message,
+                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // ==== Export POS (Program of Study) ====
-        private void btnExportPOS_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Export_Click(object sender, EventArgs e)
         {
             if (dgvCourses.Rows.Count == 0)
             {
@@ -233,75 +292,18 @@ namespace NexusTechUniversity
             }
         }
 
-        private static string Cell(DataGridViewRow row, int index)
-            => row.Cells[index].Value?.ToString() ?? "";
-
-        private static string Q(string s)
-            => s.Contains(",") || s.Contains("\"")
-               ? "\"" + s.Replace("\"", "\"\"") + "\""
-               : s;
-
-        // ---- Designer click handlers (intentionally empty; view-only form) ----
-        private void lblAcadyear_Click(object sender, EventArgs e) { }
-        private void lblfName_Click(object sender, EventArgs e) { }
-        private void lblDepartment_Click(object sender, EventArgs e) { }
-        private void dgvCourses_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-        private void lblStatus_Click(object sender, EventArgs e) { }
-        private void panel1_Paint(object sender, PaintEventArgs e) { }
-        private void pictureBox1_Click(object sender, EventArgs e) { }
-
-        private async void btnChangePassword_Click(object sender, EventArgs e)
+        private void btn_Logout_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(studentId))
+            DialogResult confirm = MessageBox.Show(
+                "Are you sure you want to log out?",
+                "Log Out", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
             {
-                MessageBox.Show("Cannot change password. No logged-in student found.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                var login = new Form1();
+                login.Show();
+                this.Close();
             }
-
-            string newPassword = Microsoft.VisualBasic.Interaction.InputBox(
-                "Enter your new password:",
-                "Change Password",
-                "");
-
-            if (string.IsNullOrWhiteSpace(newPassword))
-            {
-                MessageBox.Show("Password change cancelled or invalid input.",
-                    "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            try
-            {
-                // 1. I-update ang password sa 'users' collection
-                DocumentReference userDocRef = Db.Collection("users").Document(studentId);
-                Dictionary<string, object> userUpdate = new Dictionary<string, object>
-                {
-                    { "password", newPassword }
-                };
-                await userDocRef.SetAsync(userUpdate, SetOptions.MergeAll);
-
-                // 2. I-update din ang password sa 'students' collection para laging tugma ang dalawa
-                DocumentReference studentDocRef = Db.Collection("students").Document(studentId);
-                Dictionary<string, object> studentUpdate = new Dictionary<string, object>
-                {
-                    { "password", newPassword }
-                };
-                await studentDocRef.SetAsync(studentUpdate, SetOptions.MergeAll);
-
-                MessageBox.Show("Your password has been successfully changed!",
-                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to change password in database:\n" + ex.Message,
-                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

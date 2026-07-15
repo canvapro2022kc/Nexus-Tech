@@ -19,7 +19,21 @@ namespace NexusTechUniversity
             }
         }
 
-        private async void btnLogin_Click(object sender, EventArgs e)
+        private void txtboxPassword_TextChanged(object sender, EventArgs e) { }
+        private void txtboxUsername_TextChanged(object sender, EventArgs e) { }
+        private void Form1_Load(object sender, EventArgs e) { }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void btn_Login_Click(object sender, EventArgs e)
         {
             string enteredUsername = txtboxUsername.Text.Trim();
             string enteredPassword = txtboxPassword.Text.Trim();
@@ -77,8 +91,9 @@ namespace NexusTechUniversity
             }
         }
 
-        private void txtboxPassword_TextChanged(object sender, EventArgs e) { }
-        private void txtboxUsername_TextChanged(object sender, EventArgs e) { }
-        private void Form1_Load(object sender, EventArgs e) { }
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

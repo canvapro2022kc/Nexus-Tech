@@ -35,17 +35,11 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
             label6 = new Label();
             txtboxFName = new TextBox();
             txtboxLName = new TextBox();
             txtboxMI = new TextBox();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
             comboBox3 = new ComboBox();
-            comboBox4 = new ComboBox();
-            label8 = new Label();
             dgvStudents = new DataGridView();
             btnDelete = new Button();
             btnSave = new Button();
@@ -55,6 +49,12 @@
             txtboxCode = new TextBox();
             label10 = new Label();
             btnBack = new Button();
+            label4 = new Label();
+            comboBox4 = new ComboBox();
+            comboBox1 = new ComboBox();
+            comboBox2 = new ComboBox();
+            label8 = new Label();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
             SuspendLayout();
@@ -72,11 +72,11 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Tw Cen MT Condensed Extra Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.Navy;
+            label7.Font = new Font("Tw Cen MT Condensed", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.FromArgb(3, 37, 83);
             label7.Location = new Point(112, 49);
             label7.Name = "label7";
-            label7.Size = new Size(74, 21);
+            label7.Size = new Size(60, 20);
             label7.TabIndex = 30;
             label7.Text = "University";
             // 
@@ -84,7 +84,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Tw Cen MT Condensed Extra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.Navy;
+            label9.ForeColor = Color.FromArgb(3, 37, 83);
             label9.Location = new Point(112, 29);
             label9.Name = "label9";
             label9.Size = new Size(90, 23);
@@ -95,7 +95,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Tw Cen MT", 9.75F);
-            label1.Location = new Point(51, 97);
+            label1.Location = new Point(373, 93);
             label1.Name = "label1";
             label1.Size = new Size(85, 20);
             label1.TabIndex = 32;
@@ -105,7 +105,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Tw Cen MT", 9.75F);
-            label2.Location = new Point(238, 97);
+            label2.Location = new Point(561, 93);
             label2.Name = "label2";
             label2.Size = new Size(34, 20);
             label2.TabIndex = 33;
@@ -115,37 +115,17 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Tw Cen MT", 9.75F);
-            label3.Location = new Point(315, 97);
+            label3.Location = new Point(637, 93);
             label3.Name = "label3";
             label3.Size = new Size(85, 20);
             label3.TabIndex = 34;
             label3.Text = "Last Name:";
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Tw Cen MT", 9.75F);
-            label4.Location = new Point(508, 97);
-            label4.Name = "label4";
-            label4.Size = new Size(86, 20);
-            label4.TabIndex = 35;
-            label4.Text = "Year Level:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Tw Cen MT", 9.75F);
-            label5.Location = new Point(706, 97);
-            label5.Name = "label5";
-            label5.Size = new Size(77, 20);
-            label5.TabIndex = 36;
-            label5.Text = "Semester:";
-            // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Tw Cen MT", 9.75F);
-            label6.Location = new Point(902, 97);
+            label6.Location = new Point(51, 162);
             label6.Name = "label6";
             label6.Size = new Size(116, 20);
             label6.TabIndex = 37;
@@ -153,7 +133,7 @@
             // 
             // txtboxFName
             // 
-            txtboxFName.Location = new Point(51, 122);
+            txtboxFName.Location = new Point(373, 118);
             txtboxFName.Margin = new Padding(3, 4, 3, 4);
             txtboxFName.Name = "txtboxFName";
             txtboxFName.Size = new Size(179, 27);
@@ -161,7 +141,7 @@
             // 
             // txtboxLName
             // 
-            txtboxLName.Location = new Point(315, 122);
+            txtboxLName.Location = new Point(637, 118);
             txtboxLName.Margin = new Padding(3, 4, 3, 4);
             txtboxLName.Name = "txtboxLName";
             txtboxLName.Size = new Size(179, 27);
@@ -169,66 +149,25 @@
             // 
             // txtboxMI
             // 
-            txtboxMI.Location = new Point(238, 122);
+            txtboxMI.Location = new Point(561, 118);
             txtboxMI.Margin = new Padding(3, 4, 3, 4);
             txtboxMI.Name = "txtboxMI";
             txtboxMI.Size = new Size(67, 27);
             txtboxMI.TabIndex = 43;
             // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "First Year", "Second Year", "Third Year", "Fourth Year", "Fifth Year" });
-            comboBox1.Location = new Point(508, 122);
-            comboBox1.Margin = new Padding(3, 4, 3, 4);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(179, 28);
-            comboBox1.TabIndex = 44;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "First Semester", "Second Semester", "Midterm" });
-            comboBox2.Location = new Point(706, 122);
-            comboBox2.Margin = new Padding(3, 4, 3, 4);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(179, 28);
-            comboBox2.TabIndex = 45;
-            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
-            // 
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] { "2021-2022", "2022-2023", "2023-2024", "2024-2025", "2025-2026", "2026-2027" });
-            comboBox3.Location = new Point(902, 121);
+            comboBox3.Location = new Point(51, 185);
             comboBox3.Margin = new Padding(3, 4, 3, 4);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(179, 28);
             comboBox3.TabIndex = 46;
             // 
-            // comboBox4
-            // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Items.AddRange(new object[] { "Freshman", "Regular", "Transferee", "Irregular\t" });
-            comboBox4.Location = new Point(51, 184);
-            comboBox4.Margin = new Padding(3, 4, 3, 4);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(179, 28);
-            comboBox4.TabIndex = 48;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Tw Cen MT", 9.75F);
-            label8.Location = new Point(51, 161);
-            label8.Name = "label8";
-            label8.Size = new Size(103, 20);
-            label8.TabIndex = 47;
-            label8.Text = "Student Type:";
-            // 
             // dgvStudents
             // 
+            dgvStudents.BackgroundColor = Color.White;
             dgvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStudents.Location = new Point(51, 236);
             dgvStudents.Margin = new Padding(3, 4, 3, 4);
@@ -242,37 +181,37 @@
             // 
             // btnDelete
             // 
-            btnDelete.BackColor = Color.Navy;
+            btnDelete.BackColor = Color.FromArgb(3, 37, 83);
             btnDelete.FlatAppearance.BorderSize = 0;
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(1001, 558);
+            btnDelete.Location = new Point(913, 558);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(82, 31);
             btnDelete.TabIndex = 55;
-            btnDelete.Text = "Delete";
+            btnDelete.Text = "DELETE";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
             // btnSave
             // 
-            btnSave.BackColor = Color.Navy;
+            btnSave.BackColor = Color.FromArgb(3, 37, 83);
             btnSave.FlatAppearance.BorderSize = 0;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(913, 558);
+            btnSave.Location = new Point(1000, 558);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(82, 31);
             btnSave.TabIndex = 54;
-            btnSave.Text = "Save";
+            btnSave.Text = "SAVE";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 
             // btnEdit
             // 
-            btnEdit.BackColor = Color.Navy;
+            btnEdit.BackColor = Color.FromArgb(3, 37, 83);
             btnEdit.FlatAppearance.BorderSize = 0;
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -281,13 +220,13 @@
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(82, 31);
             btnEdit.TabIndex = 53;
-            btnEdit.Text = "Edit";
+            btnEdit.Text = "EDIT";
             btnEdit.UseVisualStyleBackColor = false;
             btnEdit.Click += btnEdit_Click;
             // 
             // btnAddStudent
             // 
-            btnAddStudent.BackColor = Color.Navy;
+            btnAddStudent.BackColor = Color.FromArgb(3, 37, 83);
             btnAddStudent.FlatAppearance.BorderSize = 0;
             btnAddStudent.FlatStyle = FlatStyle.Flat;
             btnAddStudent.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -296,7 +235,7 @@
             btnAddStudent.Name = "btnAddStudent";
             btnAddStudent.Size = new Size(82, 31);
             btnAddStudent.TabIndex = 52;
-            btnAddStudent.Text = "Add";
+            btnAddStudent.Text = "ADD";
             btnAddStudent.UseVisualStyleBackColor = false;
             btnAddStudent.Click += btnAddStudent_Click;
             // 
@@ -319,7 +258,7 @@
             // 
             // txtboxCode
             // 
-            txtboxCode.Location = new Point(250, 185);
+            txtboxCode.Location = new Point(51, 118);
             txtboxCode.Name = "txtboxCode";
             txtboxCode.Size = new Size(125, 27);
             txtboxCode.TabIndex = 59;
@@ -329,7 +268,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(252, 161);
+            label10.Location = new Point(51, 93);
             label10.Name = "label10";
             label10.Size = new Size(74, 20);
             label10.TabIndex = 60;
@@ -354,6 +293,68 @@
             btnBack.TabIndex = 61;
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += button1_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Tw Cen MT", 9.75F);
+            label4.Location = new Point(442, 161);
+            label4.Name = "label4";
+            label4.Size = new Size(86, 20);
+            label4.TabIndex = 35;
+            label4.Text = "Year Level:";
+            // 
+            // comboBox4
+            // 
+            comboBox4.FormattingEnabled = true;
+            comboBox4.Items.AddRange(new object[] { "Freshman", "Regular", "Transferee", "Irregular\t" });
+            comboBox4.Location = new Point(246, 184);
+            comboBox4.Margin = new Padding(3, 4, 3, 4);
+            comboBox4.Name = "comboBox4";
+            comboBox4.Size = new Size(179, 28);
+            comboBox4.TabIndex = 48;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "First Year", "Second Year", "Third Year", "Fourth Year", "Fifth Year" });
+            comboBox1.Location = new Point(442, 184);
+            comboBox1.Margin = new Padding(3, 4, 3, 4);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(179, 28);
+            comboBox1.TabIndex = 44;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "First Semester", "Second Semester", "Midterm" });
+            comboBox2.Location = new Point(637, 184);
+            comboBox2.Margin = new Padding(3, 4, 3, 4);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(179, 28);
+            comboBox2.TabIndex = 45;
+            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Tw Cen MT", 9.75F);
+            label8.Location = new Point(246, 161);
+            label8.Name = "label8";
+            label8.Size = new Size(103, 20);
+            label8.TabIndex = 47;
+            label8.Text = "Student Type:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Tw Cen MT", 9.75F);
+            label5.Location = new Point(637, 161);
+            label5.Name = "label5";
+            label5.Size = new Size(77, 20);
+            label5.TabIndex = 36;
+            label5.Text = "Semester:";
             // 
             // Add_Student
             // 
@@ -404,17 +405,11 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private Label label4;
-        private Label label5;
         private Label label6;
         private TextBox txtboxFName;
         private TextBox txtboxLName;
         private TextBox txtboxMI;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
         private ComboBox comboBox3;
-        private ComboBox comboBox4;
-        private Label label8;
         private DataGridView dgvStudents;
         private Button btnDelete;
         private Button btnSave;
@@ -425,5 +420,11 @@
         private TextBox txtboxCode;
         private Label label10;
         private Button btnBack;
+        private Label label4;
+        private ComboBox comboBox4;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
+        private Label label8;
+        private Label label5;
     }
 }

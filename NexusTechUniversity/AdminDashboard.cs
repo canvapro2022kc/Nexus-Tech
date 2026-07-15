@@ -38,11 +38,6 @@ namespace NexusTechUniversity
         }
 
 
-        private void btnStudents_Click(object sender, EventArgs e)
-        {
-            Student students = new Student();
-            students.Show();
-        }
 
         private void AdminDashboard_Load(object sender, EventArgs e)
         {
@@ -54,30 +49,39 @@ namespace NexusTechUniversity
 
         }
 
-        private void btnAddStudent_Click(object sender, EventArgs e)
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void btn_AddStudent_Click(object sender, EventArgs e)
         {
             Add_Student student = new Add_Student();
             student.Show();
             this.Hide();
         }
 
-        private void btnCurriculum_Click(object sender, EventArgs e)
+
+
+        private void btn_Curriculum_Click(object sender, EventArgs e)
         {
             Curriculum subjects = new Curriculum();
             subjects.Show();
             this.Hide();
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void btn_Student_Click(object sender, EventArgs e)
+        {
+            Student students = new Student();
+            students.Show();
+        }
+
+        private void btn_Logout_Click(object sender, EventArgs e)
         {
             Form1 logout = new Form1();
             logout.Show();
             this.Hide();
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
