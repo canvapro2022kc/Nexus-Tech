@@ -52,7 +52,7 @@
             label7 = new Label();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
-            button4 = new Button();
+            btnBack = new Button();
             label2 = new Label();
             panel1 = new Panel();
             btnEvaluateAssign = new Button();
@@ -255,6 +255,7 @@
             btnExport.TabIndex = 58;
             btnExport.Text = "Export";
             btnExport.UseVisualStyleBackColor = false;
+            btnExport.Click += btnExport_Click;
             // 
             // label9
             // 
@@ -298,25 +299,25 @@
             pictureBox2.TabIndex = 32;
             pictureBox2.TabStop = false;
             // 
-            // button4
+            // btnBack
             // 
-            button4.BackColor = Color.Transparent;
-            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
-            button4.BackgroundImageLayout = ImageLayout.Stretch;
-            button4.DialogResult = DialogResult.Continue;
-            button4.FlatAppearance.BorderColor = Color.Black;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.ForeColor = Color.White;
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(21, 26);
-            button4.Margin = new Padding(3, 4, 3, 4);
-            button4.Name = "button4";
-            button4.Size = new Size(21, 29);
-            button4.TabIndex = 60;
-            button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
+            btnBack.BackColor = Color.Transparent;
+            btnBack.BackgroundImage = (Image)resources.GetObject("btnBack.BackgroundImage");
+            btnBack.BackgroundImageLayout = ImageLayout.Stretch;
+            btnBack.DialogResult = DialogResult.Continue;
+            btnBack.FlatAppearance.BorderColor = Color.Black;
+            btnBack.FlatAppearance.BorderSize = 0;
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBack.ForeColor = Color.White;
+            btnBack.Image = (Image)resources.GetObject("btnBack.Image");
+            btnBack.Location = new Point(21, 26);
+            btnBack.Margin = new Padding(3, 4, 3, 4);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(21, 29);
+            btnBack.TabIndex = 60;
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // label2
             // 
@@ -346,7 +347,7 @@
             panel1.Controls.Add(txtFname);
             panel1.Controls.Add(txtSRCode);
             panel1.Controls.Add(label2);
-            panel1.Controls.Add(button4);
+            panel1.Controls.Add(btnBack);
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label7);
@@ -370,6 +371,7 @@
             btnEvaluateAssign.TabIndex = 74;
             btnEvaluateAssign.Text = "Evaluate";
             btnEvaluateAssign.UseVisualStyleBackColor = false;
+            btnEvaluateAssign.Click += btnEvaluateAssign_Click;
             // 
             // label4
             // 
@@ -608,7 +610,7 @@
         private Label label7;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
-        private Button button4;
+        private Button btnBack;
         private Label label2;
         private Panel panel1;
         private TextBox txtFname;

@@ -17,12 +17,10 @@ namespace NexusTechUniversity
         private List<Course> coursesToTake = new List<Course>();
         private string currentStudentCurriculum = "AY 2025-Onwards";
         private HashSet<string> passedHistory = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        private List<Dictionary<string, object>> existingTakenMaps = new List<Dictionary<string, object>>();
 
         private class Course
         {
             public string Code = "", Title = "", Units = "", YearLevel = "", Semester = "", CurriculumId = "";
-            public List<string> Prerequisites = new List<string>();
             public int Seq;
         }
 
@@ -37,17 +35,7 @@ namespace NexusTechUniversity
         {
             try
             {
-                btnEvaluateAssign.Click -= btnEvaluateAssign_Click;
-                btnEvaluateAssign.Click += btnEvaluateAssign_Click;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("WARNING: Hindi mahanap ang control na 'btnEvaluateAssign'. Paki-check kung tama ang Name ng button mo sa Form Designer.");
-            }
-
-            if (string.IsNullOrEmpty(srCode)) return;
-            try
-            {
+                if (string.IsNullOrEmpty(srCode)) return;
                 SetupGrids();
                 await LoadStudentAsync();
                 await LoadStudentCoursesHistoryAsync();
@@ -67,7 +55,6 @@ namespace NexusTechUniversity
                 studentData = doc.ToDictionary();
                 txtSRCode.Text = srCode;
                 txtFname.Text = GetField(studentData, "firstName");
-                txtMI.Text = GetField(studentData, "mi", "middleInitial", "MI");
                 txtLname.Text = GetField(studentData, "lastName");
                 txtAcademicYear.Text = GetField(studentData, "currentAcademicYear", "academicYear");
                 txtYearLevel.Text = GetField(studentData, "yearLevel");
@@ -87,12 +74,12 @@ namespace NexusTechUniversity
                 var data = d.ToDictionary();
                 var c = new Course
                 {
-                    Code = GetField(data, "course_code", "courseCode"),
-                    Title = GetField(data, "course_title", "courseTitle"),
-                    Units = GetField(data, "units"),
-                    YearLevel = GetField(data, "year_level", "yearLevel"),
-                    Semester = GetField(data, "semester"),
-                    CurriculumId = GetField(data, "curriculum_id"),
+                    Code = GetField(data, "course_code", "courseCode").Trim(),
+                    Title = GetField(data, "course_title", "courseTitle").Trim(),
+                    Units = GetField(data, "units").Trim(),
+                    YearLevel = GetField(data, "year_level", "yearLevel").Trim(),
+                    Semester = GetField(data, "semester").Trim(),
+                    CurriculumId = GetField(data, "curriculum_id").Trim(),
                 };
                 c.Seq = YearNum(c.YearLevel) * 10 + SemNum(c.Semester);
                 allCourses.Add(c);
@@ -102,8 +89,6 @@ namespace NexusTechUniversity
         private async Task LoadStudentCoursesHistoryAsync()
         {
             passedHistory.Clear();
-            existingTakenMaps.Clear();
-
             var snap = await db.Collection("studentCourses").Document(srCode).GetSnapshotAsync();
             if (!snap.Exists) return;
 
@@ -114,7 +99,6 @@ namespace NexusTechUniversity
                 {
                     if (item is Dictionary<string, object> m)
                     {
-                        existingTakenMaps.Add(m);
                         string code = m.ContainsKey("course_code") ? m["course_code"]?.ToString() : "";
                         if (!string.IsNullOrWhiteSpace(code)) passedHistory.Add(code.Trim());
                     }
@@ -125,11 +109,11 @@ namespace NexusTechUniversity
         private void LoadCoursesTaken()
         {
             dgCoursesTaken.Rows.Clear();
-            int studentSeq = YearNum(txtYearLevel.Text) * 10 + SemNum(txtSemester.Text);
+            int targetSeq = YearNum(txtYearLevel.Text) * 10 + SemNum(txtSemester.Text);
 
             var prior = allCourses
                 .Where(c => c.CurriculumId.Equals(currentStudentCurriculum, StringComparison.OrdinalIgnoreCase))
-                .Where(c => c.Seq > 0 && c.Seq <= studentSeq)
+                .Where(c => c.Seq > 0 && c.Seq < targetSeq)
                 .OrderBy(c => c.Seq)
                 .ToList();
 
@@ -140,134 +124,183 @@ namespace NexusTechUniversity
             }
         }
 
-        // =====================================================================
-        // MAIN FUNCTION WITH EVALUATION LOGIC
-        // =====================================================================
         private async void btnEvaluateAssign_Click(object sender, EventArgs e)
         {
             try
             {
                 dgCoursesTaken.EndEdit();
+                var updatedPassedCodes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-                // 1. KUNIN ANG LAHAT NG PASSED
-                var passedCodes = new HashSet<string>(passedHistory, StringComparer.OrdinalIgnoreCase);
-
+                // 1. Sync from UI checkboxes to local set
                 foreach (DataGridViewRow row in dgCoursesTaken.Rows)
                 {
-                    if (Convert.ToBoolean(row.Cells["taken"].Value))
+                    if (row.IsNewRow) continue;
+                    // Siguraduhin na 'taken' ang pangalan ng checkbox column sa Designer
+                    bool isChecked = row.Cells["taken"].Value != null && Convert.ToBoolean(row.Cells["taken"].Value);
+                    string code = row.Cells["courseCode"].Value?.ToString();
+
+                    if (!string.IsNullOrWhiteSpace(code) && isChecked)
                     {
-                        passedCodes.Add(row.Cells["courseCode"].Value.ToString());
-                    }
-                    else
-                    {
-                        passedCodes.Remove(row.Cells["courseCode"].Value.ToString());
+                        updatedPassedCodes.Add(code.Trim());
                     }
                 }
 
-                // 2. I-SAVE ANG UPDATED PASSED LIST SA FIRESTORE
-                var updatedPassedList = new List<Dictionary<string, object>>();
-                foreach (var code in passedCodes)
-                {
-                    updatedPassedList.Add(new Dictionary<string, object> { { "course_code", code } });
-                }
-
+                // 2. Persist to Firestore
                 await db.Collection("studentCourses").Document(srCode).SetAsync(new Dictionary<string, object> {
-                    { "firstName", txtFname.Text },
-                    { "lastName", txtLname.Text },
-                    { "courses", updatedPassedList }
+                    { "firstName", txtFname.Text }, { "lastName", txtLname.Text },
+                    { "courses", updatedPassedCodes.Select(c => new Dictionary<string, object> { { "course_code", c } }).ToList() }
                 });
 
-                passedHistory = new HashSet<string>(passedCodes, StringComparer.OrdinalIgnoreCase);
+                passedHistory = updatedPassedCodes;
+                int targetSeq = YearNum(txtYearLevel.Text) * 10 + SemNum(txtSemester.Text);
 
-                // 3. KALKULAHIN ANG COURSES TO TAKE (Backlogs + Next Semester)
-                int studentSeq = YearNum(txtYearLevel.Text) * 10 + SemNum(txtSemester.Text);
-                int nextSeq = GetNextSeq(studentSeq); // Kunin ang sequence ng susunod na semester
-
+                // 3. Filter for courses to take (Excluding already passed ones)
                 coursesToTake = allCourses
-                    .Where(c => c.CurriculumId.Equals(currentStudentCurriculum, StringComparison.OrdinalIgnoreCase))
-                    .Where(c => c.Seq > 0 && c.Seq <= nextSeq) // Hanggang sa Next Semester ang kukunin
-                    .Where(c => !passedCodes.Contains(c.Code)) // Tanggalin lahat ng naipasa na
+                    .Where(c => c.CurriculumId.Trim().Equals(currentStudentCurriculum.Trim(), StringComparison.OrdinalIgnoreCase))
+                    .Where(c => c.Seq > 0 && c.Seq <= targetSeq)
+                    .Where(c => !passedHistory.Contains(c.Code))
                     .OrderBy(c => c.Seq)
                     .ToList();
 
-                // 4. I-UPDATE ANG UI
                 dgvCoursesToTake.Rows.Clear();
                 foreach (var c in coursesToTake)
                 {
                     dgvCoursesToTake.Rows.Add(c.Code, c.Title, c.Units, c.YearLevel, c.Semester, c.CurriculumId);
                 }
-
-                MessageBox.Show($"Evaluation Saved! Nahanap na kailangang i-take para sa susunod na sem/backlogs: {coursesToTake.Count} subjects.");
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
 
         private async void btnAssign_Click(object sender, EventArgs e)
         {
             try
             {
-                var requiredList = coursesToTake.Select(c => (object)new Dictionary<string, object> {
-                    { "course_code", c.Code }, { "course_title", c.Title }, { "units", int.TryParse(c.Units, out int u) ? u : 0 },
-                    { "yearLevel", c.YearLevel }, { "currentSemester", c.Semester }, { "curriculum_id", c.CurriculumId }
-                }).ToList();
+                if (coursesToTake.Count == 0) { MessageBox.Show("Evaluate muna!"); return; }
 
                 await db.Collection("evaluation").Document(srCode).SetAsync(new Dictionary<string, object> {
-                    { "firstName", txtFname.Text }, { "lastName", txtLname.Text }, { "courses", requiredList }
+                    { "firstName", txtFname.Text }, { "lastName", txtLname.Text },
+                    { "courses", coursesToTake.Select(c => new Dictionary<string, object> {
+                        { "course_code", c.Code }, { "year_Level", c.YearLevel }, { "currentSemester", c.Semester }
+                    }).ToList() }
                 });
-                MessageBox.Show("Evaluation assigned successfully!");
+
+                int currentY = YearNum(txtYearLevel.Text);
+                int currentS = SemNum(txtSemester.Text);
+                string nextYearStr = txtYearLevel.Text;
+                string nextSemStr = "";
+
+                // Progression logic
+                if (currentY == 1) // First Year
+                {
+                    if (currentS == 1) nextSemStr = "Second Semester";
+                    else { nextSemStr = "First Semester"; currentY++; }
+                }
+                else // 2nd/3rd Year
+                {
+                    if (currentS == 1) nextSemStr = "Second Semester";
+                    else if (currentS == 2) nextSemStr = "Midterm";
+                    else { nextSemStr = "First Semester"; currentY++; }
+                }
+
+                nextYearStr = (currentY == 2 ? "Second Year" : currentY == 3 ? "Third Year" : "Fourth Year");
+
+                await db.Collection("students").Document(srCode).UpdateAsync(new Dictionary<string, object> {
+                    { "yearLevel", nextYearStr }, { "currentSemester", nextSemStr }
+                });
+
+                MessageBox.Show($"Assigned! Next term: {nextYearStr} {nextSemStr}.");
+                this.Hide();
             }
             catch (Exception ex) { MessageBox.Show("Error assigning: " + ex.Message); }
         }
 
-        // Helpers
-        private static string GetField(Dictionary<string, object> d, params string[] k) { foreach (var key in k) if (d.ContainsKey(key)) return d[key].ToString(); return ""; }
-        private static int YearNum(string y) { y = y.ToLower(); return y.Contains("first") ? 1 : y.Contains("second") ? 2 : y.Contains("third") ? 3 : 4; }
-        private static int SemNum(string s) { s = s.ToLower(); return s.Contains("first") ? 1 : s.Contains("second") ? 2 : 3; }
+        private static string GetField(Dictionary<string, object> d, params string[] k) { foreach (var key in k) if (d.ContainsKey(key) && d[key] != null) return d[key].ToString(); return ""; }
 
-        // Helper function para malaman ang Next Semester
-        private static int GetNextSeq(int currentSeq)
+        private static int YearNum(string y)
         {
-            int year = currentSeq / 10;
-            int sem = currentSeq % 10;
-
-            if (sem == 1) return year * 10 + 2;       // Kung 1st Sem, next is 2nd Sem
-            if (sem == 2) return (year + 1) * 10 + 1; // Kung 2nd Sem, next is 1st Sem ng susunod na taon
-
-            return currentSeq + 1;
+            y = y.ToLower().Trim();
+            if (y.Contains("first")) return 1;
+            if (y.Contains("second")) return 2;
+            if (y.Contains("third")) return 3;
+            if (y.Contains("fourth")) return 4;
+            return 9;
         }
 
-       
-
-        private void SetupGrids()
+        private static int SemNum(string s)
         {
-            dgCoursesTaken.Columns.Clear();
-            dgCoursesTaken.AllowUserToAddRows = false;
-            dgCoursesTaken.Columns.Add(new DataGridViewCheckBoxColumn { Name = "taken", HeaderText = "Taken", Width = 50 });
-            dgCoursesTaken.Columns.Add(new DataGridViewTextBoxColumn { Name = "courseCode", HeaderText = "Course Code", Width = 90 });
-            dgCoursesTaken.Columns.Add(new DataGridViewTextBoxColumn { Name = "courseTitle", HeaderText = "Course Title", Width = 200 });
-            dgCoursesTaken.Columns.Add(new DataGridViewTextBoxColumn { Name = "units", HeaderText = "Units", Width = 50 });
-            dgCoursesTaken.Columns.Add(new DataGridViewTextBoxColumn { Name = "yearLevel", HeaderText = "Year Level", Width = 90 });
-            dgCoursesTaken.Columns.Add(new DataGridViewTextBoxColumn { Name = "semester", HeaderText = "Semester", Width = 100 });
-            dgCoursesTaken.Columns.Add(new DataGridViewTextBoxColumn { Name = "academicYear", HeaderText = "Curriculum", Width = 110 });
-
-            dgvCoursesToTake.Columns.Clear();
-            dgvCoursesToTake.AllowUserToAddRows = false;
-            dgvCoursesToTake.Columns.Add(new DataGridViewTextBoxColumn { Name = "ccode", HeaderText = "Course Code", Width = 90 });
-            dgvCoursesToTake.Columns.Add(new DataGridViewTextBoxColumn { Name = "ctitle", HeaderText = "Course Title", Width = 200 });
-            dgvCoursesToTake.Columns.Add(new DataGridViewTextBoxColumn { Name = "cunits", HeaderText = "Units", Width = 50 });
-            dgvCoursesToTake.Columns.Add(new DataGridViewTextBoxColumn { Name = "cyearlevel", HeaderText = "Year Level", Width = 90 });
-            dgvCoursesToTake.Columns.Add(new DataGridViewTextBoxColumn { Name = "csemester", HeaderText = "Semester", Width = 100 });
-            dgvCoursesToTake.Columns.Add(new DataGridViewTextBoxColumn { Name = "cacademicyear", HeaderText = "Curriculum", Width = 110 });
+            s = s.ToLower().Trim();
+            if (s.Contains("first")) return 1;
+            if (s.Contains("second")) return 2;
+            if (s.Contains("midterm")) return 3;
+            return 1;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void SetupGrids() { /* Siguraduhin ang Column Names sa Designer ay 'taken', 'courseCode', etc. */ }
+        private void btnBack_Click(object sender, EventArgs e) { this.Hide(); }
+
+        private async void btnExport_Click(object sender, EventArgs e)
         {
-            Student students = new Student();
-            students.Show();
-            this.Close();
+            // Siguraduhin na may laman ang listahan bago mag-export
+            if (coursesToTake == null || coursesToTake.Count == 0)
+            {
+                MessageBox.Show("Click Evaluate Button First.");
+                return;
+            }
+
+            string logoPath = System.IO.Path.Combine(Application.StartupPath, "Images", "IMG_9764 (1).png");
+            string logoUrl = new Uri(logoPath).AbsoluteUri;
+
+            try
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "HTML Files|*.html";
+                saveFileDialog.FileName = $"Evaluation_For_Enrollment_{srCode}.html";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var html = new System.Text.StringBuilder();
+
+                    html.Append("<html><head><style>");
+                    html.Append("body { font-family: Arial, sans-serif; margin: 30px; }");
+                    html.Append(".header { text-align: center; border-bottom: 2px solid #2c3e50; padding-bottom: 20px; margin-bottom: 20px; }");
+                    html.Append(".header img { width: 100px; }");
+                    html.Append(".contact-info { font-size: 0.9em; color: #555; }");
+                    html.Append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }");
+                    html.Append("th { background-color: #2c3e50; color: white; padding: 10px; border: 1px solid #ddd; }");
+                    html.Append("td { padding: 10px; border: 1px solid #ddd; text-align: left; }");
+                    html.Append(".enrolled { color: blue; font-weight: bold; }");
+                    html.Append("</style></head><body>");
+
+                    // Header Section
+                    html.Append("<div class='header'>");
+                    html.Append($"<img src='{logoUrl}' alt='Logo' style='width:100px;'><br>");
+                    html.Append("<h1>Nexus Tech University</h1>");
+                    html.Append("<div class='contact-info'>");
+                    html.Append("info@nexustech.edu | 123-456-7890<br>");
+                    html.Append("Batangas City, Philippines | www.nexustech.edu");
+                    html.Append("</div></div>");
+
+                    // Student Info
+                    html.Append($"<p><b>Name:</b> {txtFname.Text} {txtLname.Text}</p>");
+                    html.Append($"<p><b>Academic Year:</b> {txtAcademicYear.Text} | <b>Level:</b> {txtYearLevel.Text} - {txtSemester.Text}</p>");
+
+                    // Table
+                    html.Append("<table><tr>");
+                    html.Append("<th>Code</th><th>Course Title</th><th>Units</th><th>Year</th><th>Sem</th><th>Remarks</th>");
+                    html.Append("</tr>");
+
+                    // Data Loop - Dito natin ginagamit ang `coursesToTake` list
+                    foreach (var c in coursesToTake)
+                    {
+                        html.Append($"<tr><td>{c.Code}</td><td>{c.Title}</td><td>{c.Units}</td><td>{c.YearLevel}</td><td>{c.Semester}</td><td class='enrolled'>For Enrollment</td></tr>");
+                    }
+
+                    html.Append("</table></body></html>");
+                    System.IO.File.WriteAllText(saveFileDialog.FileName, html.ToString());
+                    MessageBox.Show("Evaluation report exported successfully!");
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Error exporting: " + ex.Message); }
         }
     }
 }
