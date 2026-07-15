@@ -255,7 +255,6 @@
             btnExport.TabIndex = 58;
             btnExport.Text = "Export";
             btnExport.UseVisualStyleBackColor = false;
-            btnExport.Click += btnExport_Click;
             // 
             // label9
             // 
@@ -425,7 +424,6 @@
             label14.Size = new Size(83, 20);
             label14.TabIndex = 73;
             label14.Text = "First Name:";
-            label14.Click += label14_Click;
             // 
             // label13
             // 
@@ -457,7 +455,6 @@
             dgCoursesTaken.RowHeadersWidth = 51;
             dgCoursesTaken.Size = new Size(753, 341);
             dgCoursesTaken.TabIndex = 70;
-            dgCoursesTaken.CellContentClick += dataGridView1_CellContentClick;
             // 
             // taken
             // 
@@ -544,7 +541,6 @@
             txtMI.Name = "txtMI";
             txtMI.Size = new Size(70, 27);
             txtMI.TabIndex = 65;
-            txtMI.TextChanged += mi_txt_TextChanged;
             // 
             // txtFname
             // 
