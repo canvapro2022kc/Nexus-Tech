@@ -15,7 +15,20 @@ namespace NexusTechUniversity
 
             if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
-                db = FirestoreDb.Create("enrollmentit331");
+                try
+                {
+                    // 1. Dito natin itinatakda ang path patungo sa iyong service account key file
+                    string path = AppDomain.CurrentDomain.BaseDirectory + "serviceAccountKey.json";
+                    Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+
+                    // 2. Pagkatapos ma-set ng credentials, tsaka pa lang natin gagawin ang database connection
+                    db = FirestoreDb.Create("enrollmentit331");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Initialization Error: {ex.Message}\nMake sure 'serviceAccountKey.json' is in your bin folder.",
+                        "Startup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -23,15 +36,9 @@ namespace NexusTechUniversity
         private void txtboxUsername_TextChanged(object sender, EventArgs e) { }
         private void Form1_Load(object sender, EventArgs e) { }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
+        private void panel1_Paint(object sender, PaintEventArgs e) { }
 
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void label5_Click(object sender, EventArgs e) { }
 
         private async void btn_Login_Click(object sender, EventArgs e)
         {
@@ -47,6 +54,14 @@ namespace NexusTechUniversity
 
             try
             {
+                // Siguraduhin nating hindi null ang db bago gamitin
+                if (db == null)
+                {
+                    string path = AppDomain.CurrentDomain.BaseDirectory + "serviceAccountKey.json";
+                    Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+                    db = FirestoreDb.Create("enrollmentit331");
+                }
+
                 DocumentReference userRef = db.Collection("users").Document(enteredUsername);
                 DocumentSnapshot snapshot = await userRef.GetSnapshotAsync();
 
@@ -72,7 +87,7 @@ namespace NexusTechUniversity
 
                 if (role.Equals("student", StringComparison.OrdinalIgnoreCase))
                 {
-                    // Pass the username so the dashboard knows which student to load.
+                    // Ipapasa ang username para malaman ng dashboard kung sinong estudyante ang ilo-load.
                     var studentDashboard = new StudentDashboard(role, enteredUsername);
                     studentDashboard.Show();
                 }
@@ -91,9 +106,6 @@ namespace NexusTechUniversity
             }
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void label7_Click(object sender, EventArgs e) { }
     }
 }

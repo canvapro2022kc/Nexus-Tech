@@ -40,12 +40,6 @@
             panel2 = new Panel();
             btnAssign = new Button();
             dgvCoursesToTake = new DataGridView();
-            ccode = new DataGridViewTextBoxColumn();
-            ctitle = new DataGridViewTextBoxColumn();
-            cunits = new DataGridViewTextBoxColumn();
-            cyearlevel = new DataGridViewTextBoxColumn();
-            csemester = new DataGridViewTextBoxColumn();
-            cacademicyear = new DataGridViewTextBoxColumn();
             label1 = new Label();
             btnExport = new Button();
             label9 = new Label();
@@ -65,13 +59,6 @@
             label13 = new Label();
             label8 = new Label();
             dgCoursesTaken = new DataGridView();
-            taken = new DataGridViewCheckBoxColumn();
-            courseCode = new DataGridViewTextBoxColumn();
-            courseTitle = new DataGridViewTextBoxColumn();
-            units = new DataGridViewTextBoxColumn();
-            yearLevel = new DataGridViewTextBoxColumn();
-            semester = new DataGridViewTextBoxColumn();
-            academicYear = new DataGridViewTextBoxColumn();
             txtAcademicYear = new TextBox();
             txtSemester = new TextBox();
             txtYearLevel = new TextBox();
@@ -79,6 +66,19 @@
             txtMI = new TextBox();
             txtFname = new TextBox();
             txtSRCode = new TextBox();
+            ccode = new DataGridViewTextBoxColumn();
+            ctitle = new DataGridViewTextBoxColumn();
+            cunits = new DataGridViewTextBoxColumn();
+            cyearlevel = new DataGridViewTextBoxColumn();
+            csemester = new DataGridViewTextBoxColumn();
+            cacademicyear = new DataGridViewTextBoxColumn();
+            taken = new DataGridViewCheckBoxColumn();
+            courseCode = new DataGridViewTextBoxColumn();
+            courseTitle = new DataGridViewTextBoxColumn();
+            units = new DataGridViewTextBoxColumn();
+            yearLevel = new DataGridViewTextBoxColumn();
+            semester = new DataGridViewTextBoxColumn();
+            academicYear = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvCourses).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCoursesToTake).BeginInit();
@@ -188,48 +188,7 @@
             dgvCoursesToTake.RowHeadersWidth = 51;
             dgvCoursesToTake.Size = new Size(754, 557);
             dgvCoursesToTake.TabIndex = 73;
-            // 
-            // ccode
-            // 
-            ccode.HeaderText = "Course Code";
-            ccode.MinimumWidth = 6;
-            ccode.Name = "ccode";
-            ccode.Width = 125;
-            // 
-            // ctitle
-            // 
-            ctitle.HeaderText = "Course Title";
-            ctitle.MinimumWidth = 6;
-            ctitle.Name = "ctitle";
-            ctitle.Width = 125;
-            // 
-            // cunits
-            // 
-            cunits.HeaderText = "Units";
-            cunits.MinimumWidth = 6;
-            cunits.Name = "cunits";
-            cunits.Width = 125;
-            // 
-            // cyearlevel
-            // 
-            cyearlevel.HeaderText = "Year Level";
-            cyearlevel.MinimumWidth = 6;
-            cyearlevel.Name = "cyearlevel";
-            cyearlevel.Width = 125;
-            // 
-            // csemester
-            // 
-            csemester.HeaderText = "Semester";
-            csemester.MinimumWidth = 6;
-            csemester.Name = "csemester";
-            csemester.Width = 125;
-            // 
-            // cacademicyear
-            // 
-            cacademicyear.HeaderText = "Academic Year";
-            cacademicyear.MinimumWidth = 6;
-            cacademicyear.Name = "cacademicyear";
-            cacademicyear.Width = 125;
+            dgvCoursesToTake.CellContentClick += dgvCoursesToTake_CellContentClick;
             // 
             // label1
             // 
@@ -357,6 +316,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(812, 699);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // btnEvaluateAssign
             // 
@@ -458,57 +418,6 @@
             dgCoursesTaken.Size = new Size(753, 341);
             dgCoursesTaken.TabIndex = 70;
             // 
-            // taken
-            // 
-            taken.HeaderText = "Taken";
-            taken.MinimumWidth = 6;
-            taken.Name = "taken";
-            taken.Resizable = DataGridViewTriState.True;
-            taken.SortMode = DataGridViewColumnSortMode.Automatic;
-            taken.Width = 50;
-            // 
-            // courseCode
-            // 
-            courseCode.HeaderText = "Course Code";
-            courseCode.MinimumWidth = 6;
-            courseCode.Name = "courseCode";
-            courseCode.Width = 125;
-            // 
-            // courseTitle
-            // 
-            courseTitle.HeaderText = "Course Title";
-            courseTitle.MinimumWidth = 6;
-            courseTitle.Name = "courseTitle";
-            courseTitle.Width = 170;
-            // 
-            // units
-            // 
-            units.HeaderText = "Units";
-            units.MinimumWidth = 6;
-            units.Name = "units";
-            units.Width = 50;
-            // 
-            // yearLevel
-            // 
-            yearLevel.HeaderText = "Year Level";
-            yearLevel.MinimumWidth = 6;
-            yearLevel.Name = "yearLevel";
-            yearLevel.Width = 125;
-            // 
-            // semester
-            // 
-            semester.HeaderText = "Semester";
-            semester.MinimumWidth = 6;
-            semester.Name = "semester";
-            semester.Width = 125;
-            // 
-            // academicYear
-            // 
-            academicYear.HeaderText = "Academic Year";
-            academicYear.MinimumWidth = 6;
-            academicYear.Name = "academicYear";
-            academicYear.Width = 130;
-            // 
             // txtAcademicYear
             // 
             txtAcademicYear.Location = new Point(33, 178);
@@ -557,6 +466,99 @@
             txtSRCode.Name = "txtSRCode";
             txtSRCode.Size = new Size(136, 27);
             txtSRCode.TabIndex = 63;
+            // 
+            // ccode
+            // 
+            ccode.HeaderText = "Course Code";
+            ccode.MinimumWidth = 6;
+            ccode.Name = "ccode";
+            ccode.Width = 125;
+            // 
+            // ctitle
+            // 
+            ctitle.HeaderText = "Course Title";
+            ctitle.MinimumWidth = 6;
+            ctitle.Name = "ctitle";
+            ctitle.Width = 125;
+            // 
+            // cunits
+            // 
+            cunits.HeaderText = "Units";
+            cunits.MinimumWidth = 6;
+            cunits.Name = "cunits";
+            cunits.Width = 125;
+            // 
+            // cyearlevel
+            // 
+            cyearlevel.HeaderText = "Year Level";
+            cyearlevel.MinimumWidth = 6;
+            cyearlevel.Name = "cyearlevel";
+            cyearlevel.Width = 125;
+            // 
+            // csemester
+            // 
+            csemester.HeaderText = "Semester";
+            csemester.MinimumWidth = 6;
+            csemester.Name = "csemester";
+            csemester.Width = 125;
+            // 
+            // cacademicyear
+            // 
+            cacademicyear.HeaderText = "Pre-requisite/s";
+            cacademicyear.MinimumWidth = 6;
+            cacademicyear.Name = "cacademicyear";
+            cacademicyear.Width = 125;
+            // 
+            // taken
+            // 
+            taken.HeaderText = "Taken";
+            taken.MinimumWidth = 6;
+            taken.Name = "taken";
+            taken.Resizable = DataGridViewTriState.True;
+            taken.SortMode = DataGridViewColumnSortMode.Automatic;
+            taken.Width = 50;
+            // 
+            // courseCode
+            // 
+            courseCode.HeaderText = "Course Code";
+            courseCode.MinimumWidth = 6;
+            courseCode.Name = "courseCode";
+            courseCode.Width = 125;
+            // 
+            // courseTitle
+            // 
+            courseTitle.HeaderText = "Course Title";
+            courseTitle.MinimumWidth = 6;
+            courseTitle.Name = "courseTitle";
+            courseTitle.Width = 170;
+            // 
+            // units
+            // 
+            units.HeaderText = "Units";
+            units.MinimumWidth = 6;
+            units.Name = "units";
+            units.Width = 50;
+            // 
+            // yearLevel
+            // 
+            yearLevel.HeaderText = "Year Level";
+            yearLevel.MinimumWidth = 6;
+            yearLevel.Name = "yearLevel";
+            yearLevel.Width = 120;
+            // 
+            // semester
+            // 
+            semester.HeaderText = "Semester";
+            semester.MinimumWidth = 6;
+            semester.Name = "semester";
+            semester.Width = 125;
+            // 
+            // academicYear
+            // 
+            academicYear.HeaderText = "Pre-requisite/s";
+            academicYear.MinimumWidth = 6;
+            academicYear.Name = "academicYear";
+            academicYear.Width = 135;
             // 
             // Evaluation
             // 
@@ -631,6 +633,12 @@
         private Label label13;
         private Button btnAssign;
         private Button Evaluate;
+        private DataGridViewTextBoxColumn ccode;
+        private DataGridViewTextBoxColumn ctitle;
+        private DataGridViewTextBoxColumn cunits;
+        private DataGridViewTextBoxColumn cyearlevel;
+        private DataGridViewTextBoxColumn csemester;
+        private DataGridViewTextBoxColumn cacademicyear;
         private DataGridViewCheckBoxColumn taken;
         private DataGridViewTextBoxColumn courseCode;
         private DataGridViewTextBoxColumn courseTitle;
@@ -638,11 +646,5 @@
         private DataGridViewTextBoxColumn yearLevel;
         private DataGridViewTextBoxColumn semester;
         private DataGridViewTextBoxColumn academicYear;
-        private DataGridViewTextBoxColumn ccode;
-        private DataGridViewTextBoxColumn ctitle;
-        private DataGridViewTextBoxColumn cunits;
-        private DataGridViewTextBoxColumn cyearlevel;
-        private DataGridViewTextBoxColumn csemester;
-        private DataGridViewTextBoxColumn cacademicyear;
     }
 }

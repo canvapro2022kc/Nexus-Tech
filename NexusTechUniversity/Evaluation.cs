@@ -20,7 +20,7 @@ namespace NexusTechUniversity
 
         private class Course
         {
-            public string Code = "", Title = "", Units = "", YearLevel = "", Semester = "", CurriculumId = "";
+            public string Code = "", Title = "", Units = "", YearLevel = "", Semester = "", CurriculumId = "", Prerequisite = "";
             public int Seq;
         }
 
@@ -80,6 +80,7 @@ namespace NexusTechUniversity
                     YearLevel = GetField(data, "year_level", "yearLevel").Trim(),
                     Semester = GetField(data, "semester").Trim(),
                     CurriculumId = GetField(data, "curriculum_id").Trim(),
+                    Prerequisite = GetField(data, "pre_requisite", "prerequisite", "pre-requisite").Trim()
                 };
                 c.Seq = YearNum(c.YearLevel) * 10 + SemNum(c.Semester);
                 allCourses.Add(c);
@@ -120,8 +121,18 @@ namespace NexusTechUniversity
             foreach (var c in prior)
             {
                 bool isAlreadyPassed = passedHistory.Contains(c.Code);
-                dgCoursesTaken.Rows.Add(isAlreadyPassed, c.Code, c.Title, c.Units, c.YearLevel, c.Semester, c.CurriculumId);
+                dgCoursesTaken.Rows.Add(isAlreadyPassed, c.Code, c.Title, c.Units, c.YearLevel, c.Semester, c.Prerequisite);
             }
+        }
+
+        private bool IsMinorSubject(Course c)
+        {
+            string code = c.Code.ToUpper().Trim();
+            return code.StartsWith("GED") ||
+                   code.StartsWith("PATHFIT") ||
+                   code.StartsWith("NSTP") ||
+                   code.StartsWith("GEC") ||
+                   code.StartsWith("PE");
         }
 
         private async void btnEvaluateAssign_Click(object sender, EventArgs e)
@@ -131,11 +142,10 @@ namespace NexusTechUniversity
                 dgCoursesTaken.EndEdit();
                 var updatedPassedCodes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-                // 1. Sync from UI checkboxes to local set
+                // 1. I-sync ang UI checkboxes patungo sa local passed list
                 foreach (DataGridViewRow row in dgCoursesTaken.Rows)
                 {
                     if (row.IsNewRow) continue;
-                    // Siguraduhin na 'taken' ang pangalan ng checkbox column sa Designer
                     bool isChecked = row.Cells["taken"].Value != null && Convert.ToBoolean(row.Cells["taken"].Value);
                     string code = row.Cells["courseCode"].Value?.ToString();
 
@@ -145,30 +155,204 @@ namespace NexusTechUniversity
                     }
                 }
 
-                // 2. Persist to Firestore
+                // I-save ang updated history sa Firestore
                 await db.Collection("studentCourses").Document(srCode).SetAsync(new Dictionary<string, object> {
                     { "firstName", txtFname.Text }, { "lastName", txtLname.Text },
                     { "courses", updatedPassedCodes.Select(c => new Dictionary<string, object> { { "course_code", c } }).ToList() }
                 });
 
                 passedHistory = updatedPassedCodes;
-                int targetSeq = YearNum(txtYearLevel.Text) * 10 + SemNum(txtSemester.Text);
 
-                // 3. Filter for courses to take (Excluding already passed ones)
-                coursesToTake = allCourses
-                    .Where(c => c.CurriculumId.Trim().Equals(currentStudentCurriculum.Trim(), StringComparison.OrdinalIgnoreCase))
-                    .Where(c => c.Seq > 0 && c.Seq <= targetSeq)
+                string targetYear = txtYearLevel.Text.Trim();
+                string targetSem = txtSemester.Text.Trim();
+                int targetSeq = YearNum(targetYear) * 10 + SemNum(targetSem);
+
+                // Kuhanin ang Unit Limit para sa kasalukuyang Semester
+                int maxUnitsAllowed = GetMaxUnitsAllowed(currentStudentCurriculum, targetYear, targetSem);
+
+                // Kuhanin ang lahat ng naunang subjects (Prior / Back Subjects)
+                var priorCourses = allCourses
+                    .Where(c => c.CurriculumId.Equals(currentStudentCurriculum, StringComparison.OrdinalIgnoreCase))
+                    .Where(c => c.Seq > 0 && c.Seq < targetSeq)
+                    .ToList();
+
+                // Standing checks logic
+                bool meetsStandingRequirement = CheckStandingQualifications(priorCourses, passedHistory);
+
+                // --- PRIORITY 1: Back Subjects (Strict Semester Matching) ---
+                var backSubjects = priorCourses
+                    .Where(c => !passedHistory.Contains(c.Code))
+                    .Where(c => c.Semester.Equals(targetSem, StringComparison.OrdinalIgnoreCase))
+                    .OrderBy(c => c.Seq)
+                    .ToList();
+
+                // --- PRIORITY 2: Current Semester Subjects ---
+                var currentSemSubjects = allCourses
+                    .Where(c => c.CurriculumId.Equals(currentStudentCurriculum, StringComparison.OrdinalIgnoreCase))
+                    .Where(c => c.Seq == targetSeq)
+                    .ToList();
+
+                // --- PRIORITY 3: Advanced Minor Subjects (Higher Year, Same Sem) ---
+                var advancedMinors = allCourses
+                    .Where(c => c.CurriculumId.Equals(currentStudentCurriculum, StringComparison.OrdinalIgnoreCase))
+                    .Where(c => YearNum(c.YearLevel) > YearNum(targetYear))
+                    .Where(c => c.Semester.Equals(targetSem, StringComparison.OrdinalIgnoreCase))
+                    .Where(c => IsMinorSubject(c))
                     .Where(c => !passedHistory.Contains(c.Code))
                     .OrderBy(c => c.Seq)
                     .ToList();
 
+                List<Course> evaluatedToTake = new List<Course>();
+                int currentTotalUnits = 0;
+
+                // Loop para mag-load ng back subjects
+                foreach (var c in backSubjects)
+                {
+                    if (int.TryParse(c.Units, out int unitsVal))
+                    {
+                        if (currentTotalUnits + unitsVal <= maxUnitsAllowed)
+                        {
+                            evaluatedToTake.Add(c);
+                            currentTotalUnits += unitsVal;
+                        }
+                    }
+                }
+
+                // Helper para sa prerequisite evaluation ng kahit anong subject (Multiple Prereqs Supported)
+                bool IsPrerequisiteMet(Course c)
+                {
+                    if (string.IsNullOrWhiteSpace(c.Prerequisite) ||
+                        c.Prerequisite.Equals("-") ||
+                        c.Prerequisite.Equals("None", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+
+                    string req = c.Prerequisite.Trim();
+                    if (req.Equals("3rd Year Standing", StringComparison.OrdinalIgnoreCase) ||
+                        req.Equals("4th Year Standing", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return meetsStandingRequirement;
+                    }
+
+                    string[] reqs = req.Split(new[] { ',', ';', '/' }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var r in reqs)
+                    {
+                        string cleanReq = r.Trim();
+                        bool hasPassedPrereq = passedHistory.Any(p => p.Equals(cleanReq, StringComparison.OrdinalIgnoreCase));
+                        if (!hasPassedPrereq) return false;
+                    }
+                    return true;
+                }
+
+                // Loop para sa current semester subjects
+                foreach (var c in currentSemSubjects)
+                {
+                    if (passedHistory.Contains(c.Code)) continue;
+                    if (!IsPrerequisiteMet(c)) continue;
+
+                    if (int.TryParse(c.Units, out int unitsVal))
+                    {
+                        if (currentTotalUnits + unitsVal <= maxUnitsAllowed)
+                        {
+                            evaluatedToTake.Add(c);
+                            currentTotalUnits += unitsVal;
+                        }
+                    }
+                }
+
+                // Loop para sa advanced minor subjects
+                foreach (var c in advancedMinors)
+                {
+                    if (currentTotalUnits >= maxUnitsAllowed) break;
+                    if (!IsPrerequisiteMet(c)) continue;
+
+                    if (int.TryParse(c.Units, out int unitsVal))
+                    {
+                        if (currentTotalUnits + unitsVal <= maxUnitsAllowed)
+                        {
+                            if (!evaluatedToTake.Any(x => x.Code.Equals(c.Code, StringComparison.OrdinalIgnoreCase)))
+                            {
+                                evaluatedToTake.Add(c);
+                                currentTotalUnits += unitsVal;
+                            }
+                        }
+                    }
+                }
+
+                coursesToTake = evaluatedToTake;
+
+                // I-render sa DataGridView
                 dgvCoursesToTake.Rows.Clear();
                 foreach (var c in coursesToTake)
                 {
-                    dgvCoursesToTake.Rows.Add(c.Code, c.Title, c.Units, c.YearLevel, c.Semester, c.CurriculumId);
+                    dgvCoursesToTake.Rows.Add(c.Code, c.Title, c.Units, c.YearLevel, c.Semester, c.Prerequisite);
                 }
+
+                MessageBox.Show($"Evaluation Completed!\nTotal Units Evaluated: {currentTotalUnits} / {maxUnitsAllowed} Max Units.");
             }
             catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+        }
+
+        private bool CheckStandingQualifications(List<Course> priorCourses, HashSet<string> passedList)
+        {
+            if (priorCourses.Count == 0) return true;
+
+            bool passedAllPrior = priorCourses.All(c => passedList.Contains(c.Code));
+            if (!passedAllPrior) return false;
+
+            double totalUnitsCount = 0;
+            double passedUnitsCount = 0;
+
+            foreach (var c in priorCourses)
+            {
+                if (double.TryParse(c.Units, out double u))
+                {
+                    totalUnitsCount += u;
+                    if (passedList.Contains(c.Code))
+                    {
+                        passedUnitsCount += u;
+                    }
+                }
+            }
+
+            if (totalUnitsCount == 0) return true;
+            double percentagePassed = (passedUnitsCount / totalUnitsCount) * 100.0;
+
+            return percentagePassed >= 70.0;
+        }
+
+        private int GetMaxUnitsAllowed(string curriculum, string year, string sem)
+        {
+            int yrNum = YearNum(year);
+            int semNum = SemNum(sem);
+
+            if (curriculum.Equals("AY 2020-2024", StringComparison.OrdinalIgnoreCase))
+            {
+                if (yrNum == 1 && semNum == 1) return 23;
+                if (yrNum == 1 && semNum == 2) return 23;
+                if (yrNum == 2 && semNum == 1) return 23;
+                if (yrNum == 2 && semNum == 2) return 23;
+                if (yrNum == 3 && semNum == 1) return 21;
+                if (yrNum == 3 && semNum == 2) return 21;
+                if (yrNum == 3 && semNum == 3) return 6;
+                if (yrNum == 4 && semNum == 1) return 21;
+                if (yrNum == 4 && semNum == 2) return 6;
+            }
+            else // AY 2025-Onwards
+            {
+                if (yrNum == 1 && semNum == 1) return 24;
+                if (yrNum == 1 && semNum == 2) return 24;
+                if (yrNum == 2 && semNum == 1) return 23;
+                if (yrNum == 2 && semNum == 2) return 23;
+                if (yrNum == 2 && semNum == 3) return 6;
+                if (yrNum == 3 && semNum == 1) return 21;
+                if (yrNum == 3 && semNum == 2) return 21;
+                if (yrNum == 3 && semNum == 3) return 6;
+                if (yrNum == 4 && semNum == 1) return 21;
+                if (yrNum == 4 && semNum == 2) return 6;
+            }
+            return 26;
         }
 
         private async void btnAssign_Click(object sender, EventArgs e)
@@ -186,23 +370,30 @@ namespace NexusTechUniversity
 
                 int currentY = YearNum(txtYearLevel.Text);
                 int currentS = SemNum(txtSemester.Text);
-                string nextYearStr = txtYearLevel.Text;
+                string nextYearStr = "";
                 string nextSemStr = "";
 
-                // Progression logic
-                if (currentY == 1) // First Year
+                if (currentS == 1) // Galing First Semester
                 {
-                    if (currentS == 1) nextSemStr = "Second Semester";
-                    else { nextSemStr = "First Semester"; currentY++; }
+                    nextSemStr = "Second Semester";
+                    nextYearStr = (currentY == 1 ? "First Year" :
+                                   currentY == 2 ? "Second Year" :
+                                   currentY == 3 ? "Third Year" : "Fourth Year");
                 }
-                else // 2nd/3rd Year
+                else if (currentS == 2) // Galing Second Semester
                 {
-                    if (currentS == 1) nextSemStr = "Second Semester";
-                    else if (currentS == 2) nextSemStr = "Midterm";
-                    else { nextSemStr = "First Semester"; currentY++; }
+                    nextSemStr = "First Semester";
+                    int nextY = currentY + 1;
+                    nextYearStr = (nextY == 2 ? "Second Year" :
+                                   nextY == 3 ? "Third Year" : "Fourth Year");
                 }
-
-                nextYearStr = (currentY == 2 ? "Second Year" : currentY == 3 ? "Third Year" : "Fourth Year");
+                else // Galing Midterm
+                {
+                    nextSemStr = "First Semester";
+                    int nextY = currentY + 1;
+                    nextYearStr = (nextY == 2 ? "Second Year" :
+                                   nextY == 3 ? "Third Year" : "Fourth Year");
+                }
 
                 await db.Collection("students").Document(srCode).UpdateAsync(new Dictionary<string, object> {
                     { "yearLevel", nextYearStr }, { "currentSemester", nextSemStr }
@@ -235,12 +426,24 @@ namespace NexusTechUniversity
             return 1;
         }
 
-        private void SetupGrids() { /* Siguraduhin ang Column Names sa Designer ay 'taken', 'courseCode', etc. */ }
+        private void SetupGrids()
+        {
+            if (dgCoursesTaken.Columns.Count > 6)
+            {
+                dgCoursesTaken.Columns[6].HeaderText = "Prerequisite";
+                dgCoursesTaken.Columns[6].Name = "prerequisite";
+            }
+            if (dgvCoursesToTake.Columns.Count > 5)
+            {
+                dgvCoursesToTake.Columns[5].HeaderText = "Prerequisite";
+                dgvCoursesToTake.Columns[5].Name = "prerequisite";
+            }
+        }
+
         private void btnBack_Click(object sender, EventArgs e) { this.Hide(); }
 
         private async void btnExport_Click(object sender, EventArgs e)
         {
-            // Siguraduhin na may laman ang listahan bago mag-export
             if (coursesToTake == null || coursesToTake.Count == 0)
             {
                 MessageBox.Show("Click Evaluate Button First.");
@@ -271,7 +474,6 @@ namespace NexusTechUniversity
                     html.Append(".enrolled { color: blue; font-weight: bold; }");
                     html.Append("</style></head><body>");
 
-                    // Header Section
                     html.Append("<div class='header'>");
                     html.Append($"<img src='{logoUrl}' alt='Logo' style='width:100px;'><br>");
                     html.Append("<h1>Nexus Tech University</h1>");
@@ -280,19 +482,16 @@ namespace NexusTechUniversity
                     html.Append("Batangas City, Philippines | www.nexustech.edu");
                     html.Append("</div></div>");
 
-                    // Student Info
                     html.Append($"<p><b>Name:</b> {txtFname.Text} {txtLname.Text}</p>");
                     html.Append($"<p><b>Academic Year:</b> {txtAcademicYear.Text} | <b>Level:</b> {txtYearLevel.Text} - {txtSemester.Text}</p>");
 
-                    // Table
                     html.Append("<table><tr>");
-                    html.Append("<th>Code</th><th>Course Title</th><th>Units</th><th>Year</th><th>Sem</th><th>Remarks</th>");
+                    html.Append("<th>Code</th><th>Course Title</th><th>Units</th><th>Year</th><th>Sem</th><th>Prerequisite</th><th>Remarks</th>");
                     html.Append("</tr>");
 
-                    // Data Loop - Dito natin ginagamit ang `coursesToTake` list
                     foreach (var c in coursesToTake)
                     {
-                        html.Append($"<tr><td>{c.Code}</td><td>{c.Title}</td><td>{c.Units}</td><td>{c.YearLevel}</td><td>{c.Semester}</td><td class='enrolled'>For Enrollment</td></tr>");
+                        html.Append($"<tr><td>{c.Code}</td><td>{c.Title}</td><td>{c.Units}</td><td>{c.YearLevel}</td><td>{c.Semester}</td><td>{c.Prerequisite}</td><td class='enrolled'>For Enrollment</td></tr>");
                     }
 
                     html.Append("</table></body></html>");
@@ -302,5 +501,8 @@ namespace NexusTechUniversity
             }
             catch (Exception ex) { MessageBox.Show("Error exporting: " + ex.Message); }
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e) { }
+        private void dgvCoursesToTake_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
     }
 }
