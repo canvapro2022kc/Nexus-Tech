@@ -68,7 +68,7 @@ namespace NexusTechUniversity
             }
         }
 
-        // ==== Student panel (name, college, A.Y., status) ====
+        // ==== Student panel (name, college, A.Y.) ====
         private async Task LoadStudentInfo()
         {
             if (string.IsNullOrEmpty(studentId))
@@ -78,7 +78,8 @@ namespace NexusTechUniversity
                 return;
             }
 
-            DocumentSnapshot doc = await Db.Collection("users")
+            // Kumukuha tayo ng data sa 'students' collection para laging sync ang currentAcademicYear
+            DocumentSnapshot doc = await Db.Collection("students")
                                            .Document(studentId)
                                            .GetSnapshotAsync();
 
@@ -91,22 +92,25 @@ namespace NexusTechUniversity
 
             // Get the student's information from Firestore
             string first = GetField(doc, "firstName");
-            string middle = GetField(doc, "middleName");   // Optional
+            string middle = GetField(doc, "middleInitial"); // Gumagamit ng middleInitial mula sa database
             string last = GetField(doc, "lastName");
-            string college = GetField(doc, "college");
-            string acadYear = GetField(doc, "academicYear");
-            string status = GetField(doc, "status");
 
-            // Build the middle initial
-            string middleInitial = string.IsNullOrEmpty(middle)
+            // Sync sa academic year field ng iyong 'students' registration schema
+            string acadYear = GetField(doc, "currentAcademicYear");
+
+            // Build the middle initial display
+            string middleInitialDisplay = string.IsNullOrEmpty(middle)
                 ? ""
-                : middle.Substring(0, 1).ToUpper() + ". ";
+                : middle.TrimEnd('.') + ". ";
 
             // Display the data on the labels
-            lblfName.Text = $"{first} {middleInitial}{last}";
-            lblDepartment.Text = "• " + college;
+            lblfName.Text = $"{first} {middleInitialDisplay}{last}";
+
+            // FIXED: Static Department Name ayon sa iyong instruction
+            lblDepartment.Text = "• College of Informatics and Computing Sciences";
+
             lblAcadYear.Text = "• A.Y. " + acadYear;
-            lblStatus.Text = "• " + status.ToUpper();
+
         }
 
         // ==== Course grid ====
@@ -190,7 +194,7 @@ namespace NexusTechUniversity
                     sb.AppendLine($"Student : {lblfName.Text}");
                     sb.AppendLine($"College : {lblDepartment.Text.TrimStart('•', ' ')}");
                     sb.AppendLine($"{lblAcadYear.Text.TrimStart('•', ' ')}");
-                    sb.AppendLine($"Status  : {lblStatus.Text.TrimStart('•', ' ')}");
+                    // REMOVED: Inalis na rin ang Status information sa inexport na text/csv document
                     sb.AppendLine(new string('-', 60));
                     sb.AppendLine();
 
@@ -238,37 +242,13 @@ namespace NexusTechUniversity
                : s;
 
         // ---- Designer click handlers (intentionally empty; view-only form) ----
-        private void lblAcadyear_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void lblfName_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void lblDepartment_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void dgvCourses_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void lblStatus_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void lblAcadyear_Click(object sender, EventArgs e) { }
+        private void lblfName_Click(object sender, EventArgs e) { }
+        private void lblDepartment_Click(object sender, EventArgs e) { }
+        private void dgvCourses_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void lblStatus_Click(object sender, EventArgs e) { }
+        private void panel1_Paint(object sender, PaintEventArgs e) { }
+        private void pictureBox1_Click(object sender, EventArgs e) { }
 
         private async void btnChangePassword_Click(object sender, EventArgs e)
         {
@@ -279,15 +259,11 @@ namespace NexusTechUniversity
                 return;
             }
 
-            // Gagamit tayo ng simpleng Microsoft Visual Basic InputBox para makuha ang bagong password.
-            // (Tiyaking walang error ito. Kung hindi mo magamit ang Interaction.InputBox, 
-            // maaari mong palitan ito ng text box input mula sa iyong UI tulad ng txtboxNewPassword.Text)
             string newPassword = Microsoft.VisualBasic.Interaction.InputBox(
                 "Enter your new password:",
                 "Change Password",
                 "");
 
-            // I-validate kung walang nilagay o kinansela ang pag-input
             if (string.IsNullOrWhiteSpace(newPassword))
             {
                 MessageBox.Show("Password change cancelled or invalid input.",
@@ -321,6 +297,11 @@ namespace NexusTechUniversity
                 MessageBox.Show("Failed to change password in database:\n" + ex.Message,
                     "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

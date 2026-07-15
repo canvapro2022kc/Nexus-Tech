@@ -51,7 +51,7 @@ namespace NexusTechUniversity
         private void SetupComboBoxItems()
         {
             comboBox4.Items.Clear();
-            comboBox4.Items.AddRange(new string[] { "freshman", "transferee", "irregular" });
+            comboBox4.Items.AddRange(new string[] { "freshman", "regular", "transferee", "irregular" });
 
             comboBox1.Items.Clear();
             comboBox1.Items.AddRange(new string[] { "First Year", "Second Year", "Third Year", "Fourth Year" });
@@ -180,11 +180,6 @@ namespace NexusTechUniversity
             {
                 string generatedSRCode = await GenerateUniqueSRCodeAsync();
                 CollectionReference collectionRef = db.Collection("students");
-
-                // Validation Rule 3: Irregular status defaults to a failed string indicator
-                string irregularReason = comboBox4.SelectedItem.ToString() == "irregular"
-                    ? "Failed Academic Requirements"
-                    : "null";
 
                 Dictionary<string, object> studentData = new Dictionary<string, object>
         {
@@ -359,10 +354,6 @@ namespace NexusTechUniversity
             {
                 DocumentReference docRef = db.Collection("students").Document(txtboxCode.Text);
 
-                string irregularReason = comboBox4.SelectedItem.ToString() == "irregular"
-                    ? "Failed Academic Requirements"
-                    : "null";
-
                 Dictionary<string, object> updatedData = new Dictionary<string, object>
                 {
                     { "firstName", txtboxFName.Text.Trim() },
@@ -371,7 +362,6 @@ namespace NexusTechUniversity
                     { "currentAcademicYear", comboBox3.SelectedItem?.ToString() ?? "" },
                     { "currentSemester", comboBox2.SelectedItem?.ToString() ?? "" },
                     { "subStatus", comboBox4.SelectedItem.ToString() },
-                    { "irregularReason", irregularReason },
                     { "yearLevel", comboBox1.SelectedItem.ToString() }
                 };
 
@@ -457,6 +447,13 @@ namespace NexusTechUniversity
         private void txtboxCode_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AdminDashboard adding = new AdminDashboard();
+            adding.Show();
+            this.Hide();
         }
     }
 }

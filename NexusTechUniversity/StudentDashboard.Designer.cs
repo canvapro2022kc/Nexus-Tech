@@ -38,7 +38,6 @@ namespace NexusTechUniversity
             panel2 = new Panel();
             lblAcadYear = new Label();
             lblDepartment = new Label();
-            lblStatus = new Label();
             lblfName = new Label();
             btnLogout = new Button();
             pictureBox1 = new PictureBox();
@@ -46,8 +45,8 @@ namespace NexusTechUniversity
             label1 = new Label();
             btnExportPOS = new Button();
             panel1 = new Panel();
-            btnChangePassword = new Button();
             label3 = new Label();
+            btnChangePassword = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCourses).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -106,12 +105,12 @@ namespace NexusTechUniversity
             panel2.BackColor = Color.White;
             panel2.Controls.Add(lblAcadYear);
             panel2.Controls.Add(lblDepartment);
-            panel2.Controls.Add(lblStatus);
             panel2.Controls.Add(lblfName);
             panel2.Location = new Point(52, 138);
             panel2.Name = "panel2";
-            panel2.Size = new Size(387, 166);
+            panel2.Size = new Size(387, 137);
             panel2.TabIndex = 9;
+            panel2.Paint += panel2_Paint;
             // 
             // lblAcadYear
             // 
@@ -136,17 +135,6 @@ namespace NexusTechUniversity
             lblDepartment.TabIndex = 14;
             lblDepartment.Text = "• College of Infomatics and Computing Sciences";
             lblDepartment.Click += lblDepartment_Click;
-            // 
-            // lblStatus
-            // 
-            lblStatus.AutoSize = true;
-            lblStatus.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblStatus.ForeColor = Color.Navy;
-            lblStatus.Location = new Point(22, 119);
-            lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(91, 20);
-            lblStatus.TabIndex = 13;
-            lblStatus.Text = "• ENROLLED";
             // 
             // lblfName
             // 
@@ -213,13 +201,13 @@ namespace NexusTechUniversity
             btnExportPOS.BackColor = Color.Navy;
             btnExportPOS.FlatAppearance.BorderSize = 0;
             btnExportPOS.FlatStyle = FlatStyle.Flat;
-            btnExportPOS.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnExportPOS.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExportPOS.ForeColor = Color.White;
             btnExportPOS.Location = new Point(951, 558);
             btnExportPOS.Name = "btnExportPOS";
             btnExportPOS.Size = new Size(127, 31);
             btnExportPOS.TabIndex = 11;
-            btnExportPOS.Text = "Export POS";
+            btnExportPOS.Text = "Export";
             btnExportPOS.UseVisualStyleBackColor = false;
             btnExportPOS.Click += btnExportPOS_Click;
             // 
@@ -241,29 +229,29 @@ namespace NexusTechUniversity
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.Red;
+            label3.Location = new Point(86, 325);
+            label3.Name = "label3";
+            label3.Size = new Size(233, 15);
+            label3.TabIndex = 13;
+            label3.Text = "* Required to change for security purposes";
+            // 
             // btnChangePassword
             // 
             btnChangePassword.BackColor = Color.Navy;
             btnChangePassword.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnChangePassword.ForeColor = Color.GhostWhite;
-            btnChangePassword.Location = new Point(75, 319);
+            btnChangePassword.Location = new Point(75, 293);
             btnChangePassword.Name = "btnChangePassword";
             btnChangePassword.Size = new Size(331, 29);
             btnChangePassword.TabIndex = 12;
             btnChangePassword.Text = "Change Password";
             btnChangePassword.UseVisualStyleBackColor = false;
             btnChangePassword.Click += btnChangePassword_Click;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.Red;
-            label3.Location = new Point(87, 347);
-            label3.Name = "label3";
-            label3.Size = new Size(233, 15);
-            label3.TabIndex = 13;
-            label3.Text = "* Required to change for security purposes";
             // 
             // StudentDashboard
             // 
@@ -291,7 +279,6 @@ namespace NexusTechUniversity
         private Label lblfName;
         private Button btnLogout;
         private Label lblDepartment;
-        private Label lblStatus;
         private DataGridView dgvCourses;
         private DataGridViewTextBoxColumn courseCode;
         private DataGridViewTextBoxColumn courseName;
