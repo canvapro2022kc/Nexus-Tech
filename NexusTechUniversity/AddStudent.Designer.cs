@@ -53,6 +53,8 @@
             btnAddStudent = new Button();
             button4 = new Button();
             txtboxCode = new TextBox();
+            label10 = new Label();
+            btnBack = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
             SuspendLayout();
@@ -60,7 +62,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(49, 19);
+            pictureBox1.Location = new Point(55, 25);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(47, 45);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -72,7 +74,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Tw Cen MT Condensed Extra Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Navy;
-            label7.Location = new Point(106, 43);
+            label7.Location = new Point(112, 49);
             label7.Name = "label7";
             label7.Size = new Size(74, 21);
             label7.TabIndex = 30;
@@ -83,7 +85,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Tw Cen MT Condensed Extra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.Navy;
-            label9.Location = new Point(106, 23);
+            label9.Location = new Point(112, 29);
             label9.Name = "label9";
             label9.Size = new Size(90, 23);
             label9.TabIndex = 29;
@@ -208,7 +210,7 @@
             // comboBox4
             // 
             comboBox4.FormattingEnabled = true;
-            comboBox4.Items.AddRange(new object[] { "Freshman", "Transferee", "Irregular\t" });
+            comboBox4.Items.AddRange(new object[] { "Freshman", "Regular", "Transferee", "Irregular\t" });
             comboBox4.Location = new Point(51, 184);
             comboBox4.Margin = new Padding(3, 4, 3, 4);
             comboBox4.Name = "comboBox4";
@@ -219,7 +221,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Tw Cen MT", 9.75F);
-            label8.Location = new Point(51, 157);
+            label8.Location = new Point(51, 161);
             label8.Name = "label8";
             label8.Size = new Size(103, 20);
             label8.TabIndex = 47;
@@ -323,11 +325,43 @@
             txtboxCode.TabIndex = 59;
             txtboxCode.TextChanged += txtboxCode_TextChanged;
             // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(252, 161);
+            label10.Name = "label10";
+            label10.Size = new Size(74, 20);
+            label10.TabIndex = 60;
+            label10.Text = "SR-Code:";
+            // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.Transparent;
+            btnBack.BackgroundImage = (Image)resources.GetObject("btnBack.BackgroundImage");
+            btnBack.BackgroundImageLayout = ImageLayout.Stretch;
+            btnBack.DialogResult = DialogResult.Continue;
+            btnBack.FlatAppearance.BorderColor = Color.Black;
+            btnBack.FlatAppearance.BorderSize = 0;
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.Font = new Font("Tw Cen MT Condensed Extra Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBack.ForeColor = Color.White;
+            btnBack.Image = (Image)resources.GetObject("btnBack.Image");
+            btnBack.Location = new Point(21, 32);
+            btnBack.Margin = new Padding(3, 4, 3, 4);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(21, 29);
+            btnBack.TabIndex = 61;
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += button1_Click;
+            // 
             // Add_Student
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1140, 608);
+            Controls.Add(btnBack);
+            Controls.Add(label10);
             Controls.Add(txtboxCode);
             Controls.Add(button4);
             Controls.Add(btnDelete);
@@ -389,5 +423,7 @@
         private Button button4;
         private Button btnLoadStudents;
         private TextBox txtboxCode;
+        private Label label10;
+        private Button btnBack;
     }
 }
