@@ -321,6 +321,7 @@
             txtboxCode.Name = "txtboxCode";
             txtboxCode.Size = new Size(125, 27);
             txtboxCode.TabIndex = 59;
+            txtboxCode.TextChanged += txtboxCode_TextChanged;
             // 
             // Add_Student
             // 
