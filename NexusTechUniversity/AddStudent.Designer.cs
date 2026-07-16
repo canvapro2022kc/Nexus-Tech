@@ -127,9 +127,9 @@
             label6.Font = new Font("Tw Cen MT", 9.75F);
             label6.Location = new Point(182, 94);
             label6.Name = "label6";
-            label6.Size = new Size(116, 20);
+            label6.Size = new Size(118, 20);
             label6.TabIndex = 37;
-            label6.Text = "Academic Year:";
+            label6.Text = "Curriculum Year:";
             // 
             // txtboxFName
             // 
@@ -158,7 +158,7 @@
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "2021-2022", "2022-2023", "2023-2024", "2024-2025", "2025-2026", "2026-2027" });
+            comboBox3.Items.AddRange(new object[] { "2020-2021", "2025-2026" });
             comboBox3.Location = new Point(183, 117);
             comboBox3.Margin = new Padding(3, 4, 3, 4);
             comboBox3.Name = "comboBox3";
