@@ -30,7 +30,14 @@ namespace NexusTechUniversity
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentDashboard));
             dgvCourses = new DataGridView();
+            courseCode = new DataGridViewTextBoxColumn();
+            courseTitle = new DataGridViewTextBoxColumn();
+            units = new DataGridViewTextBoxColumn();
+            yearLevel = new DataGridViewTextBoxColumn();
+            semester = new DataGridViewTextBoxColumn();
+            cacademicyear = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
+            pictureBox2 = new PictureBox();
             lblAcadYear = new Label();
             lblDepartment = new Label();
             lblfName = new Label();
@@ -38,35 +45,71 @@ namespace NexusTechUniversity
             label2 = new Label();
             label1 = new Label();
             panel1 = new Panel();
-            btn_Logout = new ReaLTaiizor.Controls.Button();
+            btnLogout = new ReaLTaiizor.Controls.Button();
             btn_Export = new ReaLTaiizor.Controls.Button();
             btn_ChangePass = new ReaLTaiizor.Controls.Button();
             label3 = new Label();
-            pictureBox2 = new PictureBox();
-            courseCode = new DataGridViewTextBoxColumn();
-            courseTitle = new DataGridViewTextBoxColumn();
-            units = new DataGridViewTextBoxColumn();
-            yearLevel = new DataGridViewTextBoxColumn();
-            semester = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvCourses).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // dgvCourses
             // 
             dgvCourses.BackgroundColor = Color.White;
             dgvCourses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCourses.Columns.AddRange(new DataGridViewColumn[] { courseCode, courseTitle, units, yearLevel, semester });
-            dgvCourses.Location = new Point(454, 132);
+            dgvCourses.Columns.AddRange(new DataGridViewColumn[] { courseCode, courseTitle, units, yearLevel, semester, cacademicyear });
+            dgvCourses.Location = new Point(424, 129);
             dgvCourses.Name = "dgvCourses";
             dgvCourses.RowHeadersVisible = false;
             dgvCourses.RowHeadersWidth = 51;
-            dgvCourses.Size = new Size(624, 401);
+            dgvCourses.Size = new Size(684, 401);
             dgvCourses.TabIndex = 10;
             dgvCourses.CellContentClick += dgvCourses_CellContentClick;
+            // 
+            // courseCode
+            // 
+            courseCode.HeaderText = "Course Code";
+            courseCode.MinimumWidth = 6;
+            courseCode.Name = "courseCode";
+            courseCode.Width = 110;
+            // 
+            // courseTitle
+            // 
+            courseTitle.HeaderText = "Course Title";
+            courseTitle.MinimumWidth = 6;
+            courseTitle.Name = "courseTitle";
+            courseTitle.Width = 110;
+            // 
+            // units
+            // 
+            units.HeaderText = "Units";
+            units.MinimumWidth = 6;
+            units.Name = "units";
+            units.Width = 110;
+            // 
+            // yearLevel
+            // 
+            yearLevel.HeaderText = "Year Level";
+            yearLevel.MinimumWidth = 6;
+            yearLevel.Name = "yearLevel";
+            yearLevel.Width = 110;
+            // 
+            // semester
+            // 
+            semester.HeaderText = "Semester";
+            semester.MinimumWidth = 6;
+            semester.Name = "semester";
+            semester.Width = 110;
+            // 
+            // cacademicyear
+            // 
+            cacademicyear.HeaderText = "Pre-requisite/s";
+            cacademicyear.MinimumWidth = 6;
+            cacademicyear.Name = "cacademicyear";
+            cacademicyear.Width = 135;
             // 
             // panel2
             // 
@@ -75,11 +118,21 @@ namespace NexusTechUniversity
             panel2.Controls.Add(lblAcadYear);
             panel2.Controls.Add(lblDepartment);
             panel2.Controls.Add(lblfName);
-            panel2.Location = new Point(52, 132);
+            panel2.Location = new Point(32, 129);
             panel2.Name = "panel2";
             panel2.Size = new Size(375, 314);
             panel2.TabIndex = 9;
             panel2.Paint += panel2_Paint;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.picpeople_filled__1_;
+            pictureBox2.Location = new Point(122, 41);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(125, 130);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 16;
+            pictureBox2.TabStop = false;
             // 
             // lblAcadYear
             // 
@@ -153,7 +206,7 @@ namespace NexusTechUniversity
             // panel1
             // 
             panel1.BackColor = SystemColors.Control;
-            panel1.Controls.Add(btn_Logout);
+            panel1.Controls.Add(btnLogout);
             panel1.Controls.Add(btn_Export);
             panel1.Controls.Add(btn_ChangePass);
             panel1.Controls.Add(label3);
@@ -170,25 +223,25 @@ namespace NexusTechUniversity
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
-            // btn_Logout
+            // btnLogout
             // 
-            btn_Logout.BackColor = Color.Transparent;
-            btn_Logout.BorderColor = Color.FromArgb(32, 34, 37);
-            btn_Logout.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            btn_Logout.EnteredColor = Color.FromArgb(32, 34, 37);
-            btn_Logout.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold);
-            btn_Logout.Image = null;
-            btn_Logout.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Logout.InactiveColor = Color.White;
-            btn_Logout.Location = new Point(969, 48);
-            btn_Logout.Name = "btn_Logout";
-            btn_Logout.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btn_Logout.PressedColor = Color.FromArgb(165, 37, 37);
-            btn_Logout.Size = new Size(109, 37);
-            btn_Logout.TabIndex = 17;
-            btn_Logout.Text = "LOG OUT";
-            btn_Logout.TextAlignment = StringAlignment.Center;
-            btn_Logout.Click += btn_Logout_Click;
+            btnLogout.BackColor = Color.Transparent;
+            btnLogout.BorderColor = Color.FromArgb(32, 34, 37);
+            btnLogout.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            btnLogout.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnLogout.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogout.Image = null;
+            btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLogout.InactiveColor = Color.FromArgb(3, 37, 83);
+            btnLogout.Location = new Point(1011, 52);
+            btnLogout.Name = "btnLogout";
+            btnLogout.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnLogout.PressedColor = Color.FromArgb(165, 37, 37);
+            btnLogout.Size = new Size(97, 31);
+            btnLogout.TabIndex = 20;
+            btnLogout.Text = "LOG OUT";
+            btnLogout.TextAlignment = StringAlignment.Center;
+            btnLogout.Click += btnLogout_Click;
             // 
             // btn_Export
             // 
@@ -200,7 +253,7 @@ namespace NexusTechUniversity
             btn_Export.Image = null;
             btn_Export.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Export.InactiveColor = Color.FromArgb(3, 37, 83);
-            btn_Export.Location = new Point(951, 542);
+            btn_Export.Location = new Point(981, 548);
             btn_Export.Name = "btn_Export";
             btn_Export.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btn_Export.PressedColor = Color.FromArgb(165, 37, 37);
@@ -220,7 +273,7 @@ namespace NexusTechUniversity
             btn_ChangePass.Image = null;
             btn_ChangePass.ImageAlign = ContentAlignment.MiddleLeft;
             btn_ChangePass.InactiveColor = Color.FromArgb(3, 37, 83);
-            btn_ChangePass.Location = new Point(52, 466);
+            btn_ChangePass.Location = new Point(32, 463);
             btn_ChangePass.Name = "btn_ChangePass";
             btn_ChangePass.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btn_ChangePass.PressedColor = Color.FromArgb(165, 37, 37);
@@ -235,57 +288,12 @@ namespace NexusTechUniversity
             label3.AutoSize = true;
             label3.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Firebrick;
-            label3.Location = new Point(52, 518);
+            label3.Location = new Point(32, 515);
             label3.Name = "label3";
             label3.Size = new Size(228, 15);
             label3.TabIndex = 13;
             label3.Text = "Required to change for security purposes.*";
             label3.Click += label3_Click;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.picpeople_filled__1_;
-            pictureBox2.Location = new Point(122, 41);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(125, 130);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 16;
-            pictureBox2.TabStop = false;
-            // 
-            // courseCode
-            // 
-            courseCode.HeaderText = "Course Code";
-            courseCode.MinimumWidth = 6;
-            courseCode.Name = "courseCode";
-            courseCode.Width = 125;
-            // 
-            // courseTitle
-            // 
-            courseTitle.HeaderText = "Course Title";
-            courseTitle.MinimumWidth = 6;
-            courseTitle.Name = "courseTitle";
-            courseTitle.Width = 125;
-            // 
-            // units
-            // 
-            units.HeaderText = "Units";
-            units.MinimumWidth = 6;
-            units.Name = "units";
-            units.Width = 125;
-            // 
-            // yearLevel
-            // 
-            yearLevel.HeaderText = "Year Level";
-            yearLevel.MinimumWidth = 6;
-            yearLevel.Name = "yearLevel";
-            yearLevel.Width = 125;
-            // 
-            // semester
-            // 
-            semester.HeaderText = "Semester";
-            semester.MinimumWidth = 6;
-            semester.Name = "semester";
-            semester.Width = 125;
             // 
             // StudentDashboard
             // 
@@ -299,10 +307,10 @@ namespace NexusTechUniversity
             ((System.ComponentModel.ISupportInitialize)dgvCourses).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -319,12 +327,13 @@ namespace NexusTechUniversity
         private Label label3;
         private ReaLTaiizor.Controls.Button btn_ChangePass;
         private ReaLTaiizor.Controls.Button btn_Export;
-        private ReaLTaiizor.Controls.Button btn_Logout;
+        private PictureBox pictureBox2;
         private DataGridViewTextBoxColumn courseCode;
         private DataGridViewTextBoxColumn courseTitle;
         private DataGridViewTextBoxColumn units;
         private DataGridViewTextBoxColumn yearLevel;
         private DataGridViewTextBoxColumn semester;
-        private PictureBox pictureBox2;
+        private DataGridViewTextBoxColumn cacademicyear;
+        private ReaLTaiizor.Controls.Button btnLogout;
     }
 }

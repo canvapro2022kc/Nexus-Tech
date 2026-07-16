@@ -84,5 +84,31 @@ namespace NexusTechUniversity
                 MessageBox.Show("Failed to load data: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            AdminDashboard admindashboard = new AdminDashboard();
+            admindashboard.Show();
+            this.Hide();
+        }
+
+        private void btnStudents_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnCurriculum_Click(object sender, EventArgs e)
+        {
+            Curriculum curriculum = new Curriculum();
+            curriculum.Show();
+            this.Hide();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Form1 logout = new Form1();
+            logout.Show();
+            this.Hide();
+        }
     }
 }
+

@@ -75,6 +75,7 @@ namespace NexusTechUniversity
         {
             Student students = new Student();
             students.Show();
+            this.Hide();
         }
 
         private void btn_Logout_Click(object sender, EventArgs e)

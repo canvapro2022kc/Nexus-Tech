@@ -40,6 +40,12 @@
             panel2 = new Panel();
             btnAssign = new Button();
             dgvCoursesToTake = new DataGridView();
+            ccode = new DataGridViewTextBoxColumn();
+            ctitle = new DataGridViewTextBoxColumn();
+            cunits = new DataGridViewTextBoxColumn();
+            cyearlevel = new DataGridViewTextBoxColumn();
+            csemester = new DataGridViewTextBoxColumn();
+            cacademicyear = new DataGridViewTextBoxColumn();
             label1 = new Label();
             btnExport = new Button();
             label9 = new Label();
@@ -59,19 +65,6 @@
             label13 = new Label();
             label8 = new Label();
             dgCoursesTaken = new DataGridView();
-            txtAcademicYear = new TextBox();
-            txtSemester = new TextBox();
-            txtYearLevel = new TextBox();
-            txtLname = new TextBox();
-            txtMI = new TextBox();
-            txtFname = new TextBox();
-            txtSRCode = new TextBox();
-            ccode = new DataGridViewTextBoxColumn();
-            ctitle = new DataGridViewTextBoxColumn();
-            cunits = new DataGridViewTextBoxColumn();
-            cyearlevel = new DataGridViewTextBoxColumn();
-            csemester = new DataGridViewTextBoxColumn();
-            cacademicyear = new DataGridViewTextBoxColumn();
             taken = new DataGridViewCheckBoxColumn();
             courseCode = new DataGridViewTextBoxColumn();
             courseTitle = new DataGridViewTextBoxColumn();
@@ -79,6 +72,13 @@
             yearLevel = new DataGridViewTextBoxColumn();
             semester = new DataGridViewTextBoxColumn();
             academicYear = new DataGridViewTextBoxColumn();
+            txtAcademicYear = new TextBox();
+            txtSemester = new TextBox();
+            txtYearLevel = new TextBox();
+            txtLname = new TextBox();
+            txtMI = new TextBox();
+            txtFname = new TextBox();
+            txtSRCode = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvCourses).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCoursesToTake).BeginInit();
@@ -189,6 +189,48 @@
             dgvCoursesToTake.Size = new Size(754, 557);
             dgvCoursesToTake.TabIndex = 73;
             dgvCoursesToTake.CellContentClick += dgvCoursesToTake_CellContentClick;
+            // 
+            // ccode
+            // 
+            ccode.HeaderText = "Course Code";
+            ccode.MinimumWidth = 6;
+            ccode.Name = "ccode";
+            ccode.Width = 125;
+            // 
+            // ctitle
+            // 
+            ctitle.HeaderText = "Course Title";
+            ctitle.MinimumWidth = 6;
+            ctitle.Name = "ctitle";
+            ctitle.Width = 125;
+            // 
+            // cunits
+            // 
+            cunits.HeaderText = "Units";
+            cunits.MinimumWidth = 6;
+            cunits.Name = "cunits";
+            cunits.Width = 125;
+            // 
+            // cyearlevel
+            // 
+            cyearlevel.HeaderText = "Year Level";
+            cyearlevel.MinimumWidth = 6;
+            cyearlevel.Name = "cyearlevel";
+            cyearlevel.Width = 125;
+            // 
+            // csemester
+            // 
+            csemester.HeaderText = "Semester";
+            csemester.MinimumWidth = 6;
+            csemester.Name = "csemester";
+            csemester.Width = 125;
+            // 
+            // cacademicyear
+            // 
+            cacademicyear.HeaderText = "Pre-requisite/s";
+            cacademicyear.MinimumWidth = 6;
+            cacademicyear.Name = "cacademicyear";
+            cacademicyear.Width = 125;
             // 
             // label1
             // 
@@ -345,7 +387,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(371, 155);
+            label3.Location = new Point(335, 155);
             label3.Name = "label3";
             label3.Size = new Size(73, 20);
             label3.TabIndex = 77;
@@ -354,7 +396,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(226, 155);
+            label17.Location = new Point(209, 155);
             label17.Name = "label17";
             label17.Size = new Size(78, 20);
             label17.TabIndex = 76;
@@ -418,97 +460,6 @@
             dgCoursesTaken.Size = new Size(753, 341);
             dgCoursesTaken.TabIndex = 70;
             // 
-            // txtAcademicYear
-            // 
-            txtAcademicYear.Location = new Point(33, 178);
-            txtAcademicYear.Name = "txtAcademicYear";
-            txtAcademicYear.Size = new Size(164, 27);
-            txtAcademicYear.TabIndex = 69;
-            // 
-            // txtSemester
-            // 
-            txtSemester.Location = new Point(375, 178);
-            txtSemester.Name = "txtSemester";
-            txtSemester.Size = new Size(119, 27);
-            txtSemester.TabIndex = 68;
-            // 
-            // txtYearLevel
-            // 
-            txtYearLevel.Location = new Point(226, 178);
-            txtYearLevel.Name = "txtYearLevel";
-            txtYearLevel.Size = new Size(119, 27);
-            txtYearLevel.TabIndex = 67;
-            // 
-            // txtLname
-            // 
-            txtLname.Location = new Point(472, 109);
-            txtLname.Name = "txtLname";
-            txtLname.Size = new Size(193, 27);
-            txtLname.TabIndex = 66;
-            // 
-            // txtMI
-            // 
-            txtMI.Location = new Point(388, 109);
-            txtMI.Name = "txtMI";
-            txtMI.Size = new Size(70, 27);
-            txtMI.TabIndex = 65;
-            // 
-            // txtFname
-            // 
-            txtFname.Location = new Point(180, 109);
-            txtFname.Name = "txtFname";
-            txtFname.Size = new Size(193, 27);
-            txtFname.TabIndex = 64;
-            // 
-            // txtSRCode
-            // 
-            txtSRCode.Location = new Point(32, 109);
-            txtSRCode.Name = "txtSRCode";
-            txtSRCode.Size = new Size(136, 27);
-            txtSRCode.TabIndex = 63;
-            // 
-            // ccode
-            // 
-            ccode.HeaderText = "Course Code";
-            ccode.MinimumWidth = 6;
-            ccode.Name = "ccode";
-            ccode.Width = 125;
-            // 
-            // ctitle
-            // 
-            ctitle.HeaderText = "Course Title";
-            ctitle.MinimumWidth = 6;
-            ctitle.Name = "ctitle";
-            ctitle.Width = 125;
-            // 
-            // cunits
-            // 
-            cunits.HeaderText = "Units";
-            cunits.MinimumWidth = 6;
-            cunits.Name = "cunits";
-            cunits.Width = 125;
-            // 
-            // cyearlevel
-            // 
-            cyearlevel.HeaderText = "Year Level";
-            cyearlevel.MinimumWidth = 6;
-            cyearlevel.Name = "cyearlevel";
-            cyearlevel.Width = 125;
-            // 
-            // csemester
-            // 
-            csemester.HeaderText = "Semester";
-            csemester.MinimumWidth = 6;
-            csemester.Name = "csemester";
-            csemester.Width = 125;
-            // 
-            // cacademicyear
-            // 
-            cacademicyear.HeaderText = "Pre-requisite/s";
-            cacademicyear.MinimumWidth = 6;
-            cacademicyear.Name = "cacademicyear";
-            cacademicyear.Width = 125;
-            // 
             // taken
             // 
             taken.HeaderText = "Taken";
@@ -559,6 +510,55 @@
             academicYear.MinimumWidth = 6;
             academicYear.Name = "academicYear";
             academicYear.Width = 135;
+            // 
+            // txtAcademicYear
+            // 
+            txtAcademicYear.Location = new Point(33, 178);
+            txtAcademicYear.Name = "txtAcademicYear";
+            txtAcademicYear.Size = new Size(164, 27);
+            txtAcademicYear.TabIndex = 69;
+            // 
+            // txtSemester
+            // 
+            txtSemester.Location = new Point(339, 178);
+            txtSemester.Name = "txtSemester";
+            txtSemester.Size = new Size(119, 27);
+            txtSemester.TabIndex = 68;
+            // 
+            // txtYearLevel
+            // 
+            txtYearLevel.Location = new Point(209, 178);
+            txtYearLevel.Name = "txtYearLevel";
+            txtYearLevel.Size = new Size(119, 27);
+            txtYearLevel.TabIndex = 67;
+            // 
+            // txtLname
+            // 
+            txtLname.Location = new Point(472, 109);
+            txtLname.Name = "txtLname";
+            txtLname.Size = new Size(193, 27);
+            txtLname.TabIndex = 66;
+            // 
+            // txtMI
+            // 
+            txtMI.Location = new Point(388, 109);
+            txtMI.Name = "txtMI";
+            txtMI.Size = new Size(70, 27);
+            txtMI.TabIndex = 65;
+            // 
+            // txtFname
+            // 
+            txtFname.Location = new Point(180, 109);
+            txtFname.Name = "txtFname";
+            txtFname.Size = new Size(193, 27);
+            txtFname.TabIndex = 64;
+            // 
+            // txtSRCode
+            // 
+            txtSRCode.Location = new Point(32, 109);
+            txtSRCode.Name = "txtSRCode";
+            txtSRCode.Size = new Size(136, 27);
+            txtSRCode.TabIndex = 63;
             // 
             // Evaluation
             // 

@@ -120,26 +120,83 @@ namespace NexusTechUniversity
 
             dgvCourses.Rows.Clear();
 
-            QuerySnapshot snap = await Db.Collection("users")
-                                         .Document(studentId)
-                                         .Collection("courses")
-                                         .GetSnapshotAsync();
-
-            foreach (DocumentSnapshot d in snap.Documents)
+            try
             {
-                dgvCourses.Rows.Add(
-                    GetField(d, "CourseCode"),
-                    GetField(d, "CourseTitle"),
-                    GetField(d, "CourseDescription"),
-                    GetField(d, "Units"),
-                    (d.TryGetValue("Passed", out bool p) && p) ? "PASSED" : "ENROLLED"
-                );
+                // 1. Kunin ang evaluation record na ginawa ng Admin
+                DocumentSnapshot evalDoc = await Db.Collection("evaluation").Document(studentId).GetSnapshotAsync();
+
+                if (evalDoc.Exists)
+                {
+                    var data = evalDoc.ToDictionary();
+
+                    // 2. I-check kung may 'courses' array sa loob
+                    if (data.ContainsKey("courses") && data["courses"] is System.Collections.Generic.List<object> coursesList)
+                    {
+                        foreach (var item in coursesList)
+                        {
+                            if (item is Dictionary<string, object> courseObj)
+                            {
+                                // Kunin ang basic info na naka-save sa evaluation document
+                                string code = courseObj.ContainsKey("course_code") ? courseObj["course_code"].ToString() : "";
+                                string yearLvl = courseObj.ContainsKey("year_Level") ? courseObj["year_Level"].ToString() : "";
+                                string sem = courseObj.ContainsKey("currentSemester") ? courseObj["currentSemester"].ToString() : "";
+
+                                string title = "";
+                                string unitsVal = "";
+                                string prereq = "";
+
+                                // 3. I-query ang 'courses' collection para makuha ang Title, Units, at Pre-requisite
+                                if (!string.IsNullOrEmpty(code))
+                                {
+                                    QuerySnapshot courseSnap = await Db.Collection("courses")
+                                                                       .WhereEqualTo("course_code", code)
+                                                                       .Limit(1)
+                                                                       .GetSnapshotAsync();
+
+                                    if (courseSnap.Documents.Count > 0)
+                                    {
+                                        var cDoc = courseSnap.Documents[0];
+
+                                        title = GetField(cDoc, "course_title");
+                                        if (string.IsNullOrEmpty(title)) title = GetField(cDoc, "courseTitle");
+
+                                        unitsVal = GetField(cDoc, "units");
+
+                                        prereq = GetField(cDoc, "pre_requisite");
+                                        if (string.IsNullOrEmpty(prereq)) prereq = GetField(cDoc, "prerequisite");
+                                        if (string.IsNullOrEmpty(prereq)) prereq = GetField(cDoc, "pre-requisite");
+                                    }
+                                }
+
+                                // 4. I-add ang row gamit ang EXACT column names mo
+                                int rowIndex = dgvCourses.Rows.Add();
+                                DataGridViewRow row = dgvCourses.Rows[rowIndex];
+
+                                row.Cells["courseCode"].Value = code;
+                                row.Cells["courseTitle"].Value = title;
+                                row.Cells["units"].Value = unitsVal;
+                                row.Cells["yearLevel"].Value = yearLvl;
+                                row.Cells["semester"].Value = sem;
+                                row.Cells["cacademicyear"].Value = prereq; // Eto yung name mo para sa Pre-requisite/s
+                            }
+                        }
+                    }
+
+                    if (dgvCourses.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No evaluated courses found in your record.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please wait for the admin to assign your courses. No evaluation record found yet.",
+                                    "No Evaluation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-
-            if (dgvCourses.Rows.Count == 0)
+            catch (Exception ex)
             {
-                MessageBox.Show("No enrolled courses found for this student.",
-                    "No courses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error loading evaluated courses:\n" + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -230,65 +287,79 @@ namespace NexusTechUniversity
         {
             if (dgvCourses.Rows.Count == 0)
             {
-                MessageBox.Show("There are no courses to export.",
-                    "Nothing to export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("There are no courses to export.", "Nothing to export", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            using (var sfd = new SaveFileDialog())
+            // Path ng logo (tulad sa Admin side)
+            string logoPath = System.IO.Path.Combine(Application.StartupPath, "Images", "IMG_9764 (1).png");
+            string logoUrl = new Uri(logoPath).AbsoluteUri;
+
+            try
             {
-                sfd.Filter = "Text file (*.txt)|*.txt|CSV file (*.csv)|*.csv";
-                sfd.FileName = $"POS_{(string.IsNullOrEmpty(studentId) ? "student" : studentId)}_{DateTime.Now:yyyyMMdd}.txt";
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "HTML Files|*.html";
+                saveFileDialog.FileName = $"{studentId}_Evaluation.html";
 
-                if (sfd.ShowDialog() != DialogResult.OK) return;
-
-                try
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    var sb = new StringBuilder();
-                    bool csv = sfd.FilterIndex == 2;
+                    var html = new System.Text.StringBuilder();
 
-                    sb.AppendLine("NEXUS TECH UNIVERSITY");
-                    sb.AppendLine("PROGRAM OF STUDY (POS)");
-                    sb.AppendLine(new string('-', 60));
-                    sb.AppendLine($"Student : {lblfName.Text}");
-                    sb.AppendLine($"College : {lblDepartment.Text.TrimStart('•', ' ')}");
-                    sb.AppendLine($"{lblAcadYear.Text.TrimStart('•', ' ')}");
-                    // REMOVED: Inalis na rin ang Status information sa inexport na text/csv document
-                    sb.AppendLine(new string('-', 60));
-                    sb.AppendLine();
+                    // Setup CSS
+                    html.Append("<html><head><style>");
+                    html.Append("body { font-family: Arial, sans-serif; margin: 30px; }");
+                    html.Append(".header { text-align: center; border-bottom: 2px solid #2c3e50; padding-bottom: 20px; margin-bottom: 20px; }");
+                    html.Append(".header img { width: 100px; }");
+                    html.Append(".contact-info { font-size: 0.9em; color: #555; }");
+                    html.Append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }");
+                    html.Append("th { background-color: #2c3e50; color: white; padding: 10px; border: 1px solid #ddd; }");
+                    html.Append("td { padding: 10px; border: 1px solid #ddd; text-align: left; }");
+                    html.Append(".enrolled { color: blue; font-weight: bold; }");
+                    html.Append("</style></head><body>");
 
-                    if (csv)
-                        sb.AppendLine("Course Code,Course Name,Course Description,Units,Remarks");
+                    // Header Section
+                    html.Append("<div class='header'>");
+                    html.Append($"<img src='{logoUrl}' alt='Logo' style='width:100px;'><br>");
+                    html.Append("<h1>Nexus Tech University</h1>");
+                    html.Append("<div class='contact-info'>");
+                    html.Append("info@nexustech.edu | 123-456-7890<br>");
+                    html.Append("Batangas City, Philippines | www.nexustech.edu");
+                    html.Append("</div></div>");
 
+                    // Student Info (Kinukuha sa Labels ng Dashboard)
+                    html.Append($"<p><b>Name:</b> {lblfName.Text}</p>");
+                    html.Append($"<p><b>Program:</b> {lblDepartment.Text.TrimStart('•', ' ')}</p>");
+                    html.Append($"<p><b>Academic Year:</b> {lblAcadYear.Text.TrimStart('•', ' ')}</p>");
+
+                    // Table Header
+                    html.Append("<table><tr>");
+                    html.Append("<th>Code</th><th>Course Title</th><th>Units</th><th>Year</th><th>Sem</th><th>Prerequisite</th><th>Remarks</th>");
+                    html.Append("</tr>");
+
+                    // Data Loop - Nagbabasa mula sa DataGridView gamit ang EXACT column names
                     foreach (DataGridViewRow row in dgvCourses.Rows)
                     {
                         if (row.IsNewRow) continue;
 
-                        string code = Cell(row, 0);
-                        string name = Cell(row, 1);
-                        string desc = Cell(row, 2);
-                        string units = Cell(row, 3);
-                        string remarks = Cell(row, 4);
+                        // Kukunin ang value based sa Name ng column na ibinigay mo
+                        string code = row.Cells["courseCode"].Value?.ToString() ?? "";
+                        string title = row.Cells["courseTitle"].Value?.ToString() ?? "";
+                        string unitsVal = row.Cells["units"].Value?.ToString() ?? "";
+                        string yearLvl = row.Cells["yearLevel"].Value?.ToString() ?? "";
+                        string sem = row.Cells["semester"].Value?.ToString() ?? "";
+                        string prereq = row.Cells["cacademicyear"].Value?.ToString() ?? ""; // Pre-requisite
 
-                        if (csv)
-                            sb.AppendLine($"{Q(code)},{Q(name)},{Q(desc)},{Q(units)},{Q(remarks)}");
-                        else
-                            sb.AppendLine($"{code,-12}{name,-25}{units,-8}{remarks}");
+                        html.Append($"<tr><td>{code}</td><td>{title}</td><td>{unitsVal}</td><td>{yearLvl}</td><td>{sem}</td><td>{prereq}</td><td class='enrolled'>For Enrollment</td></tr>");
                     }
 
-                    sb.AppendLine();
-                    sb.AppendLine($"Generated: {DateTime.Now:g}");
-
-                    File.WriteAllText(sfd.FileName, sb.ToString());
-
-                    MessageBox.Show("Program of Study exported successfully.",
-                        "Export complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    html.Append("</table></body></html>");
+                    System.IO.File.WriteAllText(saveFileDialog.FileName, html.ToString());
+                    MessageBox.Show("Evaluation report exported successfully!", "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed to export POS:\n" + ex.Message,
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error exporting: " + ex.Message, "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -297,6 +368,20 @@ namespace NexusTechUniversity
             DialogResult confirm = MessageBox.Show(
                 "Are you sure you want to log out?",
                 "Log Out", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                var login = new Form1();
+                login.Show();
+                this.Close();
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult confirm = MessageBox.Show(
+           "Are you sure you want to log out?",
+           "Log Out", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirm == DialogResult.Yes)
             {

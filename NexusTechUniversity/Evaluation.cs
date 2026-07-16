@@ -400,6 +400,8 @@ namespace NexusTechUniversity
                 });
 
                 MessageBox.Show($"Assigned! Next term: {nextYearStr} {nextSemStr}.");
+                Student students = new Student();
+                students.Show();
                 this.Hide();
             }
             catch (Exception ex) { MessageBox.Show("Error assigning: " + ex.Message); }
@@ -440,7 +442,10 @@ namespace NexusTechUniversity
             }
         }
 
-        private void btnBack_Click(object sender, EventArgs e) { this.Hide(); }
+        private void btnBack_Click(object sender, EventArgs e) {
+            Student students = new Student();
+            students.Show();
+            this.Hide(); }
 
         private async void btnExport_Click(object sender, EventArgs e)
         {

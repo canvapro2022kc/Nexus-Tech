@@ -242,7 +242,7 @@
             btn_Logout.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold);
             btn_Logout.Image = null;
             btn_Logout.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Logout.InactiveColor = Color.WhiteSmoke;
+            btn_Logout.InactiveColor = Color.FromArgb(3, 37, 83);
             btn_Logout.Location = new Point(988, 38);
             btn_Logout.Name = "btn_Logout";
             btn_Logout.PressedBorderColor = Color.FromArgb(165, 37, 37);

@@ -82,6 +82,7 @@
             btnLogout.TabIndex = 1;
             btnLogout.Text = "LOG OUT";
             btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnCurriculum
             // 
@@ -96,6 +97,7 @@
             btnCurriculum.Text = "Curriculum";
             btnCurriculum.TextAlign = ContentAlignment.MiddleLeft;
             btnCurriculum.UseVisualStyleBackColor = true;
+            btnCurriculum.Click += btnCurriculum_Click;
             // 
             // btnStudents
             // 
@@ -110,6 +112,7 @@
             btnStudents.Text = "Students";
             btnStudents.TextAlign = ContentAlignment.MiddleLeft;
             btnStudents.UseVisualStyleBackColor = true;
+            btnStudents.Click += btnStudents_Click;
             // 
             // btnDashboard
             // 
@@ -124,6 +127,7 @@
             btnDashboard.Text = "Dashboard";
             btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
             btnDashboard.UseVisualStyleBackColor = true;
+            btnDashboard.Click += btnDashboard_Click;
             // 
             // pictureBox1
             // 

@@ -95,7 +95,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Tw Cen MT", 9.75F);
-            label1.Location = new Point(373, 93);
+            label1.Location = new Point(52, 163);
             label1.Name = "label1";
             label1.Size = new Size(85, 20);
             label1.TabIndex = 32;
@@ -105,7 +105,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Tw Cen MT", 9.75F);
-            label2.Location = new Point(561, 93);
+            label2.Location = new Point(240, 163);
             label2.Name = "label2";
             label2.Size = new Size(34, 20);
             label2.TabIndex = 33;
@@ -115,7 +115,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Tw Cen MT", 9.75F);
-            label3.Location = new Point(637, 93);
+            label3.Location = new Point(316, 163);
             label3.Name = "label3";
             label3.Size = new Size(85, 20);
             label3.TabIndex = 34;
@@ -125,7 +125,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Tw Cen MT", 9.75F);
-            label6.Location = new Point(51, 162);
+            label6.Location = new Point(182, 94);
             label6.Name = "label6";
             label6.Size = new Size(116, 20);
             label6.TabIndex = 37;
@@ -133,7 +133,7 @@
             // 
             // txtboxFName
             // 
-            txtboxFName.Location = new Point(373, 118);
+            txtboxFName.Location = new Point(52, 188);
             txtboxFName.Margin = new Padding(3, 4, 3, 4);
             txtboxFName.Name = "txtboxFName";
             txtboxFName.Size = new Size(179, 27);
@@ -141,7 +141,7 @@
             // 
             // txtboxLName
             // 
-            txtboxLName.Location = new Point(637, 118);
+            txtboxLName.Location = new Point(316, 188);
             txtboxLName.Margin = new Padding(3, 4, 3, 4);
             txtboxLName.Name = "txtboxLName";
             txtboxLName.Size = new Size(179, 27);
@@ -149,7 +149,7 @@
             // 
             // txtboxMI
             // 
-            txtboxMI.Location = new Point(561, 118);
+            txtboxMI.Location = new Point(240, 188);
             txtboxMI.Margin = new Padding(3, 4, 3, 4);
             txtboxMI.Name = "txtboxMI";
             txtboxMI.Size = new Size(67, 27);
@@ -159,7 +159,7 @@
             // 
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] { "2021-2022", "2022-2023", "2023-2024", "2024-2025", "2025-2026", "2026-2027" });
-            comboBox3.Location = new Point(51, 185);
+            comboBox3.Location = new Point(183, 117);
             comboBox3.Margin = new Padding(3, 4, 3, 4);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(179, 28);
@@ -298,7 +298,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Tw Cen MT", 9.75F);
-            label4.Location = new Point(442, 161);
+            label4.Location = new Point(371, 95);
             label4.Name = "label4";
             label4.Size = new Size(86, 20);
             label4.TabIndex = 35;
@@ -308,7 +308,7 @@
             // 
             comboBox4.FormattingEnabled = true;
             comboBox4.Items.AddRange(new object[] { "Freshman", "Regular", "Transferee", "Irregular\t" });
-            comboBox4.Location = new Point(246, 184);
+            comboBox4.Location = new Point(750, 118);
             comboBox4.Margin = new Padding(3, 4, 3, 4);
             comboBox4.Name = "comboBox4";
             comboBox4.Size = new Size(179, 28);
@@ -318,7 +318,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "First Year", "Second Year", "Third Year", "Fourth Year", "Fifth Year" });
-            comboBox1.Location = new Point(442, 184);
+            comboBox1.Location = new Point(371, 118);
             comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(179, 28);
@@ -329,7 +329,7 @@
             // 
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "First Semester", "Second Semester", "Midterm" });
-            comboBox2.Location = new Point(637, 184);
+            comboBox2.Location = new Point(561, 118);
             comboBox2.Margin = new Padding(3, 4, 3, 4);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(179, 28);
@@ -340,7 +340,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Tw Cen MT", 9.75F);
-            label8.Location = new Point(246, 161);
+            label8.Location = new Point(750, 95);
             label8.Name = "label8";
             label8.Size = new Size(103, 20);
             label8.TabIndex = 47;
@@ -350,7 +350,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Tw Cen MT", 9.75F);
-            label5.Location = new Point(637, 161);
+            label5.Location = new Point(562, 95);
             label5.Name = "label5";
             label5.Size = new Size(77, 20);
             label5.TabIndex = 36;
