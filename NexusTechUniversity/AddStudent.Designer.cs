@@ -127,9 +127,9 @@
             label6.Font = new Font("Tw Cen MT", 9.75F);
             label6.Location = new Point(182, 94);
             label6.Name = "label6";
-            label6.Size = new Size(118, 20);
+            label6.Size = new Size(116, 20);
             label6.TabIndex = 37;
-            label6.Text = "Curriculum Year:";
+            label6.Text = "Academic Year:";
             // 
             // txtboxFName
             // 
