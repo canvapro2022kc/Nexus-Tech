@@ -509,6 +509,7 @@
             Controls.Add(panel2);
             Name = "Curriculum";
             Text = "Curriculum";
+            Load += Curriculum_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

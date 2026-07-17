@@ -525,5 +525,10 @@ namespace NexusTechUniversity
             adminForm.Show();
             this.Hide();
         }
+
+        private void Curriculum_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

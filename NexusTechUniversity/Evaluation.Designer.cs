@@ -65,13 +65,6 @@
             label13 = new Label();
             label8 = new Label();
             dgCoursesTaken = new DataGridView();
-            taken = new DataGridViewCheckBoxColumn();
-            courseCode = new DataGridViewTextBoxColumn();
-            courseTitle = new DataGridViewTextBoxColumn();
-            units = new DataGridViewTextBoxColumn();
-            yearLevel = new DataGridViewTextBoxColumn();
-            semester = new DataGridViewTextBoxColumn();
-            academicYear = new DataGridViewTextBoxColumn();
             txtAcademicYear = new TextBox();
             txtSemester = new TextBox();
             txtYearLevel = new TextBox();
@@ -79,6 +72,14 @@
             txtMI = new TextBox();
             txtFname = new TextBox();
             txtSRCode = new TextBox();
+            taken = new DataGridViewCheckBoxColumn();
+            courseCode = new DataGridViewTextBoxColumn();
+            courseTitle = new DataGridViewTextBoxColumn();
+            units = new DataGridViewTextBoxColumn();
+            yearLevel = new DataGridViewTextBoxColumn();
+            semester = new DataGridViewTextBoxColumn();
+            academicYear = new DataGridViewTextBoxColumn();
+            track = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvCourses).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCoursesToTake).BeginInit();
@@ -176,7 +177,6 @@
             btnAssign.TabIndex = 74;
             btnAssign.Text = "Assign to Student";
             btnAssign.UseVisualStyleBackColor = false;
-            btnAssign.Click += btnAssign_Click;
             // 
             // dgvCoursesToTake
             // 
@@ -380,9 +380,9 @@
             label4.AutoSize = true;
             label4.Location = new Point(29, 155);
             label4.Name = "label4";
-            label4.Size = new Size(115, 20);
+            label4.Size = new Size(110, 20);
             label4.TabIndex = 78;
-            label4.Text = "Curriculum Year:";
+            label4.Text = "Academic Year:";
             // 
             // label3
             // 
@@ -443,7 +443,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Tw Cen MT", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.Navy;
-            label8.Location = new Point(31, 234);
+            label8.Location = new Point(3, 231);
             label8.Name = "label8";
             label8.Size = new Size(183, 33);
             label8.TabIndex = 71;
@@ -452,64 +452,13 @@
             // dgCoursesTaken
             // 
             dgCoursesTaken.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgCoursesTaken.Columns.AddRange(new DataGridViewColumn[] { taken, courseCode, courseTitle, units, yearLevel, semester, academicYear });
-            dgCoursesTaken.Location = new Point(28, 286);
+            dgCoursesTaken.Columns.AddRange(new DataGridViewColumn[] { taken, courseCode, courseTitle, units, yearLevel, semester, academicYear, track });
+            dgCoursesTaken.Location = new Point(3, 286);
             dgCoursesTaken.Name = "dgCoursesTaken";
             dgCoursesTaken.RowHeadersVisible = false;
             dgCoursesTaken.RowHeadersWidth = 51;
-            dgCoursesTaken.Size = new Size(753, 341);
+            dgCoursesTaken.Size = new Size(806, 341);
             dgCoursesTaken.TabIndex = 70;
-            // 
-            // taken
-            // 
-            taken.HeaderText = "Taken";
-            taken.MinimumWidth = 6;
-            taken.Name = "taken";
-            taken.Resizable = DataGridViewTriState.True;
-            taken.SortMode = DataGridViewColumnSortMode.Automatic;
-            taken.Width = 50;
-            // 
-            // courseCode
-            // 
-            courseCode.HeaderText = "Course Code";
-            courseCode.MinimumWidth = 6;
-            courseCode.Name = "courseCode";
-            courseCode.Width = 125;
-            // 
-            // courseTitle
-            // 
-            courseTitle.HeaderText = "Course Title";
-            courseTitle.MinimumWidth = 6;
-            courseTitle.Name = "courseTitle";
-            courseTitle.Width = 170;
-            // 
-            // units
-            // 
-            units.HeaderText = "Units";
-            units.MinimumWidth = 6;
-            units.Name = "units";
-            units.Width = 50;
-            // 
-            // yearLevel
-            // 
-            yearLevel.HeaderText = "Year Level";
-            yearLevel.MinimumWidth = 6;
-            yearLevel.Name = "yearLevel";
-            yearLevel.Width = 120;
-            // 
-            // semester
-            // 
-            semester.HeaderText = "Semester";
-            semester.MinimumWidth = 6;
-            semester.Name = "semester";
-            semester.Width = 125;
-            // 
-            // academicYear
-            // 
-            academicYear.HeaderText = "Pre-requisite/s";
-            academicYear.MinimumWidth = 6;
-            academicYear.Name = "academicYear";
-            academicYear.Width = 135;
             // 
             // txtAcademicYear
             // 
@@ -559,6 +508,61 @@
             txtSRCode.Name = "txtSRCode";
             txtSRCode.Size = new Size(136, 27);
             txtSRCode.TabIndex = 63;
+            // 
+            // taken
+            // 
+            taken.HeaderText = "Taken";
+            taken.MinimumWidth = 6;
+            taken.Name = "taken";
+            taken.Resizable = DataGridViewTriState.True;
+            taken.SortMode = DataGridViewColumnSortMode.Automatic;
+            taken.Width = 50;
+            // 
+            // courseCode
+            // 
+            courseCode.HeaderText = "Course Code";
+            courseCode.MinimumWidth = 6;
+            courseCode.Name = "courseCode";
+            // 
+            // courseTitle
+            // 
+            courseTitle.HeaderText = "Course Title";
+            courseTitle.MinimumWidth = 6;
+            courseTitle.Name = "courseTitle";
+            courseTitle.Width = 170;
+            // 
+            // units
+            // 
+            units.HeaderText = "Units";
+            units.MinimumWidth = 6;
+            units.Name = "units";
+            units.Width = 50;
+            // 
+            // yearLevel
+            // 
+            yearLevel.HeaderText = "Year Level";
+            yearLevel.MinimumWidth = 6;
+            yearLevel.Name = "yearLevel";
+            yearLevel.Width = 120;
+            // 
+            // semester
+            // 
+            semester.HeaderText = "Semester";
+            semester.MinimumWidth = 6;
+            semester.Name = "semester";
+            // 
+            // academicYear
+            // 
+            academicYear.HeaderText = "Pre-requisite/s";
+            academicYear.MinimumWidth = 6;
+            academicYear.Name = "academicYear";
+            academicYear.Width = 120;
+            // 
+            // track
+            // 
+            track.HeaderText = "Track";
+            track.MinimumWidth = 6;
+            track.Name = "track";
             // 
             // Evaluation
             // 
@@ -646,5 +650,6 @@
         private DataGridViewTextBoxColumn yearLevel;
         private DataGridViewTextBoxColumn semester;
         private DataGridViewTextBoxColumn academicYear;
+        private DataGridViewTextBoxColumn track;
     }
 }
