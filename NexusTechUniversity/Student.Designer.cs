@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Student));
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
-            btnLogout = new Button();
+            btn_Logout = new ReaLTaiizor.Controls.Button();
             btnCurriculum = new Button();
             btnStudents = new Button();
             btnDashboard = new Button();
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label1 = new Label();
-            btnAddStudent = new Button();
             label3 = new Label();
-            textBox1 = new TextBox();
+            txtboxSearchName = new TextBox();
             label4 = new Label();
             dgvStudent = new DataGridView();
             srCode = new DataGridViewTextBoxColumn();
@@ -50,6 +51,7 @@
             currentSemester = new DataGridViewTextBoxColumn();
             academicYear = new DataGridViewTextBoxColumn();
             btnEvaluation = new DataGridViewButtonColumn();
+            btn_AddStudent = new ReaLTaiizor.Controls.Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudent).BeginInit();
@@ -58,7 +60,7 @@
             // panel1
             // 
             panel1.BackColor = Color.Navy;
-            panel1.Controls.Add(btnLogout);
+            panel1.Controls.Add(btn_Logout);
             panel1.Controls.Add(btnCurriculum);
             panel1.Controls.Add(btnStudents);
             panel1.Controls.Add(btnDashboard);
@@ -71,18 +73,25 @@
             panel1.Size = new Size(247, 608);
             panel1.TabIndex = 1;
             // 
-            // btnLogout
+            // btn_Logout
             // 
-            btnLogout.FlatAppearance.BorderSize = 0;
-            btnLogout.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLogout.ForeColor = Color.Navy;
-            btnLogout.Location = new Point(46, 552);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(161, 40);
-            btnLogout.TabIndex = 1;
-            btnLogout.Text = "LOG OUT";
-            btnLogout.UseVisualStyleBackColor = true;
-            btnLogout.Click += btnLogout_Click;
+            btn_Logout.BackColor = Color.Transparent;
+            btn_Logout.BorderColor = Color.FromArgb(32, 34, 37);
+            btn_Logout.EnteredBorderColor = Color.FromArgb(3, 37, 83);
+            btn_Logout.EnteredColor = Color.FromArgb(3, 37, 83);
+            btn_Logout.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Logout.Image = null;
+            btn_Logout.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Logout.InactiveColor = Color.WhiteSmoke;
+            btn_Logout.Location = new Point(47, 546);
+            btn_Logout.Name = "btn_Logout";
+            btn_Logout.PressedBorderColor = Color.White;
+            btn_Logout.PressedColor = Color.White;
+            btn_Logout.Size = new Size(147, 34);
+            btn_Logout.TabIndex = 15;
+            btn_Logout.Text = "LOG OUT";
+            btn_Logout.TextAlignment = StringAlignment.Center;
+            btn_Logout.Click += btn_Logout_Click;
             // 
             // btnCurriculum
             // 
@@ -142,11 +151,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Tw Cen MT Condensed Extra Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Tw Cen MT Condensed", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
             label2.Location = new Point(104, 61);
             label2.Name = "label2";
-            label2.Size = new Size(74, 21);
+            label2.Size = new Size(60, 20);
             label2.TabIndex = 2;
             label2.Text = "University";
             // 
@@ -161,21 +170,6 @@
             label1.TabIndex = 1;
             label1.Text = "NexusTech";
             // 
-            // btnAddStudent
-            // 
-            btnAddStudent.BackColor = Color.Navy;
-            btnAddStudent.FlatAppearance.BorderSize = 0;
-            btnAddStudent.FlatStyle = FlatStyle.Flat;
-            btnAddStudent.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAddStudent.ForeColor = Color.White;
-            btnAddStudent.Location = new Point(984, 106);
-            btnAddStudent.Name = "btnAddStudent";
-            btnAddStudent.Size = new Size(127, 31);
-            btnAddStudent.TabIndex = 3;
-            btnAddStudent.Text = "+  Add Student";
-            btnAddStudent.UseVisualStyleBackColor = false;
-            btnAddStudent.Click += btnAddStudent_Click;
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -187,19 +181,21 @@
             label3.TabIndex = 10;
             label3.Text = "Students";
             // 
-            // textBox1
+            // txtboxSearchName
             // 
-            textBox1.Location = new Point(387, 108);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(251, 27);
-            textBox1.TabIndex = 11;
+            txtboxSearchName.BackColor = Color.White;
+            txtboxSearchName.Font = new Font("Tw Cen MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtboxSearchName.Location = new Point(711, 55);
+            txtboxSearchName.Name = "txtboxSearchName";
+            txtboxSearchName.Size = new Size(251, 24);
+            txtboxSearchName.TabIndex = 11;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Navy;
-            label4.Location = new Point(275, 111);
+            label4.Location = new Point(599, 58);
             label4.Name = "label4";
             label4.Size = new Size(106, 20);
             label4.TabIndex = 12;
@@ -207,13 +203,30 @@
             // 
             // dgvStudent
             // 
+            dgvStudent.BackgroundColor = Color.White;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvStudent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStudent.Columns.AddRange(new DataGridViewColumn[] { srCode, firstName, middleInitial, lastName, yearLevel, currentSemester, academicYear, btnEvaluation });
-            dgvStudent.Location = new Point(275, 151);
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvStudent.DefaultCellStyle = dataGridViewCellStyle4;
+            dgvStudent.Location = new Point(275, 95);
             dgvStudent.Name = "dgvStudent";
             dgvStudent.RowHeadersVisible = false;
             dgvStudent.RowHeadersWidth = 51;
-            dgvStudent.Size = new Size(836, 413);
+            dgvStudent.Size = new Size(836, 485);
             dgvStudent.TabIndex = 13;
             dgvStudent.CellContentClick += dgvStudent_CellContentClick;
             // 
@@ -273,16 +286,36 @@
             btnEvaluation.Name = "btnEvaluation";
             btnEvaluation.Width = 80;
             // 
+            // btn_AddStudent
+            // 
+            btn_AddStudent.BackColor = Color.Transparent;
+            btn_AddStudent.BorderColor = Color.FromArgb(32, 34, 37);
+            btn_AddStudent.EnteredBorderColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.EnteredColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_AddStudent.Image = null;
+            btn_AddStudent.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_AddStudent.InactiveColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.Location = new Point(977, 55);
+            btn_AddStudent.Name = "btn_AddStudent";
+            btn_AddStudent.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.PressedColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.Size = new Size(134, 27);
+            btn_AddStudent.TabIndex = 14;
+            btn_AddStudent.Text = "+ ADD STUDENT";
+            btn_AddStudent.TextAlignment = StringAlignment.Center;
+            btn_AddStudent.Click += btn_AddStudent_Click;
+            // 
             // Student
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1140, 608);
+            Controls.Add(btn_AddStudent);
             Controls.Add(dgvStudent);
             Controls.Add(label4);
-            Controls.Add(textBox1);
+            Controls.Add(txtboxSearchName);
             Controls.Add(label3);
-            Controls.Add(btnAddStudent);
             Controls.Add(panel1);
             Name = "Student";
             Text = "Student";
@@ -298,16 +331,14 @@
         #endregion
 
         private Panel panel1;
-        private Button btnLogout;
         private Button btnCurriculum;
         private Button btnStudents;
         private Button btnDashboard;
         private PictureBox pictureBox1;
         private Label label2;
         private Label label1;
-        private Button btnAddStudent;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox txtboxSearchName;
         private Label label4;
         private DataGridView dgvStudent;
         private DataGridViewTextBoxColumn srCode;
@@ -318,5 +349,7 @@
         private DataGridViewTextBoxColumn currentSemester;
         private DataGridViewTextBoxColumn academicYear;
         private DataGridViewButtonColumn btnEvaluation;
+        private ReaLTaiizor.Controls.Button btn_AddStudent;
+        private ReaLTaiizor.Controls.Button btn_Logout;
     }
 }

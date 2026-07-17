@@ -39,6 +39,9 @@ namespace NexusTechUniversity
                 txtboxCode.ReadOnly = true;
                 txtboxCode.TabStop = false;
 
+                // Allow admin to type custom inputs in the Academic Year combo box
+                comboBox3.DropDownStyle = ComboBoxStyle.DropDown;
+
                 SetupComboBoxItems();
                 await RefreshStudentsGrid();
             }
@@ -58,6 +61,27 @@ namespace NexusTechUniversity
 
             comboBox2.Items.Clear();
             comboBox2.Items.AddRange(new string[] { "First Semester", "Second Semester", "Midterm" });
+        }
+
+        // Helper function to dynamically determine the curriculum based on Academic Year string
+        private string DetermineCurriculumId(string academicYear)
+        {
+            string cleanAY = academicYear.Trim();
+            if (!string.IsNullOrEmpty(cleanAY) && cleanAY.Length >= 4)
+            {
+                if (int.TryParse(cleanAY.Substring(0, 4), out int startYear))
+                {
+                    if (startYear >= 2020 && startYear <= 2024)
+                    {
+                        return "AY 2020-2024";
+                    }
+                    else if (startYear >= 2025)
+                    {
+                        return "AY 2025-Onwards";
+                    }
+                }
+            }
+            return "AY 2025-Onwards"; // Default fallback
         }
 
         // Optimized server-side unique SR-Code generation (Only reads 1 document)
@@ -86,31 +110,31 @@ namespace NexusTechUniversity
                 }
             }
 
-            return $"{currentYearSuffix}-{nextNumber:D5}"; // Returns "26-0006"
+            return $"{currentYearSuffix}-{nextNumber:D5}"; // Returns "26-00001"
         }
 
         private async Task GenerateStudentPassword(string srCode, string firstName, string lastName)
         {
             try
             {
-                // 1. I-save ang password sa 'students' collection (yung ginawa natin kanina)
+                // 1. I-save ang password sa 'students' collection
                 DocumentReference studentDocRef = db.Collection("students").Document(srCode);
                 Dictionary<string, object> passwordData = new Dictionary<string, object>
                 {
                     { "password", srCode }
-            };
+                };
                 await studentDocRef.SetAsync(passwordData, SetOptions.MergeAll);
 
-                // 2. GUMAWA NG BAGONG DOCUMENT SA 'users' COLLECTION (Base sa iyong screenshot)
+                // 2. GUMAWA NG BAGONG DOCUMENT SA 'users' COLLECTION
                 DocumentReference userDocRef = db.Collection("users").Document(srCode);
                 Dictionary<string, object> userData = new Dictionary<string, object>
-            {
-            { "firstName", firstName },
-            { "lastName", lastName },
-            { "password", srCode },         // Default password ay SR Code pa rin
-            { "role", "student" },          // Laging "student" para sa screen na ito
-            { "username", srCode }          // Ang username ay ang SR Code
-            };
+                {
+                    { "firstName", firstName },
+                    { "lastName", lastName },
+                    { "password", srCode },         // Default password ay SR Code pa rin
+                    { "role", "student" },          // Laging "student" para sa screen na ito
+                    { "username", srCode }          // Ang username ay ang SR Code
+                };
                 await userDocRef.SetAsync(userData); // SetAsync nang walang Merge para malinis na magawa ang user record
             }
             catch (Exception ex)
@@ -125,13 +149,14 @@ namespace NexusTechUniversity
 
             string firstName = txtboxFName.Text.Trim();
             string lastName = txtboxLName.Text.Trim();
+            string MI = txtboxMI.Text.Trim();
             string yearLevel = comboBox1.SelectedItem?.ToString() ?? "";
             string semester = comboBox2.SelectedItem?.ToString() ?? "";
             string studentType = comboBox4.SelectedItem?.ToString() ?? "";
 
-            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
+            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(MI))
             {
-                errorMessage = "First name and Last name are required fields.";
+                errorMessage = "First name, Last name, and Middle initial are required fields.";
                 return false;
             }
 
@@ -168,57 +193,11 @@ namespace NexusTechUniversity
             return true;
         }
 
-        private async void btnAddStudent_Click(object sender, EventArgs e)
-        {
-            if (!ValidateStudentInputs(out string validationError))
-            {
-                MessageBox.Show(validationError, "Validation Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                string generatedSRCode = await GenerateUniqueSRCodeAsync();
-                CollectionReference collectionRef = db.Collection("students");
-
-                Dictionary<string, object> studentData = new Dictionary<string, object>
-        {
-            { "studentID", generatedSRCode },
-            { "firstName", txtboxFName.Text.Trim() },
-            { "middleInitial", txtboxMI.Text.Trim() },
-            { "lastName", txtboxLName.Text.Trim() },
-            { "currentAcademicYear", comboBox3.SelectedItem?.ToString() ?? "" },
-            { "currentSemester", comboBox2.SelectedItem?.ToString() ?? "" },
-            { "status", "Enrolled" },
-            { "email", $"{generatedSRCode}@nexus.edu.ph" },
-            { "subStatus", comboBox4.SelectedItem.ToString() },
-            { "yearLevel", comboBox1.SelectedItem.ToString() }
-        };
-
-                DocumentReference docRef = collectionRef.Document(generatedSRCode);
-                await docRef.SetAsync(studentData);
-
-                string fName = txtboxFName.Text.Trim();
-                string lName = txtboxLName.Text.Trim();
-                await GenerateStudentPassword(generatedSRCode, fName, lName);
-
-                MessageBox.Show($"Student successfully added!\nGenerated SR-Code: {generatedSRCode}\nDefault Password: {generatedSRCode}");
-
-                ClearInputFields();
-                await RefreshStudentsGrid();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error saving to Firestore: " + ex.Message);
-            }
-        }
-
         private async Task RefreshStudentsGrid()
         {
             try
             {
-                if (db == null)
-                    return;
+                if (db == null) return;
 
                 CollectionReference collectionRef = db.Collection("students");
                 QuerySnapshot snapshot = await collectionRef.GetSnapshotAsync();
@@ -231,6 +210,7 @@ namespace NexusTechUniversity
                 dt.Columns.Add("Year Level");
                 dt.Columns.Add("Semester");
                 dt.Columns.Add("Academic Year");
+                dt.Columns.Add("Track"); // Added field
                 dt.Columns.Add("Student Type");
 
                 foreach (DocumentSnapshot document in snapshot.Documents)
@@ -250,15 +230,13 @@ namespace NexusTechUniversity
                             data.ContainsKey("yearLevel") ? data["yearLevel"] : "",
                             data.ContainsKey("currentSemester") ? data["currentSemester"] : "",
                             data.ContainsKey("currentAcademicYear") ? data["currentAcademicYear"] : "",
+                            data.ContainsKey("track") ? data["track"] : "None", // Safe fall-through fallback value
                             data.ContainsKey("subStatus") ? data["subStatus"] : ""
                         );
                     }
                 }
 
                 dgvStudents.DataSource = dt;
-
-                // Optional: Hide columns from the admin view if you don't want a crowded grid,
-                // while keeping the data accessible for the click event.
                 if (dgvStudents.Columns.Contains("Middle Initial")) dgvStudents.Columns["Middle Initial"].Visible = false;
             }
             catch (Exception ex)
@@ -285,14 +263,13 @@ namespace NexusTechUniversity
                 comboBox2.SelectedIndex = comboBox2.FindStringExact(semVal);
 
                 string acadYearVal = row.Cells["Academic Year"].Value?.ToString() ?? "";
-                comboBox3.SelectedIndex = comboBox3.FindStringExact(acadYearVal);
+                comboBox3.Text = acadYearVal; // Gumamit ng .Text para mabasa ang custom values
 
                 string typeVal = row.Cells["Student Type"].Value?.ToString() ?? "";
                 comboBox4.SelectedIndex = comboBox4.FindStringExact(typeVal);
             }
         }
 
-        // Additional designer-referenced handler: some designers wire CellClick instead of CellContentClick.
         private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -303,6 +280,7 @@ namespace NexusTechUniversity
                 txtboxFName.Text = row.Cells["First Name"].Value?.ToString() ?? "";
                 txtboxLName.Text = row.Cells["Last Name"].Value?.ToString() ?? "";
                 txtboxMI.Text = row.Cells["Middle Initial"].Value?.ToString() ?? "";
+                textBox1.Text = row.Cells["Track"].Value?.ToString() ?? "None";
 
                 string yearVal = row.Cells["Year Level"].Value?.ToString() ?? "";
                 comboBox1.SelectedIndex = comboBox1.FindStringExact(yearVal);
@@ -311,29 +289,16 @@ namespace NexusTechUniversity
                 comboBox2.SelectedIndex = comboBox2.FindStringExact(semVal);
 
                 string acadYearVal = row.Cells["Academic Year"].Value?.ToString() ?? "";
-                comboBox3.SelectedIndex = comboBox3.FindStringExact(acadYearVal);
+                comboBox3.Text = acadYearVal; // Gumamit ng .Text para mabasa ang custom values
 
                 string typeVal = row.Cells["Student Type"].Value?.ToString() ?? "";
                 comboBox4.SelectedIndex = comboBox4.FindStringExact(typeVal);
             }
         }
 
-        // Bridge method for designer Load subscription variants that expect non-nullable signatures.
         private void Add_Student_Load_1(object sender, EventArgs e)
         {
             Add_Student_Load(sender, e);
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            txtboxFName.ReadOnly = false;
-            txtboxLName.ReadOnly = false;
-            txtboxMI.ReadOnly = false;
-
-            // Explicitly lock the textbox context to avoid breaking format uniqueness configurations
-            txtboxCode.ReadOnly = true;
-
-            MessageBox.Show("Fields are now editable (SR-Code remains system-managed). Click 'Save' when finished.");
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -353,16 +318,20 @@ namespace NexusTechUniversity
             try
             {
                 DocumentReference docRef = db.Collection("students").Document(txtboxCode.Text);
+                string selectedAY = comboBox3.Text.Trim();
+                string calculatedCurriculum = DetermineCurriculumId(selectedAY);
 
                 Dictionary<string, object> updatedData = new Dictionary<string, object>
                 {
                     { "firstName", txtboxFName.Text.Trim() },
                     { "lastName", txtboxLName.Text.Trim() },
                     { "middleInitial", txtboxMI.Text.Trim() },
-                    { "currentAcademicYear", comboBox3.SelectedItem?.ToString() ?? "" },
+                    { "currentAcademicYear", selectedAY },
+                    { "curriculum_id", calculatedCurriculum }, // Dynamic classification update
                     { "currentSemester", comboBox2.SelectedItem?.ToString() ?? "" },
                     { "subStatus", comboBox4.SelectedItem.ToString() },
-                    { "yearLevel", comboBox1.SelectedItem.ToString() }
+                    { "yearLevel", comboBox1.SelectedItem.ToString() },
+                    { "track", textBox1.Text.Trim() }
                 };
 
                 await docRef.SetAsync(updatedData, SetOptions.MergeAll);
@@ -377,7 +346,136 @@ namespace NexusTechUniversity
             }
         }
 
-        private async void btnDelete_Click(object sender, EventArgs e)
+        private void ClearInputFields()
+        {
+            txtboxCode.Clear();
+            txtboxFName.Clear();
+            txtboxLName.Clear();
+            txtboxMI.Clear();
+            comboBox1.SelectedIndex = -1;
+            comboBox2.SelectedIndex = -1;
+            comboBox4.SelectedIndex = -1;
+
+            // Llinisin din ang curriculum academic year box at track text box
+            comboBox3.SelectedIndex = -1;
+            comboBox3.Text = "";
+            textBox1.Clear();
+            textBox1.Text = "";
+        }
+
+        private async Task btnLoadStudents_Click(object sender, EventArgs e)
+        {
+            await RefreshStudentsGrid();
+            MessageBox.Show("Successfully loaded all students from the database.");
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedYear = comboBox3.Text.Trim();
+            string calculatedCurriculum = DetermineCurriculumId(selectedYear);
+
+            if (calculatedCurriculum.Equals("AY 2025-Onwards", StringComparison.OrdinalIgnoreCase))
+            {
+                textBox1.Text = "None";
+                textBox1.ReadOnly = true;
+                textBox1.Enabled = false;
+                textBox1.BackColor = Color.LightGray;
+            }
+            else
+            {
+                textBox1.ReadOnly = false;
+                textBox1.Enabled = true;
+                textBox1.BackColor = Color.White;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AdminDashboard adminForm = new AdminDashboard();
+            adminForm.Show();
+            this.Hide();
+        }
+
+        private void Add_Student_Load_2(object sender, EventArgs e) { }
+        private void txtboxCode_TextChanged(object sender, EventArgs e) { }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AdminDashboard adding = new AdminDashboard();
+            adding.Show();
+            this.Hide();
+        }
+
+        private async void btn_AddStudent_Click(object sender, EventArgs e)
+        {
+            if (!ValidateStudentInputs(out string validationError))
+            {
+                MessageBox.Show(validationError, "Validation Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                string generatedSRCode = await GenerateUniqueSRCodeAsync();
+                CollectionReference collectionRef = db.Collection("students");
+
+                string selectedAY = comboBox3.Text.Trim();
+                string calculatedCurriculum = DetermineCurriculumId(selectedAY);
+
+                // BAGONG LOGIKA: Kung AY 2025-Onwards at blanko ang track, gawing "None"
+                string trackValue = textBox1.Text.Trim();
+                if (calculatedCurriculum == "AY 2025-Onwards" && string.IsNullOrEmpty(trackValue))
+                {
+                    trackValue = "None";
+                }
+
+                Dictionary<string, object> studentData = new Dictionary<string, object>
+        {
+            { "studentID", generatedSRCode },
+            { "firstName", txtboxFName.Text.Trim() },
+            { "middleInitial", txtboxMI.Text.Trim() },
+            { "lastName", txtboxLName.Text.Trim() },
+            { "currentAcademicYear", selectedAY },
+            { "curriculum_id", calculatedCurriculum },
+            { "currentSemester", comboBox2.SelectedItem?.ToString() ?? "" },
+            { "status", "Enrolled" },
+            { "email", $"{generatedSRCode}@nexus.edu.ph" },
+            { "track", trackValue }, // Gagamitin ang sinalang trackValue
+            { "subStatus", comboBox4.SelectedItem.ToString() },
+            { "yearLevel", comboBox1.SelectedItem.ToString() }
+        };
+
+                DocumentReference docRef = collectionRef.Document(generatedSRCode);
+                await docRef.SetAsync(studentData);
+
+                string fName = txtboxFName.Text.Trim();
+                string lName = txtboxLName.Text.Trim();
+                await GenerateStudentPassword(generatedSRCode, fName, lName);
+
+                MessageBox.Show($"Student successfully added!\nGenerated SR-Code: {generatedSRCode}\nDefault Password: {generatedSRCode}");
+
+                ClearInputFields();
+                await RefreshStudentsGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving to Firestore: " + ex.Message);
+            }
+        }
+
+        private void btn_Edit_Click(object sender, EventArgs e)
+        {
+            txtboxFName.ReadOnly = false;
+            txtboxLName.ReadOnly = false;
+            txtboxMI.ReadOnly = false;
+            txtboxCode.ReadOnly = true;
+
+            MessageBox.Show("Fields are now editable (SR-Code remains system-managed). Click 'Save' when finished.");
+        }
+
+        private async void btn_Delete_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtboxCode.Text))
             {
@@ -410,50 +508,64 @@ namespace NexusTechUniversity
             }
         }
 
-        private void ClearInputFields()
+        private async void btn_Save_Click(object sender, EventArgs e)
         {
-            txtboxCode.Clear();
-            txtboxFName.Clear();
-            txtboxLName.Clear();
-            txtboxMI.Clear();
-            comboBox1.SelectedIndex = -1;
-            comboBox2.SelectedIndex = -1;
-            comboBox4.SelectedIndex = -1;
+            // Ipinapasa ang tawag sa parehong lohika ng btnSave_Click para iwas kalat sa duplicate handler
+            await btnSave_Click_Internal();
         }
 
-        private async void btnLoadStudents_Click(object sender, EventArgs e)
+        private async Task btnSave_Click_Internal()
         {
-            await RefreshStudentsGrid();
-            MessageBox.Show("Successfully loaded all students from the database.");
+            if (string.IsNullOrWhiteSpace(txtboxCode.Text))
+            {
+                MessageBox.Show("Please select a student from the grid to update fields.");
+                return;
+            }
+
+            if (!ValidateStudentInputs(out string validationError))
+            {
+                MessageBox.Show(validationError, "Validation Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                DocumentReference docRef = db.Collection("students").Document(txtboxCode.Text);
+                string selectedAY = comboBox3.Text.Trim();
+                string calculatedCurriculum = DetermineCurriculumId(selectedAY);
+
+                // BAGONG LOGIKA: Kung AY 2025-Onwards at blanko ang track, gawing "None"
+                string trackValue = textBox1.Text.Trim();
+                if (calculatedCurriculum == "AY 2025-Onwards" && string.IsNullOrEmpty(trackValue))
+                {
+                    trackValue = "None";
+                }
+
+                Dictionary<string, object> updatedData = new Dictionary<string, object>
+        {
+            { "firstName", txtboxFName.Text.Trim() },
+            { "lastName", txtboxLName.Text.Trim() },
+            { "middleInitial", txtboxMI.Text.Trim() },
+            { "currentAcademicYear", selectedAY },
+            { "curriculum_id", calculatedCurriculum },
+            { "currentSemester", comboBox2.SelectedItem?.ToString() ?? "" },
+            { "subStatus", comboBox4.SelectedItem.ToString() },
+            { "yearLevel", comboBox1.SelectedItem.ToString() },
+            { "track", trackValue } // Gagamitin ang sinalang trackValue
+        };
+
+                await docRef.SetAsync(updatedData, SetOptions.MergeAll);
+
+                MessageBox.Show("Student changes saved successfully!");
+                ClearInputFields();
+                await RefreshStudentsGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating student data: " + ex.Message);
+            }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) { }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            AdminDashboard adminForm = new AdminDashboard();
-
-            adminForm.Show();
-
-            this.Hide();
-        }
-
-        private void Add_Student_Load_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtboxCode_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AdminDashboard adding = new AdminDashboard();
-            adding.Show();
-            this.Hide();
-        }
+        private void label12_Click(object sender, EventArgs e) { }
     }
 }

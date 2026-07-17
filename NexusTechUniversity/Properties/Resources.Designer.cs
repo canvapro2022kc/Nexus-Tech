@@ -63,6 +63,16 @@ namespace NexusTechUniversity.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_student_blue {
+            get {
+                object obj = ResourceManager.GetObject("add_student_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IMG_9890 {
             get {
                 object obj = ResourceManager.GetObject("IMG_9890", resourceCulture);

@@ -44,6 +44,9 @@
             btn_Curriculum = new ReaLTaiizor.Controls.Button();
             btn_Student = new ReaLTaiizor.Controls.Button();
             btn_Logout = new ReaLTaiizor.Controls.Button();
+            materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
+            materialCard2 = new ReaLTaiizor.Controls.MaterialCard();
+            materialCard3 = new ReaLTaiizor.Controls.MaterialCard();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -96,11 +99,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Tw Cen MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Tw Cen MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(472, 555);
+            label4.Location = new Point(481, 555);
             label4.Name = "label4";
-            label4.Size = new Size(210, 20);
+            label4.Size = new Size(188, 17);
             label4.TabIndex = 9;
             label4.Text = "© 2026 NexusTech University";
             // 
@@ -180,16 +183,16 @@
             // 
             btn_AddStudent.BackColor = Color.Transparent;
             btn_AddStudent.BorderColor = Color.FromArgb(32, 34, 37);
-            btn_AddStudent.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            btn_AddStudent.EnteredColor = Color.FromArgb(32, 34, 37);
+            btn_AddStudent.EnteredBorderColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.EnteredColor = Color.FromArgb(3, 37, 83);
             btn_AddStudent.Font = new Font("Microsoft Sans Serif", 12F);
             btn_AddStudent.Image = null;
             btn_AddStudent.ImageAlign = ContentAlignment.MiddleLeft;
             btn_AddStudent.InactiveColor = Color.FromArgb(3, 37, 83);
             btn_AddStudent.Location = new Point(172, 245);
             btn_AddStudent.Name = "btn_AddStudent";
-            btn_AddStudent.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btn_AddStudent.PressedColor = Color.FromArgb(165, 37, 37);
+            btn_AddStudent.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.PressedColor = Color.FromArgb(3, 37, 83);
             btn_AddStudent.Size = new Size(254, 202);
             btn_AddStudent.TabIndex = 19;
             btn_AddStudent.TextAlignment = StringAlignment.Center;
@@ -199,16 +202,16 @@
             // 
             btn_Curriculum.BackColor = Color.Transparent;
             btn_Curriculum.BorderColor = Color.FromArgb(32, 34, 37);
-            btn_Curriculum.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            btn_Curriculum.EnteredColor = Color.FromArgb(32, 34, 37);
+            btn_Curriculum.EnteredBorderColor = Color.FromArgb(3, 37, 83);
+            btn_Curriculum.EnteredColor = Color.FromArgb(3, 37, 83);
             btn_Curriculum.Font = new Font("Microsoft Sans Serif", 12F);
             btn_Curriculum.Image = null;
             btn_Curriculum.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Curriculum.InactiveColor = Color.FromArgb(3, 37, 83);
             btn_Curriculum.Location = new Point(723, 245);
             btn_Curriculum.Name = "btn_Curriculum";
-            btn_Curriculum.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btn_Curriculum.PressedColor = Color.FromArgb(165, 37, 37);
+            btn_Curriculum.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_Curriculum.PressedColor = Color.FromArgb(3, 37, 83);
             btn_Curriculum.Size = new Size(254, 202);
             btn_Curriculum.TabIndex = 20;
             btn_Curriculum.TextAlignment = StringAlignment.Center;
@@ -218,16 +221,16 @@
             // 
             btn_Student.BackColor = Color.Transparent;
             btn_Student.BorderColor = Color.FromArgb(254, 182, 2);
-            btn_Student.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            btn_Student.EnteredColor = Color.FromArgb(32, 34, 37);
+            btn_Student.EnteredBorderColor = Color.FromArgb(254, 182, 2);
+            btn_Student.EnteredColor = Color.FromArgb(254, 182, 2);
             btn_Student.Font = new Font("Microsoft Sans Serif", 12F);
             btn_Student.Image = null;
             btn_Student.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Student.InactiveColor = Color.FromArgb(254, 182, 2);
             btn_Student.Location = new Point(448, 245);
             btn_Student.Name = "btn_Student";
-            btn_Student.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btn_Student.PressedColor = Color.FromArgb(165, 37, 37);
+            btn_Student.PressedBorderColor = Color.FromArgb(254, 182, 2);
+            btn_Student.PressedColor = Color.FromArgb(254, 182, 2);
             btn_Student.Size = new Size(254, 202);
             btn_Student.TabIndex = 21;
             btn_Student.TextAlignment = StringAlignment.Center;
@@ -237,21 +240,60 @@
             // 
             btn_Logout.BackColor = Color.Transparent;
             btn_Logout.BorderColor = Color.FromArgb(3, 37, 83);
-            btn_Logout.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            btn_Logout.EnteredColor = Color.FromArgb(32, 34, 37);
+            btn_Logout.EnteredBorderColor = Color.FromArgb(3, 37, 83);
+            btn_Logout.EnteredColor = Color.FromArgb(3, 37, 83);
             btn_Logout.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold);
             btn_Logout.Image = null;
             btn_Logout.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Logout.InactiveColor = Color.FromArgb(3, 37, 83);
             btn_Logout.Location = new Point(988, 38);
             btn_Logout.Name = "btn_Logout";
-            btn_Logout.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btn_Logout.PressedColor = Color.FromArgb(165, 37, 37);
+            btn_Logout.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_Logout.PressedColor = Color.FromArgb(3, 37, 83);
             btn_Logout.Size = new Size(112, 39);
             btn_Logout.TabIndex = 22;
             btn_Logout.Text = "LOG OUT";
             btn_Logout.TextAlignment = StringAlignment.Center;
             btn_Logout.Click += btn_Logout_Click;
+            // 
+            // materialCard1
+            // 
+            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Depth = 0;
+            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard1.Location = new Point(172, 245);
+            materialCard1.Margin = new Padding(17);
+            materialCard1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard1.Name = "materialCard1";
+            materialCard1.Padding = new Padding(17);
+            materialCard1.Size = new Size(254, 202);
+            materialCard1.TabIndex = 23;
+            // 
+            // materialCard2
+            // 
+            materialCard2.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard2.Depth = 0;
+            materialCard2.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard2.Location = new Point(448, 245);
+            materialCard2.Margin = new Padding(17);
+            materialCard2.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard2.Name = "materialCard2";
+            materialCard2.Padding = new Padding(17);
+            materialCard2.Size = new Size(254, 202);
+            materialCard2.TabIndex = 24;
+            // 
+            // materialCard3
+            // 
+            materialCard3.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard3.Depth = 0;
+            materialCard3.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard3.Location = new Point(723, 245);
+            materialCard3.Margin = new Padding(17);
+            materialCard3.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard3.Name = "materialCard3";
+            materialCard3.Padding = new Padding(17);
+            materialCard3.Size = new Size(254, 202);
+            materialCard3.TabIndex = 25;
             // 
             // AdminDashboard
             // 
@@ -274,6 +316,9 @@
             Controls.Add(pictureBox1);
             Controls.Add(label2);
             Controls.Add(label1);
+            Controls.Add(materialCard1);
+            Controls.Add(materialCard2);
+            Controls.Add(materialCard3);
             Name = "AdminDashboard";
             Text = "AdminDashboard";
             Load += AdminDashboard_Load;
@@ -301,5 +346,8 @@
         private ReaLTaiizor.Controls.Button btn_Curriculum;
         private ReaLTaiizor.Controls.Button btn_Student;
         private ReaLTaiizor.Controls.Button btn_Logout;
+        private ReaLTaiizor.Controls.MaterialCard materialCard1;
+        private ReaLTaiizor.Controls.MaterialCard materialCard2;
+        private ReaLTaiizor.Controls.MaterialCard materialCard3;
     }
 }

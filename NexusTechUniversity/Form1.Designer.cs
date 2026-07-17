@@ -38,6 +38,7 @@
             label3 = new Label();
             txtboxUsername = new TextBox();
             label1 = new Label();
+            materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
@@ -57,6 +58,7 @@
             // 
             // txtboxPassword
             // 
+            txtboxPassword.BackColor = Color.White;
             txtboxPassword.Location = new Point(94, 440);
             txtboxPassword.Name = "txtboxPassword";
             txtboxPassword.Size = new Size(271, 27);
@@ -75,6 +77,7 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(txtboxPassword);
             panel1.Controls.Add(label2);
+            panel1.Controls.Add(materialCard1);
             panel1.Location = new Point(1, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(460, 610);
@@ -85,16 +88,16 @@
             // 
             btn_Login.BackColor = Color.Transparent;
             btn_Login.BorderColor = Color.FromArgb(3, 37, 83);
-            btn_Login.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            btn_Login.EnteredColor = Color.FromArgb(32, 34, 37);
+            btn_Login.EnteredBorderColor = Color.FromArgb(3, 37, 83);
+            btn_Login.EnteredColor = Color.FromArgb(3, 37, 83);
             btn_Login.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Login.Image = null;
             btn_Login.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Login.InactiveColor = Color.FromArgb(3, 37, 83);
             btn_Login.Location = new Point(93, 492);
             btn_Login.Name = "btn_Login";
-            btn_Login.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btn_Login.PressedColor = Color.FromArgb(165, 37, 37);
+            btn_Login.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_Login.PressedColor = Color.FromArgb(3, 37, 83);
             btn_Login.Size = new Size(272, 44);
             btn_Login.TabIndex = 10;
             btn_Login.Text = "LOG IN";
@@ -135,6 +138,7 @@
             // 
             // txtboxUsername
             // 
+            txtboxUsername.BackColor = Color.White;
             txtboxUsername.Location = new Point(94, 374);
             txtboxUsername.Name = "txtboxUsername";
             txtboxUsername.Size = new Size(271, 27);
@@ -150,6 +154,19 @@
             label1.Size = new Size(71, 17);
             label1.TabIndex = 4;
             label1.Text = "Username:";
+            // 
+            // materialCard1
+            // 
+            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Depth = 0;
+            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard1.Location = new Point(93, 492);
+            materialCard1.Margin = new Padding(17);
+            materialCard1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard1.Name = "materialCard1";
+            materialCard1.Padding = new Padding(17);
+            materialCard1.Size = new Size(272, 44);
+            materialCard1.TabIndex = 11;
             // 
             // label5
             // 
@@ -186,7 +203,7 @@
             label7.Name = "label7";
             label7.Size = new Size(273, 17);
             label7.TabIndex = 7;
-            label7.Text = "For inquiries, email us at Info@nexus.edu.ph";
+            label7.Text = "For inquiries, email us at info@nexus.edu.ph";
             label7.Click += label7_Click;
             // 
             // Form1
@@ -224,5 +241,6 @@
         private Label label6;
         private Label label7;
         private ReaLTaiizor.Controls.Button btn_Login;
+        private ReaLTaiizor.Controls.MaterialCard materialCard1;
     }
 }

@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Evaluation));
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             comboBox3 = new ComboBox();
             comboBox1 = new ComboBox();
             textBox3 = new TextBox();
@@ -38,7 +42,8 @@
             label10 = new Label();
             dgvCourses = new DataGridView();
             panel2 = new Panel();
-            btnAssign = new Button();
+            btn_AssignToStudent = new ReaLTaiizor.Controls.Button();
+            btn_Export = new ReaLTaiizor.Controls.Button();
             dgvCoursesToTake = new DataGridView();
             ccode = new DataGridViewTextBoxColumn();
             ctitle = new DataGridViewTextBoxColumn();
@@ -47,7 +52,6 @@
             csemester = new DataGridViewTextBoxColumn();
             cacademicyear = new DataGridViewTextBoxColumn();
             label1 = new Label();
-            btnExport = new Button();
             label9 = new Label();
             label7 = new Label();
             pictureBox1 = new PictureBox();
@@ -55,7 +59,7 @@
             btnBack = new Button();
             label2 = new Label();
             panel1 = new Panel();
-            btnEvaluateAssign = new Button();
+            btnEvaluate = new ReaLTaiizor.Controls.Button();
             label4 = new Label();
             label3 = new Label();
             label17 = new Label();
@@ -72,6 +76,8 @@
             txtMI = new TextBox();
             txtFname = new TextBox();
             txtSRCode = new TextBox();
+            txtBoxTrack = new TextBox();
+            label18 = new Label();
             taken = new DataGridViewCheckBoxColumn();
             courseCode = new DataGridViewTextBoxColumn();
             courseTitle = new DataGridViewTextBoxColumn();
@@ -79,7 +85,6 @@
             yearLevel = new DataGridViewTextBoxColumn();
             semester = new DataGridViewTextBoxColumn();
             academicYear = new DataGridViewTextBoxColumn();
-            track = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvCourses).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCoursesToTake).BeginInit();
@@ -154,34 +159,77 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(btnAssign);
+            panel2.Controls.Add(btn_AssignToStudent);
+            panel2.Controls.Add(btn_Export);
             panel2.Controls.Add(dgvCoursesToTake);
             panel2.Controls.Add(label1);
-            panel2.Controls.Add(btnExport);
-            panel2.Location = new Point(842, 11);
+            panel2.Location = new Point(842, 14);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
             panel2.Size = new Size(786, 699);
             panel2.TabIndex = 1;
             // 
-            // btnAssign
+            // btn_AssignToStudent
             // 
-            btnAssign.BackColor = Color.Navy;
-            btnAssign.FlatAppearance.BorderSize = 0;
-            btnAssign.FlatStyle = FlatStyle.Flat;
-            btnAssign.Font = new Font("Tw Cen MT", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAssign.ForeColor = Color.White;
-            btnAssign.Location = new Point(413, 636);
-            btnAssign.Name = "btnAssign";
-            btnAssign.Size = new Size(291, 39);
-            btnAssign.TabIndex = 74;
-            btnAssign.Text = "Assign to Student";
-            btnAssign.UseVisualStyleBackColor = false;
+            btn_AssignToStudent.BackColor = Color.Transparent;
+            btn_AssignToStudent.BorderColor = Color.FromArgb(32, 34, 37);
+            btn_AssignToStudent.EnteredBorderColor = Color.FromArgb(32, 34, 37);
+            btn_AssignToStudent.EnteredColor = Color.FromArgb(32, 34, 37);
+            btn_AssignToStudent.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold);
+            btn_AssignToStudent.Image = null;
+            btn_AssignToStudent.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_AssignToStudent.InactiveColor = Color.FromArgb(3, 37, 83);
+            btn_AssignToStudent.Location = new Point(396, 636);
+            btn_AssignToStudent.Name = "btn_AssignToStudent";
+            btn_AssignToStudent.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_AssignToStudent.PressedColor = Color.FromArgb(3, 37, 83);
+            btn_AssignToStudent.Size = new Size(375, 39);
+            btn_AssignToStudent.TabIndex = 76;
+            btn_AssignToStudent.Text = "ASSIGN TO STUDENT";
+            btn_AssignToStudent.TextAlignment = StringAlignment.Center;
+            btn_AssignToStudent.Click += btn_AssignToStudent_Click;
+            // 
+            // btn_Export
+            // 
+            btn_Export.BackColor = Color.Transparent;
+            btn_Export.BorderColor = Color.FromArgb(32, 34, 37);
+            btn_Export.EnteredBorderColor = Color.FromArgb(32, 34, 37);
+            btn_Export.EnteredColor = Color.FromArgb(32, 34, 37);
+            btn_Export.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Export.Image = null;
+            btn_Export.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Export.InactiveColor = Color.FromArgb(3, 37, 83);
+            btn_Export.Location = new Point(17, 636);
+            btn_Export.Name = "btn_Export";
+            btn_Export.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_Export.PressedColor = Color.FromArgb(3, 37, 83);
+            btn_Export.Size = new Size(375, 39);
+            btn_Export.TabIndex = 75;
+            btn_Export.Text = "EXPORT";
+            btn_Export.TextAlignment = StringAlignment.Center;
+            btn_Export.Click += btn_Export_Click;
             // 
             // dgvCoursesToTake
             // 
+            dgvCoursesToTake.BackgroundColor = Color.White;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvCoursesToTake.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvCoursesToTake.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCoursesToTake.Columns.AddRange(new DataGridViewColumn[] { ccode, ctitle, cunits, cyearlevel, csemester, cacademicyear });
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Window;
+            dataGridViewCellStyle6.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvCoursesToTake.DefaultCellStyle = dataGridViewCellStyle6;
             dgvCoursesToTake.Location = new Point(17, 70);
             dgvCoursesToTake.Name = "dgvCoursesToTake";
             dgvCoursesToTake.RowHeadersVisible = false;
@@ -243,21 +291,6 @@
             label1.TabIndex = 72;
             label1.Text = "Courses to Take";
             // 
-            // btnExport
-            // 
-            btnExport.BackColor = Color.Navy;
-            btnExport.FlatAppearance.BorderSize = 0;
-            btnExport.FlatStyle = FlatStyle.Flat;
-            btnExport.Font = new Font("Tw Cen MT", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnExport.ForeColor = Color.White;
-            btnExport.Location = new Point(103, 636);
-            btnExport.Name = "btnExport";
-            btnExport.Size = new Size(291, 39);
-            btnExport.TabIndex = 58;
-            btnExport.Text = "Export";
-            btnExport.UseVisualStyleBackColor = false;
-            btnExport.Click += btnExport_Click;
-            // 
             // label9
             // 
             label9.AutoSize = true;
@@ -272,11 +305,11 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Tw Cen MT Condensed Extra Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Font = new Font("Tw Cen MT Condensed", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Navy;
             label7.Location = new Point(106, 43);
             label7.Name = "label7";
-            label7.Size = new Size(74, 21);
+            label7.Size = new Size(60, 20);
             label7.TabIndex = 24;
             label7.Text = "University";
             // 
@@ -323,14 +356,16 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(196, 106);
+            label2.Location = new Point(185, 118);
             label2.Name = "label2";
             label2.Size = new Size(0, 20);
             label2.TabIndex = 62;
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnEvaluateAssign);
+            panel1.Controls.Add(label18);
+            panel1.Controls.Add(txtBoxTrack);
+            panel1.Controls.Add(btnEvaluate);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label17);
@@ -353,88 +388,100 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label9);
-            panel1.Location = new Point(12, 11);
+            panel1.Location = new Point(12, 14);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
             panel1.Size = new Size(812, 699);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
-            // btnEvaluateAssign
+            // btnEvaluate
             // 
-            btnEvaluateAssign.BackColor = Color.Navy;
-            btnEvaluateAssign.FlatAppearance.BorderSize = 0;
-            btnEvaluateAssign.FlatStyle = FlatStyle.Flat;
-            btnEvaluateAssign.Font = new Font("Tw Cen MT", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEvaluateAssign.ForeColor = Color.White;
-            btnEvaluateAssign.Location = new Point(651, 636);
-            btnEvaluateAssign.Name = "btnEvaluateAssign";
-            btnEvaluateAssign.Size = new Size(130, 39);
-            btnEvaluateAssign.TabIndex = 74;
-            btnEvaluateAssign.Text = "Evaluate";
-            btnEvaluateAssign.UseVisualStyleBackColor = false;
-            btnEvaluateAssign.Click += btnEvaluateAssign_Click;
+            btnEvaluate.BackColor = Color.Transparent;
+            btnEvaluate.BorderColor = Color.FromArgb(32, 34, 37);
+            btnEvaluate.EnteredBorderColor = Color.FromArgb(32, 34, 37);
+            btnEvaluate.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnEvaluate.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEvaluate.Image = null;
+            btnEvaluate.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEvaluate.InactiveColor = Color.FromArgb(3, 37, 83);
+            btnEvaluate.Location = new Point(666, 636);
+            btnEvaluate.Name = "btnEvaluate";
+            btnEvaluate.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btnEvaluate.PressedColor = Color.FromArgb(3, 37, 83);
+            btnEvaluate.Size = new Size(132, 39);
+            btnEvaluate.TabIndex = 80;
+            btnEvaluate.Text = "EVALUATE";
+            btnEvaluate.TextAlignment = StringAlignment.Center;
+            btnEvaluate.Click += btn_Evaluate_Click;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(29, 155);
+            label4.Font = new Font("Tw Cen MT", 10.2F);
+            label4.Location = new Point(18, 167);
             label4.Name = "label4";
-            label4.Size = new Size(110, 20);
+            label4.Size = new Size(116, 20);
             label4.TabIndex = 78;
             label4.Text = "Academic Year:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(335, 155);
+            label3.Font = new Font("Tw Cen MT", 10.2F);
+            label3.Location = new Point(324, 167);
             label3.Name = "label3";
-            label3.Size = new Size(73, 20);
+            label3.Size = new Size(77, 20);
             label3.TabIndex = 77;
             label3.Text = "Semester:";
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(209, 155);
+            label17.Font = new Font("Tw Cen MT", 10.2F);
+            label17.Location = new Point(198, 167);
             label17.Name = "label17";
-            label17.Size = new Size(78, 20);
+            label17.Size = new Size(86, 20);
             label17.TabIndex = 76;
             label17.Text = "Year Level:";
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(472, 86);
+            label16.Font = new Font("Tw Cen MT", 10.2F);
+            label16.Location = new Point(458, 98);
             label16.Name = "label16";
-            label16.Size = new Size(82, 20);
+            label16.Size = new Size(85, 20);
             label16.TabIndex = 75;
             label16.Text = "Last Name:";
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(388, 86);
+            label15.Font = new Font("Tw Cen MT", 10.2F);
+            label15.Location = new Point(375, 98);
             label15.Name = "label15";
-            label15.Size = new Size(32, 20);
+            label15.Size = new Size(34, 20);
             label15.TabIndex = 74;
             label15.Text = "M.I:";
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(180, 86);
+            label14.Font = new Font("Tw Cen MT", 10.2F);
+            label14.Location = new Point(169, 98);
             label14.Name = "label14";
-            label14.Size = new Size(83, 20);
+            label14.Size = new Size(85, 20);
             label14.TabIndex = 73;
             label14.Text = "First Name:";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(32, 86);
+            label13.Font = new Font("Tw Cen MT", 10.2F);
+            label13.Location = new Point(21, 98);
             label13.Name = "label13";
-            label13.Size = new Size(70, 20);
+            label13.Size = new Size(74, 20);
             label13.TabIndex = 72;
             label13.Text = "SR-Code:";
             // 
@@ -443,7 +490,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Tw Cen MT", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.Navy;
-            label8.Location = new Point(3, 231);
+            label8.Location = new Point(16, 238);
             label8.Name = "label8";
             label8.Size = new Size(183, 33);
             label8.TabIndex = 71;
@@ -451,63 +498,116 @@
             // 
             // dgCoursesTaken
             // 
+            dgCoursesTaken.BackgroundColor = Color.White;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgCoursesTaken.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgCoursesTaken.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgCoursesTaken.Columns.AddRange(new DataGridViewColumn[] { taken, courseCode, courseTitle, units, yearLevel, semester, academicYear, track });
-            dgCoursesTaken.Location = new Point(3, 286);
+            dgCoursesTaken.Columns.AddRange(new DataGridViewColumn[] { taken, courseCode, courseTitle, units, yearLevel, semester, academicYear });
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgCoursesTaken.DefaultCellStyle = dataGridViewCellStyle8;
+            dgCoursesTaken.Location = new Point(17, 286);
             dgCoursesTaken.Name = "dgCoursesTaken";
             dgCoursesTaken.RowHeadersVisible = false;
             dgCoursesTaken.RowHeadersWidth = 51;
-            dgCoursesTaken.Size = new Size(806, 341);
+            dgCoursesTaken.Size = new Size(781, 341);
             dgCoursesTaken.TabIndex = 70;
+            dgCoursesTaken.CellContentClick += dgCoursesTaken_CellContentClick;
             // 
             // txtAcademicYear
             // 
-            txtAcademicYear.Location = new Point(33, 178);
+            txtAcademicYear.BackColor = Color.White;
+            txtAcademicYear.Font = new Font("Tw Cen MT", 9F);
+            txtAcademicYear.Location = new Point(22, 190);
             txtAcademicYear.Name = "txtAcademicYear";
-            txtAcademicYear.Size = new Size(164, 27);
+            txtAcademicYear.Size = new Size(164, 24);
             txtAcademicYear.TabIndex = 69;
             // 
             // txtSemester
             // 
-            txtSemester.Location = new Point(339, 178);
+            txtSemester.BackColor = Color.White;
+            txtSemester.Font = new Font("Tw Cen MT", 9F);
+            txtSemester.Location = new Point(328, 190);
             txtSemester.Name = "txtSemester";
-            txtSemester.Size = new Size(119, 27);
+            txtSemester.Size = new Size(119, 24);
             txtSemester.TabIndex = 68;
             // 
             // txtYearLevel
             // 
-            txtYearLevel.Location = new Point(209, 178);
+            txtYearLevel.BackColor = Color.White;
+            txtYearLevel.Font = new Font("Tw Cen MT", 9F);
+            txtYearLevel.Location = new Point(198, 190);
             txtYearLevel.Name = "txtYearLevel";
-            txtYearLevel.Size = new Size(119, 27);
+            txtYearLevel.Size = new Size(119, 24);
             txtYearLevel.TabIndex = 67;
             // 
             // txtLname
             // 
-            txtLname.Location = new Point(472, 109);
+            txtLname.BackColor = Color.White;
+            txtLname.Font = new Font("Tw Cen MT", 9F);
+            txtLname.Location = new Point(458, 121);
             txtLname.Name = "txtLname";
-            txtLname.Size = new Size(193, 27);
+            txtLname.Size = new Size(193, 24);
             txtLname.TabIndex = 66;
             // 
             // txtMI
             // 
-            txtMI.Location = new Point(388, 109);
+            txtMI.BackColor = Color.White;
+            txtMI.Font = new Font("Tw Cen MT", 9F);
+            txtMI.Location = new Point(375, 121);
             txtMI.Name = "txtMI";
-            txtMI.Size = new Size(70, 27);
+            txtMI.Size = new Size(70, 24);
             txtMI.TabIndex = 65;
             // 
             // txtFname
             // 
-            txtFname.Location = new Point(180, 109);
+            txtFname.BackColor = Color.White;
+            txtFname.Font = new Font("Tw Cen MT", 9F);
+            txtFname.Location = new Point(169, 121);
             txtFname.Name = "txtFname";
-            txtFname.Size = new Size(193, 27);
+            txtFname.Size = new Size(193, 24);
             txtFname.TabIndex = 64;
+            txtFname.TextChanged += txtFname_TextChanged;
             // 
             // txtSRCode
             // 
-            txtSRCode.Location = new Point(32, 109);
+            txtSRCode.BackColor = Color.White;
+            txtSRCode.Font = new Font("Tw Cen MT", 9F);
+            txtSRCode.Location = new Point(21, 121);
             txtSRCode.Name = "txtSRCode";
-            txtSRCode.Size = new Size(136, 27);
+            txtSRCode.Size = new Size(136, 24);
             txtSRCode.TabIndex = 63;
+            // 
+            // txtBoxTrack
+            // 
+            txtBoxTrack.BackColor = Color.White;
+            txtBoxTrack.Font = new Font("Tw Cen MT", 9F);
+            txtBoxTrack.Location = new Point(458, 190);
+            txtBoxTrack.Name = "txtBoxTrack";
+            txtBoxTrack.Size = new Size(119, 24);
+            txtBoxTrack.TabIndex = 81;
+            txtBoxTrack.TextChanged += txtBoxTrack_TextChanged;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Tw Cen MT", 10.2F);
+            label18.Location = new Point(458, 167);
+            label18.Name = "label18";
+            label18.Size = new Size(49, 20);
+            label18.TabIndex = 82;
+            label18.Text = "Track:";
             // 
             // taken
             // 
@@ -516,13 +616,14 @@
             taken.Name = "taken";
             taken.Resizable = DataGridViewTriState.True;
             taken.SortMode = DataGridViewColumnSortMode.Automatic;
-            taken.Width = 50;
+            taken.Width = 60;
             // 
             // courseCode
             // 
             courseCode.HeaderText = "Course Code";
             courseCode.MinimumWidth = 6;
             courseCode.Name = "courseCode";
+            courseCode.Width = 125;
             // 
             // courseTitle
             // 
@@ -543,26 +644,21 @@
             yearLevel.HeaderText = "Year Level";
             yearLevel.MinimumWidth = 6;
             yearLevel.Name = "yearLevel";
-            yearLevel.Width = 120;
+            yearLevel.Width = 125;
             // 
             // semester
             // 
             semester.HeaderText = "Semester";
             semester.MinimumWidth = 6;
             semester.Name = "semester";
+            semester.Width = 125;
             // 
             // academicYear
             // 
             academicYear.HeaderText = "Pre-requisite/s";
             academicYear.MinimumWidth = 6;
             academicYear.Name = "academicYear";
-            academicYear.Width = 120;
-            // 
-            // track
-            // 
-            track.HeaderText = "Track";
-            track.MinimumWidth = 6;
-            track.Name = "track";
+            academicYear.Width = 125;
             // 
             // Evaluation
             // 
@@ -597,7 +693,6 @@
         private Label label10;
         private DataGridView dgvCourses;
         private Panel panel2;
-        private Button btnExport;
         private TextBox textBox3_2;
         private ComboBox comboBox1_2;
         private ComboBox comboBox3_2;
@@ -611,7 +706,6 @@
         private Label label12;
         private DataGridView dgvProgramOfStudy;
         private DataGridView dgvStudents;
-        private Button btnEvaluateAssign;
         private Label label9;
         private Label label7;
         private PictureBox pictureBox1;
@@ -635,7 +729,6 @@
         private Label label15;
         private Label label14;
         private Label label13;
-        private Button btnAssign;
         private Button Evaluate;
         private DataGridViewTextBoxColumn ccode;
         private DataGridViewTextBoxColumn ctitle;
@@ -643,6 +736,11 @@
         private DataGridViewTextBoxColumn cyearlevel;
         private DataGridViewTextBoxColumn csemester;
         private DataGridViewTextBoxColumn cacademicyear;
+        private ReaLTaiizor.Controls.Button btnEvaluate;
+        private ReaLTaiizor.Controls.Button btn_Export;
+        private ReaLTaiizor.Controls.Button btn_AssignToStudent;
+        private Label label18;
+        private TextBox txtBoxTrack;
         private DataGridViewCheckBoxColumn taken;
         private DataGridViewTextBoxColumn courseCode;
         private DataGridViewTextBoxColumn courseTitle;
@@ -650,6 +748,5 @@
         private DataGridViewTextBoxColumn yearLevel;
         private DataGridViewTextBoxColumn semester;
         private DataGridViewTextBoxColumn academicYear;
-        private DataGridViewTextBoxColumn track;
     }
 }

@@ -30,8 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Curriculum));
             panel2 = new Panel();
-            label14 = new Label();
-            textBox1 = new TextBox();
+            btn_Delete = new ReaLTaiizor.Controls.Button();
+            btn_Save = new ReaLTaiizor.Controls.Button();
+            btn_Edit = new ReaLTaiizor.Controls.Button();
+            btn_AddCourse = new ReaLTaiizor.Controls.Button();
             comboBoxSem = new ComboBox();
             comboBoxLevel = new ComboBox();
             label13 = new Label();
@@ -57,10 +59,6 @@
             label1 = new Label();
             txtboxCode = new TextBox();
             comboBoxTrack = new ComboBox();
-            btnDelete = new Button();
-            btnSave = new Button();
-            btnEdit = new Button();
-            btnAddCourse = new Button();
             label8 = new Label();
             comboBoxCurriculum = new ComboBox();
             dgvCurriculum = new DataGridView();
@@ -71,8 +69,10 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(label14);
-            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(btn_Delete);
+            panel2.Controls.Add(btn_Save);
+            panel2.Controls.Add(btn_Edit);
+            panel2.Controls.Add(btn_AddCourse);
             panel2.Controls.Add(comboBoxSem);
             panel2.Controls.Add(comboBoxLevel);
             panel2.Controls.Add(label13);
@@ -98,10 +98,6 @@
             panel2.Controls.Add(label1);
             panel2.Controls.Add(txtboxCode);
             panel2.Controls.Add(comboBoxTrack);
-            panel2.Controls.Add(btnDelete);
-            panel2.Controls.Add(btnSave);
-            panel2.Controls.Add(btnEdit);
-            panel2.Controls.Add(btnAddCourse);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(comboBoxCurriculum);
             panel2.Controls.Add(dgvCurriculum);
@@ -112,49 +108,109 @@
             panel2.TabIndex = 3;
             panel2.Paint += panel2_Paint;
             // 
-            // label14
+            // btn_Delete
             // 
-            label14.AutoSize = true;
-            label14.BackColor = SystemColors.Control;
-            label14.Font = new Font("Tw Cen MT", 9F);
-            label14.Location = new Point(34, 308);
-            label14.Name = "label14";
-            label14.Size = new Size(102, 17);
-            label14.TabIndex = 79;
-            label14.Text = "Academic Year:";
-            label14.Click += label14_Click;
+            btn_Delete.BackColor = Color.Transparent;
+            btn_Delete.BorderColor = Color.FromArgb(32, 34, 37);
+            btn_Delete.EnteredBorderColor = Color.FromArgb(32, 34, 37);
+            btn_Delete.EnteredColor = Color.FromArgb(32, 34, 37);
+            btn_Delete.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold);
+            btn_Delete.Image = null;
+            btn_Delete.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Delete.InactiveColor = Color.FromArgb(3, 37, 83);
+            btn_Delete.Location = new Point(1020, 548);
+            btn_Delete.Name = "btn_Delete";
+            btn_Delete.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_Delete.PressedColor = Color.FromArgb(3, 37, 83);
+            btn_Delete.Size = new Size(82, 31);
+            btn_Delete.TabIndex = 83;
+            btn_Delete.Text = "DELETE";
+            btn_Delete.TextAlignment = StringAlignment.Center;
+            btn_Delete.Click += btn_Delete_Click;
             // 
-            // textBox1
+            // btn_Save
             // 
-            textBox1.Location = new Point(35, 328);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(155, 27);
-            textBox1.TabIndex = 78;
-            textBox1.TextChanged += textBox1_TextChanged;
+            btn_Save.BackColor = Color.Transparent;
+            btn_Save.BorderColor = Color.FromArgb(32, 34, 37);
+            btn_Save.EnteredBorderColor = Color.FromArgb(32, 34, 37);
+            btn_Save.EnteredColor = Color.FromArgb(32, 34, 37);
+            btn_Save.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold);
+            btn_Save.Image = null;
+            btn_Save.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Save.InactiveColor = Color.FromArgb(3, 37, 83);
+            btn_Save.Location = new Point(924, 548);
+            btn_Save.Name = "btn_Save";
+            btn_Save.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_Save.PressedColor = Color.FromArgb(3, 37, 83);
+            btn_Save.Size = new Size(82, 31);
+            btn_Save.TabIndex = 82;
+            btn_Save.Text = "SAVE";
+            btn_Save.TextAlignment = StringAlignment.Center;
+            btn_Save.Click += btn_Save_Click;
+            // 
+            // btn_Edit
+            // 
+            btn_Edit.BackColor = Color.Transparent;
+            btn_Edit.BorderColor = Color.FromArgb(32, 34, 37);
+            btn_Edit.EnteredBorderColor = Color.FromArgb(32, 34, 37);
+            btn_Edit.EnteredColor = Color.FromArgb(32, 34, 37);
+            btn_Edit.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold);
+            btn_Edit.Image = null;
+            btn_Edit.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Edit.InactiveColor = Color.FromArgb(3, 37, 83);
+            btn_Edit.Location = new Point(828, 548);
+            btn_Edit.Name = "btn_Edit";
+            btn_Edit.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_Edit.PressedColor = Color.FromArgb(3, 37, 83);
+            btn_Edit.Size = new Size(82, 31);
+            btn_Edit.TabIndex = 81;
+            btn_Edit.Text = "EDIT";
+            btn_Edit.TextAlignment = StringAlignment.Center;
+            btn_Edit.Click += btn_Edit_Click;
+            // 
+            // btn_AddCourse
+            // 
+            btn_AddCourse.BackColor = Color.Transparent;
+            btn_AddCourse.BorderColor = Color.FromArgb(32, 34, 37);
+            btn_AddCourse.EnteredBorderColor = Color.FromArgb(32, 34, 37);
+            btn_AddCourse.EnteredColor = Color.FromArgb(32, 34, 37);
+            btn_AddCourse.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold);
+            btn_AddCourse.Image = null;
+            btn_AddCourse.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_AddCourse.InactiveColor = Color.FromArgb(3, 37, 83);
+            btn_AddCourse.Location = new Point(220, 378);
+            btn_AddCourse.Name = "btn_AddCourse";
+            btn_AddCourse.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_AddCourse.PressedColor = Color.FromArgb(3, 37, 83);
+            btn_AddCourse.Size = new Size(144, 31);
+            btn_AddCourse.TabIndex = 80;
+            btn_AddCourse.Text = "ADD";
+            btn_AddCourse.TextAlignment = StringAlignment.Center;
+            btn_AddCourse.Click += btn_AddCourse_Click;
             // 
             // comboBoxSem
             // 
             comboBoxSem.BackColor = Color.White;
-            comboBoxSem.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            comboBoxSem.ForeColor = SystemColors.Window;
+            comboBoxSem.Font = new Font("Tw Cen MT", 7.8F);
+            comboBoxSem.ForeColor = SystemColors.WindowText;
             comboBoxSem.FormattingEnabled = true;
             comboBoxSem.Items.AddRange(new object[] { "First Semester", "Second Semester", "Midterm" });
-            comboBoxSem.Location = new Point(34, 387);
+            comboBoxSem.Location = new Point(202, 329);
             comboBoxSem.Name = "comboBoxSem";
-            comboBoxSem.Size = new Size(162, 25);
+            comboBoxSem.Size = new Size(162, 23);
             comboBoxSem.TabIndex = 77;
             comboBoxSem.SelectedIndexChanged += comboBoxSem_SelectedIndexChanged;
             // 
             // comboBoxLevel
             // 
             comboBoxLevel.BackColor = Color.White;
-            comboBoxLevel.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            comboBoxLevel.ForeColor = SystemColors.Window;
+            comboBoxLevel.Font = new Font("Tw Cen MT", 7.8F);
+            comboBoxLevel.ForeColor = SystemColors.WindowText;
             comboBoxLevel.FormattingEnabled = true;
             comboBoxLevel.Items.AddRange(new object[] { "First Year", "Second Year", "Third Year", "Fourth Year", "Fifth Year" });
-            comboBoxLevel.Location = new Point(202, 330);
+            comboBoxLevel.Location = new Point(34, 329);
             comboBoxLevel.Name = "comboBoxLevel";
-            comboBoxLevel.Size = new Size(162, 25);
+            comboBoxLevel.Size = new Size(162, 23);
             comboBoxLevel.TabIndex = 76;
             // 
             // label13
@@ -162,7 +218,7 @@
             label13.AutoSize = true;
             label13.BackColor = SystemColors.Control;
             label13.Font = new Font("Tw Cen MT", 9F);
-            label13.Location = new Point(34, 367);
+            label13.Location = new Point(202, 309);
             label13.Name = "label13";
             label13.Size = new Size(67, 17);
             label13.TabIndex = 75;
@@ -173,7 +229,7 @@
             label12.AutoSize = true;
             label12.BackColor = SystemColors.Control;
             label12.Font = new Font("Tw Cen MT", 9F);
-            label12.Location = new Point(202, 308);
+            label12.Location = new Point(35, 309);
             label12.Name = "label12";
             label12.Size = new Size(76, 17);
             label12.TabIndex = 74;
@@ -271,18 +327,18 @@
             // txtboxTrack
             // 
             txtboxTrack.BackColor = Color.White;
-            txtboxTrack.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxTrack.ForeColor = SystemColors.Window;
+            txtboxTrack.Font = new Font("Tw Cen MT", 7.8F);
+            txtboxTrack.ForeColor = SystemColors.WindowText;
             txtboxTrack.Location = new Point(173, 268);
             txtboxTrack.Name = "txtboxTrack";
-            txtboxTrack.Size = new Size(191, 24);
+            txtboxTrack.Size = new Size(191, 22);
             txtboxTrack.TabIndex = 63;
             // 
             // txtboxType
             // 
             txtboxType.BackColor = Color.White;
-            txtboxType.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxType.ForeColor = SystemColors.Window;
+            txtboxType.Font = new Font("Tw Cen MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtboxType.ForeColor = SystemColors.WindowText;
             txtboxType.Location = new Point(35, 268);
             txtboxType.Name = "txtboxType";
             txtboxType.Size = new Size(123, 24);
@@ -291,21 +347,21 @@
             // txtboxPreReq
             // 
             txtboxPreReq.BackColor = Color.White;
-            txtboxPreReq.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxPreReq.ForeColor = SystemColors.Window;
+            txtboxPreReq.Font = new Font("Tw Cen MT", 7.8F);
+            txtboxPreReq.ForeColor = SystemColors.WindowText;
             txtboxPreReq.Location = new Point(220, 209);
             txtboxPreReq.Name = "txtboxPreReq";
-            txtboxPreReq.Size = new Size(144, 24);
+            txtboxPreReq.Size = new Size(144, 22);
             txtboxPreReq.TabIndex = 61;
             // 
             // txtboxLab
             // 
             txtboxLab.BackColor = Color.White;
-            txtboxLab.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxLab.ForeColor = SystemColors.Window;
+            txtboxLab.Font = new Font("Tw Cen MT", 7.8F);
+            txtboxLab.ForeColor = SystemColors.WindowText;
             txtboxLab.Location = new Point(121, 209);
             txtboxLab.Name = "txtboxLab";
-            txtboxLab.Size = new Size(89, 24);
+            txtboxLab.Size = new Size(89, 22);
             txtboxLab.TabIndex = 60;
             // 
             // button4
@@ -331,11 +387,11 @@
             // txtboxLec
             // 
             txtboxLec.BackColor = Color.White;
-            txtboxLec.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxLec.ForeColor = SystemColors.Window;
+            txtboxLec.Font = new Font("Tw Cen MT", 7.8F);
+            txtboxLec.ForeColor = SystemColors.WindowText;
             txtboxLec.Location = new Point(35, 209);
             txtboxLec.Name = "txtboxLec";
-            txtboxLec.Size = new Size(76, 24);
+            txtboxLec.Size = new Size(76, 22);
             txtboxLec.TabIndex = 24;
             // 
             // pictureBox1
@@ -352,32 +408,32 @@
             // txtboxUnits
             // 
             txtboxUnits.BackColor = Color.White;
-            txtboxUnits.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxUnits.ForeColor = SystemColors.Window;
+            txtboxUnits.Font = new Font("Tw Cen MT", 7.8F);
+            txtboxUnits.ForeColor = SystemColors.WindowText;
             txtboxUnits.Location = new Point(306, 148);
             txtboxUnits.Name = "txtboxUnits";
-            txtboxUnits.Size = new Size(58, 24);
+            txtboxUnits.Size = new Size(58, 22);
             txtboxUnits.TabIndex = 23;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Tw Cen MT Condensed Extra Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Tw Cen MT Condensed", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Navy;
             label2.Location = new Point(109, 41);
             label2.Name = "label2";
-            label2.Size = new Size(74, 21);
+            label2.Size = new Size(60, 20);
             label2.TabIndex = 2;
             label2.Text = "University";
             // 
             // txtboxTitle
             // 
             txtboxTitle.BackColor = Color.White;
-            txtboxTitle.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxTitle.ForeColor = SystemColors.Window;
+            txtboxTitle.Font = new Font("Tw Cen MT", 7.8F);
+            txtboxTitle.ForeColor = SystemColors.WindowText;
             txtboxTitle.Location = new Point(145, 148);
             txtboxTitle.Name = "txtboxTitle";
-            txtboxTitle.Size = new Size(147, 24);
+            txtboxTitle.Size = new Size(147, 22);
             txtboxTitle.TabIndex = 22;
             txtboxTitle.TextChanged += txtboxTitle_TextChanged;
             // 
@@ -395,79 +451,22 @@
             // txtboxCode
             // 
             txtboxCode.BackColor = Color.White;
-            txtboxCode.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxCode.ForeColor = SystemColors.Window;
+            txtboxCode.Font = new Font("Tw Cen MT", 7.8F);
+            txtboxCode.ForeColor = SystemColors.WindowText;
             txtboxCode.Location = new Point(34, 148);
             txtboxCode.Name = "txtboxCode";
-            txtboxCode.Size = new Size(97, 24);
+            txtboxCode.Size = new Size(97, 22);
             txtboxCode.TabIndex = 21;
             // 
             // comboBoxTrack
             // 
+            comboBoxTrack.Font = new Font("Tw Cen MT", 9F);
             comboBoxTrack.FormattingEnabled = true;
             comboBoxTrack.Items.AddRange(new object[] { "Business Analytics", "Networking Technology", "Service Management" });
             comboBoxTrack.Location = new Point(790, 65);
             comboBoxTrack.Name = "comboBoxTrack";
-            comboBoxTrack.Size = new Size(151, 28);
+            comboBoxTrack.Size = new Size(151, 25);
             comboBoxTrack.TabIndex = 20;
-            // 
-            // btnDelete
-            // 
-            btnDelete.BackColor = Color.Navy;
-            btnDelete.FlatAppearance.BorderSize = 0;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(1020, 548);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(82, 31);
-            btnDelete.TabIndex = 18;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
-            // 
-            // btnSave
-            // 
-            btnSave.BackColor = Color.Navy;
-            btnSave.FlatAppearance.BorderSize = 0;
-            btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(928, 548);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(82, 31);
-            btnSave.TabIndex = 17;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = false;
-            btnSave.Click += btnSave_Click;
-            // 
-            // btnEdit
-            // 
-            btnEdit.BackColor = Color.Navy;
-            btnEdit.FlatAppearance.BorderSize = 0;
-            btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEdit.ForeColor = Color.White;
-            btnEdit.Location = new Point(836, 548);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(82, 31);
-            btnEdit.TabIndex = 16;
-            btnEdit.Text = "Edit";
-            btnEdit.UseVisualStyleBackColor = false;
-            // 
-            // btnAddCourse
-            // 
-            btnAddCourse.BackColor = Color.Navy;
-            btnAddCourse.FlatAppearance.BorderSize = 0;
-            btnAddCourse.FlatStyle = FlatStyle.Flat;
-            btnAddCourse.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAddCourse.ForeColor = Color.White;
-            btnAddCourse.Location = new Point(220, 381);
-            btnAddCourse.Name = "btnAddCourse";
-            btnAddCourse.Size = new Size(144, 31);
-            btnAddCourse.TabIndex = 15;
-            btnAddCourse.Text = "Add";
-            btnAddCourse.UseVisualStyleBackColor = false;
             // 
             // label8
             // 
@@ -482,16 +481,18 @@
             // 
             // comboBoxCurriculum
             // 
+            comboBoxCurriculum.Font = new Font("Tw Cen MT", 9F);
             comboBoxCurriculum.FormattingEnabled = true;
             comboBoxCurriculum.Items.AddRange(new object[] { "AY 2020-2024", "AY 2025-Onwards" });
             comboBoxCurriculum.Location = new Point(951, 66);
             comboBoxCurriculum.Name = "comboBoxCurriculum";
-            comboBoxCurriculum.Size = new Size(151, 28);
+            comboBoxCurriculum.Size = new Size(151, 25);
             comboBoxCurriculum.TabIndex = 1;
             comboBoxCurriculum.SelectedIndexChanged += comboBoxCurriculum_SelectedIndexChanged;
             // 
             // dgvCurriculum
             // 
+            dgvCurriculum.BackgroundColor = Color.White;
             dgvCurriculum.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCurriculum.Location = new Point(396, 106);
             dgvCurriculum.Name = "dgvCurriculum";
@@ -522,10 +523,6 @@
         private DataGridView dgvCurriculum;
         private ComboBox comboBoxCurriculum;
         private Label label8;
-        private Button btnDelete;
-        private Button btnSave;
-        private Button btnEdit;
-        private Button btnAddCourse;
         private ComboBox comboBoxTrack;
         private TextBox txtboxCode;
         private TextBox txtboxTitle;
@@ -550,8 +547,10 @@
         private Label label11;
         private Label label10;
         private ComboBox comboBoxLevel;
-        private Label label14;
-        private TextBox textBox1;
         private ComboBox comboBoxSem;
+        private ReaLTaiizor.Controls.Button btn_AddCourse;
+        private ReaLTaiizor.Controls.Button btn_Edit;
+        private ReaLTaiizor.Controls.Button btn_Save;
+        private ReaLTaiizor.Controls.Button btn_Delete;
     }
 }

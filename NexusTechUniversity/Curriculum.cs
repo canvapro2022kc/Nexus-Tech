@@ -17,11 +17,10 @@ namespace NexusTechUniversity
         public Curriculum()
         {
             InitializeComponent();
+            InitializeDatabase();
 
-            comboBoxCurriculum.Items.Clear();
-            comboBoxCurriculum.Items.Add("AY 2025-Onwards");
-            comboBoxCurriculum.Items.Add("AY 2020-2024");
-            comboBoxCurriculum.SelectedIndex = 0;
+            // Load curriculum options from Firestore and defaults
+            _ = LoadCurriculumOptionsAsync();
 
             if (comboBoxTrack != null)
             {
@@ -35,7 +34,7 @@ namespace NexusTechUniversity
             }
         }
 
-        private async Task LoadCurriculumGrid()
+        private void InitializeDatabase()
         {
             if (db == null)
             {
@@ -43,6 +42,46 @@ namespace NexusTechUniversity
                 Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
                 db = FirestoreDb.Create("enrollmentit331");
             }
+        }
+
+        private async Task LoadCurriculumOptionsAsync()
+        {
+            InitializeDatabase();
+            try
+            {
+                comboBoxCurriculum.Items.Clear();
+                // Default Options
+                comboBoxCurriculum.Items.Add("AY 2025-Onwards");
+                comboBoxCurriculum.Items.Add("AY 2020-2024");
+
+                // Fetch custom curricula added to the database
+                CollectionReference curriculaRef = db.Collection("curricula");
+                QuerySnapshot snapshot = await curriculaRef.GetSnapshotAsync();
+
+                foreach (DocumentSnapshot doc in snapshot.Documents)
+                {
+                    if (doc.Exists && doc.ContainsField("curriculum_id"))
+                    {
+                        string currId = doc.GetValue<string>("curriculum_id");
+                        if (!comboBoxCurriculum.Items.Contains(currId))
+                        {
+                            comboBoxCurriculum.Items.Add(currId);
+                        }
+                    }
+                }
+
+                if (comboBoxCurriculum.Items.Count > 0)
+                    comboBoxCurriculum.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading curriculum options: " + ex.Message);
+            }
+        }
+
+        private async Task LoadCurriculumGrid()
+        {
+            InitializeDatabase();
 
             if (comboBoxCurriculum.SelectedItem == null)
             {
@@ -51,6 +90,11 @@ namespace NexusTechUniversity
             }
 
             string selectedCurriculum = comboBoxCurriculum.SelectedItem.ToString();
+            if (!selectedCurriculum.StartsWith("AY ") && selectedCurriculum.Contains("-"))
+            {
+                selectedCurriculum = "AY " + selectedCurriculum;
+            }
+
             string selectedTrack = comboBoxTrack?.SelectedItem?.ToString() ?? "";
 
             try
@@ -70,6 +114,7 @@ namespace NexusTechUniversity
                 dt.Columns.Add("IsHeader", typeof(bool));
                 dt.Columns.Add("YearLevelDisplay");
                 dt.Columns.Add("SemesterDisplay");
+                dt.Columns.Add("DocId"); // Hidden column tracking the actual database Key
 
                 foreach (DocumentSnapshot document in snapshot.Documents)
                 {
@@ -77,20 +122,16 @@ namespace NexusTechUniversity
 
                     Dictionary<string, object> data = document.ToDictionary();
 
-                    // Read explicit properties matching your Firestore fields
                     string docCurriculum = data.ContainsKey("curriculum_id") ? data["curriculum_id"]?.ToString() : "";
                     string courseTrack = data.ContainsKey("track") ? data["track"]?.ToString() : "None";
 
-                    // 1. Core Filter: Filter strictly by selected curriculum type
                     if (!docCurriculum.Equals(selectedCurriculum, StringComparison.OrdinalIgnoreCase))
                     {
                         continue;
                     }
 
-                    // 2. Track Filter: If "AY 2020-2024" curriculum is selected, filter by tracks
                     if (selectedCurriculum.Equals("AY 2020-2024", StringComparison.OrdinalIgnoreCase))
                     {
-                        // If track is not "None", it must strictly match the selected combo box track
                         if (!courseTrack.Equals("None", StringComparison.OrdinalIgnoreCase) &&
                             !courseTrack.Equals(selectedTrack, StringComparison.OrdinalIgnoreCase))
                         {
@@ -98,8 +139,7 @@ namespace NexusTechUniversity
                         }
                     }
 
-                    // Extract values matching database keys
-                    string courseCode = data.ContainsKey("course_code") ? data["course_code"]?.ToString() : document.Id;
+                    string courseCode = data.ContainsKey("course_code") ? data["course_code"]?.ToString() : "";
                     string courseName = data.ContainsKey("course_title") ? data["course_title"]?.ToString() : "";
                     string preReq = data.ContainsKey("pre-requisite") ? data["pre-requisite"]?.ToString() : "-";
                     if (string.IsNullOrEmpty(preReq)) preReq = "-";
@@ -114,10 +154,9 @@ namespace NexusTechUniversity
                     int yearOrder = yearLevel.Contains("First") ? 1 : yearLevel.Contains("Second") ? 2 : yearLevel.Contains("Third") ? 3 : 4;
                     int semOrder = semester.Contains("First") ? 1 : semester.Contains("Second") ? 2 : semester.Contains("Midterm") ? 3 : 4;
 
-                    dt.Rows.Add(courseCode, courseName, unitsStr, lecStr, labStr, preReq, yearOrder, semOrder, false, yearLevel, semester);
+                    dt.Rows.Add(courseCode, courseName, unitsStr, lecStr, labStr, preReq, yearOrder, semOrder, false, yearLevel, semester, document.Id);
                 }
 
-                // Sort everything perfectly for structured representation
                 DataView dv = dt.DefaultView;
                 dv.Sort = "YearOrder ASC, SemOrder ASC, Code ASC";
                 DataTable sortedRaw = dv.ToTable();
@@ -174,6 +213,7 @@ namespace NexusTechUniversity
                 dgvCurriculum.Columns["IsHeader"].Visible = false;
                 dgvCurriculum.Columns["YearLevelDisplay"].Visible = false;
                 dgvCurriculum.Columns["SemesterDisplay"].Visible = false;
+                dgvCurriculum.Columns["DocId"].Visible = false;
 
                 ApplyFormalGridStyling();
             }
@@ -185,19 +225,15 @@ namespace NexusTechUniversity
 
         private void AddSemesterTotalRow(DataTable targetTable, List<DataRow> rows)
         {
-            int totalUnits = 0, totalLec = 0, totalLab = 0;
+            int totalUnits = 0;
             foreach (var r in rows)
             {
                 int.TryParse(r["Units"].ToString(), out int u);
-                int.TryParse(r["Lec"].ToString(), out int le);
-                int.TryParse(r["Lab"].ToString(), out int la);
-                totalUnits += u; totalLec += le; totalLab += la;
+                totalUnits += u;
             }
             DataRow totRow = targetTable.NewRow();
             totRow["Course Title"] = "TOTAL";
             totRow["Units"] = totalUnits;
-            totRow["Lec"] = totalLec;
-            totRow["Lab"] = totalLab;
             totRow["IsHeader"] = true;
             targetTable.Rows.Add(totRow);
         }
@@ -273,10 +309,6 @@ namespace NexusTechUniversity
             }
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e) { }
-
-        private void label7_Click(object sender, EventArgs e) { }
-
         private async Task AddCourseToFirestore(
             string courseCode,
             string courseTitle,
@@ -292,12 +324,7 @@ namespace NexusTechUniversity
         {
             try
             {
-                if (db == null)
-                {
-                    string path = AppDomain.CurrentDomain.BaseDirectory + "serviceAccountKey.json";
-                    Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-                    db = FirestoreDb.Create("enrollmentit331");
-                }
+                InitializeDatabase();
 
                 if (string.IsNullOrWhiteSpace(courseCode) || string.IsNullOrWhiteSpace(courseTitle))
                 {
@@ -323,10 +350,9 @@ namespace NexusTechUniversity
                 };
 
                 DocumentReference docRef = db.Collection("courses").Document(customDocId);
-                await docRef.SetAsync(courseData);
+                await docRef.SetAsync(courseData, SetOptions.MergeAll);
 
-                MessageBox.Show($"Successfully added {courseCode} to the curriculum!");
-                await LoadCurriculumGrid();
+                MessageBox.Show($"Successfully saved {courseCode} to the curriculum!");
             }
             catch (Exception ex)
             {
@@ -334,7 +360,95 @@ namespace NexusTechUniversity
             }
         }
 
-        private async void btnSave_Click(object sender, EventArgs e)
+        private void PopulateFormFields(DataGridViewRow row)
+        {
+            txtboxCode.Text = row.Cells["Code"].Value?.ToString() ?? "";
+            txtboxTitle.Text = row.Cells["Course Title"].Value?.ToString() ?? "";
+            txtboxUnits.Text = row.Cells["Units"].Value?.ToString() ?? "0";
+            txtboxLec.Text = row.Cells["Lec"].Value?.ToString() ?? "0";
+            txtboxLab.Text = row.Cells["Lab"].Value?.ToString() ?? "0";
+            txtboxPreReq.Text = row.Cells["Prerequisite"].Value?.ToString() ?? "-";
+
+            // CRITICAL FIX: Storing the original document ID inside Tag to process smooth updates
+            txtboxCode.Tag = row.Cells["DocId"].Value?.ToString();
+
+            string currentCurriculum = comboBoxCurriculum.SelectedItem?.ToString() ?? "AY 2025-Onwards";
+            txtboxType.Text = currentCurriculum;
+
+            string currentTrack = currentCurriculum == "AY 2025-Onwards" ? "None" : (comboBoxTrack.SelectedItem?.ToString() ?? "None");
+            txtboxTrack.Text = currentTrack;
+
+            string yearVal = row.Cells["YearLevelDisplay"].Value?.ToString() ?? "First Year";
+            comboBoxLevel.SelectedIndex = comboBoxLevel.FindStringExact(yearVal);
+
+            string semVal = row.Cells["SemesterDisplay"].Value?.ToString() ?? "First Semester";
+            comboBoxSem.SelectedIndex = comboBoxSem.FindStringExact(semVal);
+        }
+
+        private void dgvCurriculum_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvCurriculum.Rows[e.RowIndex];
+                var isHeaderVal = row.Cells["IsHeader"].Value;
+                if (isHeaderVal != null && (bool)isHeaderVal) return;
+
+                PopulateFormFields(row);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AdminDashboard adminForm = new AdminDashboard();
+            adminForm.Show();
+            this.Hide();
+        }
+
+        private void btn_AddCourse_Click(object sender, EventArgs e)
+        {
+            txtboxCode.Clear();
+            txtboxCode.Tag = null;   // null tag triggers standard "Add" process
+            txtboxTitle.Clear();
+            txtboxUnits.Clear();
+            txtboxLec.Clear();
+            txtboxLab.Clear();
+            txtboxPreReq.Clear();
+
+            string currentCurriculum = comboBoxCurriculum.SelectedItem?.ToString() ?? "AY 2025-Onwards";
+            txtboxType.Text = currentCurriculum;
+
+            string currentTrack = currentCurriculum == "AY 2025-Onwards"
+                ? "None"
+                : (comboBoxTrack.SelectedItem?.ToString() ?? "None");
+            txtboxTrack.Text = currentTrack;
+
+            comboBoxLevel.SelectedIndex = -1;
+            comboBoxSem.SelectedIndex = -1;
+
+            txtboxCode.Focus();
+        }
+
+        private void btn_Edit_Click(object sender, EventArgs e)
+        {
+            if (dgvCurriculum.CurrentRow == null)
+            {
+                MessageBox.Show("Please select a course from the grid to edit.");
+                return;
+            }
+
+            DataGridViewRow row = dgvCurriculum.CurrentRow;
+            var isHeaderVal = row.Cells["IsHeader"].Value;
+            if (isHeaderVal != null && (bool)isHeaderVal)
+            {
+                MessageBox.Show("Please select an actual course row, not a header or total row.");
+                return;
+            }
+
+            PopulateFormFields(row);
+            txtboxTitle.Focus();
+        }
+
+        private async void btn_Save_Click(object sender, EventArgs e)
         {
             string code = txtboxCode.Text.Trim();
             string title = txtboxTitle.Text.Trim();
@@ -344,101 +458,95 @@ namespace NexusTechUniversity
             string preReq = txtboxPreReq.Text.Trim();
 
             string rawCurriculum = txtboxType.Text.Trim();
-            string curriculum = "AY 2025-Onwards";
+            if (string.IsNullOrEmpty(rawCurriculum))
+            {
+                MessageBox.Show("Curriculum Type is required.");
+                return;
+            }
+            string curriculum = rawCurriculum.StartsWith("AY ") ? rawCurriculum : "AY " + rawCurriculum;
 
-            if (rawCurriculum.Equals("AY 2020-2024", StringComparison.OrdinalIgnoreCase))
-            {
-                curriculum = "AY 2020-2024";
-            }
             string rawTrack = txtboxTrack.Text.Trim();
-            string track = "None";
-            if (curriculum == "AY 2020-2024")
-            {
-                if (rawTrack.Equals("Network Technology", StringComparison.OrdinalIgnoreCase) || rawTrack.Equals("NT", StringComparison.OrdinalIgnoreCase))
-                {
-                    track = "Network Technology";
-                }
-                else if (rawTrack.Equals("Business Analytics", StringComparison.OrdinalIgnoreCase) || rawTrack.Equals("BA", StringComparison.OrdinalIgnoreCase))
-                {
-                    track = "Business Analytics";
-                }
-                else if (rawTrack.Equals("Service Management", StringComparison.OrdinalIgnoreCase) || rawTrack.Equals("SM", StringComparison.OrdinalIgnoreCase))
-                {
-                    track = "Service Management";
-                }
-                else
-                {
-                    track = rawTrack;
-                }
-            }
+            string track = string.IsNullOrWhiteSpace(rawTrack) ? "None" : rawTrack;
 
             string year = comboBoxLevel.SelectedItem?.ToString() ?? "First Year";
             string sem = comboBoxSem.SelectedItem?.ToString() ?? "First Semester";
 
-            string originalCode = txtboxCode.Tag?.ToString();
-            if (!string.IsNullOrEmpty(originalCode) && !originalCode.Equals(code, StringComparison.OrdinalIgnoreCase))
+            // This stores the true original Document Id key from Firestore
+            string originalDocId = txtboxCode.Tag?.ToString();
+            string destinationDocId = $"{code}-{track}-{curriculum}";
+
+            try
             {
-                string oldDocId = $"{originalCode}-{track}-{curriculum}";
-                try
+                InitializeDatabase();
+
+                // 1. DYNAMIC RANGE CHECK: If curriculum input doesn't exist in dropdown collections yet
+                if (!comboBoxCurriculum.Items.Contains(curriculum))
                 {
-                    DocumentReference oldDocRef = db.Collection("courses").Document(oldDocId);
+                    DocumentReference currRef = db.Collection("curricula").Document(curriculum);
+                    Dictionary<string, object> currData = new Dictionary<string, object>
+                    {
+                        { "curriculum_id", curriculum }
+                    };
+                    await currRef.SetAsync(currData);
+
+                    comboBoxCurriculum.Items.Add(curriculum);
+                    comboBoxCurriculum.SelectedItem = curriculum;
+                }
+
+                // 2. SAME COURSE CODE CONSTRAINT VALIDATION
+                // Only validate unique conflicts if inserting new OR updating a record to a completely different Key
+                if (string.IsNullOrEmpty(originalDocId) || !originalDocId.Equals(destinationDocId, StringComparison.OrdinalIgnoreCase))
+                {
+                    DocumentReference targetDocCheck = db.Collection("courses").Document(destinationDocId);
+                    DocumentSnapshot targetSnap = await targetDocCheck.GetSnapshotAsync();
+
+                    if (targetSnap.Exists)
+                    {
+                        MessageBox.Show($"Validation Violation: A course entry with parameters matching '{code}' under '{track}' within '{curriculum}' already exists. Duplicate keys are not allowed.", "Unique Constraint Violation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                // 3. EDIT MODE CLEANUP
+                // If this is an update and the explicit Document ID composition changed, safely clear out the old node structure
+                if (!string.IsNullOrEmpty(originalDocId) && !originalDocId.Equals(destinationDocId, StringComparison.OrdinalIgnoreCase))
+                {
+                    DocumentReference oldDocRef = db.Collection("courses").Document(originalDocId);
                     await oldDocRef.DeleteAsync();
                 }
-                catch { }
+
+                // 4. WRITE TARGET FIELD DATA TO FIRESTORE
+                await AddCourseToFirestore(code, title, units, lec, lab, preReq, curriculum, track, year, sem);
+
+                // 5. CLEAR ALL DISPOSABLE FIELDS AND REFRESH VIEW
+                txtboxCode.Clear();
+                txtboxTitle.Clear();
+                txtboxUnits.Clear();
+                txtboxLec.Clear();
+                txtboxLab.Clear();
+                txtboxPreReq.Clear();
+                txtboxType.Clear();
+                txtboxTrack.Clear();
+                comboBoxLevel.SelectedIndex = -1;
+                comboBoxSem.SelectedIndex = -1;
+                txtboxCode.Tag = null;
+
+                await LoadCurriculumGrid();
             }
-            await AddCourseToFirestore(code, title, units, lec, lab, preReq, curriculum, track, year, sem);
-            txtboxCode.Clear();
-            txtboxTitle.Clear();
-            txtboxUnits.Clear();
-            txtboxLec.Clear();
-            txtboxLab.Clear();
-            txtboxPreReq.Clear();
-            txtboxType.Clear();
-            txtboxTrack.Clear();
-
-            comboBoxLevel.SelectedIndex = -1;
-            comboBoxSem.SelectedIndex = -1;
-        }
-
-        private void dgvCurriculum_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
+            catch (Exception ex)
             {
-                DataGridViewRow row = dgvCurriculum.Rows[e.RowIndex];
-
-                var isHeaderVal = row.Cells["IsHeader"].Value;
-                if (isHeaderVal != null && (bool)isHeaderVal) return;
-
-                txtboxCode.Text = row.Cells["Code"].Value?.ToString() ?? "";
-                txtboxTitle.Text = row.Cells["Course Title"].Value?.ToString() ?? "";
-                txtboxUnits.Text = row.Cells["Units"].Value?.ToString() ?? "0";
-                txtboxLec.Text = row.Cells["Lec"].Value?.ToString() ?? "0";
-                txtboxLab.Text = row.Cells["Lab"].Value?.ToString() ?? "0";
-                txtboxPreReq.Text = row.Cells["Prerequisite"].Value?.ToString() ?? "-";
-
-                txtboxCode.Tag = row.Cells["Code"].Value?.ToString();
-
-                string currentCurriculum = comboBoxCurriculum.SelectedItem?.ToString() ?? "AY 2025-Onwards";
-                txtboxType.Text = currentCurriculum;
-
-                string currentTrack = currentCurriculum == "AY 2025-Onwards" ? "None" : (comboBoxTrack.SelectedItem?.ToString() ?? "None");
-                txtboxTrack.Text = currentTrack;
-
-                string yearVal = row.Cells["YearLevelDisplay"].Value?.ToString() ?? "First Year";
-                comboBoxLevel.SelectedIndex = comboBoxLevel.FindStringExact(yearVal);
-
-                string semVal = row.Cells["SemesterDisplay"].Value?.ToString() ?? "First Semester";
-                comboBoxSem.SelectedIndex = comboBoxSem.FindStringExact(semVal);
+                MessageBox.Show("Transaction execution aborted under engine error: " + ex.Message);
             }
         }
 
-        private async void btnDelete_Click(object sender, EventArgs e)
+        private async void btn_Delete_Click(object sender, EventArgs e)
         {
+            string originalDocId = txtboxCode.Tag?.ToString();
             string code = txtboxCode.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(code))
+            if (string.IsNullOrWhiteSpace(originalDocId))
             {
-                MessageBox.Show("Please select a course from the grid first before trying to delete it.");
+                MessageBox.Show("Please select a valid course from the grid first before trying to delete it.");
                 return;
             }
 
@@ -453,38 +561,9 @@ namespace NexusTechUniversity
             {
                 try
                 {
-                    string rawCurriculum = txtboxType.Text.Trim();
-                    string curriculum = "AY 2025-Onwards";
+                    InitializeDatabase();
 
-                    if (rawCurriculum.Equals("AY 2020-2024", StringComparison.OrdinalIgnoreCase))
-                    {
-                        curriculum = "AY 2020-2024";
-                    }
-
-                    string rawTrack = txtboxTrack.Text.Trim();
-                    string track = "None";
-                    if (curriculum == "AY 2020-2024")
-                    {
-                        if (rawTrack.Equals("Network Technology", StringComparison.OrdinalIgnoreCase) || rawTrack.Equals("NT", StringComparison.OrdinalIgnoreCase))
-                            track = "Network Technology";
-                        else if (rawTrack.Equals("Business Analytics", StringComparison.OrdinalIgnoreCase) || rawTrack.Equals("BA", StringComparison.OrdinalIgnoreCase))
-                            track = "Business Analytics";
-                        else if (rawTrack.Equals("Service Management", StringComparison.OrdinalIgnoreCase) || rawTrack.Equals("SM", StringComparison.OrdinalIgnoreCase))
-                            track = "Service Management";
-                        else
-                            track = rawTrack;
-                    }
-
-                    string docId = $"{code}-{track}-{curriculum}";
-
-                    if (db == null)
-                    {
-                        string path = AppDomain.CurrentDomain.BaseDirectory + "serviceAccountKey.json";
-                        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-                        db = FirestoreDb.Create("enrollmentit331");
-                    }
-
-                    DocumentReference docRef = db.Collection("courses").Document(docId);
+                    DocumentReference docRef = db.Collection("courses").Document(originalDocId);
                     await docRef.DeleteAsync();
 
                     MessageBox.Show($"Successfully removed {code} from the curriculum.");
@@ -511,24 +590,12 @@ namespace NexusTechUniversity
             }
         }
 
+        private void Curriculum_Load(object sender, EventArgs e) { }
+        private void panel2_Paint(object sender, PaintEventArgs e) { }
+        private void label7_Click(object sender, EventArgs e) { }
         private void comboBoxSem_SelectedIndexChanged(object sender, EventArgs e) { }
-
         private void textBox1_TextChanged(object sender, EventArgs e) { }
-
         private void label14_Click(object sender, EventArgs e) { }
-
         private void txtboxTitle_TextChanged(object sender, EventArgs e) { }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            AdminDashboard adminForm = new AdminDashboard();
-            adminForm.Show();
-            this.Hide();
-        }
-
-        private void Curriculum_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

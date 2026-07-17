@@ -28,6 +28,7 @@ namespace NexusTechUniversity
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentDashboard));
             dgvCourses = new DataGridView();
             courseCode = new DataGridViewTextBoxColumn();
@@ -59,6 +60,14 @@ namespace NexusTechUniversity
             // dgvCourses
             // 
             dgvCourses.BackgroundColor = Color.White;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvCourses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvCourses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCourses.Columns.AddRange(new DataGridViewColumn[] { courseCode, courseTitle, units, yearLevel, semester, cacademicyear });
             dgvCourses.Location = new Point(424, 129);
@@ -227,16 +236,16 @@ namespace NexusTechUniversity
             // 
             btnLogout.BackColor = Color.Transparent;
             btnLogout.BorderColor = Color.FromArgb(32, 34, 37);
-            btnLogout.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            btnLogout.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnLogout.EnteredBorderColor = Color.FromArgb(3, 37, 83);
+            btnLogout.EnteredColor = Color.FromArgb(3, 37, 83);
             btnLogout.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogout.Image = null;
             btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
             btnLogout.InactiveColor = Color.FromArgb(3, 37, 83);
             btnLogout.Location = new Point(1011, 52);
             btnLogout.Name = "btnLogout";
-            btnLogout.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btnLogout.PressedColor = Color.FromArgb(165, 37, 37);
+            btnLogout.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btnLogout.PressedColor = Color.FromArgb(3, 37, 83);
             btnLogout.Size = new Size(97, 31);
             btnLogout.TabIndex = 20;
             btnLogout.Text = "LOG OUT";
@@ -247,19 +256,19 @@ namespace NexusTechUniversity
             // 
             btn_Export.BackColor = Color.Transparent;
             btn_Export.BorderColor = Color.FromArgb(32, 34, 37);
-            btn_Export.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            btn_Export.EnteredColor = Color.FromArgb(32, 34, 37);
+            btn_Export.EnteredBorderColor = Color.FromArgb(3, 37, 83);
+            btn_Export.EnteredColor = Color.FromArgb(3, 37, 83);
             btn_Export.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold);
             btn_Export.Image = null;
             btn_Export.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Export.InactiveColor = Color.FromArgb(3, 37, 83);
             btn_Export.Location = new Point(981, 548);
             btn_Export.Name = "btn_Export";
-            btn_Export.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btn_Export.PressedColor = Color.FromArgb(165, 37, 37);
+            btn_Export.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_Export.PressedColor = Color.FromArgb(3, 37, 83);
             btn_Export.Size = new Size(127, 32);
             btn_Export.TabIndex = 16;
-            btn_Export.Text = "Export";
+            btn_Export.Text = "EXPORT";
             btn_Export.TextAlignment = StringAlignment.Center;
             btn_Export.Click += btn_Export_Click;
             // 
@@ -267,16 +276,16 @@ namespace NexusTechUniversity
             // 
             btn_ChangePass.BackColor = Color.Transparent;
             btn_ChangePass.BorderColor = Color.FromArgb(32, 34, 37);
-            btn_ChangePass.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            btn_ChangePass.EnteredColor = Color.FromArgb(32, 34, 37);
+            btn_ChangePass.EnteredBorderColor = Color.FromArgb(3, 37, 83);
+            btn_ChangePass.EnteredColor = Color.FromArgb(3, 37, 83);
             btn_ChangePass.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_ChangePass.Image = null;
             btn_ChangePass.ImageAlign = ContentAlignment.MiddleLeft;
             btn_ChangePass.InactiveColor = Color.FromArgb(3, 37, 83);
             btn_ChangePass.Location = new Point(32, 463);
             btn_ChangePass.Name = "btn_ChangePass";
-            btn_ChangePass.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btn_ChangePass.PressedColor = Color.FromArgb(165, 37, 37);
+            btn_ChangePass.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_ChangePass.PressedColor = Color.FromArgb(3, 37, 83);
             btn_ChangePass.Size = new Size(375, 47);
             btn_ChangePass.TabIndex = 14;
             btn_ChangePass.Text = "Change Password";
