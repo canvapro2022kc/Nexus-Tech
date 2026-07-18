@@ -237,7 +237,7 @@ namespace NexusTechUniversity
                 }
 
                 dgvStudents.DataSource = dt;
-                if (dgvStudents.Columns.Contains("Middle Initial")) dgvStudents.Columns["Middle Initial"].Visible = false;
+            //    if (dgvStudents.Columns.Contains("Middle Initial")) dgvStudents.Columns["Middle Initial"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -255,6 +255,7 @@ namespace NexusTechUniversity
                 txtboxFName.Text = row.Cells["First Name"].Value?.ToString() ?? "";
                 txtboxLName.Text = row.Cells["Last Name"].Value?.ToString() ?? "";
                 txtboxMI.Text = row.Cells["Middle Initial"].Value?.ToString() ?? "";
+                combotrack.Text = row.Cells["Track"].Value?.ToString() ?? "";
 
                 string yearVal = row.Cells["Year Level"].Value?.ToString() ?? "";
                 comboBox1.SelectedIndex = comboBox1.FindStringExact(yearVal);
@@ -267,6 +268,8 @@ namespace NexusTechUniversity
 
                 string typeVal = row.Cells["Student Type"].Value?.ToString() ?? "";
                 comboBox4.SelectedIndex = comboBox4.FindStringExact(typeVal);
+
+
             }
         }
 
@@ -280,7 +283,7 @@ namespace NexusTechUniversity
                 txtboxFName.Text = row.Cells["First Name"].Value?.ToString() ?? "";
                 txtboxLName.Text = row.Cells["Last Name"].Value?.ToString() ?? "";
                 txtboxMI.Text = row.Cells["Middle Initial"].Value?.ToString() ?? "";
-                textBox1.Text = row.Cells["Track"].Value?.ToString() ?? "None";
+                combotrack.Text = row.Cells["Track"].Value?.ToString() ?? "None";
 
                 string yearVal = row.Cells["Year Level"].Value?.ToString() ?? "";
                 comboBox1.SelectedIndex = comboBox1.FindStringExact(yearVal);
@@ -331,7 +334,7 @@ namespace NexusTechUniversity
                     { "currentSemester", comboBox2.SelectedItem?.ToString() ?? "" },
                     { "subStatus", comboBox4.SelectedItem.ToString() },
                     { "yearLevel", comboBox1.SelectedItem.ToString() },
-                    { "track", textBox1.Text.Trim() }
+                    { "track", combotrack.Text.Trim() }
                 };
 
                 await docRef.SetAsync(updatedData, SetOptions.MergeAll);
@@ -359,8 +362,8 @@ namespace NexusTechUniversity
             // Llinisin din ang curriculum academic year box at track text box
             comboBox3.SelectedIndex = -1;
             comboBox3.Text = "";
-            textBox1.Clear();
-            textBox1.Text = "";
+            combotrack.SelectedIndex = -1;
+            combotrack.Text = "";
         }
 
         private async Task btnLoadStudents_Click(object sender, EventArgs e)
@@ -378,16 +381,14 @@ namespace NexusTechUniversity
 
             if (calculatedCurriculum.Equals("AY 2025-Onwards", StringComparison.OrdinalIgnoreCase))
             {
-                textBox1.Text = "None";
-                textBox1.ReadOnly = true;
-                textBox1.Enabled = false;
-                textBox1.BackColor = Color.LightGray;
+                combotrack.Text = "None";
+                combotrack.Enabled = false;
+                combotrack.BackColor = Color.LightGray;
             }
             else
             {
-                textBox1.ReadOnly = false;
-                textBox1.Enabled = true;
-                textBox1.BackColor = Color.White;
+                combotrack.Enabled = true;
+                combotrack.BackColor = Color.White;
             }
         }
 
@@ -425,7 +426,7 @@ namespace NexusTechUniversity
                 string calculatedCurriculum = DetermineCurriculumId(selectedAY);
 
                 // BAGONG LOGIKA: Kung AY 2025-Onwards at blanko ang track, gawing "None"
-                string trackValue = textBox1.Text.Trim();
+                string trackValue = combotrack.Text.Trim();
                 if (calculatedCurriculum == "AY 2025-Onwards" && string.IsNullOrEmpty(trackValue))
                 {
                     trackValue = "None";
@@ -535,7 +536,7 @@ namespace NexusTechUniversity
                 string calculatedCurriculum = DetermineCurriculumId(selectedAY);
 
                 // BAGONG LOGIKA: Kung AY 2025-Onwards at blanko ang track, gawing "None"
-                string trackValue = textBox1.Text.Trim();
+                string trackValue = combotrack.Text.Trim();
                 if (calculatedCurriculum == "AY 2025-Onwards" && string.IsNullOrEmpty(trackValue))
                 {
                     trackValue = "None";

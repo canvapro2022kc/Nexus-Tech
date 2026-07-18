@@ -178,13 +178,13 @@
             btn_AddCourse.Image = null;
             btn_AddCourse.ImageAlign = ContentAlignment.MiddleLeft;
             btn_AddCourse.InactiveColor = Color.FromArgb(3, 37, 83);
-            btn_AddCourse.Location = new Point(220, 378);
+            btn_AddCourse.Location = new Point(273, 381);
             btn_AddCourse.Name = "btn_AddCourse";
             btn_AddCourse.PressedBorderColor = Color.FromArgb(3, 37, 83);
             btn_AddCourse.PressedColor = Color.FromArgb(3, 37, 83);
-            btn_AddCourse.Size = new Size(144, 31);
+            btn_AddCourse.Size = new Size(91, 31);
             btn_AddCourse.TabIndex = 80;
-            btn_AddCourse.Text = "ADD";
+            btn_AddCourse.Text = "CLEAR";
             btn_AddCourse.TextAlignment = StringAlignment.Center;
             btn_AddCourse.Click += btn_AddCourse_Click;
             // 
@@ -253,9 +253,9 @@
             label10.Font = new Font("Tw Cen MT", 9F);
             label10.Location = new Point(35, 248);
             label10.Name = "label10";
-            label10.Size = new Size(108, 17);
+            label10.Size = new Size(106, 17);
             label10.TabIndex = 72;
-            label10.Text = "Curriculum Type:";
+            label10.Text = "Curriculum Year:";
             // 
             // label9
             // 

@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Evaluation));
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             comboBox3 = new ComboBox();
             comboBox1 = new ComboBox();
             textBox3 = new TextBox();
@@ -59,6 +59,8 @@
             btnBack = new Button();
             label2 = new Label();
             panel1 = new Panel();
+            label18 = new Label();
+            txtBoxTrack = new TextBox();
             btnEvaluate = new ReaLTaiizor.Controls.Button();
             label4 = new Label();
             label3 = new Label();
@@ -69,15 +71,6 @@
             label13 = new Label();
             label8 = new Label();
             dgCoursesTaken = new DataGridView();
-            txtAcademicYear = new TextBox();
-            txtSemester = new TextBox();
-            txtYearLevel = new TextBox();
-            txtLname = new TextBox();
-            txtMI = new TextBox();
-            txtFname = new TextBox();
-            txtSRCode = new TextBox();
-            txtBoxTrack = new TextBox();
-            label18 = new Label();
             taken = new DataGridViewCheckBoxColumn();
             courseCode = new DataGridViewTextBoxColumn();
             courseTitle = new DataGridViewTextBoxColumn();
@@ -85,6 +78,13 @@
             yearLevel = new DataGridViewTextBoxColumn();
             semester = new DataGridViewTextBoxColumn();
             academicYear = new DataGridViewTextBoxColumn();
+            txtAcademicYear = new TextBox();
+            txtSemester = new TextBox();
+            txtYearLevel = new TextBox();
+            txtLname = new TextBox();
+            txtMI = new TextBox();
+            txtFname = new TextBox();
+            txtSRCode = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvCourses).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCoursesToTake).BeginInit();
@@ -212,24 +212,24 @@
             // dgvCoursesToTake
             // 
             dgvCoursesToTake.BackgroundColor = Color.White;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvCoursesToTake.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvCoursesToTake.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvCoursesToTake.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCoursesToTake.Columns.AddRange(new DataGridViewColumn[] { ccode, ctitle, cunits, cyearlevel, csemester, cacademicyear });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvCoursesToTake.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvCoursesToTake.DefaultCellStyle = dataGridViewCellStyle2;
             dgvCoursesToTake.Location = new Point(17, 70);
             dgvCoursesToTake.Name = "dgvCoursesToTake";
             dgvCoursesToTake.RowHeadersVisible = false;
@@ -395,6 +395,26 @@
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Tw Cen MT", 10.2F);
+            label18.Location = new Point(458, 167);
+            label18.Name = "label18";
+            label18.Size = new Size(49, 20);
+            label18.TabIndex = 82;
+            label18.Text = "Track:";
+            // 
+            // txtBoxTrack
+            // 
+            txtBoxTrack.BackColor = Color.White;
+            txtBoxTrack.Font = new Font("Tw Cen MT", 9F);
+            txtBoxTrack.Location = new Point(458, 190);
+            txtBoxTrack.Name = "txtBoxTrack";
+            txtBoxTrack.Size = new Size(119, 24);
+            txtBoxTrack.TabIndex = 81;
+            txtBoxTrack.TextChanged += txtBoxTrack_TextChanged;
+            // 
             // btnEvaluate
             // 
             btnEvaluate.BackColor = Color.Transparent;
@@ -421,9 +441,9 @@
             label4.Font = new Font("Tw Cen MT", 10.2F);
             label4.Location = new Point(18, 167);
             label4.Name = "label4";
-            label4.Size = new Size(116, 20);
+            label4.Size = new Size(118, 20);
             label4.TabIndex = 78;
-            label4.Text = "Academic Year:";
+            label4.Text = "Curriculum Year:";
             // 
             // label3
             // 
@@ -499,24 +519,24 @@
             // dgCoursesTaken
             // 
             dgCoursesTaken.BackgroundColor = Color.White;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Control;
-            dataGridViewCellStyle7.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgCoursesTaken.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgCoursesTaken.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgCoursesTaken.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgCoursesTaken.Columns.AddRange(new DataGridViewColumn[] { taken, courseCode, courseTitle, units, yearLevel, semester, academicYear });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Window;
-            dataGridViewCellStyle8.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dgCoursesTaken.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgCoursesTaken.DefaultCellStyle = dataGridViewCellStyle4;
             dgCoursesTaken.Location = new Point(17, 286);
             dgCoursesTaken.Name = "dgCoursesTaken";
             dgCoursesTaken.RowHeadersVisible = false;
@@ -524,6 +544,57 @@
             dgCoursesTaken.Size = new Size(781, 341);
             dgCoursesTaken.TabIndex = 70;
             dgCoursesTaken.CellContentClick += dgCoursesTaken_CellContentClick;
+            // 
+            // taken
+            // 
+            taken.HeaderText = "Taken";
+            taken.MinimumWidth = 6;
+            taken.Name = "taken";
+            taken.Resizable = DataGridViewTriState.True;
+            taken.SortMode = DataGridViewColumnSortMode.Automatic;
+            taken.Width = 60;
+            // 
+            // courseCode
+            // 
+            courseCode.HeaderText = "Course Code";
+            courseCode.MinimumWidth = 6;
+            courseCode.Name = "courseCode";
+            courseCode.Width = 125;
+            // 
+            // courseTitle
+            // 
+            courseTitle.HeaderText = "Course Title";
+            courseTitle.MinimumWidth = 6;
+            courseTitle.Name = "courseTitle";
+            courseTitle.Width = 170;
+            // 
+            // units
+            // 
+            units.HeaderText = "Units";
+            units.MinimumWidth = 6;
+            units.Name = "units";
+            units.Width = 50;
+            // 
+            // yearLevel
+            // 
+            yearLevel.HeaderText = "Year Level";
+            yearLevel.MinimumWidth = 6;
+            yearLevel.Name = "yearLevel";
+            yearLevel.Width = 125;
+            // 
+            // semester
+            // 
+            semester.HeaderText = "Semester";
+            semester.MinimumWidth = 6;
+            semester.Name = "semester";
+            semester.Width = 125;
+            // 
+            // academicYear
+            // 
+            academicYear.HeaderText = "Pre-requisite/s";
+            academicYear.MinimumWidth = 6;
+            academicYear.Name = "academicYear";
+            academicYear.Width = 125;
             // 
             // txtAcademicYear
             // 
@@ -588,77 +659,6 @@
             txtSRCode.Name = "txtSRCode";
             txtSRCode.Size = new Size(136, 24);
             txtSRCode.TabIndex = 63;
-            // 
-            // txtBoxTrack
-            // 
-            txtBoxTrack.BackColor = Color.White;
-            txtBoxTrack.Font = new Font("Tw Cen MT", 9F);
-            txtBoxTrack.Location = new Point(458, 190);
-            txtBoxTrack.Name = "txtBoxTrack";
-            txtBoxTrack.Size = new Size(119, 24);
-            txtBoxTrack.TabIndex = 81;
-            txtBoxTrack.TextChanged += txtBoxTrack_TextChanged;
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Font = new Font("Tw Cen MT", 10.2F);
-            label18.Location = new Point(458, 167);
-            label18.Name = "label18";
-            label18.Size = new Size(49, 20);
-            label18.TabIndex = 82;
-            label18.Text = "Track:";
-            // 
-            // taken
-            // 
-            taken.HeaderText = "Taken";
-            taken.MinimumWidth = 6;
-            taken.Name = "taken";
-            taken.Resizable = DataGridViewTriState.True;
-            taken.SortMode = DataGridViewColumnSortMode.Automatic;
-            taken.Width = 60;
-            // 
-            // courseCode
-            // 
-            courseCode.HeaderText = "Course Code";
-            courseCode.MinimumWidth = 6;
-            courseCode.Name = "courseCode";
-            courseCode.Width = 125;
-            // 
-            // courseTitle
-            // 
-            courseTitle.HeaderText = "Course Title";
-            courseTitle.MinimumWidth = 6;
-            courseTitle.Name = "courseTitle";
-            courseTitle.Width = 170;
-            // 
-            // units
-            // 
-            units.HeaderText = "Units";
-            units.MinimumWidth = 6;
-            units.Name = "units";
-            units.Width = 50;
-            // 
-            // yearLevel
-            // 
-            yearLevel.HeaderText = "Year Level";
-            yearLevel.MinimumWidth = 6;
-            yearLevel.Name = "yearLevel";
-            yearLevel.Width = 125;
-            // 
-            // semester
-            // 
-            semester.HeaderText = "Semester";
-            semester.MinimumWidth = 6;
-            semester.Name = "semester";
-            semester.Width = 125;
-            // 
-            // academicYear
-            // 
-            academicYear.HeaderText = "Pre-requisite/s";
-            academicYear.MinimumWidth = 6;
-            academicYear.Name = "academicYear";
-            academicYear.Width = 125;
             // 
             // Evaluation
             // 

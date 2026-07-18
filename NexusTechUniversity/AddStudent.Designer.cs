@@ -58,8 +58,8 @@
             pictureBox2 = new PictureBox();
             label11 = new Label();
             parrotCard1 = new ReaLTaiizor.Controls.ParrotCard();
-            textBox1 = new TextBox();
             label13 = new Label();
+            combotrack = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -133,9 +133,9 @@
             label6.Font = new Font("Tw Cen MT", 9.75F);
             label6.Location = new Point(527, 96);
             label6.Name = "label6";
-            label6.Size = new Size(116, 20);
+            label6.Size = new Size(118, 20);
             label6.TabIndex = 37;
-            label6.Text = "Academic Year:";
+            label6.Text = "Curriculum Year:";
             // 
             // txtboxFName
             // 
@@ -266,7 +266,7 @@
             comboBox4.Font = new Font("Tw Cen MT", 9F);
             comboBox4.FormattingEnabled = true;
             comboBox4.Items.AddRange(new object[] { "Freshman", "Regular", "Transferee", "Irregular\t" });
-            comboBox4.Location = new Point(926, 183);
+            comboBox4.Location = new Point(926, 184);
             comboBox4.Margin = new Padding(3, 4, 3, 4);
             comboBox4.Name = "comboBox4";
             comboBox4.Size = new Size(156, 25);
@@ -437,13 +437,6 @@
             parrotCard1.Text3 = "";
             parrotCard1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(750, 182);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(170, 27);
-            textBox1.TabIndex = 69;
-            // 
             // label13
             // 
             label13.AutoSize = true;
@@ -454,13 +447,25 @@
             label13.TabIndex = 71;
             label13.Text = "Track:";
             // 
+            // combotrack
+            // 
+            combotrack.BackColor = Color.White;
+            combotrack.Font = new Font("Tw Cen MT", 9F);
+            combotrack.FormattingEnabled = true;
+            combotrack.Items.AddRange(new object[] { "Business Analytics", "Network Technology", "Service Management", "None" });
+            combotrack.Location = new Point(750, 184);
+            combotrack.Margin = new Padding(3, 4, 3, 4);
+            combotrack.Name = "combotrack";
+            combotrack.Size = new Size(170, 25);
+            combotrack.TabIndex = 72;
+            // 
             // Add_Student
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1140, 608);
+            Controls.Add(combotrack);
             Controls.Add(label13);
-            Controls.Add(textBox1);
             Controls.Add(label11);
             Controls.Add(pictureBox2);
             Controls.Add(btn_Save);
@@ -533,7 +538,7 @@
         private PictureBox pictureBox2;
         private Label label11;
         private ReaLTaiizor.Controls.ParrotCard parrotCard1;
-        private TextBox textBox1;
         private Label label13;
+        private ComboBox combotrack;
     }
 }

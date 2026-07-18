@@ -115,6 +115,7 @@ namespace NexusTechUniversity
                 dt.Columns.Add("YearLevelDisplay");
                 dt.Columns.Add("SemesterDisplay");
                 dt.Columns.Add("DocId"); // Hidden column tracking the actual database Key
+                dt.Columns.Add("Track"); //ALY ADDED
 
                 foreach (DocumentSnapshot document in snapshot.Documents)
                 {
@@ -154,7 +155,7 @@ namespace NexusTechUniversity
                     int yearOrder = yearLevel.Contains("First") ? 1 : yearLevel.Contains("Second") ? 2 : yearLevel.Contains("Third") ? 3 : 4;
                     int semOrder = semester.Contains("First") ? 1 : semester.Contains("Second") ? 2 : semester.Contains("Midterm") ? 3 : 4;
 
-                    dt.Rows.Add(courseCode, courseName, unitsStr, lecStr, labStr, preReq, yearOrder, semOrder, false, yearLevel, semester, document.Id);
+                    dt.Rows.Add(courseCode, courseName, unitsStr, lecStr, labStr, preReq, yearOrder, semOrder, false, yearLevel, semester, document.Id, courseTrack); //ALY ADDED THE LAST ROW
                 }
 
                 DataView dv = dt.DefaultView;
@@ -375,14 +376,24 @@ namespace NexusTechUniversity
             string currentCurriculum = comboBoxCurriculum.SelectedItem?.ToString() ?? "AY 2025-Onwards";
             txtboxType.Text = currentCurriculum;
 
-            string currentTrack = currentCurriculum == "AY 2025-Onwards" ? "None" : (comboBoxTrack.SelectedItem?.ToString() ?? "None");
-            txtboxTrack.Text = currentTrack;
+            /*string currentTrack = currentCurriculum == "AY 2025-Onwards" ? "None" : (comboBoxTrack.SelectedItem?.ToString() ?? "None");
+            txtboxTrack.Text = currentTrack;*/ //ALY REMOVED
+            string pulledTrack = row.Cells["Track"].Value?.ToString() ?? "";
 
-            string yearVal = row.Cells["YearLevelDisplay"].Value?.ToString() ?? "First Year";
-            comboBoxLevel.SelectedIndex = comboBoxLevel.FindStringExact(yearVal);
+            if (pulledTrack.Equals("None", StringComparison.OrdinalIgnoreCase))
+            {
+                txtboxTrack.Text = ""; // Kung "None" ang nakasave, i-blank ang textbox
+            }
+            else
+            {
+                txtboxTrack.Text = pulledTrack; //ALY ADDED
 
-            string semVal = row.Cells["SemesterDisplay"].Value?.ToString() ?? "First Semester";
-            comboBoxSem.SelectedIndex = comboBoxSem.FindStringExact(semVal);
+                string yearVal = row.Cells["YearLevelDisplay"].Value?.ToString() ?? "First Year";
+                comboBoxLevel.SelectedIndex = comboBoxLevel.FindStringExact(yearVal);
+
+                string semVal = row.Cells["SemesterDisplay"].Value?.ToString() ?? "First Semester";
+                comboBoxSem.SelectedIndex = comboBoxSem.FindStringExact(semVal);
+            }
         }
 
         private void dgvCurriculum_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -420,8 +431,7 @@ namespace NexusTechUniversity
             string currentTrack = currentCurriculum == "AY 2025-Onwards"
                 ? "None"
                 : (comboBoxTrack.SelectedItem?.ToString() ?? "None");
-            txtboxTrack.Text = currentTrack;
-
+            txtboxTrack.Text = "";
             comboBoxLevel.SelectedIndex = -1;
             comboBoxSem.SelectedIndex = -1;
 
@@ -457,23 +467,53 @@ namespace NexusTechUniversity
             string lab = txtboxLab.Text.Trim();
             string preReq = txtboxPreReq.Text.Trim();
 
+            // 1. BLANK FIELD VALIDATION: Check for required empty fields
+            if (string.IsNullOrWhiteSpace(code) ||
+                string.IsNullOrWhiteSpace(title) ||
+                string.IsNullOrWhiteSpace(units) ||
+                comboBoxLevel.SelectedIndex == -1 ||
+                comboBoxSem.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please fill in all required fields (Course Code, Course Title, Units, Year Level, and Semester).",
+                                "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Stops the save process
+            }
+
+            // 2. NUMBER VALIDATION: Ensure Units, Lec, and Lab are numeric
+            double parsedValue;
+            bool isUnitsValid = double.TryParse(units, out parsedValue);
+            // We allow Lec and Lab to be empty, but if they have text, it MUST be a number
+            bool isLecValid = string.IsNullOrWhiteSpace(lec) || double.TryParse(lec, out parsedValue);
+            bool isLabValid = string.IsNullOrWhiteSpace(lab) || double.TryParse(lab, out parsedValue);
+
+            if (!isUnitsValid || !isLecValid || !isLabValid)
+            {
+                MessageBox.Show("Units, Lecture, and Laboratory fields must contain valid numbers only.",
+                                "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Stops the save process
+            }
+
             string rawCurriculum = txtboxType.Text.Trim();
             if (string.IsNullOrEmpty(rawCurriculum))
             {
-                MessageBox.Show("Curriculum Type is required.");
+                MessageBox.Show("Curriculum Type is required.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             string curriculum = rawCurriculum.StartsWith("AY ") ? rawCurriculum : "AY " + rawCurriculum;
 
             string rawTrack = txtboxTrack.Text.Trim();
-            string track = string.IsNullOrWhiteSpace(rawTrack) ? "None" : rawTrack;
+            //string track = string.IsNullOrWhiteSpace(rawTrack) ? "None" : rawTrack; (ALY REMOVED)
+            string track = rawTrack; //ALY ADDED
 
             string year = comboBoxLevel.SelectedItem?.ToString() ?? "First Year";
             string sem = comboBoxSem.SelectedItem?.ToString() ?? "First Semester";
 
             // This stores the true original Document Id key from Firestore
             string originalDocId = txtboxCode.Tag?.ToString();
-            string destinationDocId = $"{code}-{track}-{curriculum}";
+            /* string destinationDocId = $"{code}-{track}-{curriculum}"; */ //ALY REMOVED
+            string destinationDocId = string.IsNullOrWhiteSpace(track)
+            ? $"{code}-{curriculum}"
+            : $"{code}-{track}-{curriculum}"; //ALY ADDED
 
             try
             {
@@ -484,9 +524,9 @@ namespace NexusTechUniversity
                 {
                     DocumentReference currRef = db.Collection("curricula").Document(curriculum);
                     Dictionary<string, object> currData = new Dictionary<string, object>
-                    {
-                        { "curriculum_id", curriculum }
-                    };
+            {
+                { "curriculum_id", curriculum }
+            };
                     await currRef.SetAsync(currData);
 
                     comboBoxCurriculum.Items.Add(curriculum);
@@ -532,6 +572,8 @@ namespace NexusTechUniversity
                 txtboxCode.Tag = null;
 
                 await LoadCurriculumGrid();
+
+                MessageBox.Show("Course successfully saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -597,5 +639,10 @@ namespace NexusTechUniversity
         private void textBox1_TextChanged(object sender, EventArgs e) { }
         private void label14_Click(object sender, EventArgs e) { }
         private void txtboxTitle_TextChanged(object sender, EventArgs e) { }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

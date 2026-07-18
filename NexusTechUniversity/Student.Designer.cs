@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Student));
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             btn_Logout = new ReaLTaiizor.Controls.Button();
             btnCurriculum = new Button();
@@ -43,6 +43,7 @@
             txtboxSearchName = new TextBox();
             label4 = new Label();
             dgvStudent = new DataGridView();
+            btn_AddStudent = new ReaLTaiizor.Controls.Button();
             srCode = new DataGridViewTextBoxColumn();
             firstName = new DataGridViewTextBoxColumn();
             middleInitial = new DataGridViewTextBoxColumn();
@@ -51,7 +52,6 @@
             currentSemester = new DataGridViewTextBoxColumn();
             academicYear = new DataGridViewTextBoxColumn();
             btnEvaluation = new DataGridViewButtonColumn();
-            btn_AddStudent = new ReaLTaiizor.Controls.Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudent).BeginInit();
@@ -204,24 +204,24 @@
             // dgvStudent
             // 
             dgvStudent.BackgroundColor = Color.White;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvStudent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvStudent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStudent.Columns.AddRange(new DataGridViewColumn[] { srCode, firstName, middleInitial, lastName, yearLevel, currentSemester, academicYear, btnEvaluation });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvStudent.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Tw Cen MT", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvStudent.DefaultCellStyle = dataGridViewCellStyle2;
             dgvStudent.Location = new Point(275, 95);
             dgvStudent.Name = "dgvStudent";
             dgvStudent.RowHeadersVisible = false;
@@ -229,6 +229,26 @@
             dgvStudent.Size = new Size(836, 485);
             dgvStudent.TabIndex = 13;
             dgvStudent.CellContentClick += dgvStudent_CellContentClick;
+            // 
+            // btn_AddStudent
+            // 
+            btn_AddStudent.BackColor = Color.Transparent;
+            btn_AddStudent.BorderColor = Color.FromArgb(32, 34, 37);
+            btn_AddStudent.EnteredBorderColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.EnteredColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_AddStudent.Image = null;
+            btn_AddStudent.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_AddStudent.InactiveColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.Location = new Point(977, 55);
+            btn_AddStudent.Name = "btn_AddStudent";
+            btn_AddStudent.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.PressedColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.Size = new Size(134, 27);
+            btn_AddStudent.TabIndex = 14;
+            btn_AddStudent.Text = "+ ADD STUDENT";
+            btn_AddStudent.TextAlignment = StringAlignment.Center;
+            btn_AddStudent.Click += btn_AddStudent_Click;
             // 
             // srCode
             // 
@@ -274,7 +294,7 @@
             // 
             // academicYear
             // 
-            academicYear.HeaderText = "Academic Year";
+            academicYear.HeaderText = "Curriculum Year";
             academicYear.MinimumWidth = 6;
             academicYear.Name = "academicYear";
             academicYear.Width = 125;
@@ -285,26 +305,6 @@
             btnEvaluation.MinimumWidth = 6;
             btnEvaluation.Name = "btnEvaluation";
             btnEvaluation.Width = 80;
-            // 
-            // btn_AddStudent
-            // 
-            btn_AddStudent.BackColor = Color.Transparent;
-            btn_AddStudent.BorderColor = Color.FromArgb(32, 34, 37);
-            btn_AddStudent.EnteredBorderColor = Color.FromArgb(3, 37, 83);
-            btn_AddStudent.EnteredColor = Color.FromArgb(3, 37, 83);
-            btn_AddStudent.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_AddStudent.Image = null;
-            btn_AddStudent.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_AddStudent.InactiveColor = Color.FromArgb(3, 37, 83);
-            btn_AddStudent.Location = new Point(977, 55);
-            btn_AddStudent.Name = "btn_AddStudent";
-            btn_AddStudent.PressedBorderColor = Color.FromArgb(3, 37, 83);
-            btn_AddStudent.PressedColor = Color.FromArgb(3, 37, 83);
-            btn_AddStudent.Size = new Size(134, 27);
-            btn_AddStudent.TabIndex = 14;
-            btn_AddStudent.Text = "+ ADD STUDENT";
-            btn_AddStudent.TextAlignment = StringAlignment.Center;
-            btn_AddStudent.Click += btn_AddStudent_Click;
             // 
             // Student
             // 
@@ -341,6 +341,8 @@
         private TextBox txtboxSearchName;
         private Label label4;
         private DataGridView dgvStudent;
+        private ReaLTaiizor.Controls.Button btn_AddStudent;
+        private ReaLTaiizor.Controls.Button btn_Logout;
         private DataGridViewTextBoxColumn srCode;
         private DataGridViewTextBoxColumn firstName;
         private DataGridViewTextBoxColumn middleInitial;
@@ -349,7 +351,5 @@
         private DataGridViewTextBoxColumn currentSemester;
         private DataGridViewTextBoxColumn academicYear;
         private DataGridViewButtonColumn btnEvaluation;
-        private ReaLTaiizor.Controls.Button btn_AddStudent;
-        private ReaLTaiizor.Controls.Button btn_Logout;
     }
 }
