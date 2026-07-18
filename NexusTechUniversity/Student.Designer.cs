@@ -43,7 +43,6 @@
             txtboxSearchName = new TextBox();
             label4 = new Label();
             dgvStudent = new DataGridView();
-            btn_AddStudent = new ReaLTaiizor.Controls.Button();
             srCode = new DataGridViewTextBoxColumn();
             firstName = new DataGridViewTextBoxColumn();
             middleInitial = new DataGridViewTextBoxColumn();
@@ -52,6 +51,7 @@
             currentSemester = new DataGridViewTextBoxColumn();
             academicYear = new DataGridViewTextBoxColumn();
             btnEvaluation = new DataGridViewButtonColumn();
+            btn_AddStudent = new ReaLTaiizor.Controls.Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudent).BeginInit();
@@ -75,14 +75,14 @@
             // 
             // btn_Logout
             // 
-            btn_Logout.BackColor = Color.Transparent;
-            btn_Logout.BorderColor = Color.FromArgb(32, 34, 37);
+            btn_Logout.BackColor = Color.Navy;
+            btn_Logout.BorderColor = Color.FromArgb(3, 37, 83);
             btn_Logout.EnteredBorderColor = Color.FromArgb(3, 37, 83);
             btn_Logout.EnteredColor = Color.FromArgb(3, 37, 83);
             btn_Logout.Font = new Font("Tw Cen MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Logout.Image = null;
             btn_Logout.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Logout.InactiveColor = Color.WhiteSmoke;
+            btn_Logout.InactiveColor = Color.MediumBlue;
             btn_Logout.Location = new Point(47, 546);
             btn_Logout.Name = "btn_Logout";
             btn_Logout.PressedBorderColor = Color.White;
@@ -230,26 +230,6 @@
             dgvStudent.TabIndex = 13;
             dgvStudent.CellContentClick += dgvStudent_CellContentClick;
             // 
-            // btn_AddStudent
-            // 
-            btn_AddStudent.BackColor = Color.Transparent;
-            btn_AddStudent.BorderColor = Color.FromArgb(32, 34, 37);
-            btn_AddStudent.EnteredBorderColor = Color.FromArgb(3, 37, 83);
-            btn_AddStudent.EnteredColor = Color.FromArgb(3, 37, 83);
-            btn_AddStudent.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_AddStudent.Image = null;
-            btn_AddStudent.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_AddStudent.InactiveColor = Color.FromArgb(3, 37, 83);
-            btn_AddStudent.Location = new Point(977, 55);
-            btn_AddStudent.Name = "btn_AddStudent";
-            btn_AddStudent.PressedBorderColor = Color.FromArgb(3, 37, 83);
-            btn_AddStudent.PressedColor = Color.FromArgb(3, 37, 83);
-            btn_AddStudent.Size = new Size(134, 27);
-            btn_AddStudent.TabIndex = 14;
-            btn_AddStudent.Text = "+ ADD STUDENT";
-            btn_AddStudent.TextAlignment = StringAlignment.Center;
-            btn_AddStudent.Click += btn_AddStudent_Click;
-            // 
             // srCode
             // 
             srCode.HeaderText = "SR-Code";
@@ -305,6 +285,26 @@
             btnEvaluation.MinimumWidth = 6;
             btnEvaluation.Name = "btnEvaluation";
             btnEvaluation.Width = 80;
+            // 
+            // btn_AddStudent
+            // 
+            btn_AddStudent.BackColor = Color.Transparent;
+            btn_AddStudent.BorderColor = Color.FromArgb(32, 34, 37);
+            btn_AddStudent.EnteredBorderColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.EnteredColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.Font = new Font("Tw Cen MT", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_AddStudent.Image = null;
+            btn_AddStudent.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_AddStudent.InactiveColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.Location = new Point(977, 55);
+            btn_AddStudent.Name = "btn_AddStudent";
+            btn_AddStudent.PressedBorderColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.PressedColor = Color.FromArgb(3, 37, 83);
+            btn_AddStudent.Size = new Size(134, 27);
+            btn_AddStudent.TabIndex = 14;
+            btn_AddStudent.Text = "+ ADD STUDENT";
+            btn_AddStudent.TextAlignment = StringAlignment.Center;
+            btn_AddStudent.Click += btn_AddStudent_Click;
             // 
             // Student
             // 
