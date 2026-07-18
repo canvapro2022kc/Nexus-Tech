@@ -62,6 +62,7 @@
             label8 = new Label();
             comboBoxCurriculum = new ComboBox();
             dgvCurriculum = new DataGridView();
+            label14 = new Label();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCurriculum).BeginInit();
@@ -69,6 +70,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(label14);
             panel2.Controls.Add(btn_Delete);
             panel2.Controls.Add(btn_Save);
             panel2.Controls.Add(btn_Edit);
@@ -502,6 +504,18 @@
             dgvCurriculum.CellClick += dgvCurriculum_CellClick;
             dgvCurriculum.CellFormatting += dgvCurriculum_CellFormatting;
             // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.BackColor = SystemColors.Control;
+            label14.Font = new Font("Tw Cen MT", 6F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label14.ForeColor = Color.Brown;
+            label14.Location = new Point(174, 291);
+            label14.Name = "label14";
+            label14.Size = new Size(114, 13);
+            label14.TabIndex = 84;
+            label14.Text = "(*for AY 2020-2024 only.)";
+            // 
             // Curriculum
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -552,5 +566,6 @@
         private ReaLTaiizor.Controls.Button btn_Edit;
         private ReaLTaiizor.Controls.Button btn_Save;
         private ReaLTaiizor.Controls.Button btn_Delete;
+        private Label label14;
     }
 }
